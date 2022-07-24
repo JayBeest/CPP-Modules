@@ -47,19 +47,19 @@ void		Phonebook::makeContact( void ){
 	return;
 }
 
-void	Phonebook::_printSearch(void ) const {
+void	Phonebook::_printSearch( void ) const {
 
-	cout << setw(COL_WIDTH) << "index"
-		<< setw(COL_WIDTH) << "first name"
-		<< setw(COL_WIDTH) << "last name"
+	cout << setw(COL_WIDTH) << "index" << " | "
+		<< setw(COL_WIDTH) << "first name" << " | "
+		<< setw(COL_WIDTH) << "last name" << " | "
 		<< setw(COL_WIDTH) << "nickname"
 		<< endl;
 	for (int i = 0; i < MAX_CONTACTS; i++) {
-		cout << setw(COL_WIDTH) << i
-		<< setw(COL_WIDTH) << _shrink(this->_contacts[i].getFirstN()) << "|"
-		<< setw(COL_WIDTH) << _shrink(this->_contacts[i].getLastN()) << "|"
-		<< setw(COL_WIDTH) << _shrink(this->_contacts[i].getNickN()) << "|"
-		<< endl;
+		cout << setw(COL_WIDTH) << i + 1 << " | "
+			<< setw(COL_WIDTH) << _shrink(this->_contacts[i].getFirstN()) << " | "
+			<< setw(COL_WIDTH) << _shrink(this->_contacts[i].getLastN()) << " | "
+			<< setw(COL_WIDTH) << _shrink(this->_contacts[i].getNickN())
+			<< endl;
 	}
 
 	return;
