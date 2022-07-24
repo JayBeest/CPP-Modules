@@ -7,7 +7,8 @@ using namespace std;
 Contact::Contact ( string f, string l, string n, string p, string d )
 	: _firstN(f), _lastN(l), _nickN(n), _phoneN(p), _darkS(d) {
 
-	this->_nb_contacts_constructed++;
+	if (this->_nb_contacts < 8)
+		this->_nb_contacts++;
 
 	return;
 }
@@ -62,7 +63,7 @@ string	Contact::getDarkS( void ) const {
 
 int	Contact::get_nbContacts( void ) const {
 
-	return this->_nb_contacts_constructed;
+	return this->_nb_contacts;
 }
 
 Contact::Contact( void ) {
@@ -70,5 +71,5 @@ Contact::Contact( void ) {
 	return;
 }
 
-int	Contact::_nb_contacts_constructed = 0;
+int	Contact::_nb_contacts = 0;
 

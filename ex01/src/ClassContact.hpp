@@ -22,13 +22,12 @@ public:
 	string	getNickN ( ) const;
 	string	getPhoneN ( ) const;
 	string	getDarkS ( ) const;
-//	void	print( void ) const;
-	int		get_nbContacts ( void ) const;
+	int		get_nbContacts (void ) const;
 
 private:
 
 
-	static int	_nb_contacts_constructed;
+	static int	_nb_contacts;
 
 	string	_firstN;
 	string	_lastN;
