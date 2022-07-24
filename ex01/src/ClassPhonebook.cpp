@@ -1,6 +1,6 @@
 #include <iostream>
 #include <iomanip>
-#include <math.h>
+#include <sstream>
 #include "ClassPhonebook.hpp"
 
 using namespace ::std;
@@ -65,34 +65,52 @@ void	Phonebook::_printSearch( void ) const {
 	return;
 }
 
-void	Phonebook::searchPhonebook(void ) const {
+void	Phonebook::searchPhonebook( void ) const {
 
-	string	cmd;
-	size_t i = 0;
+	string			prompt = "Input index: ";
+	string			cmd;
+	stringstream	out_nb_contacts;
+	int				count = 0;
+	size_t			i = 0;
 
 	this->_printSearch();
+	out_nb_contacts << this->_contacts->get_nbContacts();
 	while (1)
 	{
-		cout << "Input index: ";
+		cout << prompt;
 		getline(cin, cmd);
-		while (i < cmd.size() && isdigit(cmd[i]))
-			i++;
-		if (i != cmd.size())
+
+		if (cmd.size() > 1 || !isdigit(cmd[0]))
 		{
-			cout << "non-digit detected." << endl;
-			this->_printSearch();
-			continue;
+			prompt = "Input an index [0-" + out_nb_contacts.str() + "] ";
+			count++;
 		}
-		i = atoi(cmd.c_str());
-		if (i >= 0 && i < MAX_CONTACTS)
+		else
 		{
-			cout << setw(10) << "Index: " << i << endl
-			<< setw(10) << "First name: " << this->_contacts->getFirstN() << endl
-			<< setw(10) << "Last name: " << this->_contacts->getFirstN() << endl
-			<< setw(10) << "Nickname: " << this->_contacts->getFirstN() << endl
-			<< setw(10) << "Phone number: " << this->_contacts->getFirstN() << endl
-			<< setw(10) << "Dark Secret: " << this->_contacts->getFirstN() << endl;
-			return;
+			if (count > 4)
+				prompt = "Input an index [0-" + out_nb_contacts.str() + "] ";
+			else if (count > 8)
+			{
+				this->_printSearch();
+				prompt = "Input an index [0-" + out_nb_contacts.str() + "] ";
+				count = 0;
+			}
+			else
+				prompt = "Input index: ";
+			count++;
+			i = atoi(cmd.c_str());
+			if (i > 0 && (int)i <= (int)this->_contacts->get_nbContacts())
+			{
+				i--;
+				cout << setw(13) << "Index: " << i + 1 << endl
+					<< setw(13) << "First name: " << this->_contacts[i].getFirstN() << endl
+					<< setw(13) << "Last name: " << this->_contacts[i].getLastN() << endl
+					<< setw(13) << "Nickname: " << this->_contacts[i].getNickN() << endl
+					<< setw(13) << "Phone number: " << this->_contacts[i].getPhoneN() << endl
+					<< setw(13) << "Dark Secret: " << this->_contacts[i].getDarkS()
+					<< endl;
+				return;
+			}
 		}
 	}
 
