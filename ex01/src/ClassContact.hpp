@@ -3,7 +3,7 @@
 
 # include <iostream>
 
-using std::string;
+using namespace ::std;
 
 class Contact {
 
@@ -12,8 +12,8 @@ public:
 
 	Contact( string f, string l, string n, string p, string d);
 	Contact( Contact const & other);
-	Contact( void );
-	~Contact ( void );
+	Contact( );
+	~Contact ( );
 
 	Contact &	operator=( Contact const & rhs );
 
@@ -22,10 +22,9 @@ public:
 	string	getNickN ( ) const;
 	string	getPhoneN ( ) const;
 	string	getDarkS ( ) const;
-	int		get_nbContacts (void ) const;
+	int		get_nbContacts ( ) const;
 
 private:
-
 
 	static int	_nb_contacts;
 
@@ -36,7 +35,5 @@ private:
 	string	_darkS;
 
 };
-
-//std::ostream &	operator<<( std::ostream & o, Contact const & rhs );
 
 #endif

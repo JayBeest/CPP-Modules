@@ -6,31 +6,33 @@
 # define MAX_CONTACTS 8
 # define COL_WIDTH 10
 
-using namespace std;
+using namespace ::std;
 
 class Phonebook {
 
 public:
 
-	Phonebook( void );
+	explicit Phonebook( string prompt );
 	Phonebook( Phonebook const & src);
-	~Phonebook( void );
+	~Phonebook( );
 
 	Phonebook & operator=( Phonebook const & rhs);
 
-	void	makeContact( void );
-	void	searchPhonebook(void ) const;
-	void	populatePhonebook( void );
+	void	makeContact( );
+	void	searchPhonebook( ) const;
+	string	getPrompt( ) const;
+	void	populatePhonebook( );
 
 private:
 
 	Contact	_contacts[MAX_CONTACTS];
+	string	const _prompt;
 
-	void 	_addContact( Contact newContact );
-	void	_printSearch(void ) const;
+	void 	_addContact( const Contact& new_contact );
+	void	_printSearch( ) const;
 	Contact _getContact( int i ) const;
 	string	_shrink( string ) const;
-	string	_readInput( string const prompt ) const;
+	string	_readInput( const string& prompt ) const;
 };
 
 #endif

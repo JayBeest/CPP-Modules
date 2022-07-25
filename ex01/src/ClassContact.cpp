@@ -1,75 +1,68 @@
 #include "ClassContact.hpp"
 #include <iostream>
-#include <iomanip>
 
-using namespace std;
+using namespace ::std;
+
+int	Contact::_nb_contacts = 0;
 
 Contact::Contact ( string f, string l, string n, string p, string d )
 	: _firstN(f), _lastN(l), _nickN(n), _phoneN(p), _darkS(d) {
 
-	if (this->_nb_contacts < 8)
-		this->_nb_contacts++;
+	if (Contact::_nb_contacts < 8)
+		Contact::_nb_contacts++;
 
-	return;
 }
 
 Contact::Contact ( Contact const & other ){
 
 	*this = other;
-
-	return;
 }
 
-Contact::~Contact( void ) {
+Contact::~Contact( ) {
 
-	return;
 }
 
 Contact &	Contact::operator=( Contact const & rhs ){
 
-	this->_firstN = rhs.getFirstN();
-	this->_lastN = rhs.getLastN();
-	this->_nickN = rhs.getNickN();
-	this->_phoneN = rhs.getPhoneN();
-	this->_darkS = rhs.getDarkS();
+	this->_firstN = rhs.getFirstN( );
+	this->_lastN = rhs.getLastN( );
+	this->_nickN = rhs.getNickN( );
+	this->_phoneN = rhs.getPhoneN( );
+	this->_darkS = rhs.getDarkS( );
 
 	return *this;
 }
 
-string	Contact::getFirstN( void ) const {
+string	Contact::getFirstN( ) const {
 
 	return this->_firstN;
 }
 
-string	Contact::getLastN( void ) const {
+string	Contact::getLastN( ) const {
 
 	return this->_lastN;
 }
 
-string	Contact::getNickN( void ) const {
+string	Contact::getNickN( ) const {
 
 	return this->_nickN;
 }
 
-string	Contact::getPhoneN( void ) const {
+string	Contact::getPhoneN( ) const {
 
 	return this->_phoneN;
 }
 
-string	Contact::getDarkS( void ) const {
+string	Contact::getDarkS( ) const {
 
 	return this->_darkS;
 }
 
-int	Contact::get_nbContacts( void ) const {
+int	Contact::get_nbContacts( ) const {
 
-	return this->_nb_contacts;
+	return Contact::_nb_contacts;
 }
 
-Contact::Contact( void ) {
+Contact::Contact( ) {
 
-	return;
 }
-
-int	Contact::_nb_contacts = 0;
-

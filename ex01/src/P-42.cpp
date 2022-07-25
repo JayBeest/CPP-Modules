@@ -3,22 +3,45 @@
 
 using namespace ::std;
 
-int main ( void ){
+int main ( ){
 
-	Phonebook	book;
+	Phonebook	book("root@Z-42:/# ");
 	string		cmd;
+	int			count = 0;
 
-	book.populatePhonebook();
 	while (1)
 	{
-		cout << "Enter a command: ";
+		cout << book.getPrompt( );
 		getline(cin, cmd);
-		if (cmd == "ADD")
-			book.makeContact();
-		else if (cmd == "SEARCH")
-			book.searchPhonebook();
-		else if (cmd == "EXIT")
+		if (cmd.empty())
+			(void)cmd;
+		else if (cmd == "ADD")
+			book.makeContact( );
+		else if (cmd == "SEARCH" || cmd == "s")
+			book.searchPhonebook( );
+		else if (cmd == "POP" || cmd == "p")
+			book.populatePhonebook( );
+		else if (cmd == "EXIT" || cmd == "e")
 			break;
+		else
+		{
+			cout << endl
+				 << "Usage: ADD - add a contact" << endl
+				 << "       SEARCH - search the Z-42 phonebook" << endl
+				 << "       EXIT - exit" << endl
+				 << endl;
+			count = 0;
+		}
+		count++;
+		if (count > 6)
+		{
+			cout << endl
+				<< "Usage: ADD - add a contact" << endl
+				<< "       SEARCH - search the Z-42 phonebook" << endl
+				<< "       EXIT - exit" << endl
+				<< endl;
+			count = 0;
+		}
 	}
 	return 0;
 }
