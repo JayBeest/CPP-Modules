@@ -5,34 +5,38 @@
 
 # define MAX_CONTACTS 8
 # define COL_WIDTH 10
-
-using namespace ::std;
+# define PROMPT "P-42: "
 
 class Phonebook {
 
 public:
 
-	explicit Phonebook( string prompt );
-	Phonebook( Phonebook const & src);
-	~Phonebook( );
+	bool			empty( ) const;
+	std::string		get_prompt( ) const;
 
-	Phonebook & operator=( Phonebook const & rhs);
+	explicit		Phonebook( std::string prompt );
+					Phonebook( const Phonebook& src );
+					~Phonebook( );
+					Phonebook& operator=( const Phonebook& rhs);
 
-	void	makeContact( );
-	void	searchPhonebook( ) const;
-	string	getPrompt( ) const;
-	void	populatePhonebook( );
+	std::string		readInput(std::string prompt ) const;
+	void			printUsage( ) const;
+	void			searchPhonebook( ) const;
+	void			makeContact( );
+	void			populatePhonebook( );
 
 private:
 
-	Contact	_contacts[MAX_CONTACTS];
-	string	const _prompt;
+	bool			_empty;
+	std::string		_prompt;
+	Contact			_contacts[MAX_CONTACTS];
 
-	void 	_addContact( const Contact& new_contact );
-	void	_printSearch( ) const;
-	Contact _getContact( int i ) const;
-	string	_shrink( string ) const;
-	string	_readInput( const string& prompt ) const;
+	void 			_addContact( const Contact& new_contact );
+	void			_printContact( const Contact& to_print) const;
+	void			_printSearch( ) const;
+	Contact			_getContact( int i ) const;
+	std::string		_shrink( std::string ) const;
+
 };
 
 #endif

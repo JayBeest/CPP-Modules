@@ -3,36 +3,34 @@
 
 # include <iostream>
 
-using namespace ::std;
-
 class Contact {
-
 
 public:
 
-	Contact( string f, string l, string n, string p, string d);
-	Contact( Contact const & other);
+	static int			get_nbContacts( );
+	std::string			getFirstN( ) const;
+	std::string			getLastN( ) const;
+	std::string			getNickN( ) const;
+	std::string			getPhoneN( ) const;
+	std::string			getDarkS( ) const;
+
 	Contact( );
+	Contact( const Contact& other );
+	Contact( std::string f, std::string l, std::string n, std::string p, std::string d );
 	~Contact ( );
 
-	Contact &	operator=( Contact const & rhs );
+	Contact&	operator=( const Contact& rhs );
 
-	string	getFirstN ( ) const;
-	string	getLastN ( ) const;
-	string	getNickN ( ) const;
-	string	getPhoneN ( ) const;
-	string	getDarkS ( ) const;
-	int		get_nbContacts ( ) const;
 
 private:
 
 	static int	_nb_contacts;
 
-	string	_firstN;
-	string	_lastN;
-	string	_nickN;
-	string	_phoneN;
-	string	_darkS;
+	std::string	_firstN;
+	std::string	_lastN;
+	std::string	_nickN;
+	std::string	_phoneN;
+	std::string	_darkS;
 
 };
 

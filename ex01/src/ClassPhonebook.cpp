@@ -5,25 +5,120 @@
 
 using namespace ::std;
 
-Phonebook::Phonebook( string prompt ) : _prompt(prompt) {
+bool	Phonebook::empty( ) const {
+
+	return this->_empty;
+}
+
+string	Phonebook::get_prompt() const {
+
+	return this->_prompt;
+}
+
+Phonebook::Phonebook( string prompt )
+	: _empty(true), _prompt(prompt) {
+
+	cout << endl << setw(24) << "Zapp!" << endl << endl;
+	cout << "This is the crappy P-42 phonebook operator" << endl;
+	cout << "go ahead.." << endl;
+	printUsage();
 
 }
 
-Phonebook::Phonebook( Phonebook const & other) {
+Phonebook::Phonebook( const Phonebook& other) {
 
 	*this = other;
 }
 
 Phonebook::~Phonebook( ) {
 
+	cout << endl << "..so sweet" << endl;
+	cout << "This was the crappy P-42 phonebook operator" << endl;
+	cout  << endl << setw(25) << "Zapp!" <<  endl << endl;
+
 }
 
-Phonebook &		Phonebook::operator=( Phonebook const & rhs ) {
+Phonebook&	Phonebook::operator=( const Phonebook& rhs ) {
 
-	for (int i = 0; i < MAX_CONTACTS; i++)
-		this->_contacts[i] = rhs._getContact(i);
-
+	this->_empty = true;
+	this->_prompt = rhs.get_prompt();
+	if (!rhs.empty())
+	{
+		for (int i = 0; i < rhs._contacts->get_nbContacts(); i++)
+			this->_contacts[i] = rhs._getContact(i);
+		this->_empty = false;
+	}
 	return *this;
+}
+
+string	Phonebook::readInput(string prompt ) const {
+
+	string			buffer;
+	int				count = 0;
+	stringstream	out_nb_contacts;
+
+	out_nb_contacts << this->_contacts->get_nbContacts();
+	while (buffer.empty())
+	{
+		cout << prompt;
+		getline(cin, buffer);
+		if (buffer.empty())
+			count++;
+		if (count > 6)
+		{
+			if (prompt.size() < 7)
+				printUsage();
+			else if (prompt.size() < 20)
+				prompt += "[1-" + out_nb_contacts.str() + "] ";
+			else
+				this->_printSearch();
+			count = 0;
+		}
+	}
+
+	return buffer;
+}
+
+void	Phonebook::printUsage( ) const {
+
+	cout << endl
+		 << "Usage: ADD - add a contact" << endl
+		 << "       SEARCH - search the Z-42 phonebook" << endl
+		 << "       EXIT - exit" << endl
+		 << endl;
+
+}
+
+void	Phonebook::searchPhonebook( ) const {
+
+	string			prompt = "Input index: ";
+	string			cmd;
+	stringstream	out_nb_contacts;
+	int 			i;
+
+	if (this->_contacts->get_nbContacts() == 0)
+	{
+		cout << endl << "No contacts present in T-42 phonebook" << endl << endl;
+		return;
+	}
+	this->_printSearch();
+	out_nb_contacts << this->_contacts->get_nbContacts( );
+	while (true)
+	{
+		cmd = readInput(this->_prompt + prompt);
+		if (!isdigit(cmd[0]) || cmd.size() > 1)
+			prompt = "Input index [1-" + out_nb_contacts.str() + "] ";
+		else
+		{
+			i = atoi(cmd.c_str());   /// strtol!!!
+			if (i > 0 && i <= (int)this->_contacts->get_nbContacts())
+			{
+				this->_printContact(this->_getContact(i - 1));
+				return;
+			}
+			prompt = "Input index [1-" + out_nb_contacts.str() + "] ";
+		}
+	}
 
 }
 
@@ -35,89 +130,13 @@ void		Phonebook::makeContact( ){
 	string	phone_nb;
 	string	dark_secret;
 
-	first_name = _readInput("Input first name: ");
-	last_name = _readInput("Input last name: ");
-	nick_name = _readInput("Input nickname: ");
-	phone_nb = _readInput("Input phone number: ");
-	dark_secret = _readInput("Input dark secret: ");
+	first_name = readInput("Input first name: ");
+	last_name = readInput("Input last name: ");
+	nick_name = readInput("Input nickname: ");
+	phone_nb = readInput("Input phone number: ");
+	dark_secret = readInput("Input dark secret: ");
 
 	this->_addContact(Contact(first_name, last_name, nick_name, phone_nb, dark_secret));
-
-}
-
-void	Phonebook::_printSearch( ) const {
-
-	cout << endl;
-	cout << setw(COL_WIDTH) << "index" << " | "
-		<< setw(COL_WIDTH) << "first name" << " | "
-		<< setw(COL_WIDTH) << "last name" << " | "
-		<< setw(COL_WIDTH) << "nickname" << endl;
-	for (int i = 0; i < this->_contacts->get_nbContacts(); i++) {
-		cout << setw(COL_WIDTH) << i + 1 << " | "
-			<< setw(COL_WIDTH) << _shrink(this->_contacts[i].getFirstN()) << " | "
-			<< setw(COL_WIDTH) << _shrink(this->_contacts[i].getLastN()) << " | "
-			<< setw(COL_WIDTH) << _shrink(this->_contacts[i].getNickN())
-			<< endl;
-	}
-	cout << endl;
-
-}
-
-void	Phonebook::searchPhonebook( ) const {
-
-	string			prompt = "Input index: ";
-	string			cmd;
-	stringstream	out_nb_contacts;
-	int				count = 0;
-	size_t			i = -1;
-
-	if (this->_contacts->get_nbContacts() == 0)
-	{
-		cout << endl << "No contacts present in T-42 phonebook" << endl << endl;
-		return;
-	}
-	this->_printSearch( );
-	out_nb_contacts << this->_contacts->get_nbContacts( );
-	while (1)
-	{
-		cout << this->_prompt + prompt;
-		getline(cin, cmd);
-		count++;
-		if (cmd.empty())
-			(void)cmd;
-		else if (!isdigit(cmd[0]) || cmd.size() > 1)
-			prompt = "Input index [1-" + out_nb_contacts.str() + "] ";
-		else
-		{
-			i = atoi(cmd.c_str());
-			if (i < 1 || (int)i > (int)this->_contacts->get_nbContacts( ))
-				prompt = "Input index [1-" + out_nb_contacts.str() + "] ";
-			else {
-				i--;
-				cout << endl;
-				cout << setw(13) << "First name: " << this->_contacts[i].getFirstN( ) << endl
-					 << setw(13) << "Last name: " << this->_contacts[i].getLastN( ) << endl
-					 << setw(13) << "Nickname: " << this->_contacts[i].getNickN( ) << endl
-					 << setw(13) << "Phone number: " << this->_contacts[i].getPhoneN( ) << endl
-					 << setw(13) << "Dark Secret: " << this->_contacts[i].getDarkS( )
-					 << endl << endl;
-				return;
-			}
-		}
-		if (count > 4)
-			prompt = "Input index [1-" + out_nb_contacts.str() + "] ";
-		if (count > 10)
-		{
-			this->_printSearch( );
-			count = 0;
-		}
-	}
-
-}
-
-string	Phonebook::getPrompt( ) const {
-
-	return this->_prompt;
 
 }
 
@@ -172,6 +191,51 @@ void	Phonebook::populatePhonebook( ) {
 
 }
 
+void	Phonebook::_addContact(const Contact& new_contact) {
+
+	if (new_contact.get_nbContacts( ) > MAX_CONTACTS)
+		this->_contacts[MAX_CONTACTS - 1] = new_contact;
+	else
+		this->_contacts[new_contact.get_nbContacts( ) - 1] = new_contact;
+
+}
+
+void	Phonebook::_printContact( const Contact& to_print) const{
+
+	cout << endl
+		<< setw(13) << "First name: " << to_print.getFirstN( ) << endl
+		 << setw(13) << "Last name: " << to_print.getLastN( ) << endl
+		 << setw(13) << "Nickname: " << to_print.getNickN( ) << endl
+		 << setw(13) << "Phone number: " << to_print.getPhoneN( ) << endl
+		 << setw(13) << "Dark Secret: " << to_print.getDarkS( )
+		 << endl << endl;
+
+}
+
+void	Phonebook::_printSearch( ) const {
+
+	cout << endl;
+	cout << setw(COL_WIDTH) << "index" << " | "
+		<< setw(COL_WIDTH) << "first name" << " | "
+		<< setw(COL_WIDTH) << "last name" << " | "
+		<< setw(COL_WIDTH) << "nickname" << endl;
+	for (int i = 0; i < this->_contacts->get_nbContacts(); i++)
+	{
+		cout << setw(COL_WIDTH) << i + 1 << " | "
+			<< setw(COL_WIDTH) << _shrink(this->_contacts[i].getFirstN()) << " | "
+			<< setw(COL_WIDTH) << _shrink(this->_contacts[i].getLastN()) << " | "
+			<< setw(COL_WIDTH) << _shrink(this->_contacts[i].getNickN())
+			<< endl;
+	}
+	cout << endl;
+
+}
+
+Contact		Phonebook::_getContact(int i ) const {
+
+	return this->_contacts[i];
+}
+
 string	Phonebook::_shrink( string src ) const {
 
 	if (src.size() > 10)
@@ -181,32 +245,4 @@ string	Phonebook::_shrink( string src ) const {
 	}
 
 	return src;
-}
-
-void	Phonebook::_addContact(const Contact &new_contact) {
-
-	if (new_contact.get_nbContacts( ) > MAX_CONTACTS)
-		this->_contacts[MAX_CONTACTS - 1] = new_contact;
-	else
-		this->_contacts[new_contact.get_nbContacts( ) - 1] = new_contact;
-
-}
-
-Contact		Phonebook::_getContact(int i ) const {
-
-	return this->_contacts[i];
-}
-
-
-string	Phonebook::_readInput( const string &prompt ) const {
-
-	string	buffer;
-
-	while (buffer.empty() && buffer[0] !='\n')
-	{
-		cout << prompt;
-		getline(cin, buffer);
-	}
-
-	return buffer;
 }
