@@ -40,13 +40,16 @@ Phonebook::~Phonebook( ) {
 
 Phonebook&	Phonebook::operator=( const Phonebook& rhs ) {
 
-	this->_empty = true;
-	this->_prompt = rhs.get_prompt();
-	if (!rhs.empty())
+	if (this != &rhs)
 	{
-		for (int i = 0; i < rhs._contacts->get_nbContacts(); i++)
-			this->_contacts[i] = rhs._getContact(i);
-		this->_empty = false;
+		this->_empty = true;
+		this->_prompt = rhs.get_prompt();
+		if (!rhs.empty())
+		{
+			for (int i = 0; i < rhs._contacts->get_nbContacts(); i++)
+				this->_contacts[i] = rhs._getContact(i);
+			this->_empty = false;
+		}
 	}
 	return *this;
 }
