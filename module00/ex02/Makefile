@@ -1,20 +1,19 @@
+###               auto-generated Makefile               ###
+
 NAME		=	GlobalBanksters
 
 SRC_DIR		=	src/
 OBJ_DIR		=	obj/
-BIN_DIR		=
+BIN_DIR		=	bin/
 BIN			=	$(BIN_DIR)$(NAME)
-INCLUDE_DIR	=	src/
 
-SRC			=	tests.cpp \
-				Account.cpp
+SRC			=	Account.cpp \
+				tests.cpp \
 
 OBJ 		=	$(addprefix $(OBJ_DIR), $(SRC:%.cpp=%.o))
 
-TEMP_CFLAGS	=	-g -Wno-unused #-fsanitize=address
-CFLAGS		=	-Wall -Werror -Wextra $(TEMP_CFLAGS)
+CFLAGS		=	-Wall -Werror -Wextra -std=c++98 -g #-fsanitize=address
 CC			=	c++
-
 
 ifeq ("$(VERBOSE)","1")
 Q :=
@@ -24,17 +23,13 @@ Q := @
 VECHO = @echo
 endif
 
-
 vpath %.cpp $(SRC_DIR)
 
 all: $(BIN)
 
-bonus: all
-
 $(BIN): $(OBJ)
-	$(Q)mkdir -p $(@D)
 	$(VECHO)
-	$(VECHO) "\033[36mLinking binary file:     $@ 📢\033[0m"
+	$(VECHO) "\033[36mLinking binary file:     $@ 💰\033[0m"
 	$(VECHO)
 	$(Q)$(CC) $^ $(CFLAGS) -o $@
 
@@ -42,9 +37,6 @@ $(OBJ_DIR)%.o:%.cpp
 	$(Q)mkdir -p $(@D)
 	$(VECHO) "\033[34mCompiling object file:   $@\033[0m"
 	$(Q)$(CC) -c $< $(CFLAGS) -o $@
-
-libft:
-	$(Q)make bonus -C libft
 
 clean:
 	$(VECHO) "\033[31mRemoving object files\033[0m"
@@ -64,3 +56,4 @@ rerun: re
 	./miniRT
 
 .PHONY:	all libft norme clean fclean re reall
+
