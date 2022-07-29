@@ -2,26 +2,16 @@
 
 ///			Public:
 
-int		ClassZombie::getId( ) const {
+std::string ClassZombie::getName( ) const {
 
-	return this->_id;
-}
-
-int		ClassZombie::getVars( ) const {
-
-	return this->_vars;
-}
-
-int		ClassZombie::getNb_ClassZombie_created( ) const {
-
-	return ClassZombie::_nb_ClassZombie_created;
+	return this->_string;
 }
 
 ///			Constructor/Destroyer
 
-ClassZombie::ClassZombie( int args ) : _vars(args) {
+ClassZombie::ClassZombie( std::string name ) : _string(name) {
 
-	this->_id = _nb_ClassZombie_created++;
+	this->announce();
 }
 
 ClassZombie::ClassZombie(	) {
@@ -34,14 +24,14 @@ ClassZombie::ClassZombie( const ClassZombie& other) {
 
 	if (this != &other)
 	{
-		this->_vars = other.getVars();	// TODO
+		this->_string = other.getName();	// TODO
 	}
 	*this = other;
 }
 
 ClassZombie::~ClassZombie( ) {
 
-	// TODO
+	std::cout << this->getName() << ": (re)died a horrible death.. \"" << "Gnar'har-chuck'" << "gluck!\"" << std::endl;
 
 }
 
@@ -49,21 +39,17 @@ ClassZombie &	ClassZombie::operator=( const ClassZombie& rhs ) {
 
 	if (this != &rhs)
 	{
-		this->_vars = rhs.getVars();	// TODO
+		this->_string = rhs.getName();	// TODO
 	}
 	return *this;
 }
 
 ///			Functions/Methods
 
-void	ClassZombie::doStuff( ) const {
+void	ClassZombie::announce( ) const {
 
-	// TODO
-
+	std::cout << this->getName() << ": BraiiiiiiinnnzzzZ..." << std::endl;
 }
 
 ///			Private:
 
-
-
-int	ClassZombie::_nb_ClassZombie_created = 0;

@@ -8,7 +8,9 @@ BIN_DIR		=	bin/
 BIN			=	$(BIN_DIR)$(NAME)
 
 SRC			=	Zombie.cpp \
-				brainz.cpp \
+				main.cpp \
+				newZombie.cpp \
+				randomChump.cpp \
 
 OBJ 		=	$(addprefix $(OBJ_DIR), $(SRC:%.cpp=%.o))
 

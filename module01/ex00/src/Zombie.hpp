@@ -1,28 +1,30 @@
 #ifndef ZOMBIE_H
 # define ZOMBIE_H
 
+#include <iostream>
+
 class ClassZombie {
 
 public:
 
-	int			getId( ) const;
-	int			getVars( ) const;
-	int			getNb_ClassZombie_created( ) const;
+	std::string 	getName( ) const;
 
-				ClassZombie( int arg );
-				ClassZombie( );
-				ClassZombie( const ClassZombie & src );
-				~ClassZombie( );
-				ClassZombie & operator=( const ClassZombie & rhs);
+	explicit		ClassZombie( std::string name );
+					ClassZombie( );
+					ClassZombie( const ClassZombie & src );
+					~ClassZombie( );
+					ClassZombie & operator=( const ClassZombie & rhs);
 
-	void		doStuff() const;
+	void			announce( ) const;
 
 private:
 
-	int			_id;
-	int			_vars;
-	static int	_nb_ClassZombie_created;
+	std::string		_string;
 
 };
 
+ClassZombie*	newZombie(std::string name);
+ClassZombie		newChump(std::string name);
+
 #endif
+
