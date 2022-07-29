@@ -12,15 +12,15 @@ std::string Zombie::getName( ) const {
 
 Zombie::Zombie(std::string name ) : _string(name) {
 
-	this->_id = Zombie::_zombie_counter;
-	Zombie::_zombie_counter++;
+	this->_id = Zombie::_id_counter;
+	Zombie::_id_counter++;
 
 }
 
 Zombie::Zombie( ) {
 
-	this->_id = Zombie::_zombie_counter;
-	Zombie::_zombie_counter++;
+	this->_id = Zombie::_id_counter;
+	Zombie::_id_counter++;
 
 }
 
@@ -59,4 +59,4 @@ void	Zombie::announce( ) const {
 ///			Private:
 
 
-int	Zombie::_zombie_counter = 0;
+int	Zombie::_id_counter = 0;

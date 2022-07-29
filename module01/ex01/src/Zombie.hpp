@@ -22,7 +22,7 @@ private:
 	int				_id;
 	std::string		_string;
 
-	static int		_zombie_counter;
+	static int		_id_counter;
 
 };
 
