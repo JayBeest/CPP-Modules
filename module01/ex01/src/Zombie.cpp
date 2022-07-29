@@ -3,41 +3,44 @@
 
 ///			Public:
 
-std::string ClassZombie::getName( ) const {
+std::string Zombie::getName( ) const {
 
 	return this->_string;
 }
 
 ///			Constructor/Destroyer
 
-ClassZombie::ClassZombie( std::string name ) : _string(name) {
+Zombie::Zombie(std::string name ) : _string(name) {
 
-	this->_id = ClassZombie::_zombie_counter;
-	ClassZombie::_zombie_counter++;
-
-}
-
-ClassZombie::ClassZombie( ) {
-
-	this->_string = "))<>((";
+	this->_id = Zombie::_zombie_counter;
+	Zombie::_zombie_counter++;
 
 }
 
-ClassZombie::ClassZombie( const ClassZombie& other ) {
+Zombie::Zombie( ) {
+
+	this->_id = Zombie::_zombie_counter;
+	Zombie::_zombie_counter++;
+
+}
+
+Zombie::Zombie(const Zombie& other ) {
 
 	*this = other;
 }
 
-ClassZombie::~ClassZombie( ) {
+Zombie::~Zombie( ) {
 
-	std::cout << this->getName() << ": (re)died a horrible death.. \"" << "Gnar'har-chuck'" << "gluck!\"" << std::endl;
+	std::stringstream	o_stream;
+
+	o_stream << this->_id;
+	std::cout << this->getName() << "_" << o_stream.str() << ": (re)died a horrible death.. \"" << "Gnar'har-chuck'" << "gluck!\"" << std::endl;
 }
 
-ClassZombie &	ClassZombie::operator=( const ClassZombie& rhs ) {
+Zombie &	Zombie::operator=(const Zombie& rhs ) {
 
 	if (this != &rhs)
 	{
-		std::cout << "this != &rhs!!!!!" << std::endl;
 		this->_string = rhs.getName();	// TODO
 	}
 	return *this;
@@ -45,15 +48,15 @@ ClassZombie &	ClassZombie::operator=( const ClassZombie& rhs ) {
 
 ///			Functions/Methods
 
-void	ClassZombie::announce( ) const {
+void	Zombie::announce( ) const {
 
 	std::stringstream	o_stream;
 
 	o_stream << this->_id;
-	std::cout << this->getName() << "_" << o_stream << ": BraiiiiiiinnnzzzZ..." << std::endl;
+	std::cout << this->getName() << "_" << o_stream.str() << ": BraiiiiiiinnnzzzZ..." << std::endl;
 }
 
 ///			Private:
 
 
-int	ClassZombie::_zombie_counter = 0;
+int	Zombie::_zombie_counter = 0;

@@ -1,17 +1,27 @@
 #include <iostream>
+#include <sstream>
 #include "Zombie.hpp"
 
 using namespace ::std;
 
-int main ( )
+int main (int argc, char **argv)
 {
-	int	zombie_amount = 10;
-	ClassZombie	*horde = zombieHorde(zombie_amount, "Bas");
+	int				zombie_amount = 50;
+	stringstream	s_stream;
+
+	if (argc > 1)
+	{
+		s_stream << argv[1];
+		s_stream >> zombie_amount;
+		if (zombie_amount < 0)
+		{
+			cout << " how many zombies?!" << endl;
+			return 1;
+		}
+	}
+	Zombie	*horde = zombieHorde(zombie_amount, "Brutus");
 	for (int i = 0; i < zombie_amount; i++)
-		horde->announce();
-//	for (int i = 0; i < zombie_amount - 1; i++)
-//		delete &(horde[i]);
+		horde[i].announce();
 	delete[] horde;
-//	system("leaks moar_brainz");
-	return 1;
+	return 0;
 }
