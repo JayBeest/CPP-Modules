@@ -56,7 +56,11 @@ HumanA &	HumanA::operator=( const HumanA& rhs ) {
 
 void	HumanA::attack( ) const {
 
-	std::cout << this->name	<< " attacks with their " << this->weapon.getType() << std::endl;
+	if (this->name.empty())
+		std::cout << "<no_name>";
+	else
+		std::cout << this->name;
+	std::cout << " attacks with their " << this->weapon.getType() << std::endl;
 
 }
 

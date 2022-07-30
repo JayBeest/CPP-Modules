@@ -2,68 +2,86 @@
 
 ///			Public:
 
-int		HumanB::getId( ) const {
+std::string	HumanB::getName( ) const {
 
-	return this->_id;
+	if (this->name.empty())
+		return "<no_name>";
+	return this->name;
 }
 
-int		HumanB::getVars( ) const {
+void	HumanB::setWeapon( const Weapon & new_weapon ) {
 
-	return this->_vars;
-}
+	delete this->weapon;
+	this->weapon = new Weapon(new_weapon);
 
-int		HumanB::getNb_HumanB_created( ) {
-
-	return HumanB::_nb_HumanB_created;
 }
 
 ///			Constructor/Destroyer
 
-HumanB::HumanB( int args ) : _vars(args) {
+HumanB::HumanB( std::string name ) : name(name), weapon(nullptr) {
 
-	this->_id = _nb_HumanB_created++;
-}
-
-HumanB::HumanB(	) {
-
-										// TODO not counting default constructor
+	HumanB::_nb_humanAs_alive++;
+	std::cout << "one more, HumanB's alive: " << HumanB::_nb_humanAs_alive << std::endl;
 
 }
 
-HumanB::HumanB( const HumanB& other) {
+HumanB::HumanB(	) : weapon(nullptr) {
 
-	if (this != &other)
-	{
-		this->_vars = other.getVars();	// TODO
-	}
-	*this = other;
+	HumanB::_nb_humanAs_alive++;
+	std::cout << "one more, HumanB's alive: " << HumanB::_nb_humanAs_alive << std::endl;
 }
 
 HumanB::~HumanB( ) {
 
+	delete this->weapon;
 	// TODO
+	HumanB::_nb_humanAs_alive--;
+	std::cout << "one less, HumanB's alive: " << HumanB::_nb_humanAs_alive << std::endl;
+}
 
+HumanB::HumanB( const HumanB& other ) : name(other.name), weapon(nullptr) {
+
+	if (this != &other)
+	{
+		std::cout << "This is weird..:P" << std::endl;
+		// TODO
+	}
+	HumanB::_nb_humanAs_alive++;
+	std::cout << "one more clone, HumanB's alive: " << HumanB::_nb_humanAs_alive << std::endl;
 }
 
 HumanB &	HumanB::operator=( const HumanB& rhs ) {
 
 	if (this != &rhs)
 	{
-		this->_vars = rhs.getVars();	// TODO
+		this->name = rhs.getName();
+		if (rhs.weapon)
+			this->weapon = new Weapon(rhs.weapon->getType());
+		else
+			this->weapon = nullptr;
 	}
 	return *this;
 }
 
 ///			Functions/Methods
 
-void	HumanB::doStuff( ) const {
+void	HumanB::attack( ) const {
 
-	// TODO
+	std::cout << this->getName();
+	if (this->weapon)
+		std::cout << " attacks with their " << this->weapon->getType();
+	else
+		std::cout << " has no weapon..:(";
+	std::cout << std::endl;
 
 }
 
 ///			Private:
 
+int			HumanB::_nb_humanAs_alive = 0;
 
+std::ostream & operator<<(std::ostream& o_stream, HumanB & rhs)
+{
 
-int	HumanB::_nb_HumanB_created = 0;
+	return o_stream << rhs.getName();
+}

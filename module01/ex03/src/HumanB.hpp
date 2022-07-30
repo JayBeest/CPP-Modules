@@ -1,28 +1,34 @@
 #ifndef HUMANB_H
 # define HUMANB_H
 
+# include <iostream>
+# include <sstream>
+# include "Weapon.hpp"
+
 class HumanB {
 
 public:
 
-	int				getId( ) const;
-	int				getVars( ) const;
-	static int		getNb_HumanB_created( );
+	std::string			getName( ) const;
+	void				setWeapon( const Weapon & weapon );
 
-	explicit		HumanB( int arg );
-					HumanB( );
-					HumanB( const HumanB & src );
-					~HumanB( );
-					HumanB & operator=( const HumanB & rhs);
+	std::string			name;
+	Weapon *			weapon;
 
-	void			doStuff() const;
+	explicit			HumanB( std::string name );
+						HumanB( );
+						~HumanB( );
+						HumanB( const HumanB & src );
+						HumanB & operator=( const HumanB & rhs);
+
+	void				attack( ) const;
 
 private:
 
-	int				_id;
-	int				_vars;
-	static int		_nb_HumanB_created;
+	static int			_nb_humanAs_alive;
 
 };
+
+std::ostream &operator<<(std::ostream& o_stream, HumanB & rhs);
 
 #endif
