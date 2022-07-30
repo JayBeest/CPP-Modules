@@ -11,7 +11,7 @@ std::string	HumanB::getName( ) const {
 	return this->name;
 }
 
-void	HumanB::setWeapon( Weapon & new_weapon ) {
+void	HumanB::setWeapon( Weapon const & new_weapon ) {
 
 	delete this->weapon;
 	this->weapon = new Weapon(new_weapon);
@@ -20,7 +20,7 @@ void	HumanB::setWeapon( Weapon & new_weapon ) {
 
 ///			Constructor/Destroyer
 
-HumanB::HumanB( std::string name ) : name(name), weapon(nullptr) {
+HumanB::HumanB( std::string const & name ) : name(name), weapon(nullptr) {
 
 	HumanB::_nb_humanAs_alive++;
 	std::cout << "one more, HumanB's alive: " << HumanB::_nb_humanAs_alive << std::endl;
@@ -41,7 +41,7 @@ HumanB::~HumanB( ) {
 	std::cout << "one less, HumanB's alive: " << HumanB::_nb_humanAs_alive << std::endl;
 }
 
-HumanB::HumanB( const HumanB& other ) : name(other.getName()), weapon(nullptr) {
+HumanB::HumanB( HumanB const & other ) : name(other.getName()), weapon(nullptr) {
 
 	if (this != &other)
 	{
@@ -52,7 +52,7 @@ HumanB::HumanB( const HumanB& other ) : name(other.getName()), weapon(nullptr) {
 	}
 }
 
-HumanB &	HumanB::operator=( const HumanB& rhs ) {
+HumanB &	HumanB::operator=( HumanB const & rhs ) {
 
 	if (this != &rhs)
 	{

@@ -6,7 +6,7 @@
 
 ///			Constructor/Destroyer
 
-HumanA::HumanA( std::string name, Weapon & weapon )
+HumanA::HumanA( std::string const & name, Weapon & weapon )
 : name(name), weapon(weapon) {
 
 	HumanA::_nb_humanAs_alive++;
@@ -32,7 +32,7 @@ HumanA::~HumanA( ) {
 	std::cout << "one less, HumanA's alive: " << HumanA::_nb_humanAs_alive << std::endl;
 }
 
-HumanA::HumanA( const HumanA& other )
+HumanA::HumanA( HumanA const & other )
 : name(other.name), weapon(*HumanA::_default_weapon){
 
 	if (this != &other)
@@ -44,7 +44,7 @@ HumanA::HumanA( const HumanA& other )
 	std::cout << "one more clone, HumanA's alive: " << HumanA::_nb_humanAs_alive << std::endl;
 }
 
-HumanA &	HumanA::operator=( const HumanA& rhs ) {
+HumanA &	HumanA::operator=( HumanA const & rhs ) {
 
 	if (this != &rhs)
 	{

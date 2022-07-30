@@ -11,11 +11,11 @@ public:
 	std::string			name;
 	Weapon &			weapon;
 
-	explicit			HumanA( std::string name, Weapon & weapon );
+	explicit			HumanA( std::string const & name, Weapon & weapon );
 						HumanA( );
 						~HumanA( );
-						HumanA( const HumanA & src );
-						HumanA & operator=( const HumanA & rhs);
+						HumanA( HumanA const & src );
+						HumanA & operator=( HumanA const & rhs );
 
 	void				attack( ) const;
 

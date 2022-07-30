@@ -29,16 +29,16 @@ class HumanB {
 public:
 
 	std::string			getName( ) const;
-	void				setWeapon( Weapon & weapon );
+	void				setWeapon( Weapon const & weapon );
 
 	std::string			name;
 	Weapon *			weapon;
 
-	explicit			HumanB( std::string name );
+	explicit			HumanB( std::string const & name );
 						HumanB( );
 						~HumanB( );
-						HumanB( const HumanB & src );
-						HumanB & operator=( const HumanB & rhs);
+						HumanB( HumanB const & src );
+						HumanB & operator=( HumanB const & rhs);
 
 	void				attack( ) const;
 
