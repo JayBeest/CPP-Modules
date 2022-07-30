@@ -5,9 +5,13 @@
 
 using namespace ::std;
 
-int main ( ){
-
-	HumanA::verbose = true;
+int main (int argc, char **argv)
+{
+	if (argc > 1 && std::string(argv[1]) == "-v")
+	{
+		HumanA::verbose = true;
+		HumanB::verbose = true;
+	}
 	Weapon	club = Weapon("crude spiked club");
 	Weapon	sword = Weapon("rusty old sword");
 
@@ -33,7 +37,6 @@ int main ( ){
 
 	cout << endl << endl;
 
-	HumanB::verbose = true;
 	HumanB	Btest_human1 = HumanB("bob");
 	HumanB	Btest_human2;
 	HumanB	*Btest_human3 = new HumanB("ben");
