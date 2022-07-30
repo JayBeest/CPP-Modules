@@ -1,5 +1,8 @@
 #ifndef HUMANB_H
 # define HUMANB_H
+# ifndef nullptr
+#  define nullptr ((void*)0)
+# endif
 
 # include <iostream>
 # include <sstream>
