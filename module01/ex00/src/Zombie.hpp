@@ -11,9 +11,9 @@ public:
 
 	explicit		ClassZombie( std::string name );
 					ClassZombie( );
-					ClassZombie( const ClassZombie & src );
+					ClassZombie( ClassZombie const & src );
 					~ClassZombie( );
-					ClassZombie & operator=( const ClassZombie & rhs);
+					ClassZombie & operator=( ClassZombie const & rhs);
 
 	void			announce( ) const;
 

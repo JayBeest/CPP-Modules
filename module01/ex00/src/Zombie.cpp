@@ -20,7 +20,7 @@ ClassZombie::ClassZombie(	) {
 
 }
 
-ClassZombie::ClassZombie( const ClassZombie& other) {
+ClassZombie::ClassZombie( ClassZombie const & other) {
 
 	if (this != &other)
 	{
@@ -35,7 +35,7 @@ ClassZombie::~ClassZombie( ) {
 
 }
 
-ClassZombie &	ClassZombie::operator=( const ClassZombie& rhs ) {
+ClassZombie &	ClassZombie::operator=( ClassZombie const & rhs ) {
 
 	if (this != &rhs)
 	{
