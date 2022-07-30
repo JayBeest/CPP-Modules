@@ -9,10 +9,10 @@ std::string	HumanB::getName( ) const {
 	return this->name;
 }
 
-void	HumanB::setWeapon( const Weapon & new_weapon ) {
+void	HumanB::setWeapon( Weapon & new_weapon ) {
 
 	delete this->weapon;
-	this->weapon = new Weapon(new_weapon);
+	this->weapon = &new_weapon;
 
 }
 

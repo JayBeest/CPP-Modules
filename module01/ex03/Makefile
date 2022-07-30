@@ -14,7 +14,7 @@ SRC			=	HumanA.cpp \
 
 OBJ 		=	$(addprefix $(OBJ_DIR), $(SRC:%.cpp=%.o))
 
-CFLAGS		=	-Wall -Werror -Wextra -std=c++98 -g -fsanitize=address
+CFLAGS		=	-Wall -Werror -Wextra -std=c++98 -g
 CC			=	c++
 
 ifeq ("$(VERBOSE)","1")
