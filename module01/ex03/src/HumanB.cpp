@@ -68,7 +68,6 @@ HumanB &	HumanB::operator=( HumanB const & rhs ) {
 
 	if (this != &rhs)
 	{
-		delete this->weapon;
 		this->name = rhs.getName();
 		delete this->weapon;
 		if (rhs.weapon)

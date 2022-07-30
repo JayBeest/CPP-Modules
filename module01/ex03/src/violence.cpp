@@ -12,8 +12,10 @@ int main (int argc, char **argv)
 		HumanA::verbose = true;
 		HumanB::verbose = true;
 	}
+
 	Weapon	club = Weapon("crude spiked club");
 	Weapon	sword = Weapon("rusty old sword");
+	Weapon	gun = Weapon("jammed colt 42");
 
 	HumanA	Atest_human1 = HumanA("bob", club);
 	HumanA	Atest_human2;
@@ -21,6 +23,7 @@ int main (int argc, char **argv)
 	HumanA	Atest_human4 = HumanA("eve", sword);
 	HumanA	Atest_human5 = HumanA(Atest_human4);
 	HumanA	Atest_human6	= HumanA(*Atest_human3);
+
 
 
 	Atest_human1.attack();
