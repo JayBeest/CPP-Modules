@@ -17,7 +17,8 @@ HumanA::HumanA( std::string const & name, Weapon & weapon )
 
 }
 
-HumanA::HumanA(	) : weapon(*HumanA::_default_weapon){
+HumanA::HumanA(	)
+: name(""), weapon(*HumanA::_default_weapon){
 
 	HumanA::_nb_humanAs_alive++;
 	if (verbose)
