@@ -3,6 +3,8 @@
 
 ///			Public:
 
+///			Getters/Setters
+
 const	std::string & Weapon::getType( ) const {
 
 	return this->_type;

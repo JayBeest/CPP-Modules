@@ -2,6 +2,8 @@
 
 ///			Public:
 
+///			Getters/Setters
+
 ///			Constructor/Destroyer
 
 HumanA::HumanA( std::string name, Weapon & weapon )

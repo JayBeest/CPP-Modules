@@ -2,6 +2,8 @@
 
 ///			Public:
 
+///			Getters/Setters
+
 std::string	HumanB::getName( ) const {
 
 	if (this->name.empty())
