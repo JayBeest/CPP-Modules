@@ -52,8 +52,11 @@ int main ( ){
 	Btest_human4.attack();
 	Btest_human5.attack();
 	Btest_human6.attack();
+	Btest_human1.setWeapon(club);
 	Btest_human2 = Btest_human1;
 	Btest_human1 = HumanB(*Btest_human3);
+	Btest_human4 = Btest_human1;
+	Btest_human3->setWeapon(club);
 	Btest_human1.attack();
 	Btest_human2.attack();
 	Btest_human3->attack();

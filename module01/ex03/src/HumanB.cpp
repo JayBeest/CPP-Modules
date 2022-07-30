@@ -12,7 +12,7 @@ std::string	HumanB::getName( ) const {
 void	HumanB::setWeapon( Weapon & new_weapon ) {
 
 	delete this->weapon;
-	this->weapon = &new_weapon;
+	this->weapon = new Weapon(new_weapon);
 
 }
 
@@ -39,15 +39,15 @@ HumanB::~HumanB( ) {
 	std::cout << "one less, HumanB's alive: " << HumanB::_nb_humanAs_alive << std::endl;
 }
 
-HumanB::HumanB( const HumanB& other ) : name(other.name), weapon(nullptr) {
+HumanB::HumanB( const HumanB& other ) : name(other.getName()), weapon(nullptr) {
 
 	if (this != &other)
 	{
-		std::cout << "This is weird..:P" << std::endl;
-		// TODO
+		if (other.weapon)
+			this->weapon = new Weapon(other.weapon->getType());
+		HumanB::_nb_humanAs_alive++;
+		std::cout << "one more clone, HumanB's alive: " << HumanB::_nb_humanAs_alive << std::endl;
 	}
-	HumanB::_nb_humanAs_alive++;
-	std::cout << "one more clone, HumanB's alive: " << HumanB::_nb_humanAs_alive << std::endl;
 }
 
 HumanB &	HumanB::operator=( const HumanB& rhs ) {
