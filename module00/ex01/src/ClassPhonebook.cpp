@@ -25,7 +25,7 @@ Phonebook::Phonebook( string prompt )
 
 }
 
-Phonebook::Phonebook( const Phonebook& other) {
+Phonebook::Phonebook( Phonebook const & other) {
 
 	*this = other;
 }
@@ -38,7 +38,7 @@ Phonebook::~Phonebook( ) {
 
 }
 
-Phonebook&	Phonebook::operator=( const Phonebook& rhs ) {
+Phonebook&	Phonebook::operator=( Phonebook const & rhs ) {
 
 	if (this != &rhs)
 	{
@@ -194,7 +194,7 @@ void	Phonebook::populatePhonebook( ) {
 
 }
 
-void	Phonebook::_addContact(const Contact& new_contact) {
+void	Phonebook::_addContact( Contact const & new_contact) {
 
 	if (new_contact.get_nbContacts( ) > MAX_CONTACTS)
 		this->_contacts[MAX_CONTACTS - 1] = new_contact;
@@ -203,7 +203,7 @@ void	Phonebook::_addContact(const Contact& new_contact) {
 
 }
 
-void	Phonebook::_printContact( const Contact& to_print) const{
+void	Phonebook::_printContact( Contact const & to_print) const{
 
 	cout << endl
 		<< setw(13) << "First name: " << to_print.getFirstN( ) << endl
