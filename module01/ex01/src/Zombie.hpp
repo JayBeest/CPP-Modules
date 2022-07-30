@@ -11,9 +11,9 @@ public:
 
 	explicit		Zombie(std::string name );
 					Zombie( );
-					Zombie(const Zombie & src );
+					Zombie( Zombie const & src );
 					~Zombie( );
-					Zombie & operator=(const Zombie & rhs);
+					Zombie & operator=( Zombie const & rhs);
 
 	void			announce( ) const;
 
@@ -26,7 +26,7 @@ private:
 
 };
 
-Zombie*	zombieHorde(int N, std::string name);
+Zombie *	zombieHorde(int N, std::string name);
 
 #endif
 
