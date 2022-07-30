@@ -10,6 +10,7 @@ public:
 
 	std::string			name;
 	Weapon &			weapon;
+	static bool			verbose;
 
 	explicit			HumanA( std::string const & name, Weapon & weapon );
 						HumanA( );

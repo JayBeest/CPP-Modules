@@ -2,6 +2,8 @@
 
 ///			Public:
 
+bool	HumanB::verbose = false;
+
 ///			Getters/Setters
 
 std::string	HumanB::getName( ) const {
@@ -23,14 +25,16 @@ void	HumanB::setWeapon( Weapon const & new_weapon ) {
 HumanB::HumanB( std::string const & name ) : name(name), weapon(nullptr) {
 
 	HumanB::_nb_humanAs_alive++;
-	std::cout << "one more, HumanB's alive: " << HumanB::_nb_humanAs_alive << std::endl;
+	if (verbose)
+		std::cout << "one more, HumanB's alive: " << HumanB::_nb_humanAs_alive << std::endl;
 
 }
 
-HumanB::HumanB(	) : weapon(nullptr) {
+HumanB::HumanB(	) :name(""), weapon(nullptr) {
 
 	HumanB::_nb_humanAs_alive++;
-	std::cout << "one more, HumanB's alive: " << HumanB::_nb_humanAs_alive << std::endl;
+	if (verbose)
+		std::cout << "one more, HumanB's alive: " << HumanB::_nb_humanAs_alive << std::endl;
 }
 
 HumanB::~HumanB( ) {
@@ -38,7 +42,8 @@ HumanB::~HumanB( ) {
 	delete this->weapon;
 	// TODO
 	HumanB::_nb_humanAs_alive--;
-	std::cout << "one less, HumanB's alive: " << HumanB::_nb_humanAs_alive << std::endl;
+	if (verbose)
+		std::cout << "one less, HumanB's alive: " << HumanB::_nb_humanAs_alive << std::endl;
 }
 
 HumanB::HumanB( HumanB const & other ) : name(other.getName()), weapon(nullptr) {
@@ -48,7 +53,8 @@ HumanB::HumanB( HumanB const & other ) : name(other.getName()), weapon(nullptr) 
 		if (other.weapon)
 			this->weapon = new Weapon(other.weapon->getType());
 		HumanB::_nb_humanAs_alive++;
-		std::cout << "one more clone, HumanB's alive: " << HumanB::_nb_humanAs_alive << std::endl;
+		if (verbose)
+			std::cout << "one more clone, HumanB's alive: " << HumanB::_nb_humanAs_alive << std::endl;
 	}
 }
 

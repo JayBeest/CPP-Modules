@@ -2,6 +2,8 @@
 
 ///			Public:
 
+bool	HumanA::verbose = false;
+
 ///			Getters/Setters
 
 ///			Constructor/Destroyer
@@ -10,26 +12,30 @@ HumanA::HumanA( std::string const & name, Weapon & weapon )
 : name(name), weapon(weapon) {
 
 	HumanA::_nb_humanAs_alive++;
-	std::cout << "one more, HumanA's alive: " << HumanA::_nb_humanAs_alive << std::endl;
+	if (verbose)
+		std::cout << "one more, HumanA's alive: " << HumanA::_nb_humanAs_alive << std::endl;
 
 }
 
 HumanA::HumanA(	) : weapon(*HumanA::_default_weapon){
 
 	HumanA::_nb_humanAs_alive++;
-	std::cout << "one more, HumanA's alive: " << HumanA::_nb_humanAs_alive << std::endl;
+	if (verbose)
+		std::cout << "one more, HumanA's alive: " << HumanA::_nb_humanAs_alive << std::endl;
 }
 
 HumanA::~HumanA( ) {
 
 	if (HumanA::_nb_humanAs_alive == 1)
 	{
-		std::cout << "deleting default weapon.." << std::endl;
+		if (verbose)
+			std::cout << "deleting default weapon.." << std::endl;
 		delete HumanA::_default_weapon;
 	}
 	// TODO
 	HumanA::_nb_humanAs_alive--;
-	std::cout << "one less, HumanA's alive: " << HumanA::_nb_humanAs_alive << std::endl;
+	if (verbose)
+		std::cout << "one less, HumanA's alive: " << HumanA::_nb_humanAs_alive << std::endl;
 }
 
 HumanA::HumanA( HumanA const & other )
@@ -37,11 +43,11 @@ HumanA::HumanA( HumanA const & other )
 
 	if (this != &other)
 	{
-		std::cout << "This is weird..:P" << std::endl;
+		HumanA::_nb_humanAs_alive++;
+		if (verbose)
+			std::cout << "one more clone, HumanA's alive: " << HumanA::_nb_humanAs_alive << std::endl;
 		// TODO
 	}
-	HumanA::_nb_humanAs_alive++;
-	std::cout << "one more clone, HumanA's alive: " << HumanA::_nb_humanAs_alive << std::endl;
 }
 
 HumanA &	HumanA::operator=( HumanA const & rhs ) {

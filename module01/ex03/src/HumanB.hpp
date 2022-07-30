@@ -28,6 +28,8 @@ class HumanB {
 
 public:
 
+	static bool			verbose;
+
 	std::string			getName( ) const;
 	void				setWeapon( Weapon const & weapon );
 
