@@ -70,3 +70,9 @@ void	HumanA::attack( ) const {
 
 int			HumanA::_nb_humanAs_alive = 0;
 Weapon *	HumanA::_default_weapon = new Weapon("Avtomat Kalashnikova");
+
+std::ostream &	operator<<(std::ostream & o_stream, HumanA const & human) {
+
+	human.attack();
+	return o_stream;
+}

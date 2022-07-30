@@ -82,8 +82,9 @@ void	HumanB::attack( ) const {
 
 int			HumanB::_nb_humanAs_alive = 0;
 
-std::ostream & operator<<(std::ostream& o_stream, HumanB & rhs)
+std::ostream & operator<<(std::ostream & o_stream, HumanB const & human)
 {
 
-	return o_stream << rhs.getName();
+	human.attack();
+	return o_stream;
 }

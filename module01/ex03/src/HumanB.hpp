@@ -48,6 +48,6 @@ private:
 
 };
 
-std::ostream &operator<<(std::ostream& o_stream, HumanB & rhs);
+std::ostream & operator<<(std::ostream & o_stream, HumanB const & human);
 
 #endif

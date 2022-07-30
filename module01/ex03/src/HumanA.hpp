@@ -26,4 +26,6 @@ private:
 
 };
 
+std::ostream &	operator<<(std::ostream & o_stream, HumanA const & human);
+
 #endif
