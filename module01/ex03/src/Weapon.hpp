@@ -10,8 +10,8 @@ public:
 
 						Weapon( std::string type );
 						Weapon( );
-						Weapon( const Weapon & src );
 						~Weapon( );
+						Weapon( const Weapon & src );
 						Weapon & operator=( const Weapon & rhs);
 
 private:

@@ -24,6 +24,10 @@ Weapon::Weapon(	) {
 
 }
 
+Weapon::~Weapon( ) {
+
+}
+
 Weapon::Weapon( const Weapon& other) {
 
 	if (this != &other)
@@ -31,10 +35,6 @@ Weapon::Weapon( const Weapon& other) {
 		this->_type = other.getType();
 	}
 	*this = other;
-}
-
-Weapon::~Weapon( ) {
-
 }
 
 Weapon &	Weapon::operator=( const Weapon& rhs ) {
