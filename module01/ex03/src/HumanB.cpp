@@ -37,6 +37,7 @@ HumanB::HumanB(	)
 	HumanB::_nb_humanAs_alive++;
 	if (verbose)
 		std::cout << "one more, HumanB's alive: " << HumanB::_nb_humanAs_alive << std::endl;
+		
 }
 
 HumanB::~HumanB( ) {
@@ -46,6 +47,7 @@ HumanB::~HumanB( ) {
 	HumanB::_nb_humanAs_alive--;
 	if (verbose)
 		std::cout << "one less, HumanB's alive: " << HumanB::_nb_humanAs_alive << std::endl;
+
 }
 
 HumanB::HumanB( HumanB const & other )
@@ -59,12 +61,14 @@ HumanB::HumanB( HumanB const & other )
 		if (verbose)
 			std::cout << "one more clone, HumanB's alive: " << HumanB::_nb_humanAs_alive << std::endl;
 	}
+
 }
 
 HumanB &	HumanB::operator=( HumanB const & rhs ) {
 
 	if (this != &rhs)
 	{
+		delete this->weapon;
 		this->name = rhs.getName();
 		delete this->weapon;
 		if (rhs.weapon)
@@ -72,6 +76,7 @@ HumanB &	HumanB::operator=( HumanB const & rhs ) {
 		else
 			this->weapon = nullptr;
 	}
+
 	return *this;
 }
 
