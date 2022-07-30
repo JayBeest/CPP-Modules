@@ -1,6 +1,6 @@
 #include "Zombie.hpp"
 
-ClassZombie	newChump(std::string name)
+Zombie	newChump(std::string name)
 {
-	return ClassZombie(name);
+	return Zombie(name);
 }

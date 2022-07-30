@@ -2,25 +2,25 @@
 
 ///			Public:
 
-std::string ClassZombie::getName( ) const {
+std::string Zombie::getName( ) const {
 
 	return this->_string;
 }
 
 ///			Constructor/Destroyer
 
-ClassZombie::ClassZombie( std::string name ) : _string(name) {
+Zombie::Zombie( std::string name ) : _string(name) {
 
 	this->announce();
 }
 
-ClassZombie::ClassZombie(	) {
+Zombie::Zombie(	) {
 
 										// TODO not counting default constructor
 
 }
 
-ClassZombie::ClassZombie( ClassZombie const & other) {
+Zombie::Zombie( Zombie const & other) {
 
 	if (this != &other)
 	{
@@ -29,13 +29,13 @@ ClassZombie::ClassZombie( ClassZombie const & other) {
 	*this = other;
 }
 
-ClassZombie::~ClassZombie( ) {
+Zombie::~Zombie( ) {
 
 	std::cout << this->getName() << ": (re)died a horrible death.. \"" << "Gnar'har-chuck'" << "gluck!\"" << std::endl;
 
 }
 
-ClassZombie &	ClassZombie::operator=( ClassZombie const & rhs ) {
+Zombie &	Zombie::operator=( Zombie const & rhs ) {
 
 	if (this != &rhs)
 	{
@@ -46,7 +46,7 @@ ClassZombie &	ClassZombie::operator=( ClassZombie const & rhs ) {
 
 ///			Functions/Methods
 
-void	ClassZombie::announce( ) const {
+void	Zombie::announce( ) const {
 
 	std::cout << this->getName() << ": BraiiiiiiinnnzzzZ..." << std::endl;
 }

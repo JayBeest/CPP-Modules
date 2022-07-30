@@ -1,6 +1,6 @@
 #include "Zombie.hpp"
 
-ClassZombie*	newZombie(std::string name)
+Zombie*	newZombie(std::string name)
 {
-	return new ClassZombie(name);
+	return new Zombie(name);
 }

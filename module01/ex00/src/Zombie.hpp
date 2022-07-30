@@ -3,17 +3,17 @@
 
 #include <iostream>
 
-class ClassZombie {
+class Zombie {
 
 public:
 
 	std::string 	getName( ) const;
 
-	explicit		ClassZombie( std::string name );
-					ClassZombie( );
-					ClassZombie( ClassZombie const & src );
-					~ClassZombie( );
-					ClassZombie & operator=( ClassZombie const & rhs);
+	explicit		Zombie( std::string name );
+					Zombie( );
+					Zombie( Zombie const & src );
+					~Zombie( );
+					Zombie & operator=( Zombie const & rhs);
 
 	void			announce( ) const;
 
@@ -23,8 +23,8 @@ private:
 
 };
 
-ClassZombie*	newZombie(std::string name);
-ClassZombie		newChump(std::string name);
+Zombie*		newZombie(std::string name);
+Zombie		newChump(std::string name);
 
 #endif
 
