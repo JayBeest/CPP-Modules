@@ -22,7 +22,8 @@ void	HumanB::setWeapon( Weapon const & new_weapon ) {
 
 ///			Constructor/Destroyer
 
-HumanB::HumanB( std::string const & name ) : name(name), weapon(nullptr) {
+HumanB::HumanB( std::string const & name )
+: name(name), weapon(nullptr) {
 
 	HumanB::_nb_humanAs_alive++;
 	if (verbose)
@@ -30,7 +31,8 @@ HumanB::HumanB( std::string const & name ) : name(name), weapon(nullptr) {
 
 }
 
-HumanB::HumanB(	) :name(""), weapon(nullptr) {
+HumanB::HumanB(	)
+: name(""), weapon(nullptr) {
 
 	HumanB::_nb_humanAs_alive++;
 	if (verbose)
@@ -46,7 +48,8 @@ HumanB::~HumanB( ) {
 		std::cout << "one less, HumanB's alive: " << HumanB::_nb_humanAs_alive << std::endl;
 }
 
-HumanB::HumanB( HumanB const & other ) : name(other.getName()), weapon(nullptr) {
+HumanB::HumanB( HumanB const & other )
+: name(other.getName()), weapon(nullptr) {
 
 	if (this != &other)
 	{
@@ -62,11 +65,13 @@ HumanB &	HumanB::operator=( HumanB const & rhs ) {
 
 	if (this != &rhs)
 	{
+		delete this->weapon;
+		if (this->weapon)
+			std::cout << std::endl << std::endl << "WEAPON = nullptr" << std::endl << std::endl;
 		this->name = rhs.getName();
 		if (rhs.weapon)
 			this->weapon = new Weapon(rhs.weapon->getType());
-		else
-			this->weapon = nullptr;
+
 	}
 	return *this;
 }
