@@ -21,23 +21,25 @@ HumanA::HumanA(	) : weapon(*HumanA::_default_weapon){
 HumanA::~HumanA( ) {
 
 	if (HumanA::_nb_humanAs_alive == 1)
+	{
+		std::cout << "deleting default weapon.." << std::endl;
 		delete HumanA::_default_weapon;
+	}
 	// TODO
 	HumanA::_nb_humanAs_alive--;
 	std::cout << "one less, HumanA's alive: " << HumanA::_nb_humanAs_alive << std::endl;
 }
 
-HumanA::HumanA( const HumanA& other)
-: name(other.name), weapon(*new Weapon(other.weapon)) {
+HumanA::HumanA( const HumanA& other )
+: name(other.name), weapon(*HumanA::_default_weapon){
 
 	if (this != &other)
 	{
-		std::cout << "This is weird..:P";
+		std::cout << "This is weird..:P" << std::endl;
 		// TODO
 	}
 	HumanA::_nb_humanAs_alive++;
 	std::cout << "one more clone, HumanA's alive: " << HumanA::_nb_humanAs_alive << std::endl;
-//	*this = other;
 }
 
 HumanA &	HumanA::operator=( const HumanA& rhs ) {
