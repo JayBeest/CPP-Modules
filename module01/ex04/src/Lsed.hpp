@@ -9,7 +9,9 @@ struct Lsed {
 	bool			setupLoser( char **argv );
 	bool			tryOpen( void );
 	bool			readWrite( void );
+	void			checkWriteC(char c ) ;
 	bool			tryClose( void );
+
 
 	std::string		s1;
 	std::string		s2;
@@ -22,7 +24,6 @@ struct Lsed {
 					~Lsed( );
 					Lsed & operator=( const Lsed & rhs);
 
-	void			checkC(char c ) ;
 
 	std::string		*s1_ptr;
 	std::string		*s2_ptr;
