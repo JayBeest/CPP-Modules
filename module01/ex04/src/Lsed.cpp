@@ -1,53 +1,115 @@
-#include <iostream>
 #include "Lsed.hpp"
 
 ///			Public:
 
+bool	Lsed::setupLoser( char **argv ) {
+
+	this->file = std::string(argv[1]);
+	this->s1 = std::string(argv[2]);
+//	this->s1 = '\n';
+	this->s2 = std::string(argv[3]);
+	this->in_file.exceptions ( std::fstream::badbit );
+	this->out_file.exceptions ( std::fstream::failbit | std::fstream::badbit );
+
+	return true;
+}
+
+bool	Lsed::tryOpen( void ) {
+
+	std::cout << "this file: " << this->file << std::endl;
+
+	try {
+		this->in_file.open( this->file, std::fstream::in );
+	}
+	catch(std::fstream::failure & e) {
+		std::cerr << "Exception opening in_file" << std::endl;
+		return false;
+	}
+	try { this->out_file.open(this->file + ".replace", std::fstream::out | std::fstream::trunc); }
+	catch(std::fstream::failure & e) {
+		std::cerr << "Exception opening out_file" << std::endl;
+		return false;
+	}
+
+	return true;
+}
+
+bool	Lsed::readWrite( void ) {
+
+	char	c;
+
+//	try {
+	while (this->in_file.get(c))    /////////////getline miss wel veel beter!!! met exception voor '\n'
+		this->checkC(c);
+//	}
+//	catch(std::fstream::failure & e) {
+//		std::cerr << "Exception "
+//	}
+
+	return true;
+}
+
+bool	Lsed::tryClose( void ) {
+
+	try { this->in_file.close(); }
+	catch(std::fstream::failure & e) {
+		std::cerr << "Exception closing in_file" << std::endl;
+		return false;
+	}
+	try { this->out_file.close(); }
+	catch(std::fstream::failure & e) {
+		std::cerr << "Exception closing out_file" << std::endl;
+		return false;
+	}
+
+	return true;
+}
+
 ///			Constructor/Destroyer
 
-Lsed::Lsed(	) : _s1(nullptr) {
+Lsed::Lsed(	) : s1_ptr(nullptr), s2_ptr(nullptr) {
 
 										// TODO not counting default constructor
 
 }
 
-Lsed::Lsed( Lsed const & other) : _s1(nullptr), _s2(nullptr) {
+Lsed::Lsed( Lsed const & other) : s1(nullptr), s2(nullptr) {
 
 	if (this != &other)
 	{
-		if (other._s1)
-			this->_s1 = new std::string();
+		if (other.s1_ptr)
+			this->s1_ptr = new std::string();
 		else
-			this->_s1 = nullptr;
-		if (other._s2)
-			this->_s2 = new std::string();
+			this->s1_ptr = nullptr;
+		if (other.s2_ptr)
+			this->s2_ptr = new std::string();
 		else
-			this->_s2 = nullptr;
+			this->s2_ptr = nullptr;
 		// TODO
 	}
 }
 
 Lsed::~Lsed( ) {
 
-	delete _s1;
+	delete s1_ptr;
 	// TODO
 
 }
 
 Lsed &	Lsed::operator=( Lsed const & rhs ) {
 
-	delete this->_s1;
-	delete this->_s2;
+	delete this->s1_ptr;
+	delete this->s2_ptr;
 	if (this != &rhs)
 	{
-		if (rhs._s1)
-			this->_s1 = new std::string();
+		if (rhs.s1_ptr)
+			this->s1_ptr = new std::string();
 		else
-			this->_s1 = nullptr;
-		if (rhs._s2)
-			this->_s2 = new std::string();
+			this->s1_ptr = nullptr;
+		if (rhs.s2_ptr)
+			this->s2_ptr = new std::string();
 		else
-			this->_s2 = nullptr;
+			this->s2_ptr = nullptr;
 		// TODO
 	}
 	return *this;
@@ -55,26 +117,26 @@ Lsed &	Lsed::operator=( Lsed const & rhs ) {
 
 ///			Functions/Methods
 
-void	Lsed::processC( char c ) {
+void	Lsed::checkC(char c ) {
 
-	static size_t size = 0;
+	static size_t	size = 0;
 
 	if (c == this->s1.c_str()[size])
 	{
 		size++;
 		if (size == this->s1.length())
 		{
-			std::cout << s2;
+			this->out_file << s2;
 			size = 0;
 		}
 	}
 	else if (size > 0)
 	{
-		std::cout << this->s1.substr(0, size) << c;
+		this->out_file << this->s1.substr(0, size) << c;
 		size = 0;
 	}
 	else
-		std::cout << c;
+		this->out_file << c;
 
 }
 

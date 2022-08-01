@@ -1,24 +1,31 @@
 #ifndef LSED_H
 # define LSED_H
 
-class Lsed {
+# include <iostream>
+# include <fstream>
 
-public:
+struct Lsed {
+
+	bool			setupLoser( char **argv );
+	bool			tryOpen( void );
+	bool			readWrite( void );
+	bool			tryClose( void );
 
 	std::string		s1;
 	std::string		s2;
+	std::string		file;
+	std::fstream	in_file;
+	std::fstream	out_file;
 
 					Lsed( );
 					Lsed( const Lsed & src );
 					~Lsed( );
 					Lsed & operator=( const Lsed & rhs);
 
-	void			processC( char c ) ;
+	void			checkC(char c ) ;
 
-private:
-
-	std::string		*_s1;
-	std::string		*_s2;
+	std::string		*s1_ptr;
+	std::string		*s2_ptr;
 
 };
 
