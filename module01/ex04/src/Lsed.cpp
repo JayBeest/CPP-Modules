@@ -84,13 +84,13 @@ bool	Lsed::tryOpen( void ) {
 	return true;
 }
 
-bool	Lsed::readWrite( void ) {
+bool	Lsed::tryReadWrite(void ) {
 
 	char	c;
 
 	try {
 		while (this->in_file.get(c))
-			this->checkWriteC(c);
+			this->tryWrite(c);
 	}
 	catch(std::fstream::failure & e) {
 		std::cerr << "Exception reading";
@@ -100,7 +100,7 @@ bool	Lsed::readWrite( void ) {
 	return true;
 }
 
-void	Lsed::checkWriteC(char c ) {
+void	Lsed::tryWrite(char c ) {
 
 	static size_t	size = 0;
 

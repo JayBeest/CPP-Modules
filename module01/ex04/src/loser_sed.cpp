@@ -12,7 +12,7 @@ int main (int argc, char **argv)
 		return 2;
 	if (!looser_sed.tryOpen())
 		return 3;
-	if (!looser_sed.readWrite())
+	if (!looser_sed.tryReadWrite())
 		return 4;
 	if (!looser_sed.tryClose())
 		return 5;
