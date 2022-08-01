@@ -16,50 +16,28 @@ bool	Lsed::setupLoser( char **argv ) {
 
 ///			Constructor/Destroyer
 
-Lsed::Lsed(	) : s1_ptr(nullptr), s2_ptr(nullptr) {
+Lsed::Lsed(	) {
 
 										// TODO not counting default constructor
 
 }
 
-Lsed::Lsed( Lsed const & other) : s1(nullptr), s2(nullptr) {
+Lsed::Lsed( Lsed const & other) {
 
-	if (this != &other)
-	{
-		if (other.s1_ptr)
-			this->s1_ptr = new std::string();
-		else
-			this->s1_ptr = nullptr;
-		if (other.s2_ptr)
-			this->s2_ptr = new std::string();
-		else
-			this->s2_ptr = nullptr;
-		// TODO
-	}
+	*this = other;
+
 }
 
 Lsed::~Lsed( ) {
 
-	delete s1_ptr;
-	// TODO
 
 }
 
 Lsed &	Lsed::operator=( Lsed const & rhs ) {
 
-	delete this->s1_ptr;
-	delete this->s2_ptr;
 	if (this != &rhs)
 	{
-		if (rhs.s1_ptr)
-			this->s1_ptr = new std::string();
-		else
-			this->s1_ptr = nullptr;
-		if (rhs.s2_ptr)
-			this->s2_ptr = new std::string();
-		else
-			this->s2_ptr = nullptr;
-		// TODO
+
 	}
 	return *this;
 }
@@ -145,4 +123,3 @@ bool	Lsed::tryClose( void ) {
 }
 
 ///			Private:
-

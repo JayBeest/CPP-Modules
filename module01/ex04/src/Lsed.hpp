@@ -24,10 +24,6 @@ struct Lsed {
 					~Lsed( );
 					Lsed & operator=( const Lsed & rhs);
 
-
-	std::string		*s1_ptr;
-	std::string		*s2_ptr;
-
 };
 
 #endif

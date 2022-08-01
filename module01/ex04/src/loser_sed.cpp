@@ -19,10 +19,3 @@ int main (int argc, char **argv)
 
 	return 0;
 }
-
-
-
-
-/// Huge stream -> std::string / fstream max size
-
-///
