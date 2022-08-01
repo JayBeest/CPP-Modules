@@ -12,7 +12,6 @@ struct Lsed {
 	bool			tryClose( void );
 	void			tryWrite(char c ) ;
 
-
 	std::string		s1;
 	std::string		s2;
 	std::string		file;

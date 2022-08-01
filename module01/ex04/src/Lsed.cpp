@@ -39,6 +39,7 @@ Lsed &	Lsed::operator=( Lsed const & rhs ) {
 	{
 
 	}
+
 	return *this;
 }
 
