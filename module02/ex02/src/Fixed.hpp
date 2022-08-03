@@ -29,9 +29,9 @@ public:
 					Fixed  operator/( const Fixed & rhs);
 
 					const Fixed operator++( void );
-					const Fixed operator++(int);
+					const Fixed operator++( int );
 					const Fixed operator--( void );
-					const Fixed operator--(int);
+					const Fixed operator--( int );
 
 	float			toFloat( void ) const;
 	int				toInt( void ) const;

@@ -21,7 +21,9 @@ void	Fixed::makeSilent( void ) {
 	Fixed::_loud = false;
 }
 
+
 ///			Constructor/Destructor
+
 
 Fixed::Fixed( ) : _fixed_point(0) {
 
@@ -38,12 +40,13 @@ Fixed::Fixed( const int int_value ) {
 
 Fixed::Fixed( const float float_value) : _fixed_point(0) {
 
-	int		whole;
-	float	fractional;
+	int		integer = (int)float_value;;
+	float	fractional = float_value - (float)integer;
 
-	whole = (int)float_value;
-	fractional = float_value - (float)whole;
-	this->setRawBits((whole << _fractional_bits) + (int)round((fractional * (1 << _fractional_bits))));
+	if (float_value != 0)
+		this->setRawBits((integer << _fractional_bits) + (int)round((fractional * (1 << _fractional_bits))));
+	else
+		this->setRawBits(0);
 	if (_loud)
 		std::cout << "Float constructor called" << std::endl;
 }
@@ -69,6 +72,7 @@ Fixed &	Fixed::operator=( const Fixed& rhs ) {
 	return *this;
 }
 
+
 ///			Comparison operators
 
 
@@ -76,45 +80,47 @@ bool 	Fixed::operator>( const Fixed& rhs ) const {
 
 	if (_loud)
 		std::cout << "Larger-than operator called" << std::endl;
-	return _fixed_point > rhs.getRawBits();
+	return getRawBits() > rhs.getRawBits();
 }
 
 bool 	Fixed::operator>=( const Fixed& rhs ) const {
 
 	if (_loud)
 		std::cout << "Larger-than-or-equal-to operator called" << std::endl;
-	return _fixed_point >= rhs.getRawBits();
+	return getRawBits() >= rhs.getRawBits();
 }
 
 bool 	Fixed::operator<( const Fixed& rhs ) const {
 
 	if (_loud)
 		std::cout << "Smaller-than operator called" << std::endl;
-	return _fixed_point < rhs.getRawBits();
+	return getRawBits() < rhs.getRawBits();
 }
 
 bool 	Fixed::operator<=( const Fixed& rhs ) const {
 
 	if (_loud)
 		std::cout << "Smaller-than-or-equal-to operator called" << std::endl;
-	return _fixed_point <= rhs.getRawBits();
+	return getRawBits() <= rhs.getRawBits();
 }
 
 bool 	Fixed::operator==( const Fixed& rhs ) const {
 
 	if (_loud)
 		std::cout << "is-equal operator called" << std::endl;
-	return _fixed_point == rhs.getRawBits();
+	return getRawBits() == rhs.getRawBits();
 }
 
 bool 	Fixed::operator!=( const Fixed& rhs ) const {
 
 	if (_loud)
 		std::cout << "is-not-equal operator called" << std::endl;
-	return _fixed_point != rhs.getRawBits();
+	return getRawBits() != rhs.getRawBits();
 }
 
+
 ///			Arithmetic operators
+
 
 Fixed 	Fixed::operator+( const Fixed& rhs ) {
 
@@ -138,34 +144,23 @@ Fixed 	Fixed::operator-( const Fixed& rhs ) {
 
 Fixed 	Fixed::operator*( const Fixed& rhs ) {
 
-	float 	temp_float;
-
-	if (_loud)
-		std::cout << "Arithmetic * operator called" << std::endl;
-	temp_float = this->toFloat();
-	temp_float *= rhs.toFloat();
-	return Fixed(temp_float);
+	return Fixed(this->toFloat() * rhs.toFloat());
 }
 
 Fixed 	Fixed::operator/( const Fixed& rhs ) {
 
-	float 	temp_float;
-
-	if (_loud)
-		std::cout << "Arithmetic / operator called" << std::endl;
-	temp_float = this->toFloat();
-	temp_float /= rhs.toFloat();
-	return Fixed(temp_float);
+	return Fixed(this->toFloat() / rhs.toFloat());
 }
 
+
 ///			Pre-/Post-Increment-/Decrement-overloading
+
 
 const Fixed 	Fixed::operator++( void ) {
 
 	if (_loud)
 		std::cout << "Arithmetic / operator called" << std::endl;
 	this->setRawBits(this->getRawBits() + 1);
-
 	return Fixed(*this);;
 }
 
@@ -176,7 +171,6 @@ const Fixed 	Fixed::operator++( int ) {
 	if (_loud)
 		std::cout << "Arithmetic / operator called" << std::endl;
 	this->setRawBits(this->getRawBits() + 1);
-
 	return old;
 }
 const Fixed 	Fixed::operator--( void ) {
@@ -184,7 +178,6 @@ const Fixed 	Fixed::operator--( void ) {
 	if (_loud)
 		std::cout << "Arithmetic / operator called" << std::endl;
 	this->setRawBits(this->getRawBits() - 1);
-
 	return Fixed(*this);;
 }
 
@@ -195,21 +188,19 @@ const Fixed 	Fixed::operator--( int ) {
 	if (_loud)
 		std::cout << "Arithmetic / operator called" << std::endl;
 	this->setRawBits(this->getRawBits() - 1);
-
 	return old;
 }
 
 
 ///			Functions/Methods
 
+
 float	Fixed::toFloat( void ) const {
 
-	int 	shift;
+	int		integer_part = getRawBits() >> _fractional_bits;
+	int		float_part = getRawBits() - (integer_part << _fractional_bits);
 
-	shift = _fixed_point << (sizeof(int) * 8 - _fractional_bits);
-	shift >>= (sizeof(int) * 8 - _fractional_bits);
-
-	return ((float)(_fixed_point >> _fractional_bits) + (float)(shift) / (1 << (_fractional_bits)));
+	return ((float)integer_part + (float)(float_part) / (1 << (_fractional_bits)));
 }
 
 int		Fixed::toInt( void ) const {
