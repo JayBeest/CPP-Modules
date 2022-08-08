@@ -3,24 +3,19 @@
 
 ///			Public:
 
-///			Getters/Setters
+///			Getters / Setters
 
-const Fixed &	Point::getX( ) const {
+const Fixed &	Point::getX( void ) const {
 
 	return this->x;
 }
 
-const Fixed &	Point::getY( ) const {
+const Fixed &	Point::getY( void ) const {
 
 	return this->y;
 }
 
-void	Point::makeSilent( ) {
-
-	Point::_loud = false;
-}
-
-///			Constructor/Destroyer
+///			Constructor / Destructor
 
 Point::Point( const float x, const float y ) : x(Fixed(x)), y(Fixed(y)) {
 
@@ -51,7 +46,7 @@ Point::~Point( ) {
 Point &	Point::operator=( const Point & rhs ) {
 
 	if (this != &rhs)
-		std::cout << "[Point] Copy assignment operator cannot assign (copy) 'const Fixed x, y'" << std::endl;
+		std::cout << "[Point] Copy assignment operator cannot assign (copy) -> 'const Fixed x, y'" << std::endl;
 	return *this;
 }
 
@@ -60,12 +55,11 @@ bool	Point::operator==( const Point & rhs ) const {
 	return this->getX() == rhs.getX() && this->getY() == rhs.getY();
 }
 
-///			Functions/Methods
+///			Functions / Methods
 
-void	Point::doStuff( ) const {
+void	Point::makeSilent( ) {
 
-	// TODO
-
+	Point::_loud = false;
 }
 
 ///			Private:

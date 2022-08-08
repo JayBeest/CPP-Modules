@@ -7,9 +7,8 @@ class Point {
 
 public:
 
-	const Fixed &	getX( ) const;
-	const Fixed &	getY( ) const;
-	static void		makeSilent( void );
+	const Fixed &	getX( void ) const;
+	const Fixed &	getY( void ) const;
 
 					Point( const float x, const float y );
 					Point( );
@@ -19,7 +18,7 @@ public:
 
 	bool			operator==( const Point & rhs ) const;
 
-	void			doStuff() const;
+	static void		makeSilent( void );
 
 private:
 

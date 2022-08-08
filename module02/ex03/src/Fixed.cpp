@@ -1,6 +1,6 @@
 #include <iostream>
 #include "Fixed.hpp"
-#include <math.h>
+#include <cmath>
 
 ///			Public:
 
@@ -22,7 +22,7 @@ void	Fixed::makeSilent( void ) {
 }
 
 
-///			Constructor/Destructor
+///			Constructor / Destructor
 
 
 Fixed::Fixed( ) : _fixed_point(0) {
@@ -192,7 +192,7 @@ const Fixed 	Fixed::operator--( int ) {
 }
 
 
-///			Functions/Methods
+///			Functions / Methods
 
 
 float	Fixed::toFloat( void ) const {
