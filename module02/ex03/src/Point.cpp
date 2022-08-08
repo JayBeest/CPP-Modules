@@ -37,7 +37,7 @@ Point::~Point( ) {
 Point &	Point::operator=( const Point& rhs ) {
 
 	if (this != &rhs)
-		std::cout << "Copy assignment operator cannot assign 'const Fixed x/y" << std::endl;
+		std::cout << "Copy assignment operator cannot assign 'const Fixed x, y" << std::endl;
 	return *this;
 }
 
