@@ -9,6 +9,7 @@ public:
 
 	const Fixed &	getX( ) const;
 	const Fixed &	getY( ) const;
+	static void		makeSilent( void );
 
 					Point( const float x, const float y );
 					Point( );
@@ -16,12 +17,16 @@ public:
 					~Point( );
 					Point & operator=( const Point & rhs);
 
+	bool			operator==( const Point & rhs ) const;
+
 	void			doStuff() const;
 
 private:
 
 	const Fixed		x;
 	const Fixed		y;
+
+	static bool		_loud;
 
 };
 

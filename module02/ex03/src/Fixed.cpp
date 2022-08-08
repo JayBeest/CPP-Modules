@@ -7,7 +7,7 @@
 int		Fixed::getRawBits( ) const {
 
 	if (_loud)
-		std::cout << "getRawBits member function called" << std::endl;
+		std::cout << "[Fixed] getRawBits member function called" << std::endl;
 	return this->_fixed_point;
 }
 
@@ -28,13 +28,13 @@ void	Fixed::makeSilent( void ) {
 Fixed::Fixed( ) : _fixed_point(0) {
 
 	if (_loud)
-		std::cout << "Default constructor called" << std::endl;
+		std::cout << "[Fixed] Default constructor called" << std::endl;
 }
 
 Fixed::Fixed( const int int_value ) {
 
 	if (_loud)
-		std::cout << "Int constructor called" << std::endl;
+		std::cout << "[Fixed] Int constructor called" << std::endl;
 	this->setRawBits(int_value << _fractional_bits);
 }
 
@@ -44,30 +44,30 @@ Fixed::Fixed( const float float_value) : _fixed_point(0) {
 	float	fractional = float_value - (float)integer;
 
 	if (float_value != 0)
-		this->setRawBits((integer << _fractional_bits) + (int)round((fractional * (1 << _fractional_bits))));
+		this->setRawBits((integer << _fractional_bits) + (int)roundf((fractional * (1 << _fractional_bits))));
 	else
 		this->setRawBits(0);
 	if (_loud)
-		std::cout << "Float constructor called" << std::endl;
+		std::cout << "[Fixed] Float constructor called" << std::endl;
 }
 
 Fixed::Fixed( const Fixed& other) {
 
 	if (_loud)
-		std::cout << "Copy constructor called" << std::endl;
+		std::cout << "[Fixed] Copy constructor called" << std::endl;
 	*this = other;
 }
 
 Fixed::~Fixed( ) {
 
 	if (_loud)
-		std::cout << "Destructor called" << std::endl;
+		std::cout << "[Fixed] Destructor called" << std::endl;
 }
 
 Fixed  &	Fixed::operator=( const Fixed& rhs ) {
 
 	if (_loud)
-		std::cout << "Copy assignment operator called" << std::endl;
+		std::cout << "[Fixed] Copy assignment operator called" << std::endl;
 	this->setRawBits(rhs.getRawBits());
 	return *this;
 }
@@ -79,42 +79,42 @@ Fixed  &	Fixed::operator=( const Fixed& rhs ) {
 bool 	Fixed::operator>( const Fixed& rhs ) const {
 
 	if (_loud)
-		std::cout << "Larger-than operator called" << std::endl;
+		std::cout << "[Fixed] Larger-than operator called" << std::endl;
 	return getRawBits() > rhs.getRawBits();
 }
 
 bool 	Fixed::operator>=( const Fixed& rhs ) const {
 
 	if (_loud)
-		std::cout << "Larger-than-or-equal-to operator called" << std::endl;
+		std::cout << "[Fixed] Larger-than-or-equal-to operator called" << std::endl;
 	return getRawBits() >= rhs.getRawBits();
 }
 
 bool 	Fixed::operator<( const Fixed& rhs ) const {
 
 	if (_loud)
-		std::cout << "Smaller-than operator called" << std::endl;
+		std::cout << "[Fixed] Smaller-than operator called" << std::endl;
 	return getRawBits() < rhs.getRawBits();
 }
 
 bool 	Fixed::operator<=( const Fixed& rhs ) const {
 
 	if (_loud)
-		std::cout << "Smaller-than-or-equal-to operator called" << std::endl;
+		std::cout << "[Fixed] Smaller-than-or-equal-to operator called" << std::endl;
 	return getRawBits() <= rhs.getRawBits();
 }
 
 bool 	Fixed::operator==( const Fixed& rhs ) const {
 
 	if (_loud)
-		std::cout << "is-equal operator called" << std::endl;
+		std::cout << "[Fixed] is-equal operator called" << std::endl;
 	return getRawBits() == rhs.getRawBits();
 }
 
 bool 	Fixed::operator!=( const Fixed& rhs ) const {
 
 	if (_loud)
-		std::cout << "is-not-equal operator called" << std::endl;
+		std::cout << "[Fixed] is-not-equal operator called" << std::endl;
 	return getRawBits() != rhs.getRawBits();
 }
 
@@ -122,32 +122,32 @@ bool 	Fixed::operator!=( const Fixed& rhs ) const {
 ///			Arithmetic operators
 
 
-Fixed 	Fixed::operator+( const Fixed& rhs ) {
+Fixed 	Fixed::operator+( const Fixed& rhs ) const{
 
 	Fixed	answer(*this);
 
 	if (_loud)
-		std::cout << "Arithmetic + operator called" << std::endl;
+		std::cout << "[Fixed] Arithmetic + operator called" << std::endl;
 	answer.setRawBits(answer.getRawBits() + rhs.getRawBits());
 	return answer;
 }
 
-Fixed 	Fixed::operator-( const Fixed& rhs ) {
+Fixed 	Fixed::operator-( const Fixed& rhs ) const{
 
 	Fixed	answer(*this);
 
 	if (_loud)
-		std::cout << "Arithmetic - operator called" << std::endl;
+		std::cout << "[Fixed] Arithmetic - operator called" << std::endl;
 	answer.setRawBits(answer.getRawBits() - rhs.getRawBits());
 	return answer;
 }
 
-Fixed 	Fixed::operator*( const Fixed& rhs ) {
+Fixed 	Fixed::operator*( const Fixed& rhs ) const{
 
 	return Fixed(this->toFloat() * rhs.toFloat());
 }
 
-Fixed 	Fixed::operator/( const Fixed& rhs ) {
+Fixed 	Fixed::operator/( const Fixed& rhs ) const{
 
 	return Fixed(this->toFloat() / rhs.toFloat());
 }
@@ -159,7 +159,7 @@ Fixed 	Fixed::operator/( const Fixed& rhs ) {
 const Fixed 	Fixed::operator++( void ) {
 
 	if (_loud)
-		std::cout << "Arithmetic / operator called" << std::endl;
+		std::cout << "[Fixed] Arithmetic / operator called" << std::endl;
 	this->setRawBits(this->getRawBits() + 1);
 	return Fixed(*this);;
 }
@@ -169,14 +169,14 @@ const Fixed 	Fixed::operator++( int ) {
 	Fixed	old(*this);
 
 	if (_loud)
-		std::cout << "Arithmetic / operator called" << std::endl;
+		std::cout << "[Fixed] Arithmetic / operator called" << std::endl;
 	this->setRawBits(this->getRawBits() + 1);
 	return old;
 }
 const Fixed 	Fixed::operator--( void ) {
 
 	if (_loud)
-		std::cout << "Arithmetic / operator called" << std::endl;
+		std::cout << "[Fixed] Arithmetic / operator called" << std::endl;
 	this->setRawBits(this->getRawBits() - 1);
 	return Fixed(*this);;
 }
@@ -186,7 +186,7 @@ const Fixed 	Fixed::operator--( int ) {
 	Fixed	old(*this);
 
 	if (_loud)
-		std::cout << "Arithmetic / operator called" << std::endl;
+		std::cout << "[Fixed] Arithmetic / operator called" << std::endl;
 	this->setRawBits(this->getRawBits() - 1);
 	return old;
 }
@@ -200,11 +200,15 @@ float	Fixed::toFloat( void ) const {
 	int		integer_part = getRawBits() >> _fractional_bits;
 	int		float_part = getRawBits() - (integer_part << _fractional_bits);
 
+	if (_loud)
+		std::cout << "[Fixed] toFloat function called" << std::endl;
 	return ((float)integer_part + (float)(float_part) / (1 << (_fractional_bits)));
 }
 
 int		Fixed::toInt( void ) const {
 
+	if (_loud)
+		std::cout << "[Fixed] toInt function called" << std::endl;
 	return this->_fixed_point >> _fractional_bits;
 
 }
