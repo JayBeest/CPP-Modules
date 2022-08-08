@@ -39,7 +39,6 @@ Point::Point( const Point& other)
 
 	if (Point::_loud)
 		std::cout << "[Point] Copy constructor called" << std::endl;
-//	*this = other;
 }
 
 Point::~Point( ) {
@@ -52,8 +51,7 @@ Point::~Point( ) {
 Point &	Point::operator=( const Point & rhs ) {
 
 	if (this != &rhs)
-		if (Point::_loud)
-			std::cout << "[Point] Copy assignment operator cannot assign (copy) 'const Fixed x, y'" << std::endl;
+		std::cout << "[Point] Copy assignment operator cannot assign (copy) 'const Fixed x, y'" << std::endl;
 	return *this;
 }
 
