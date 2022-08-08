@@ -38,10 +38,10 @@ int main( int argc, char **argv ) {
 		}
 	}
 
-	const Point	a(2,3);
-	const Point	b(2,3);
+	const Point	a(3.2,5.4);
+	const Point	b(2,7);
 	const Point	c(1,3);
-	const Point p(2, 3.5);
+	const Point p(1.2, 3.5);
 
 	if (!is_triangle(a, b, c))
 	{

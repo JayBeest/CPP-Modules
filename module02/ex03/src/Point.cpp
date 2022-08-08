@@ -35,7 +35,7 @@ Point::Point( ) : x(Fixed()), y(Fixed()) {
 }
 
 Point::Point( const Point& other)
-: x(Fixed(other.getX().toFloat())), y(Fixed(other.getY().toFloat())) {
+: x(Fixed(other.getX())), y(Fixed(other.getY())) {
 
 	if (Point::_loud)
 		std::cout << "[Point] Copy constructor called" << std::endl;
