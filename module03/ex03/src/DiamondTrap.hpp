@@ -20,7 +20,7 @@ public:
 
 private:
 
-	std::string		_name;
+	std::string				_name;
 
 };
 
