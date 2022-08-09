@@ -6,9 +6,8 @@
 
 ///			Constructor/Destroyer
 
-ScavTrap::ScavTrap( const std::string & name ) {
+ScavTrap::ScavTrap( const std::string & name ) : ClapTrap(name) {
 
-	this->_name = name;
 	this->_hit_points = 100;
 	this->_energy_points = 50;
 	this->_attack_damage = 20;

@@ -6,9 +6,8 @@
 
 ///			Constructor/Destroyer
 
-ScavTrap::ScavTrap( const std::string & name ) {
+ScavTrap::ScavTrap( const std::string & name ) : ClapTrap(name) {
 
-	this->_name = name;
 	this->_hit_points = 100;
 	this->_energy_points = 50;
 	this->_attack_damage = 20;
@@ -18,10 +17,6 @@ ScavTrap::ScavTrap( const std::string & name ) {
 
 ScavTrap::ScavTrap(	) {
 
-//	this->_name = "<no_name>";
-//	this->_hit_points = 0;
-//	this->_energy_points = 0;
-//	this->_attack_damage = 0;
 	if (ClapTrap::_loud)
 		std::cout << "[ScavTrap] Default constructor called" << std::endl;
 }

@@ -6,9 +6,8 @@
 
 ///			Constructor/Destroyer
 
-FragTrap::FragTrap( const std::string & name ) {
+FragTrap::FragTrap( const std::string & name ) : ClapTrap(name) {
 
-	this->_name = name;
 	this->_hit_points = 100;
 	this->_energy_points = 100;
 	this->_attack_damage = 30;
@@ -53,19 +52,6 @@ FragTrap &	FragTrap::operator=( const FragTrap& rhs ) {
 }
 
 ///			Functions/Methods
-
-void	FragTrap::attack( const std::string & target) {
-
-	if (this->_hit_points == 0)
-		std::cout << "FragTrap " << this->_name << " is dead and cannot attack.." << std::endl;
-	else if (this->_energy_points == 0)
-		std::cout << "FragTrap " << this->_name << " has not enough energy to attack.." << std::endl;
-	else
-	{
-		std::cout << "FragTrap " << this->_name << " attacks " << target << " causing " << this->_attack_damage << " points of damage" << std::endl;
-		this->_energy_points--;
-	}
-}
 
 void	FragTrap::highFivesGuys( void ) {
 
