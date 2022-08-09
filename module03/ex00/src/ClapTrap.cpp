@@ -29,7 +29,6 @@ void			ClapTrap::setAttackDamage( unsigned int damage ) {
 	this->_attack_damage = damage;
 }
 
-
 ///			Constructor/Destroyer
 
 ClapTrap::ClapTrap( const std::string & name )
@@ -80,7 +79,9 @@ ClapTrap &	ClapTrap::operator=( const ClapTrap& rhs ) {
 
 void	ClapTrap::attack( const std::string & target) {
 
-	if (this->_energy_points == 0)
+	if (this->_hit_points == 0)
+		std::cout << "ClapTrap " << this->_name << " is dead and cannot attack.." << std::endl;
+	else if (this->_energy_points == 0)
 		std::cout << "ClapTrap " << this->_name << " has not enough energy to attack.." << std::endl;
 	else
 	{
@@ -111,7 +112,9 @@ void	ClapTrap::takeDamage( unsigned int amount ) {
 
 void	ClapTrap::beRepaired( unsigned int amount ) {
 
-	if (this->_energy_points == 0)
+	if (this->_hit_points == 0)
+		std::cout << "ClapTrap " << this->_name << " is dead and cannot repair itself.." << std::endl;
+	else if (this->_energy_points == 0)
 		std::cout << "ClapTrap " << this->_name << " has not enough energy to repair itself.." << std::endl;
 	else
 	{
