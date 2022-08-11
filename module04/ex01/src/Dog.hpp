@@ -9,6 +9,8 @@ class Dog : public Animal {
 
 public:
 
+	Brain &			accessBrain( void ) const;
+
 	explicit		Dog( std::string type );
 					Dog( );
 					Dog( const Dog & src );
@@ -20,7 +22,7 @@ public:
 
 private:
 
-//	Brain *			_brain;
+	Brain *			_brain;
 
 };
 
