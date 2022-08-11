@@ -2,7 +2,6 @@
 #include <sstream>
 #include "Cat.hpp"
 #include "Dog.hpp"
-#include "WrongCat.hpp"
 
 void	print_brain(Cat & cat)
 {
@@ -36,15 +35,13 @@ void	test_brain()
 	cat_b = cat_a;
 	print_brain(cat_b);
 	std::cout << std::endl;
+	std::cout << cat_a.accessBrain() << std::endl;
 }
 
-int main (int argc, char **argv)
+int main(int argc, char **argv)
 {
 	if (argc == 2 && std::string(argv[1]) == "-s")
-	{
 		Animal::makeSilent();
-		WrongAnimal::makeSilent();
-	}
 
 	const Animal*	i = new Cat();
 	Cat				j;
@@ -61,5 +58,14 @@ int main (int argc, char **argv)
 
 	test_brain();
 
+	std::cout << std::endl << "directprintofbrain:" << j.accessBrain() << std::endl;
 	return 0;
 }
+
+//int main(void)
+//{
+//	const Animal* j = new Dog();
+//	const Animal* i = new Cat();
+//	delete j;//should not create a leak
+//	delete i;
+//}

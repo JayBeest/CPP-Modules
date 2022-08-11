@@ -69,4 +69,3 @@ void	Cat::makeSilent( void ) {
 }
 
 ///			Private:
-
