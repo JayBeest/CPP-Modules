@@ -59,9 +59,3 @@ void	Dog::makeSilent( void ) {
 }
 
 ///			Private:
-
-std::ostream & operator<<( std::ostream & o_stream, const Animal & animal ) {
-
-	return o_stream << animal.getType();
-}
-
