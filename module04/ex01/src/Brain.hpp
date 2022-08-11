@@ -4,6 +4,7 @@
 # define MAX_IDEAS 100
 
 # include <iostream>
+# include <fstream>
 
 class Brain {
 
@@ -26,5 +27,7 @@ private:
 	static bool		_loud;
 
 };
+
+std::ostream & operator<<( std::ostream & o_stream, const Brain & brain );
 
 #endif

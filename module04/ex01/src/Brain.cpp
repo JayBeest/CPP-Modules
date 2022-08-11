@@ -5,7 +5,6 @@
 
 ///			Getters / Setters
 
-
 std::string		Brain::getIdea( unsigned int index ) const {
 
 	if (index >= MAX_IDEAS)
@@ -81,3 +80,13 @@ void	Brain::makeSilent( void ) {
 
 bool	Brain::_loud = true;
 
+std::ostream & operator<<(std::ostream & o_stream, const Brain & brain) {
+
+	for (int i = 0; i < MAX_IDEAS; i++)
+	{
+		if (brain.getIdea(i).empty())
+			break;
+		o_stream << "idea(" << i << "): " << brain.getIdea(i) << std::endl;
+	}
+	return o_stream;
+}
