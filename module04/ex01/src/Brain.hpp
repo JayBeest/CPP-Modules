@@ -10,6 +10,7 @@ class Brain {
 public:
 
 	std::string		getIdea( unsigned int index ) const;
+	void			addIdea( const std::string & idea );
 
 	explicit		Brain( const std::string & first_idea );
 					Brain( );
