@@ -30,6 +30,7 @@ Cat::Cat( const Cat& other) {
 
 	if (this != &other)
 	{
+		delete this->_brain;
 	  *this = other;
 	}
 	if (Animal::_loud)
@@ -38,16 +39,18 @@ Cat::Cat( const Cat& other) {
 
 Cat::~Cat( ) {
 
-	delete _brain;
 	if (Animal::_loud)
   		std::cout << "[Cat] Destructor called" << std::endl;
+	delete _brain;
 }
 
 Cat &	Cat::operator=( const Cat& rhs ) {
 
 	if (this != &rhs)
 	{
+//		delete this->_brain;
 		this->type = rhs.getType();
+		this->_brain = new Brain(rhs.accessBrain());
 	}
 	if (Animal::_loud)
   		std::cout << "[Cat] Copy assignment operator called" << std::endl;

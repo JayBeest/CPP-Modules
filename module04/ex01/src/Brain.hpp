@@ -14,7 +14,7 @@ public:
 	explicit		Brain( const std::string & first_idea );
 					Brain( );
 					Brain( const Brain & src );
-					~Brain( );
+	virtual			~Brain( );
 					Brain & operator=( const Brain & rhs);
 
 	static void		makeSilent( void );

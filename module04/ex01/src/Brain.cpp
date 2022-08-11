@@ -50,7 +50,8 @@ Brain &	Brain::operator=( const Brain & rhs ) {
 
 	if (this != &rhs)
 	{
-		this->ideas[0] = rhs.getIdea(0);	// TODO + tests!!
+		for (int i = 0; i < MAX_IDEAS; i++)
+			this->ideas[i] = rhs.getIdea(i);	// TODO + tests!!
 	}
 	if (Brain::_loud)
   		std::cout << "[Brain] Copy assignment operator called" << std::endl;

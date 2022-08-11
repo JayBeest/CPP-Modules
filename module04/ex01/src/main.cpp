@@ -77,7 +77,18 @@ int main (int argc, char **argv)
 //	wrong_test();
 
 //	const Animal* j = new Dog();
-	const Animal* i = new Cat();
+	const Animal*	i = new Cat();
+	Cat				j;
+	Animal			k;
+
+	std::cout << j << ": ";
+	j.makeSound();
+	j = *(Cat *)i;
+	std::cout << j << ": ";
+	j.makeSound();
+	std::cout << k << ": ";
+	k.makeSound();
+
 	delete i;
 
 	return 0;
