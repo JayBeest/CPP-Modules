@@ -65,6 +65,9 @@ void	Animal::makeSilent( void ) {
 
 ///			Private:
 
-
 bool	Animal::_loud = true;
 
+std::ostream & operator<<( std::ostream & o_stream, const Animal & animal ) {
+
+	return o_stream << animal.getType();
+}
