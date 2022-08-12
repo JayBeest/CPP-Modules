@@ -14,6 +14,7 @@ class Character : public ICharacter {
 public:
 
 	explicit			Character( const std::string & name );
+	static void			makeSilent( void );
 
 protected:
 
@@ -29,7 +30,6 @@ protected:
 	virtual void		use( int idx, ICharacter& target );
 	virtual AMateria *	getInventory( unsigned int index ) const;
 
-	static void			makeSilent( void );
 
 private:
 
