@@ -35,51 +35,53 @@ void	test_materia_source()
 	delete eve;
 }
 
-//int main (int argc, char **argv ){
-//
-//	if (argc == 2 && std::string(argv[1]) == "-s")
-//	{
-//		Character::makeSilent();
-//		AMateria::makeSilent();
-//	}
-//	ICharacter * const sandra = new Character("Sandra");
-//	ICharacter * const alfred = new Character("Alfred");
-//	ICharacter * test;
-////	ICharacter test;
-//
-//	sandra->equip(new Fire);
-//	sandra->equip(new Ice);
-//	sandra->equip(new Ice);
-//	sandra->equip(new Fire);
-//	sandra->equip(new Ice);
-//	sandra->use(0, *alfred);
-//	sandra->use(1, *alfred);
-//	sandra->use(2, *alfred);
-//	sandra->use(3, *alfred);
-//	sandra->use(4, *alfred);
-//	sandra->unequip(3);
-//	sandra->unequip(1);
-//	sandra->use(3, *alfred);
-//	sandra->use(1, *alfred);
-//	std::cout << std::endl << "Test starts:" << std::endl << std::endl;
-//	test = sandra;
-//	test->equip(new Cure);
-//	test->equip(new Cure);
-//	test->equip(new Cure);
-//	test->use(0, *alfred);
-//	test->use(1, *alfred);
-//	test->use(2, *alfred);
-//	test->use(3, *alfred);
-//	test->use(4, *alfred);
-//
-//	delete sandra;
-//	delete alfred;
-//
-//	std::cout << std::endl << "Starting (I)Materiasource tests:" << std::endl << std::endl;
-//	test_materia_source();
-//
-//	return 0;
-//}
+int main2 (int argc, char **argv ){
+
+	if (argc == 2 && std::string(argv[1]) == "-s")
+	{
+		Character::makeSilent();
+		AMateria::makeSilent();
+	}
+	ICharacter * const sandra = new Character("Sandra");
+	ICharacter * const alfred = new Character("Alfred");
+	ICharacter * test;
+//	ICharacter test;
+
+	std::cout << std::endl << std::endl << "<** MAIN 2 **>" << std::endl << std::endl;
+
+	sandra->equip(new Fire);
+	sandra->equip(new Ice);
+	sandra->equip(new Ice);
+	sandra->equip(new Fire);
+	sandra->equip(new Ice);
+	sandra->use(0, *alfred);
+	sandra->use(1, *alfred);
+	sandra->use(2, *alfred);
+	sandra->use(3, *alfred);
+	sandra->use(4, *alfred);
+	sandra->unequip(3);
+	sandra->unequip(1);
+	sandra->use(3, *alfred);
+	sandra->use(1, *alfred);
+	std::cout << std::endl << "Test starts:" << std::endl << std::endl;
+	test = sandra;
+	test->equip(new Cure);
+	test->equip(new Cure);
+	test->equip(new Cure);
+	test->use(0, *alfred);
+	test->use(1, *alfred);
+	test->use(2, *alfred);
+	test->use(3, *alfred);
+	test->use(4, *alfred);
+
+	delete sandra;
+	delete alfred;
+
+	std::cout << std::endl << "Starting (I)Materiasource tests:" << std::endl << std::endl;
+	test_materia_source();
+
+	return 0;
+}
 
 int main (int argc, char **argv ){
 
@@ -104,5 +106,5 @@ int main (int argc, char **argv ){
 	delete bob;
 	delete me;
 	delete src;
-	return 0;
+	return main2(argc, argv);
 }
