@@ -32,7 +32,6 @@ AMateria::AMateria( const AMateria & other) {
 	if (this != &other)
 	{
 	  *this = other;
-	  // TODO
 	}
 	if (AMateria::_loud)
   		std::cout << "[AMateria] Copy constructor called" << std::endl;
@@ -40,7 +39,6 @@ AMateria::AMateria( const AMateria & other) {
 
 AMateria::~AMateria( ) {
 
-	// TODO
 	if (AMateria::_loud)
   		std::cout << "[AMateria] Destructor called" << std::endl;
 }
@@ -58,11 +56,9 @@ AMateria &	AMateria::operator=( const AMateria & rhs ) {
 
 ///			Functions / Methods
 
-void	AMateria::use(ICharacter & target) {
+void	AMateria::use(ICharacter & target) const {
 
-	if (this->getType() == "ice")
-		std::cout << "* shoots an ice bolt at " << target.getName() << std::endl;
-	(void)target;
+		std::cout << "AMateria:use -- This should never show up..(" << target.getName() << ")" << std::endl;
 }
 
 void	AMateria::makeSilent( void ) {

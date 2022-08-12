@@ -14,8 +14,8 @@ public:
 	explicit			AMateria( std::string const & type );
 	virtual				~AMateria( void );
 
+	virtual void		use( ICharacter & target ) const;
 	virtual AMateria *	clone( void ) const = 0;
-	virtual void		use( ICharacter & target );
 
 	static void			makeSilent( void );
 	static bool			_loud;
