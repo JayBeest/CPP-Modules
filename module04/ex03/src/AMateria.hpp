@@ -33,4 +33,6 @@ private:
 
 };
 
+std::ostream & operator<<( std::ostream & o_stream, const AMateria & materia );
+
 #endif

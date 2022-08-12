@@ -74,3 +74,7 @@ void	AMateria::makeSilent( void ) {
 
 bool	AMateria::_loud = true;
 
+std::ostream & operator<<( std:: ostream & o_stream, const AMateria  & materia) {
+
+	return o_stream << materia.getType();
+}
