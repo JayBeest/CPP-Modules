@@ -11,10 +11,11 @@ class MateriaSource : public IMateriaSource {
 
 public:
 
+						MateriaSource( );
 	virtual				~MateriaSource( );
 
 protected:
-						MateriaSource( );
+
 						MateriaSource( const MateriaSource & src );
 						MateriaSource & operator=( const MateriaSource & rhs);
 
