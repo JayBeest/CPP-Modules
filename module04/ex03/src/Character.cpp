@@ -67,7 +67,7 @@ void	Character::equip( AMateria *m ) {
 		if (this->_inventory[i] == nullptr)
 		{
 			this->_inventory[i] = m;
-			std::cout << "equipping!!" << std::endl;
+			std::cout << "equipping " << *m << std::endl;
 			return;
 		}
 	}
