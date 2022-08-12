@@ -1,4 +1,5 @@
 #include <iostream>
+#include "nullptr_compat.h"
 //#include "AMateria.hpp"
 #include "Character.hpp"
 #include "Ice.hpp"
@@ -8,6 +9,7 @@
 
 void	test_materia_source()
 {
+	AMateria *				temp = nullptr;
 	IMateriaSource * const	mat_source = new MateriaSource();
 	ICharacter * const		bas = new Character("Bas");
 	ICharacter * const		eve = new Character("Eve");
@@ -15,9 +17,15 @@ void	test_materia_source()
 	mat_source->learnMateria(new Ice);
 	mat_source->learnMateria(new Cure);
 	mat_source->learnMateria(new Fire);
-	bas->equip(mat_source->createMateria("ice")->clone());
-	bas->equip(mat_source->createMateria("fire")->clone());
-	bas->equip(mat_source->createMateria("cure")->clone());
+	temp = mat_source->createMateria("ice");
+	if (temp)
+		bas->equip(temp->clone());
+	temp = mat_source->createMateria("fire");
+	if (temp)
+		bas->equip(temp->clone());
+	temp = mat_source->createMateria("cure");
+	if (temp)
+		bas->equip(temp->clone());
 	bas->use(0, *eve);
 	bas->use(1, *eve);
 	bas->use(2, *eve);
