@@ -2,6 +2,7 @@
 //#include "AMateria.hpp"
 #include "Character.hpp"
 #include "Ice.hpp"
+#include "Cure.hpp"
 
 int main (int argc, char **argv ){
 
@@ -12,7 +13,7 @@ int main (int argc, char **argv ){
 	}
 	ICharacter *sandra = new Character("Sandra");
 	ICharacter *alfred = new Character("Alfred");
-	ICharacter *test;
+//	ICharacter *test;
 //	ICharacter test;
 
 	sandra->equip(new Ice);
@@ -29,11 +30,16 @@ int main (int argc, char **argv ){
 	sandra->unequip(1);
 	sandra->use(3, *alfred);
 	sandra->use(1, *alfred);
-	test = alfred;
-	test->equip(new Ice);
-	test->equip(new Ice);
-	test->equip(new Ice);
-	test->equip(new Ice);
+	std::cout << std::endl << "Test starts:" << std::endl << std::endl;
+//	test = alfred;
+	sandra->equip(new Cure);
+	sandra->equip(new Cure);
+	sandra->equip(new Cure);
+	sandra->use(0, *alfred);
+	sandra->use(1, *alfred);
+	sandra->use(2, *alfred);
+	sandra->use(3, *alfred);
+	sandra->use(4, *alfred);
 
 	delete sandra;
 	delete alfred;

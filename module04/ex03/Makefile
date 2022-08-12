@@ -9,13 +9,14 @@ BIN			=	$(BIN_DIR)$(NAME)
 
 SRC			=	AMateria.cpp \
 				Character.cpp \
+				Cure.cpp \
 				ICharacter.cpp \
 				Ice.cpp \
 				main.cpp \
 
 OBJ 		=	$(addprefix $(OBJ_DIR), $(SRC:%.cpp=%.o))
 
-CFLAGS		=	-Wall -Werror -Wextra -std=c++98 -pedantic -g3 -fsanitize=address
+CFLAGS		=	-Wall -Werror -Wextra -std=c++98 -pedantic # -g -fsanitize=address
 CC			=	c++
 
 ifeq ("$(VERBOSE)","1")
