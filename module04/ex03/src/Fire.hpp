@@ -2,7 +2,7 @@
 # define FIRE_H
 
 # include "AMateria.hpp"
-# include "compat.h"
+# include "nullptr_compat.h"
 
 class Fire : public AMateria {
 

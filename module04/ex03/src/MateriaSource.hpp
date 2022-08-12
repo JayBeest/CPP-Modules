@@ -4,6 +4,7 @@
 # define MAX_SOURCE_INV 4
 
 # include <iostream>
+# include "nullptr_compat.h"
 # include "AMateria.hpp"
 # include "IMateriaSource.hpp"
 

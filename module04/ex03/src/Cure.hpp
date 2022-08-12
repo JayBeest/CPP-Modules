@@ -2,7 +2,7 @@
 # define CURE_H
 
 # include "AMateria.hpp"
-# include "compat.h"
+# include "nullptr_compat.h"
 
 class Cure : public AMateria {
 
