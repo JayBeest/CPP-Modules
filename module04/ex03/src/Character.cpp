@@ -100,10 +100,8 @@ void	Character::use( int idx, ICharacter &target ) {
 		std::cout << "nothing in _inventory[" << idx << "] to use..<--- remove this!!" << std::endl;
 		return;
 	}
-	if (this->getInventory(idx)->getType() == "ice")
-		std::cout << "* shoots an ice bolt at " << target.getName() << " *" << std::endl;
-	else if (this->getInventory(idx)->getType() == "cure")
-		std::cout << "* heals " << target.getName() << "'s wounds *" << std::endl;
+	else
+		this->getInventory(idx)->use(target);
 }
 
 AMateria *	Character::getInventory( unsigned int index ) const {

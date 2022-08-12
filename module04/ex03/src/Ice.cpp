@@ -1,5 +1,6 @@
 #include <iostream>
 #include "Ice.hpp"
+#include "Character.hpp"
 
 ///			Public:
 
@@ -18,7 +19,6 @@ Ice::Ice( const Ice& other) {
 	if (this != &other)
 	{
 	  *this = other;
-	  // TODO
 	}
 	if (AMateria::_loud)
   		std::cout << "[Ice] Copy constructor called" << std::endl;
@@ -43,12 +43,15 @@ Ice &	Ice::operator=( const Ice& rhs ) {
 
 ///			Functions / Methods
 
-AMateria *	Ice::clone( void ) const {
+void		Ice::use(ICharacter & target) const {
 
-	std::cout << "cloning... andr returning nullptr...:P" << std::endl;
-	// TODO
+	std::cout << "* shoots an ice bolt at " << target.getName() << " *" << std::endl;
+}
 
-	return nullptr;
+Ice *	Ice::clone( void ) const {
+
+	std::cout << "cloning " << this->getType() << " .. " << std::endl;
+	return new Ice(*this);
 }
 
 ///			Private:

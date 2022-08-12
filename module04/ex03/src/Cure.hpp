@@ -13,7 +13,8 @@ public:
 					Cure( const Cure & src );
 	virtual			~Cure( void );
 
-	virtual AMateria *	clone( void ) const;
+	virtual void	use( ICharacter & target) const;
+	virtual Cure *	clone( void ) const;
 
 private:
 

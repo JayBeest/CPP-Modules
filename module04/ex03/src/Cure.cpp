@@ -1,5 +1,6 @@
 #include <iostream>
 #include "Cure.hpp"
+#include "Character.hpp"
 
 ///			Public:
 
@@ -18,7 +19,6 @@ Cure::Cure( const Cure& other) {
 	if (this != &other)
 	{
 	  *this = other;
-	  // TODO
 	}
 	if (AMateria::_loud)
   		std::cout << "[Cure] Copy constructor called" << std::endl;
@@ -43,12 +43,16 @@ Cure &	Cure::operator=( const Cure& rhs ) {
 
 ///			Functions / Methods
 
-AMateria *	Cure::clone( void ) const {
+void	Cure::use( ICharacter & target ) const {
 
-	std::cout << "cloning... andr returning nullptr...:P" << std::endl;
-	// TODO
+	std::cout << "* heals " << target.getName() << "'s wounds *" << std::endl;
+}
 
-	return nullptr;
+Cure *	Cure::clone( void ) const {
+
+	std::cout << "cloning " << this->getType() << " .. " << std::endl;
+
+	return new Cure(*this);
 }
 
 ///			Private:
