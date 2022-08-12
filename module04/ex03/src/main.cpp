@@ -10,27 +10,33 @@ int main (int argc, char **argv ){
 		Character::makeSilent();
 		AMateria::makeSilent();
 	}
-	ICharacter *a = new Character("test_char");
+	ICharacter *sandra = new Character("Sandra");
+	ICharacter *alfred = new Character("Alfred");
+	ICharacter *test;
+//	ICharacter test;
 
-	a->equip(new Ice);
-	a->equip(new Ice);
-	a->equip(new Ice);
-	a->equip(new Ice);
-	a->equip(new Ice);
-	a->use(0, *a);
-	a->use(1, *a);
-	a->use(2, *a);
-	a->use(3, *a);
-	a->use(4, *a);
-	a->unequip(3);
-	a->unequip(1);
-	a->use(3, *a);
-	a->use(1, *a);
-	a->equip(new Ice);
-	a->equip(new Ice);
-	a->equip(new Ice);
-	a->equip(new Ice);
+	sandra->equip(new Ice);
+	sandra->equip(new Ice);
+	sandra->equip(new Ice);
+	sandra->equip(new Ice);
+	sandra->equip(new Ice);
+	sandra->use(0, *alfred);
+	sandra->use(1, *alfred);
+	sandra->use(2, *alfred);
+	sandra->use(3, *alfred);
+	sandra->use(4, *alfred);
+	sandra->unequip(3);
+	sandra->unequip(1);
+	sandra->use(3, *alfred);
+	sandra->use(1, *alfred);
+	test = alfred;
+	test->equip(new Ice);
+	test->equip(new Ice);
+	test->equip(new Ice);
+	test->equip(new Ice);
 
-	delete a;
+
+	delete sandra;
+	delete alfred;
 	return 0;
 }
