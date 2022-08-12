@@ -12,9 +12,10 @@ public:
 	std::string const &	getType( ) const;
 
 	explicit			AMateria( std::string const & type );
+	virtual				~AMateria( void );
 
-	virtual AMateria*	clone() const = 0;
-	virtual void		use(ICharacter & target);
+	virtual AMateria *	clone( void ) const = 0;
+	virtual void		use( ICharacter & target );
 
 	static void			makeSilent( void );
 	static bool			_loud;
@@ -22,12 +23,11 @@ public:
 protected:
 
 						AMateria( );
-						~AMateria( );
 						AMateria( const AMateria & src );
 
 private:
 
-						AMateria & operator=( const AMateria & rhs);
+						AMateria & operator=( const AMateria & rhs );
 
 	std::string			_type;
 

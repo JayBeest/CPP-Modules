@@ -7,19 +7,15 @@ class Ice : public AMateria {
 
 public:
 
-	int				getVars( ) const;
-
-	explicit		Ice( int arg );
-					Ice( );
-					Ice( const Ice & src );
-	virtual			~Ice( );
 					Ice & operator=( const Ice & rhs);
+					Ice( void );
+					Ice( const Ice & src );
+	virtual			~Ice( void );
 
+//	virtual	void	use( ICharacter & target) const;
 	virtual AMateria *	clone( void ) const;
 
 private:
-
-	int				_vars;
 
 };
 

@@ -5,22 +5,10 @@
 
 ///			Getters / Setters
 
-int		Ice::getVars( ) const {
-
-	return this->_vars;
-}
-
 ///			Constructor / Destructor
 
-Ice::Ice( int args ) : _vars(args) {
+Ice::Ice( ) : AMateria("ice"){
 
-	if (AMateria::_loud)
-  		std::cout << "[Ice] Specific constructor called" << std::endl;
-}
-
-Ice::Ice( ) {
-
-										// TODO not counting default constructor
 	if (AMateria::_loud)
   		std::cout << "[Ice] Default constructor called" << std::endl;
 }
@@ -47,7 +35,6 @@ Ice &	Ice::operator=( const Ice& rhs ) {
 
 	if (this != &rhs)
 	{
-		this->_vars = rhs.getVars();	// TODO
 	}
 	if (AMateria::_loud)
   		std::cout << "[Ice] Copy assignment operator called" << std::endl;
@@ -55,6 +42,11 @@ Ice &	Ice::operator=( const Ice& rhs ) {
 }
 
 ///			Functions / Methods
+
+//void		Ice::use( ICharacter &target ) const {
+//
+//	std::cout << "* shoots an ice bolt at " << target.getName() << " *" << std::endl;
+//}
 
 AMateria *	Ice::clone( void ) const {
 
