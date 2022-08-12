@@ -67,7 +67,7 @@ void	Character::equip( AMateria *m ) {
 		if (this->_inventory[i] == nullptr)
 		{
 			this->_inventory[i] = m;
-			std::cout << "equipping " << *m << std::endl;
+			std::cout << "equipping " << *m << " in slot[" << i << "]" << std::endl;
 			return;
 		}
 	}
@@ -90,7 +90,12 @@ void	Character::unequip( int idx ) {
 
 void	Character::use( int idx, ICharacter &target ) {
 
-	if (this->_inventory[idx] == nullptr)
+	if (idx < 0 || idx >= MAX_INVENTORY)
+	{
+		std::cout << "idx(" << idx << ") out of range.. <<<< remove this" << std::endl;
+		return;
+	}
+	else if (this->_inventory[idx] == nullptr)
 	{
 		std::cout << "nothing in _inventory[" << idx << "] to use..<--- remove this!!" << std::endl;
 		return;
