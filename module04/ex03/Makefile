@@ -11,7 +11,9 @@ SRC			=	AMateria.cpp \
 				Character.cpp \
 				Cure.cpp \
 				ICharacter.cpp \
+				IMateriaSource.cpp \
 				Ice.cpp \
+				MateriaSource.cpp \
 				main.cpp \
 
 OBJ 		=	$(addprefix $(OBJ_DIR), $(SRC:%.cpp=%.o))
