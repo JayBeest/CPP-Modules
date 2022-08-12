@@ -5,6 +5,7 @@
 # define MAX_GROUND 100
 
 # include <iostream>
+# include "compat.h"
 # include "ICharacter.hpp"
 # include "AMateria.hpp"
 

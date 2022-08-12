@@ -2,6 +2,7 @@
 # define ICE_H
 
 # include "AMateria.hpp"
+# include "compat.h"
 
 class Ice : public AMateria {
 
