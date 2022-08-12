@@ -26,7 +26,8 @@ MateriaSource::MateriaSource( const MateriaSource& other) {
 
 MateriaSource::~MateriaSource( ) {
 
-	// TODO
+	for (int i = 0; i < MAX_SOURCE_INV; i++)
+		delete this->_source_inventory[i];
 	if (AMateria::_loud)
   		std::cout << "[MateriaSource] Destructor called" << std::endl;
 }
