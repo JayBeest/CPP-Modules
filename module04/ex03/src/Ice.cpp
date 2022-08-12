@@ -43,11 +43,6 @@ Ice &	Ice::operator=( const Ice& rhs ) {
 
 ///			Functions / Methods
 
-//void		Ice::use( ICharacter &target ) const {
-//
-//	std::cout << "* shoots an ice bolt at " << target.getName() << " *" << std::endl;
-//}
-
 AMateria *	Ice::clone( void ) const {
 
 	std::cout << "cloning... andr returning nullptr...:P" << std::endl;

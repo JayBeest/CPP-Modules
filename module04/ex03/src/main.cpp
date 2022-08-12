@@ -35,7 +35,6 @@ int main (int argc, char **argv ){
 	test->equip(new Ice);
 	test->equip(new Ice);
 
-
 	delete sandra;
 	delete alfred;
 	return 0;
