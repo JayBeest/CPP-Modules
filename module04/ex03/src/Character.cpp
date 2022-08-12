@@ -39,7 +39,10 @@ Character::Character( const Character& other) {
 
 Character::~Character( void ) {
 
-	// TODO
+	for (int i = 0; i < MAX_INVENTORY; i++)
+		delete this->_inventory[i];
+	for (int i = 0; i < MAX_GROUND; i++)
+		delete this->_ground[i];
 	if (Character::_loud)
   		std::cout << "[Character] Destructor called" << std::endl;
 }
