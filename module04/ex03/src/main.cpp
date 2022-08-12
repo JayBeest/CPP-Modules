@@ -1,4 +1,5 @@
 #include <iostream>
+#include "compat.h"
 //#include "AMateria.hpp"
 #include "Character.hpp"
 #include "Ice.hpp"
