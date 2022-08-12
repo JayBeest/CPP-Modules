@@ -10,6 +10,7 @@ BIN			=	$(BIN_DIR)$(NAME)
 SRC			=	AMateria.cpp \
 				Character.cpp \
 				Cure.cpp \
+				Fire.cpp \
 				ICharacter.cpp \
 				IMateriaSource.cpp \
 				Ice.cpp \

@@ -3,6 +3,7 @@
 #include "Character.hpp"
 #include "Ice.hpp"
 #include "Cure.hpp"
+#include "Fire.hpp"
 
 int main (int argc, char **argv ){
 
@@ -16,10 +17,10 @@ int main (int argc, char **argv ){
 //	ICharacter *test;
 //	ICharacter test;
 
+	sandra->equip(new Fire);
 	sandra->equip(new Ice);
 	sandra->equip(new Ice);
-	sandra->equip(new Ice);
-	sandra->equip(new Ice);
+	sandra->equip(new Fire);
 	sandra->equip(new Ice);
 	sandra->use(0, *alfred);
 	sandra->use(1, *alfred);
