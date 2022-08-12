@@ -70,7 +70,7 @@ AMateria *	MateriaSource::createMateria( const std::string & type ) {
 	for (int i = 0; i < MAX_SOURCE_INV; i++)
 	{
 		if (_source_inventory[i]->getType() == type)
-			return _source_inventory[i];
+			return _source_inventory[i]->clone();
 	}
 	std::cout << "Materia-type " << type << " not found.." << std::endl;
 	return nullptr;
