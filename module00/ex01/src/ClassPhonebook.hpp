@@ -1,9 +1,9 @@
 #ifndef PHONE_BOOK_H
 # define PHONE_BOOK_H
 
+# define PROMPT "P-42: "
 # define MAX_CONTACTS 8
 # define COL_WIDTH 10
-# define PROMPT "P-42: "
 
 # include <iostream>
 # include "ClassContact.hpp"
