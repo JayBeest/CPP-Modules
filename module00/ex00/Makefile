@@ -19,6 +19,7 @@ vpath %.cpp $(SRC_DIR)
 all: $(BIN)
 
 $(BIN): $(OBJ)
+	@mkdir -p $(@D)
 	@echo
 	@echo "\033[36mLinking binary file:     $@ 📢\033[0m"
 	@echo
