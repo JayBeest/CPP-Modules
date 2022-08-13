@@ -12,7 +12,7 @@ SRC			=	Account.cpp \
 
 OBJ 		=	$(addprefix $(OBJ_DIR), $(SRC:%.cpp=%.o))
 
-CFLAGS		=	-Wall -Werror -Wextra -std=c++98 -g #-fsanitize=address
+CFLAGS		=	-Wall -Werror -Wextra -std=c++98 -pedantic # -g -fsanitize=address
 CC			=	c++
 
 ifeq ("$(VERBOSE)","1")
@@ -28,14 +28,15 @@ vpath %.cpp $(SRC_DIR)
 all: $(BIN)
 
 $(BIN): $(OBJ)
+	$(Q)mkdir -p $(@D)
 	$(VECHO)
-	$(VECHO) "\033[36mLinking binary file:     $@ 💰\033[0m"
+	$(VECHO) "\033[36mLinking binary file:     \033[0m$@ 💰"
 	$(VECHO)
 	$(Q)$(CC) $^ $(CFLAGS) -o $@
 
 $(OBJ_DIR)%.o:%.cpp
 	$(Q)mkdir -p $(@D)
-	$(VECHO) "\033[34mCompiling object file:   $@\033[0m"
+	$(VECHO) "\033[34mCompiling object file:   \033[0m$@"
 	$(Q)$(CC) -c $< $(CFLAGS) -o $@
 
 clean:
