@@ -1,11 +1,12 @@
 #ifndef PHONE_BOOK_H
 # define PHONE_BOOK_H
 
-# include "CLassContact.hpp"
-
 # define MAX_CONTACTS 8
 # define COL_WIDTH 10
 # define PROMPT "P-42: "
+
+# include <iostream>
+# include "ClassContact.hpp"
 
 class Phonebook {
 
@@ -14,8 +15,8 @@ public:
 	bool			empty( ) const;
 	std::string		get_prompt( ) const;
 
-	explicit		Phonebook( std::string prompt );
-					Phonebook( Phonebook const & src );
+	explicit		Phonebook( const std::string & prompt );
+					Phonebook( Phonebook const & other );
 					~Phonebook( );
 					Phonebook & operator=( Phonebook const & rhs );
 

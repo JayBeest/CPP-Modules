@@ -1,19 +1,17 @@
 #include "ClassContact.hpp"
-#include <iostream>
-
-int	Contact::_nb_contacts = 0;
+#include "ClassPhonebook.hpp"
 
 Contact::Contact( std::string f, std::string l, std::string n, std::string p, std::string d )
 	: _firstN(f), _lastN(l), _nickN(n), _phoneN(p), _darkS(d) {
 
-	if (Contact::_nb_contacts < 8)
+	if (Contact::_nb_contacts < MAX_CONTACTS)
 		Contact::_nb_contacts++;
-
 }
 
 Contact::Contact( Contact const & other ) {
 
-	*this = other;
+	if (this != &other)
+		*this = other;
 }
 
 Contact::~Contact( ) {
@@ -27,7 +25,6 @@ Contact &	Contact::operator=( Contact const & rhs ) {
 	this->_nickN = rhs.getNickN( );
 	this->_phoneN = rhs.getPhoneN( );
 	this->_darkS = rhs.getDarkS( );
-
 	return *this;
 }
 
@@ -64,3 +61,5 @@ int	Contact::get_nbContacts( ) {
 Contact::Contact( ) {
 
 }
+
+int	Contact::_nb_contacts = 0;
