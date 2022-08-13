@@ -11,7 +11,7 @@ SRC			=	megaphone.cpp \
 
 OBJ 		=	$(addprefix $(OBJ_DIR), $(SRC:%.cpp=%.o))
 
-CFLAGS		=	-Wall -Werror -Wextra -std=c++98 -g #-fsanitize=address
+CFLAGS		=	-Wall -Werror -Wextra -std=c++98 -pedantic #-g -fsanitize=address
 CC			=	c++
 
 vpath %.cpp $(SRC_DIR)
