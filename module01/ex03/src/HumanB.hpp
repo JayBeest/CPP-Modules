@@ -4,7 +4,7 @@
 # include <iostream>
 # include <sstream>
 
-# include "compat.h"
+# include "nullptr_compat.h"
 # include "Weapon.hpp"
 
 class HumanB {
