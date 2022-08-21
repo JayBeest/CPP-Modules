@@ -17,6 +17,15 @@ SRC			=	AMateria.cpp \
 				MateriaSource.cpp \
 				main.cpp \
 
+HEADERS		=	AMateria.hpp \
+				Character.hpp \
+				Cure.hpp \
+				Fire.hpp \
+				ICharacter.hpp \
+				IMateriaSource.hpp \
+				Ice.hpp \
+				MateriaSource.hpp \
+
 OBJ 		=	$(addprefix $(OBJ_DIR), $(SRC:%.cpp=%.o))
 
 CFLAGS		=	-Wall -Werror -Wextra -std=c++98 -pedantic #-g3 -fsanitize=address
@@ -30,8 +39,6 @@ Q := @
 VECHO = @echo
 endif
 
-vpath %.cpp $(SRC_DIR)
-
 all: $(BIN)
 
 $(BIN): $(OBJ)
@@ -39,12 +46,12 @@ $(BIN): $(OBJ)
 	$(VECHO)
 	$(VECHO) "\033[36mLinking binary file:     \033[0m$@ 🚨"
 	$(VECHO)
-	$(Q)$(CC) $^ $(CFLAGS) -o $@
+	$(Q)$(CC) $(CFLAGS) -o $@ $^
 
-$(OBJ_DIR)%.o:%.cpp
+$(OBJ_DIR)%.o: $(SRC_DIR)%.cpp $(addprefix $(SRC_DIR), $(HEADERS))
 	$(Q)mkdir -p $(@D)
 	$(VECHO) "\033[34mCompiling object file:   \033[0m$@"
-	$(Q)$(CC) -c $< $(CFLAGS) -o $@
+	$(Q)$(CC) -c $(CFLAGS) -o $@ $<
 
 clean:
 	$(VECHO) "\033[31mRemoving object files\033[0m"
