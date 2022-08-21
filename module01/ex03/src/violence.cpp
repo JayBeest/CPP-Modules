@@ -3,8 +3,6 @@
 #include "HumanA.hpp"
 #include "HumanB.hpp"
 
-using namespace ::std;
-
 int main (int argc, char **argv)
 {
 	if (argc > 1 && std::string(argv[1]) == "-v")
@@ -29,16 +27,16 @@ int main (int argc, char **argv)
 	Atest_human1.attack();
 	Atest_human2.attack();
 	Atest_human3->attack();
-	cout << Atest_human4;
-	cout << Atest_human5;
-	cout << Atest_human6;
+	std::cout << Atest_human4;
+	std::cout << Atest_human5;
+	std::cout << Atest_human6;
 	Atest_human2 = Atest_human1;
 	Atest_human1 = HumanA(*Atest_human3);
-	cout << Atest_human1 << Atest_human2 << *Atest_human3 << Atest_human4 << Atest_human5 << Atest_human6;
+	std::cout << Atest_human1 << Atest_human2 << *Atest_human3 << Atest_human4 << Atest_human5 << Atest_human6;
 
 	delete Atest_human3;
 
-	cout << endl << endl;
+	std::cout << std::endl << std::endl;
 
 	HumanB	Btest_human1 = HumanB("bob");
 	HumanB	Btest_human2;
@@ -50,13 +48,13 @@ int main (int argc, char **argv)
 
 	Btest_human2.setWeapon(sword);
 
-	cout << Btest_human1 << Btest_human2 << *Btest_human3 << Btest_human4 << Btest_human5 << Btest_human6;
+	std::cout << Btest_human1 << Btest_human2 << *Btest_human3 << Btest_human4 << Btest_human5 << Btest_human6;
 	Btest_human1.setWeapon(club);
 	Btest_human2 = Btest_human1;
 	Btest_human1 = HumanB(*Btest_human3);
 	Btest_human4 = Btest_human1;
 	Btest_human3->setWeapon(club);
-	cout << Btest_human1 << Btest_human2 << *Btest_human3 << Btest_human4 << Btest_human5 << Btest_human6;
+	std::cout << Btest_human1 << Btest_human2 << *Btest_human3 << Btest_human4 << Btest_human5 << Btest_human6;
 
 	delete Btest_human3;
 
