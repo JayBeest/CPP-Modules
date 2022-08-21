@@ -29,7 +29,7 @@ int main ( ){
 //	while (true)
 //	{
 //		cmd = book.readInput(PROMPT);
-//		if (cmd == "ADD")
+//		if (cmd == "ADD" || cmd == "a")
 //			book.makeContact();
 //		else if (cmd == "SEARCH" || cmd == "s")
 //			book.searchPhonebook( );
