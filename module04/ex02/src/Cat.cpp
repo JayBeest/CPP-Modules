@@ -18,8 +18,9 @@ Cat::Cat( std::string type ) : Animal(type), _brain(new Brain(type + "-thought")
   		std::cout << "[Cat] Specific constructor called" << std::endl;
 }
 
-Cat::Cat( ) : Animal("Cat"), _brain(new Brain("Cat-thought")) {
+Cat::Cat( ) : Animal("Cat") {
 
+	this->_brain = new Brain("Cat-thought");
 	if (Animal::_loud)
   		std::cout << "[Cat] Default constructor called" << std::endl;
 }

@@ -12,14 +12,16 @@ Brain &	Dog::accessBrain( void ) const {
 
 ///			Constructor / Destructor
 
-Dog::Dog( std::string type ) : Animal(type), _brain(new Brain(type + "-thought")) {
+Dog::Dog( std::string type ) : Animal(type) {
 
+	this->_brain = new Brain(type + "-thought");
 	if (Animal::_loud)
   		std::cout << "[Dog] Specific constructor called" << std::endl;
 }
 
-Dog::Dog( ) : Animal("Dog"), _brain(new Brain("Dog-thought")) {
+Dog::Dog( ) : Animal("Dog") {
 
+	this->_brain = new Brain("Dog-thought");
 	if (Animal::_loud)
   		std::cout << "[Dog] Default constructor called" << std::endl;
 }
