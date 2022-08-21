@@ -1,8 +1,6 @@
 #include <iostream>
 #include "Zombie.hpp"
 
-using namespace ::std;
-
 int main ( )
 {
 	Zombie	*real_z = newZombie("Brutus");

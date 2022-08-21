@@ -14,9 +14,7 @@ Zombie::Zombie( std::string name ) : _string(name) {
 	this->announce();
 }
 
-Zombie::Zombie(	) {
-
-										// TODO not counting default constructor
+Zombie::Zombie(	) : _string("<no_name>") {
 
 }
 
@@ -24,9 +22,8 @@ Zombie::Zombie( Zombie const & other) {
 
 	if (this != &other)
 	{
-		this->_string = other.getName();	// TODO
+		*this = other;
 	}
-	*this = other;
 }
 
 Zombie::~Zombie( ) {
@@ -39,7 +36,7 @@ Zombie &	Zombie::operator=( Zombie const & rhs ) {
 
 	if (this != &rhs)
 	{
-		this->_string = rhs.getName();	// TODO
+		this->_string = rhs.getName();
 	}
 	return *this;
 }
@@ -52,4 +49,3 @@ void	Zombie::announce( ) const {
 }
 
 ///			Private:
-
