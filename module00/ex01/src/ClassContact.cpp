@@ -4,8 +4,7 @@
 Contact::Contact( std::string f, std::string l, std::string n, std::string p, std::string d )
 	: _firstN(f), _lastN(l), _nickN(n), _phoneN(p), _darkS(d) {
 
-	if (Contact::_nb_contacts < MAX_CONTACTS)
-		Contact::_nb_contacts++;
+	Contact::_nb_contacts++;
 }
 
 Contact::Contact( Contact const & other ) {

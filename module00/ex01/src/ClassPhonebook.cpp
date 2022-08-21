@@ -54,7 +54,10 @@ std::string	Phonebook::readInput(std::string prompt ) const {
 	int				count = 0;
 	std::stringstream	out_nb_contacts;
 
-	out_nb_contacts << Contact::get_nbContacts();
+	if (Contact::get_nbContacts() <= MAX_CONTACTS)
+		out_nb_contacts << Contact::get_nbContacts();
+	else
+		out_nb_contacts << MAX_CONTACTS;
 	while (buffer.empty())
 	{
 		std::cout << prompt;
@@ -101,21 +104,24 @@ void	Phonebook::searchPhonebook( ) const {
 		return;
 	}
 	this->_printSearch();
-	ss_nb_contacts << Contact::get_nbContacts( );
+	if (Contact::get_nbContacts() <= MAX_CONTACTS)
+		ss_nb_contacts << Contact::get_nbContacts( );
+	else
+		ss_nb_contacts << MAX_CONTACTS;
 	while (true)
 	{
 		cmd = readInput(this->_prompt + prompt);
 		if (!isdigit(cmd[0]) || cmd.size() > 1)
-			prompt = "Input index [1-" + ss_nb_contacts.str() + "] ";
+			prompt = "Input index: [1-" + ss_nb_contacts.str() + "] ";
 		else
 		{
 			i = atoi(cmd.c_str());   /// strtol!!!
-			if (i > 0 && i <= (int)Contact::get_nbContacts())
+			if (i > 0 && i <= (int)Contact::get_nbContacts() && i <= MAX_CONTACTS)
 			{
 				this->_printContact(this->_getContact(i - 1));
 				return;
 			}
-			prompt = "Input index [1-" + ss_nb_contacts.str() + "] ";
+			prompt = "Input index: [1-" + ss_nb_contacts.str() + "] ";
 		}
 	}
 }
@@ -133,7 +139,6 @@ void		Phonebook::makeContact( ){
 	nick_name = readInput("Input nickname: ");
 	phone_nb = readInput("Input phone number: ");
 	dark_secret = readInput("Input dark secret: ");
-
 	this->_addContact(Contact(first_name, last_name, nick_name, phone_nb, dark_secret));
 }
 
@@ -189,17 +194,20 @@ void	Phonebook::populatePhonebook( ) {
 
 void	Phonebook::_addContact( Contact const & new_contact) {
 
-	this->_contacts[Contact::get_nbContacts() - 1] = new_contact;
+	if (Contact::get_nbContacts() % MAX_CONTACTS == 0)
+		this->_contacts[MAX_CONTACTS - 1] = new_contact;
+	else
+		this->_contacts[(Contact::get_nbContacts() % MAX_CONTACTS) - 1] = new_contact;
 }
 
 void	Phonebook::_printContact( Contact const & to_print) const{
 
 	std::cout << std::endl
-			  << std::setw(13) << "First name: " << to_print.getFirstN( ) << std::endl
-			  << std::setw(13) << "Last name: " << to_print.getLastN( ) << std::endl
-			  << std::setw(13) << "Nickname: " << to_print.getNickN( ) << std::endl
-			  << std::setw(13) << "Phone number: " << to_print.getPhoneN( ) << std::endl
-			  << std::setw(13) << "Dark Secret: " << to_print.getDarkS( )
+			  << std::setw(14) << "First name: " << to_print.getFirstN( ) << std::endl
+			  << std::setw(14) << "Last name: " << to_print.getLastN( ) << std::endl
+			  << std::setw(14) << "Nickname: " << to_print.getNickN( ) << std::endl
+			  << std::setw(14) << "Phone number: " << to_print.getPhoneN( ) << std::endl
+			  << std::setw(14) << "Dark Secret: " << to_print.getDarkS( )
 			  << std::endl << std::endl;
 }
 
@@ -210,7 +218,7 @@ void	Phonebook::_printSearch( ) const {
 			  << std::setw(COL_WIDTH) << "first name" << " | "
 			  << std::setw(COL_WIDTH) << "last name" << " | "
 			  << std::setw(COL_WIDTH) << "nickname" << std::endl;
-	for (int i = 0; i < Contact::get_nbContacts(); i++)
+	for (int i = 0; i < Contact::get_nbContacts() && i < MAX_CONTACTS; i++)
 	{
 		std::cout << std::setw(COL_WIDTH) << i + 1 << " | "
 				  << std::setw(COL_WIDTH) << _shrink(this->_contacts[i].getFirstN()) << " | "
