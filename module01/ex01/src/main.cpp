@@ -2,12 +2,10 @@
 #include <sstream>
 #include "Zombie.hpp"
 
-using namespace ::std;
-
 int main (int argc, char **argv)
 {
-	int				zombie_amount = 50;
-	stringstream	s_stream;
+	int					zombie_amount = 50;
+	std::stringstream	s_stream;
 
 	if (argc > 1)
 	{
@@ -15,7 +13,7 @@ int main (int argc, char **argv)
 		s_stream >> zombie_amount;
 		if (zombie_amount < 0)
 		{
-			cout << " how many zombies?!" << endl;
+			std::cout << " how many zombies?!" << std::endl;
 			return 1;
 		}
 	}

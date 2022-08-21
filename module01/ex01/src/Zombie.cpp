@@ -10,23 +10,22 @@ std::string Zombie::getName( ) const {
 
 ///			Constructor/Destroyer
 
-Zombie::Zombie( std::string name ) : _string(name) {
+Zombie::Zombie( std::string name )
+	: _id(Zombie::_id_counter), _string(name) {
 
-	this->_id = Zombie::_id_counter;
 	Zombie::_id_counter++;
-
 }
 
-Zombie::Zombie( ) {
+Zombie::Zombie( )
+	: _id(Zombie::_id_counter), _string("<no_name>") {
 
-	this->_id = Zombie::_id_counter;
 	Zombie::_id_counter++;
-
 }
 
-Zombie::Zombie( Zombie const & other ) {
+Zombie::Zombie( const Zombie & other ) {
 
-	*this = other;
+	if (this != &other)
+		*this = other;
 }
 
 Zombie::~Zombie( ) {
