@@ -54,7 +54,7 @@ HumanB::HumanB( HumanB const & other )
 : name(other.getName()), weapon(nullptr) {
 
 	if (this != &other)
-	{
+	{// make this stuff simpler concat to *this=other should be possible?!
 		if (other.weapon)
 			this->weapon = new Weapon(other.weapon->getType());
 		HumanB::_nb_humanAs_alive++;
