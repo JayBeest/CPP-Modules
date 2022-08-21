@@ -36,7 +36,7 @@ MateriaSource &	MateriaSource::operator=( const MateriaSource& rhs ) {
 
 	if (this != &rhs)
 	{
-//		this->_vars = rhs.getVars();	// TODO
+//			// TODO no implementation yet
 	}
 	if (AMateria::_loud)
   		std::cout << "[MateriaSource] Copy assignment operator called" << std::endl;

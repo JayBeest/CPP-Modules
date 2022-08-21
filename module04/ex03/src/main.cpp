@@ -1,5 +1,4 @@
 #include <iostream>
-#include "nullptr_compat.h"
 //#include "AMateria.hpp"
 #include "Character.hpp"
 #include "Ice.hpp"
