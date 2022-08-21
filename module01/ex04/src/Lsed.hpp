@@ -6,7 +6,7 @@
 
 struct Lsed {
 
-	bool			setupLoser( char **argv );
+	void			initLoser(char **argv );
 	bool			tryOpen( void );
 	bool			tryReadWrite(void );
 	bool			tryClose( void );
@@ -17,11 +17,6 @@ struct Lsed {
 	std::string		file;
 	std::fstream	in_file;
 	std::fstream	out_file;
-
-					Lsed( );
-					Lsed( const Lsed & src );
-					~Lsed( );
-					Lsed & operator=( const Lsed & rhs);
 
 };
 

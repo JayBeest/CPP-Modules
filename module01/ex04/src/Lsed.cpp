@@ -2,7 +2,7 @@
 
 ///			Public:
 
-bool	Lsed::setupLoser( char **argv ) {
+void	Lsed::initLoser(char **argv ) {
 
 	this->file = std::string(argv[1]);
 	this->s1 = std::string(argv[2]);
@@ -10,38 +10,9 @@ bool	Lsed::setupLoser( char **argv ) {
 	this->s2 = std::string(argv[3]);
 	this->in_file.exceptions ( std::fstream::badbit );
 	this->out_file.exceptions ( std::fstream::failbit | std::fstream::badbit );
-
-	return true;
 }
 
 ///			Constructor/Destroyer
-
-Lsed::Lsed(	) {
-
-										// TODO not counting default constructor
-
-}
-
-Lsed::Lsed( Lsed const & other) {
-
-	*this = other;
-
-}
-
-Lsed::~Lsed( ) {
-
-
-}
-
-Lsed &	Lsed::operator=( Lsed const & rhs ) {
-
-	if (this != &rhs)
-	{
-
-	}
-
-	return *this;
-}
 
 ///			Functions/Methods
 
@@ -52,6 +23,11 @@ bool	Lsed::tryOpen( void ) {
 	}
 	catch(std::fstream::failure & e) {
 		std::cerr << "Exception opening in_file" << std::endl;
+		return false;
+	}
+	if (!this->in_file)
+	{
+		std::cout << "in_file does not exist, quitting.." << std::endl;
 		return false;
 	}
 	try { this->out_file.open(this->file + ".replace", std::fstream::out | std::fstream::trunc); }
@@ -72,7 +48,7 @@ bool	Lsed::tryReadWrite(void ) {
 			this->tryWrite(c);
 	}
 	catch(std::fstream::failure & e) {
-		std::cerr << "Exception reading";
+		std::cerr << "Exception reading in_file";
 	}
 	std::cout << "Written changes to: '" << this->file + ".replace" << "'" << std::endl;
 

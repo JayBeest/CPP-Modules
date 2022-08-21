@@ -1,21 +1,20 @@
 #include "Lsed.hpp"
 
-int main (int argc, char **argv)
-{
-	Lsed			looser_sed;
+int main (int argc, char **argv) {
+
+	Lsed	looser_sed;
 
 	if (argc != 4) {
-		std::cout << "error-> loser_sed works with three arguments" << std::endl;
+		std::cout << "error - loser_sed needs three arguments" << std::endl;
 		return 1;
 	}
-	if (!looser_sed.setupLoser(argv))
-		return 2;
+	looser_sed.initLoser(argv);
 	if (!looser_sed.tryOpen())
-		return 3;
+		return 2;
 	if (!looser_sed.tryReadWrite())
-		return 4;
+		return 3;
 	if (!looser_sed.tryClose())
-		return 5;
+		return 4;:
 
 	return 0;
 }
