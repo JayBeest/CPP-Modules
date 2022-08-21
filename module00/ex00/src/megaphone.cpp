@@ -2,14 +2,13 @@
 
 int	main( int argc, char **argv ) {
 
-	std::cout << "argc==" << argc << std::endl;
+	int	i = 1;
+
 	if (argc <= 1)
 	{
 		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *" << std::endl;
 		return 1;
 	}
-
-	int	i = 1;
 	while (i  < argc)
 	{
 		for (int j = 0 ; argv[i][j]; j++)
@@ -19,5 +18,5 @@ int	main( int argc, char **argv ) {
 			std::cout << ' ';
 	}
 	std::cout << std::endl;
-	return 1;
+	return 0;
 }
