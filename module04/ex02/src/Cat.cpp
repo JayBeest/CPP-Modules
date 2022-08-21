@@ -12,9 +12,8 @@ Brain &	Cat::accessBrain( void ) const {
 
 ///			Constructor / Destructor
 
-Cat::Cat( std::string type ) : Animal(type) {
+Cat::Cat( std::string type ) : Animal(type), _brain(new Brain(type + "-thought")) {
 
-	this->_brain = new Brain(type + "-thought");
 	if (Animal::_loud)
   		std::cout << "[Cat] Specific constructor called" << std::endl;
 }
