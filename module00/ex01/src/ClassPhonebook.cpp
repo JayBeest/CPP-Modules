@@ -13,7 +13,7 @@ std::string	Phonebook::get_prompt() const {
 }
 
 Phonebook::Phonebook( const std::string & prompt )
-		: _empty(true), _prompt(prompt) {
+		: _empty(true), _prompt(prompt), _contacts() {
 
 	std::cout << std::endl << std::setw(24) << "Zapp!" << std::endl << std::endl;
 	std::cout << "This is the crappy P-42 phonebook operator" << std::endl;
@@ -37,7 +37,6 @@ Phonebook&	Phonebook::operator=( Phonebook const & rhs ) {
 
 	if (this != &rhs)
 	{
-		this->_empty = true;
 		this->_prompt = rhs.get_prompt();
 		if (!rhs.empty())
 		{

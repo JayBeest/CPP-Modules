@@ -58,7 +58,8 @@ int	Contact::get_nbContacts( ) {
 	return Contact::_nb_contacts;
 }
 
-Contact::Contact( ) {
+Contact::Contact( )
+	: _firstN("<empty_contact>"), _lastN("<empty_contact>"), _nickN("<empty_contact>"), _phoneN("<empty_contact>"), _darkS("<empty_contact>") {
 
 }
 
