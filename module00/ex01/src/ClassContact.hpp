@@ -16,7 +16,7 @@ public:
 
 	Contact( );
 	Contact( const Contact& other );
-	Contact( std::string f, std::string l, std::string n, std::string p, std::string d );
+	Contact( const std::string & f, const std::string & l, const std::string & n, const std::string & p, const std::string & d );
 	~Contact ( );
 
 	Contact&	operator=( const Contact& rhs );

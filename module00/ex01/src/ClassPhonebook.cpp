@@ -7,7 +7,7 @@ bool	Phonebook::empty( ) const {
 	return this->_empty;
 }
 
-std::string	Phonebook::get_prompt() const {
+std::string	Phonebook::get_prompt( ) const {
 
 	return this->_prompt;
 }
@@ -21,7 +21,7 @@ Phonebook::Phonebook( const std::string & prompt )
 	printUsage();
 }
 
-Phonebook::Phonebook( Phonebook const & other) {
+Phonebook::Phonebook( Phonebook const & other ) {
 
 	*this = other;
 }
@@ -48,7 +48,7 @@ Phonebook&	Phonebook::operator=( Phonebook const & rhs ) {
 	return *this;
 }
 
-std::string	Phonebook::readInput(std::string prompt ) const {
+std::string	Phonebook::readInput( std::string prompt ) const {
 
 	std::string			buffer;
 	int				count = 0;
@@ -62,6 +62,9 @@ std::string	Phonebook::readInput(std::string prompt ) const {
 	{
 		std::cout << prompt;
 		getline(std::cin, buffer);
+		if (prompt == "Input phone number: "
+			&& buffer.find_first_not_of("1234567890") != std::string::npos)
+			buffer.clear();
 		if (buffer.empty())
 			count++;
 		if (count > 6)
@@ -126,7 +129,7 @@ void	Phonebook::searchPhonebook( ) const {
 	}
 }
 
-void		Phonebook::makeContact( ){
+void		Phonebook::makeContact( ) {
 
 	std::string	first_name;
 	std::string	last_name;
@@ -192,7 +195,7 @@ void	Phonebook::populatePhonebook( ) {
 																				"Neque gravida in fermentum et. Elit duis tristique sollicitudin nibh sit amet commodo. Mauris sit amet massa vitae tortor condimentum lacinia quis. Fermentum et sollicitudin ac orci phasellus egestas tellus rutrum tellus. Ac auctor augue mauris augue neque gravida in. Quisque egestas diam in arcu. Nibh ipsum consequat nisl vel pretium. Risus at ultrices mi tempus. Tellus id interdum velit laoreet id donec ultrices tincidunt arcu. Accumsan sit amet nulla facilisi morbi tempus iaculis urna id. Vestibulum rhoncus est pellentesque elit ullamcorper dignissim cras. Tempor nec feugiat nisl pretium fusce id velit ut tortor. Mi proin sed libero enim sed faucibus turpis. Augue ut lectus arcu bibendum at varius. Quam lacus suspendisse faucibus interdum posuere lorem ipsum dolor. Pharetra convallis posuere morbi leo urna. Massa vitae tortor condimentum lacinia quis vel. Nibh sit amet commodo nulla facilisi nullam. Et sollicitudin ac orci phasellus egestas tellus rutrum tellus pellentesque."));
 }
 
-void	Phonebook::_addContact( Contact const & new_contact) {
+void	Phonebook::_addContact( Contact const & new_contact ) {
 
 	if (Contact::get_nbContacts() % MAX_CONTACTS == 0)
 		this->_contacts[MAX_CONTACTS - 1] = new_contact;
@@ -200,7 +203,7 @@ void	Phonebook::_addContact( Contact const & new_contact) {
 		this->_contacts[(Contact::get_nbContacts() % MAX_CONTACTS) - 1] = new_contact;
 }
 
-void	Phonebook::_printContact( Contact const & to_print) const{
+void	Phonebook::_printContact( Contact const & to_print ) const {
 
 	std::cout << std::endl
 			  << std::setw(14) << "First name: " << to_print.getFirstN( ) << std::endl
@@ -229,7 +232,7 @@ void	Phonebook::_printSearch( ) const {
 	std::cout << std::endl;
 }
 
-Contact		Phonebook::_getContact(int i ) const {
+Contact		Phonebook::_getContact( int i ) const {
 
 	return this->_contacts[i];
 }

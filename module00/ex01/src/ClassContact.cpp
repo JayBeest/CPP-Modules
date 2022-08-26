@@ -1,7 +1,6 @@
 #include "ClassContact.hpp"
-#include "ClassPhonebook.hpp"
 
-Contact::Contact( std::string f, std::string l, std::string n, std::string p, std::string d )
+Contact::Contact( const std::string & f, const std::string & l, const std::string & n, const std::string & p, const std::string & d )
 	: _firstN(f), _lastN(l), _nickN(n), _phoneN(p), _darkS(d) {
 
 	Contact::_nb_contacts++;
