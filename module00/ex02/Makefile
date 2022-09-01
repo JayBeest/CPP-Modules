@@ -10,6 +10,8 @@ BIN			=	$(BIN_DIR)$(NAME)
 SRC			=	Account.cpp \
 				tests.cpp \
 
+HEADERS		=	Account.hpp \
+
 OBJ 		=	$(addprefix $(OBJ_DIR), $(SRC:%.cpp=%.o))
 
 CFLAGS		=	-Wall -Werror -Wextra -std=c++98 -pedantic # -g -fsanitize=address
@@ -23,8 +25,6 @@ Q := @
 VECHO = @echo
 endif
 
-vpath %.cpp $(SRC_DIR)
-
 all: $(BIN)
 
 $(BIN): $(OBJ)
@@ -34,7 +34,7 @@ $(BIN): $(OBJ)
 	$(VECHO)
 	$(Q)$(CC) $^ $(CFLAGS) -o $@
 
-$(OBJ_DIR)%.o:%.cpp
+$(OBJ_DIR)%.o: $(SRC_DIR)%.cpp $(addprefix $(SRC_DIR), $(HEADERS))
 	$(Q)mkdir -p $(@D)
 	$(VECHO) "\033[34mCompiling object file:   \033[0m$@"
 	$(Q)$(CC) -c $< $(CFLAGS) -o $@
