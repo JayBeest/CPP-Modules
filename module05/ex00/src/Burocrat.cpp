@@ -37,7 +37,7 @@ Burocrat::Burocrat( ) {
   		std::cout << "[Burocrat] Default constructor called" << std::endl;
 }
 
-Burocrat::Burocrat( const Burocrat& other) {
+Burocrat::Burocrat( const Burocrat & other ) {
 
 	if (this != &other)
 	{
@@ -53,7 +53,7 @@ Burocrat::~Burocrat( ) {
   		std::cout << "[Burocrat] Destructor called" << std::endl;
 }
 
-Burocrat &	Burocrat::operator=( const Burocrat& rhs ) {
+Burocrat &	Burocrat::operator=( const Burocrat & rhs ) {
 
 	if (this != &rhs)
 	{

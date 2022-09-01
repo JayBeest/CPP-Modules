@@ -12,7 +12,7 @@ public:
 						Burocrat( );
 						Burocrat( const Burocrat & src );
 						~Burocrat( );
-						Burocrat & operator=( const Burocrat & rhs);
+						Burocrat & operator=( const Burocrat & rhs );
 
 	void				incrGrade( void );
 	void				decrGrade( void );
