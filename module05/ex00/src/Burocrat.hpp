@@ -5,8 +5,8 @@ class Burocrat {
 
 public:
 
-	std::string			getName( ) const;
-	unsigned int		getGrade( ) const;
+	std::string			getName( void ) const;
+	unsigned int		getGrade( void ) const;
 
 	explicit			Burocrat( const std::string & name, unsigned int grade );
 						Burocrat( );
@@ -17,8 +17,6 @@ public:
 	void				incrGrade( void );
 	void				decrGrade( void );
 
-	void				GradeTooHighException()
-
 	static void			makeSilent( void );
 
 private:
@@ -26,7 +24,7 @@ private:
 	const std::string	_name;
 	unsigned int		_grade;
 
-	static bool		_loud;
+	static bool         _loud;
 
 };
 
