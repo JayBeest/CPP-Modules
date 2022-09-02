@@ -1,27 +1,22 @@
 #include <iostream>
-#include "Burocrat.hpp"
+#include "Bureaucrat.hpp"
 
-void    try_catch_burocrat(const std::string & name, unsigned int grade)
+void    try_catch_bureaucrat(const std::string & name, unsigned int grade)
 {
     try {
-        Burocrat test(name, grade);
+        Bureaucrat test(name, grade);
+        std::cout << test << ": End of try-block" << std::endl;
     }
     catch (std::exception & e) {
-        std::cout << "caught: " << e.what() << "!" << std::endl;
+        std::cerr << "caught: " << e.what() << "!" << std::endl;
     }
 }
 
 int main ( void ) {
 
-    try_catch_burocrat("bob", 2);
-    try_catch_burocrat("eve", 0);
-    try_catch_burocrat("ben", 152);
-//    try {
-//        Burocrat test("eve", 0);
-//    }
-//    catch (std::exception & e) {
-//        std::cout << "caught: " << e.what() << "!" << std::endl;
-//    }
+    try_catch_bureaucrat("Bob", 2);
+    try_catch_bureaucrat("Eve", 0);
+    try_catch_bureaucrat("Ben", 152);
 
 	return 0;
 }

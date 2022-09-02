@@ -7,10 +7,10 @@ OBJ_DIR		=	obj/
 BIN_DIR		=	bin/
 BIN			=	$(BIN_DIR)$(NAME)
 
-SRC			=	Burocrat.cpp \
+SRC			=	Bureaucrat.cpp \
 				main.cpp \
 
-HEADERS		=	Burocrat.hpp \
+HEADERS		=	Bureaucrat.hpp \
 
 OBJ 		=	$(addprefix $(OBJ_DIR), $(SRC:%.cpp=%.o))
 
