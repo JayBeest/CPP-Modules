@@ -1,7 +1,5 @@
 #include <iostream>
 #include "Burocrat.hpp"
-#include "GradeTooHighException.hpp"
-#include "GradeTooLowException.hpp"
 
 ///			Public:
 
@@ -24,9 +22,9 @@ Burocrat::Burocrat( const std::string & name, unsigned int grade ) : _name(name)
 	if (Burocrat::_loud)
   		std::cout << "[Burocrat] Specific constructor called" << std::endl;
 	if (grade > 150)
-		throw GradeTooLowException();
+		throw Burocrat::GradeTooLowException();
 	else if (grade < 1)
-		throw GradeTooHighException();
+		throw Burocrat::GradeTooHighException();
 	else
 		this->_grade = grade;
 }
@@ -68,12 +66,16 @@ void    Burocrat::incrGrade( void ) {
 
     if (this->_grade > 1)
         this->_grade--;
+    else
+        throw Burocrat::GradeTooHighException();
 }
 
 void    Burocrat::decrGrade( void ) {
 
     if (this->_grade < 150)
         this->_grade++;
+    else
+        throw Burocrat::GradeTooLowException();
 }
 
 ///			Functions / Methods
