@@ -7,14 +7,10 @@ OBJ_DIR		=	obj/
 BIN_DIR		=	bin/
 BIN			=	$(BIN_DIR)$(NAME)
 
-SRC			=	Burocrat.cpp \
-				GradeTooHighException.cpp \
-				GradeTooLowException.cpp \
+SRC			=	Bureaucrat.cpp \
 				main.cpp \
 
-HEADERS		=	Burocrat.hpp \
-				GradeTooHighException.hpp \
-				GradeTooLowException.hpp \
+HEADERS		=	Bureaucrat.hpp \
 
 OBJ 		=	$(addprefix $(OBJ_DIR), $(SRC:%.cpp=%.o))
 
