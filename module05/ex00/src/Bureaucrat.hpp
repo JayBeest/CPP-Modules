@@ -21,7 +21,7 @@ public:
 
     class GradeTooHighException : public std::runtime_error {
     public:
-        explicit GradeTooHighException(const std::string & msg="Grade is too high (< 1)")
+        explicit GradeTooHighException(std::string msg="Grade is too high (< 1)")
         : std::runtime_error(msg) {};
     };
 
