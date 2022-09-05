@@ -10,10 +10,7 @@ public:
 	std::string 	getName( ) const;
 
 	explicit		Zombie( const std::string & name );
-					Zombie( );
-                    Zombie( Zombie const & other );
 					~Zombie( );
-					Zombie & operator=( Zombie const & rhs );
 
 	void			announce( ) const;
 
