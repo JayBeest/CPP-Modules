@@ -16,7 +16,7 @@ else
     arg2="$3"
   fi
 
-  sed s/"$arg1"/"$arg2"/gi "$1" > "$1".sed
+  sed s/"$arg1"/"$arg2"/g "$1" > "$1".sed
   echo "Written changes to: '$1.sed'"
   if [[ $(diff "$1".replace "$1".sed) != "" ]]; then
     echo "diff found.. check '$1.replace' and '$1.sed'"
