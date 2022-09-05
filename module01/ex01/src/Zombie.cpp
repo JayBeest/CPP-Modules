@@ -25,7 +25,9 @@ Zombie::Zombie( )
 Zombie::Zombie( const Zombie & other ) {
 
 	if (this != &other)
+    {
 		*this = other;
+    }
 }
 
 Zombie::~Zombie( ) {
@@ -40,7 +42,7 @@ Zombie &	Zombie::operator=( Zombie const & rhs ) {
 
 	if (this != &rhs)
 	{
-		this->_string = rhs.getName();	// TODO
+		this->_string = rhs.getName();
 	}
 	return *this;
 }
@@ -56,6 +58,5 @@ void	Zombie::announce( ) const {
 }
 
 ///			Private:
-
 
 int	Zombie::_id_counter = 0;

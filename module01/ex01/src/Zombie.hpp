@@ -9,11 +9,11 @@ public:
 
 	std::string 	getName( ) const;
 
-	explicit		Zombie(std::string name );
+	explicit		Zombie( std::string name );
 					Zombie( );
-					Zombie( Zombie const & src );
+					Zombie( Zombie const & other );
 					~Zombie( );
-					Zombie & operator=( Zombie const & rhs);
+					Zombie & operator=( Zombie const & rhs );
 
 	void			announce( ) const;
 
@@ -26,7 +26,7 @@ private:
 
 };
 
-Zombie *	zombieHorde(int N, std::string name);
+Zombie *	zombieHorde( int N, std::string name );
 
 #endif
 
