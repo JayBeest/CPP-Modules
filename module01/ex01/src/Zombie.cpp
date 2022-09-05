@@ -10,7 +10,7 @@ std::string Zombie::getName( ) const {
 
 ///			Constructor/Destroyer
 
-Zombie::Zombie( std::string name )
+Zombie::Zombie( const std::string & name )
 	: _id(Zombie::_id_counter), _string(name) {
 
 	Zombie::_id_counter++;
@@ -35,7 +35,7 @@ Zombie::~Zombie( ) {
 	std::stringstream	o_stream;
 
 	o_stream << this->_id;
-	std::cout << this->getName() << "_" << o_stream.str() << ": (re)died a horrible death.. \"" << "Gnar'har-chuck'" << "gluck!\"" << std::endl;
+	std::cout << this->getName() << "_" << o_stream.str() << ": died (again) a horrible death.. \"" << "Gnar'har-chuck'" << "gluck!\"" << std::endl;
 }
 
 Zombie &	Zombie::operator=( Zombie const & rhs ) {

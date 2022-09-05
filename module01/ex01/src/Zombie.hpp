@@ -1,7 +1,7 @@
 #ifndef ZOMBIE_H
 # define ZOMBIE_H
 
-#include <iostream>
+# include <iostream>
 
 class Zombie {
 
@@ -9,7 +9,7 @@ public:
 
 	std::string 	getName( ) const;
 
-	explicit		Zombie( std::string name );
+	explicit		Zombie( const std::string & name );
 					Zombie( );
 					Zombie( Zombie const & other );
 					~Zombie( );
