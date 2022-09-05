@@ -9,11 +9,11 @@ public:
 
 	std::string 	getName( ) const;
 
-	explicit		Zombie( std::string name );
+	explicit		Zombie( const std::string & name );
 					Zombie( );
-					Zombie( Zombie const & src );
+                    Zombie( Zombie const & other );
 					~Zombie( );
-					Zombie & operator=( Zombie const & rhs);
+					Zombie & operator=( Zombie const & rhs );
 
 	void			announce( ) const;
 
@@ -24,7 +24,7 @@ private:
 };
 
 Zombie*		newZombie(std::string name);
-Zombie		newChump(std::string name);
+void		newChump(std::string name);
 
 #endif
 

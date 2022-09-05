@@ -9,16 +9,15 @@ std::string Zombie::getName( ) const {
 
 ///			Constructor/Destroyer
 
-Zombie::Zombie( std::string name ) : _string(name) {
+Zombie::Zombie( const std::string & name ) : _string(name) {
 
-	this->announce();
 }
 
 Zombie::Zombie(	) : _string("<no_name>") {
 
 }
 
-Zombie::Zombie( Zombie const & other) {
+Zombie::Zombie( Zombie const & other ) {
 
 	if (this != &other)
 	{
@@ -28,7 +27,7 @@ Zombie::Zombie( Zombie const & other) {
 
 Zombie::~Zombie( ) {
 
-	std::cout << this->getName() << ": (re)died a horrible death.. \"" << "Gnar'har-chuck'" << "gluck!\"" << std::endl;
+	std::cout << this->getName() << ": died(again) a horrible death.. \"" << "Gnar'har-chuck'" << "gluck!\"" << std::endl;
 
 }
 

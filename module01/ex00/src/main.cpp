@@ -4,8 +4,8 @@
 int main ( )
 {
 	Zombie	*real_z = newZombie("Brutus");
-	Zombie	chump = newChump("Dork");
-
+    real_z->announce();
 	delete real_z;
+	newChump("Dork");
 	return 1;
 }

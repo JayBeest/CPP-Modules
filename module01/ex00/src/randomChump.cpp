@@ -1,6 +1,7 @@
 #include "Zombie.hpp"
 
-Zombie	newChump(std::string name)
+void	newChump(std::string name)
 {
-	return Zombie(name);
+	Zombie new_zombie(name);
+    new_zombie.announce();
 }
