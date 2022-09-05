@@ -1,20 +1,13 @@
 #include "Lsed.hpp"
 
-///			Public:
-
 void	Lsed::initLoser(char **argv ) {
 
 	this->file = std::string(argv[1]);
 	this->s1 = std::string(argv[2]);
-//	this->s1 = '\n';
 	this->s2 = std::string(argv[3]);
 	this->in_file.exceptions ( std::fstream::badbit );
 	this->out_file.exceptions ( std::fstream::failbit | std::fstream::badbit );
 }
-
-///			Constructor/Destroyer
-
-///			Functions/Methods
 
 bool	Lsed::tryOpen( void ) {
 
@@ -98,5 +91,3 @@ bool	Lsed::tryClose( void ) {
 
 	return true;
 }
-
-///			Private:
