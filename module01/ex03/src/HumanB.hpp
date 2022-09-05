@@ -16,8 +16,6 @@ public:
 	std::string			getName( ) const;
 	void				setWeapon( Weapon const & weapon );
 
-	std::string			name;
-	Weapon *			weapon;
 
 	explicit			HumanB( std::string const & name );
 						HumanB( );
@@ -28,6 +26,9 @@ public:
 	void				attack( ) const;
 
 private:
+
+	std::string			_name;
+	Weapon *			_weapon;
 
 	static int			_nb_humanAs_alive;
 

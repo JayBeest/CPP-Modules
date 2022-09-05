@@ -8,21 +8,23 @@ class HumanA {
 
 public:
 
-	std::string			name;
-	Weapon &			weapon;
 	static bool			verbose;
+    const std::string & getName( void ) const;
 
 	explicit			HumanA( std::string const & name, Weapon & weapon );
 						HumanA( );
 						~HumanA( );
-						HumanA( HumanA const & src );
+						HumanA( HumanA const & other );
 						HumanA & operator=( HumanA const & rhs );
 
 	void				attack( ) const;
 
 private:
 
+	std::string			_name;
+	Weapon &			_weapon;
 	static int			_nb_humanAs_alive;
+
 	static Weapon *		_default_weapon;
 
 };

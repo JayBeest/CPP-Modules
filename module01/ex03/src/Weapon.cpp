@@ -10,19 +10,18 @@ const	std::string & Weapon::getType( ) const {
 	return this->_type;
 }
 
-void	Weapon::setType( std::string const & type )  {
+void	Weapon::setType( const std::string & type )  {
 
 	this->_type = type;
-
 }
 
 ///			Constructor/Destroyer
 
-Weapon::Weapon( std::string const & type ) : _type(type) {
+Weapon::Weapon( const std::string & type ) : _type(type) {
 
 }
 
-Weapon::Weapon(	) {
+Weapon::Weapon(	) : _type("<no_type>") {
 
 }
 
@@ -30,13 +29,12 @@ Weapon::~Weapon( ) {
 
 }
 
-Weapon::Weapon( Weapon const & other) {
+Weapon::Weapon( const Weapon & other ) {
 
 	if (this != &other)
 	{
-		this->_type = other.getType();
+        *this = other;
 	}
-	*this = other;
 }
 
 Weapon &	Weapon::operator=( Weapon const & rhs ) {

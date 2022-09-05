@@ -2,14 +2,19 @@
 
 ///			Public:
 
-bool	HumanA::verbose = false;
+bool        HumanA::verbose = false;
 
 ///			Getters/Setters
+
+const std::string & HumanA::getName( void ) const {
+
+    return this->_name;
+}
 
 ///			Constructor/Destroyer
 
 HumanA::HumanA( std::string const & name, Weapon & weapon )
-: name(name), weapon(weapon) {
+: _name(name), _weapon(weapon) {
 
 	HumanA::_nb_humanAs_alive++;
 	if (verbose)
@@ -18,11 +23,11 @@ HumanA::HumanA( std::string const & name, Weapon & weapon )
 }
 
 HumanA::HumanA(	)
-: name(""), weapon(*HumanA::_default_weapon){
+: _name("<no_name>"), _weapon(*HumanA::_default_weapon){
 
 	HumanA::_nb_humanAs_alive++;
 	if (verbose)
-		std::cout << "one more, HumanA's alive: " << HumanA::_nb_humanAs_alive << std::endl;
+		std::cout << "one more, HumanA's alive (default): " << HumanA::_nb_humanAs_alive << std::endl;
 }
 
 HumanA::~HumanA( ) {
@@ -40,14 +45,14 @@ HumanA::~HumanA( ) {
 }
 
 HumanA::HumanA( HumanA const & other )
-: name(other.name), weapon(*HumanA::_default_weapon){
+: _name(other._name), _weapon(*HumanA::_default_weapon) {
 
 	if (this != &other)
 	{
 		HumanA::_nb_humanAs_alive++;
 		if (verbose)
 			std::cout << "one more clone, HumanA's alive: " << HumanA::_nb_humanAs_alive << std::endl;
-		// TODO
+		*this = other;
 	}
 }
 
@@ -55,8 +60,8 @@ HumanA &	HumanA::operator=( HumanA const & rhs ) {
 
 	if (this != &rhs)
 	{
-		this->name = rhs.name;
-		this->weapon.setType(rhs.weapon.getType());
+		this->_name = rhs._name;
+		this->_weapon.setType(rhs._weapon.getType());
 	}
 	return *this;
 }
@@ -65,21 +70,17 @@ HumanA &	HumanA::operator=( HumanA const & rhs ) {
 
 void	HumanA::attack( ) const {
 
-	if (this->name.empty())
-		std::cout << "<no_name>";
-	else
-		std::cout << this->name;
-	std::cout << " attacks with their " << this->weapon.getType() << std::endl;
+	std::cout << this->_name << " attacks with their " << this->_weapon.getType() << std::endl;
 
 }
 
 ///			Private:
-
-int			HumanA::_nb_humanAs_alive = 0;
-Weapon *	HumanA::_default_weapon = new Weapon("Avtomat Kalashnikova");
 
 std::ostream &	operator<<(std::ostream & o_stream, HumanA const & human) {
 
 	human.attack();
 	return o_stream;
 }
+
+int			HumanA::_nb_humanAs_alive = 0;
+Weapon *	HumanA::_default_weapon = new Weapon("Avtomat Kalashnikova");

@@ -20,7 +20,7 @@ int main (int argc, char **argv)
 	HumanA	*Atest_human3 = new HumanA("ben", club);
 	HumanA	Atest_human4 = HumanA("eve", sword);
 	HumanA	Atest_human5 = HumanA(Atest_human4);
-	HumanA	Atest_human6	= HumanA(*Atest_human3);
+	HumanA	Atest_human6 = HumanA(*Atest_human3);
 
 
 
@@ -35,7 +35,6 @@ int main (int argc, char **argv)
 	std::cout << Atest_human1 << Atest_human2 << *Atest_human3 << Atest_human4 << Atest_human5 << Atest_human6;
 
 	delete Atest_human3;
-
 	std::cout << std::endl << std::endl;
 
 	HumanB	Btest_human1 = HumanB("bob");
