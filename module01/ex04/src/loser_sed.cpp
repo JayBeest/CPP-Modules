@@ -9,12 +9,8 @@ int main (int argc, char **argv) {
 		return 1;
 	}
 	looser_sed.initLoser(argv);
-	if (!looser_sed.tryOpen())
-		return 2;
-	if (!looser_sed.tryReadWrite())
-		return 3;
-	if (!looser_sed.tryClose())
-		return 4;:
-
+	looser_sed.tryOpen();
+    looser_sed.tryReadWrite();
+	looser_sed.tryClose();
 	return 0;
 }

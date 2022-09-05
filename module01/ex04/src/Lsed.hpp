@@ -7,9 +7,9 @@
 struct Lsed {
 
 	void			initLoser(char **argv );
-	bool			tryOpen( void );
-	bool			tryReadWrite(void );
-	bool			tryClose( void );
+	void			tryOpen( void );
+	void			tryReadWrite(void );
+	void			tryClose( void );
 	void			tryWrite(char c ) ;
 
 	std::string		s1;
