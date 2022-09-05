@@ -18,7 +18,6 @@ public:
 
 
 	explicit			HumanB( std::string const & name );
-						HumanB( );
 						~HumanB( );
 						HumanB( HumanB const & src );
 						HumanB & operator=( HumanB const & rhs);

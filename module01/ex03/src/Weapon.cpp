@@ -21,7 +21,7 @@ Weapon::Weapon( const std::string & type ) : _type(type) {
 
 }
 
-Weapon::Weapon(	) : _type("<no_type>") {
+Weapon::Weapon(	) : _type("Avtomat Kalashnikova") {
 
 }
 
