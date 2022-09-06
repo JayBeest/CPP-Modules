@@ -52,5 +52,4 @@ fclean: clean
 
 re: clean all
 
-.PHONY:	all libft norme clean fclean re reall
-
+.PHONY:	all clean fclean re

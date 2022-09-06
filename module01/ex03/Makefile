@@ -58,5 +58,4 @@ reall: fclean all
 rerun: re
 	./miniRT
 
-.PHONY:	all libft norme clean fclean re reall
-
+.PHONY:	all clean fclean re
