@@ -1,7 +1,9 @@
 #ifndef HARL_H
 # define HARL_H
 
-typedef enum	e_pain_lvl
+# include <iostream>
+
+typedef enum e_pain_lvl
 {
 	DEBUG,
 	INFO,
@@ -17,9 +19,6 @@ public:
 	void			complain( std::string level );
 
 					Harl( );
-					Harl( const Harl & src );
-					~Harl( );
-					Harl & operator=( const Harl & rhs);
 
 private:
 
