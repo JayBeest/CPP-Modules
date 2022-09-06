@@ -1,6 +1,6 @@
 #include "Lsed.hpp"
 
-void	Lsed::initLoser(char **argv ) {
+void	Lsed::initLoser( char **argv ) {
 
 	this->file = std::string(argv[1]);
 	this->s1 = std::string(argv[2]);
@@ -36,7 +36,7 @@ void	Lsed::tryOpen( void ) {
 	}
 }
 
-void	Lsed::tryReadWrite(void ) {
+void	Lsed::tryReadWrite( void ) {
 
 	char	c;
 
@@ -55,7 +55,7 @@ void	Lsed::tryReadWrite(void ) {
 	std::cout << "Written changes to: '" << this->file + ".replace" << "'" << std::endl;
 }
 
-void	Lsed::tryWrite(char c ) {
+void	Lsed::tryWrite( char c ) {
 
 	static size_t	nbr_sequential_chars = 0;
 

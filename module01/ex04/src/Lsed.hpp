@@ -6,11 +6,11 @@
 
 struct Lsed {
 
-	void			initLoser(char **argv );
+	void			initLoser( char **argv );
 	void			tryOpen( void );
-	void			tryReadWrite(void );
+	void			tryReadWrite( void );
 	void			tryClose( void );
-	void			tryWrite(char c ) ;
+	void			tryWrite( char c ) ;
 
 	std::string		s1;
 	std::string		s2;
