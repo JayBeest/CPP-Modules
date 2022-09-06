@@ -1,4 +1,3 @@
-#include <iostream>
 #include "Fixed.hpp"
 
 ///			Public:
@@ -9,7 +8,7 @@ int		Fixed::getRawBits( ) const {
 	return this->_fixed_point;
 }
 
-void		Fixed::setRawBits( const int raw ) {
+void		Fixed::setRawBits( const int & raw ) {
 
 	this->_fixed_point = raw;
 }
@@ -21,22 +20,27 @@ Fixed::Fixed( ) : _fixed_point(0) {
 	std::cout << "Default constructor called" << std::endl;
 }
 
-Fixed::Fixed( const Fixed& other) {
+Fixed::Fixed( const Fixed & other ) {
 
 	std::cout << "Copy constructor called" << std::endl;
-	*this = other;
+    if (this != &other)
+    {
+	    *this = other;
+    }
 }
 
 Fixed::~Fixed( ) {
 
 	std::cout << "Destructor called" << std::endl;
-
 }
 
-Fixed &	Fixed::operator=( const Fixed& rhs ) {
+Fixed &	Fixed::operator=( const Fixed & rhs ) {
 
 	std::cout << "Copy assignment operator called" << std::endl;
-	this->setRawBits(rhs.getRawBits());
+    if (this != &rhs)
+    {
+	    this->setRawBits(rhs.getRawBits());
+    }
 	return *this;
 }
 
