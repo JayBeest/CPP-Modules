@@ -1,5 +1,22 @@
 #include "Fixed.hpp"
 
+void    subject_main(void) {
+
+    std::cout << "** Start of 'subject-main' **" << std::endl << std::endl;
+
+    Fixed a;
+    Fixed const b( Fixed( 5.05f ) * Fixed( 2 ) );
+    std::cout << a << std::endl;
+    std::cout << ++a << std::endl;
+    std::cout << a << std::endl;
+    std::cout << a++ << std::endl;
+    std::cout << a << std::endl;
+    std::cout << b << std::endl;
+    std::cout << Fixed::max( a, b ) << std::endl;
+
+    std::cout << std::endl << "** End of 'subject-main' **" << std::endl << std::endl;
+}
+
 int main( int argc, char **argv ) {
 
 	if (argc == 2 && std::string(argv[1]) == "-s")
@@ -7,6 +24,8 @@ int main( int argc, char **argv ) {
 		std::cout << std::endl << "Making silent..." << std::endl << std::endl;
 		Fixed::makeSilent();
 	}
+
+    subject_main();
 
 	Fixed a;
 	Fixed c = Fixed(352.390f);
@@ -22,9 +41,10 @@ int main( int argc, char **argv ) {
 	std::cout << a << std::endl;
 	std::cout << a++ << std::endl;
 	std::cout << a << std::endl;
-	std::cout << b << std::endl;
-	std::cout << Fixed::max(a, b) << std::endl << std::endl;
 
+	std::cout << b << std::endl;
+
+	std::cout << Fixed::max(a, b) << std::endl << std::endl;
 	std::cout << c << std::endl;
 	std::cout << d << std::endl;
 	a = e - f;
