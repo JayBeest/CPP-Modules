@@ -1,6 +1,6 @@
 ###               auto-generated Makefile               ###
 
-NAME		=	canon
+NAME		=	fixed
 
 SRC_DIR		=	src/
 OBJ_DIR		=	obj/
