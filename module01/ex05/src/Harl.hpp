@@ -8,9 +8,6 @@ public:
 	void			complain( std::string level );
 
 					Harl( );
-					Harl( const Harl & src );
-					~Harl( );
-					Harl & operator=( const Harl & rhs);
 
 private:
 
