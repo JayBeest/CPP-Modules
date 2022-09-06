@@ -1,6 +1,5 @@
-#include <iostream>
 #include "Fixed.hpp"
-#include <math.h>
+#include <cmath>
 
 ///			Public:
 
@@ -11,7 +10,7 @@ int		Fixed::getRawBits( ) const {
 	return this->_fixed_point;
 }
 
-void		Fixed::setRawBits( const int raw ) {
+void		Fixed::setRawBits( const int & raw ) {
 
 	this->_fixed_point = raw;
 }
@@ -24,130 +23,161 @@ void	Fixed::makeSilent( void ) {
 
 ///			Constructor/Destructor
 
-
 Fixed::Fixed( ) : _fixed_point(0) {
 
 	if (_loud)
 		std::cout << "Default constructor called" << std::endl;
 }
 
-Fixed::Fixed( const int int_value ) {
+Fixed::Fixed( const int & int_value ) {
 
 	if (_loud)
 		std::cout << "Int constructor called" << std::endl;
 	this->setRawBits(int_value << _fractional_bits);
 }
 
-Fixed::Fixed( const float float_value) : _fixed_point(0) {
+Fixed::Fixed( const float & float_value ) : _fixed_point(0) {
 
 	int		integer = (int)float_value;;
 	float	fractional = float_value - (float)integer;
 
 	if (float_value != 0)
+    {
 		this->setRawBits((integer << _fractional_bits) + (int)round((fractional * (1 << _fractional_bits))));
+    }
 	else
-		this->setRawBits(0);
+    {
+        this->setRawBits(0);
+    }
 	if (_loud)
-		std::cout << "Float constructor called" << std::endl;
+    {
+        std::cout << "Float constructor called" << std::endl;
+    }
 }
 
-Fixed::Fixed( const Fixed& other) {
+Fixed::Fixed( const Fixed & other ) {
 
 	if (_loud)
-		std::cout << "Copy constructor called" << std::endl;
-	*this = other;
+    {
+        std::cout << "Copy constructor called" << std::endl;
+    }
+    if (this != &other)
+    {
+	    *this = other;
+    }
 }
 
 Fixed::~Fixed( ) {
 
 	if (_loud)
+    {
 		std::cout << "Destructor called" << std::endl;
+    }
 }
 
 Fixed &	Fixed::operator=( const Fixed& rhs ) {
 
 	if (_loud)
+    {
 		std::cout << "Copy assignment operator called" << std::endl;
-	this->setRawBits(rhs.getRawBits());
+    }
+    if (this != &rhs)
+    {
+	    this->setRawBits(rhs.getRawBits());
+    }
 	return *this;
 }
 
 
 ///			Comparison operators
 
-
-bool 	Fixed::operator>( const Fixed& rhs ) const {
+bool 	Fixed::operator>( const Fixed & rhs ) const {
 
 	if (_loud)
+    {
 		std::cout << "Larger-than operator called" << std::endl;
+    }
 	return getRawBits() > rhs.getRawBits();
 }
 
-bool 	Fixed::operator>=( const Fixed& rhs ) const {
+bool 	Fixed::operator>=( const Fixed & rhs ) const {
 
 	if (_loud)
+    {
 		std::cout << "Larger-than-or-equal-to operator called" << std::endl;
+    }
 	return getRawBits() >= rhs.getRawBits();
 }
 
-bool 	Fixed::operator<( const Fixed& rhs ) const {
+bool 	Fixed::operator<( const Fixed & rhs ) const {
 
 	if (_loud)
+    {
 		std::cout << "Smaller-than operator called" << std::endl;
+    }
 	return getRawBits() < rhs.getRawBits();
 }
 
-bool 	Fixed::operator<=( const Fixed& rhs ) const {
+bool 	Fixed::operator<=( const Fixed & rhs ) const {
 
 	if (_loud)
+    {
 		std::cout << "Smaller-than-or-equal-to operator called" << std::endl;
+    }
 	return getRawBits() <= rhs.getRawBits();
 }
 
-bool 	Fixed::operator==( const Fixed& rhs ) const {
+bool 	Fixed::operator==( const Fixed & rhs ) const {
 
 	if (_loud)
+    {
 		std::cout << "is-equal operator called" << std::endl;
+    }
 	return getRawBits() == rhs.getRawBits();
 }
 
-bool 	Fixed::operator!=( const Fixed& rhs ) const {
+bool 	Fixed::operator!=( const Fixed & rhs ) const {
 
 	if (_loud)
+    {
 		std::cout << "is-not-equal operator called" << std::endl;
+    }
 	return getRawBits() != rhs.getRawBits();
 }
 
 
 ///			Arithmetic operators
 
-
-Fixed 	Fixed::operator+( const Fixed& rhs ) {
+Fixed 	Fixed::operator+( const Fixed & rhs ) const {
 
 	Fixed	answer(*this);
 
 	if (_loud)
+    {
 		std::cout << "Arithmetic + operator called" << std::endl;
+    }
 	answer.setRawBits(answer.getRawBits() + rhs.getRawBits());
 	return answer;
 }
 
-Fixed 	Fixed::operator-( const Fixed& rhs ) {
+Fixed 	Fixed::operator-( const Fixed & rhs ) const {
 
 	Fixed	answer(*this);
 
 	if (_loud)
+    {
 		std::cout << "Arithmetic - operator called" << std::endl;
+    }
 	answer.setRawBits(answer.getRawBits() - rhs.getRawBits());
 	return answer;
 }
 
-Fixed 	Fixed::operator*( const Fixed& rhs ) {
+Fixed 	Fixed::operator*( const Fixed & rhs ) const {
 
 	return Fixed(this->toFloat() * rhs.toFloat());
 }
 
-Fixed 	Fixed::operator/( const Fixed& rhs ) {
+Fixed 	Fixed::operator/( const Fixed & rhs ) const {
 
 	return Fixed(this->toFloat() / rhs.toFloat());
 }
@@ -155,45 +185,51 @@ Fixed 	Fixed::operator/( const Fixed& rhs ) {
 
 ///			Pre-/Post-Increment-/Decrement-overloading
 
-
-const Fixed 	Fixed::operator++( void ) {
+Fixed 	Fixed::operator++( void ) {
 
 	if (_loud)
+    {
 		std::cout << "Arithmetic / operator called" << std::endl;
+    }
 	this->setRawBits(this->getRawBits() + 1);
 	return Fixed(*this);;
 }
 
-const Fixed 	Fixed::operator++( int ) {
+Fixed 	Fixed::operator++( int ) {
 
 	Fixed	old(*this);
 
 	if (_loud)
+    {
 		std::cout << "Arithmetic / operator called" << std::endl;
+    }
 	this->setRawBits(this->getRawBits() + 1);
 	return old;
 }
-const Fixed 	Fixed::operator--( void ) {
+Fixed 	Fixed::operator--( void ) {
 
 	if (_loud)
+    {
 		std::cout << "Arithmetic / operator called" << std::endl;
+    }
 	this->setRawBits(this->getRawBits() - 1);
 	return Fixed(*this);;
 }
 
-const Fixed 	Fixed::operator--( int ) {
+Fixed 	Fixed::operator--( int ) {
 
 	Fixed	old(*this);
 
 	if (_loud)
+    {
 		std::cout << "Arithmetic / operator called" << std::endl;
+    }
 	this->setRawBits(this->getRawBits() - 1);
 	return old;
 }
 
 
 ///			Functions/Methods
-
 
 float	Fixed::toFloat( void ) const {
 
@@ -206,7 +242,6 @@ float	Fixed::toFloat( void ) const {
 int		Fixed::toInt( void ) const {
 
 	return this->_fixed_point >> _fractional_bits;
-
 }
 
 Fixed &	Fixed::min( Fixed & a, Fixed & b ) {
@@ -239,7 +274,7 @@ Fixed const &	Fixed::max( Fixed const & a, Fixed const & b ) {
 
 ///			Private:
 
-std::ostream & operator<<(std::ostream & o_stream, Fixed const & fix) {
+std::ostream & operator<<( std::ostream & o_stream, const Fixed & fix ) {
 
 	return o_stream << fix.toFloat();
 }
