@@ -1,6 +1,6 @@
 ###               auto-generated Makefile               ###
 
-NAME		=	canon
+NAME		=	more_useful_fixed
 
 SRC_DIR		=	src/
 OBJ_DIR		=	obj/
@@ -10,9 +10,11 @@ BIN			=	$(BIN_DIR)$(NAME)
 SRC			=	Fixed.cpp \
 				main.cpp \
 
+HEADERS		=	Fixed.hpp \
+
 OBJ 		=	$(addprefix $(OBJ_DIR), $(SRC:%.cpp=%.o))
 
-CFLAGS		=	-Wall -Werror -Wextra -std=c++98 -g #-fsanitize=address
+CFLAGS		=	-Wall -Werror -Wextra -std=c++98 -pedantic # -g -fsanitize=address
 CC			=	c++
 
 ifeq ("$(VERBOSE)","1")
@@ -23,20 +25,18 @@ Q := @
 VECHO = @echo
 endif
 
-vpath %.cpp $(SRC_DIR)
-
 all: $(BIN)
 
 $(BIN): $(OBJ)
 	$(Q)mkdir -p $(@D)
 	$(VECHO)
-	$(VECHO) "\033[36mLinking binary file:     $@ 🚨\033[0m"
+	$(VECHO) "\033[36mLinking binary file:     \033[0m$@ 🔢"
 	$(VECHO)
 	$(Q)$(CC) $^ $(CFLAGS) -o $@
 
-$(OBJ_DIR)%.o:%.cpp
+$(OBJ_DIR)%.o: $(SRC_DIR)%.cpp $(addprefix $(SRC_DIR), $(HEADERS))
 	$(Q)mkdir -p $(@D)
-	$(VECHO) "\033[34mCompiling object file:   $@\033[0m"
+	$(VECHO) "\033[34mCompiling object file:   \033[0m$@"
 	$(Q)$(CC) -c $< $(CFLAGS) -o $@
 
 clean:
@@ -51,10 +51,4 @@ fclean: clean
 
 re: clean all
 
-reall: fclean all
-
-rerun: re
-	./miniRT
-
-.PHONY:	all libft norme clean fclean re reall
-
+.PHONY:	all clean fclean re
