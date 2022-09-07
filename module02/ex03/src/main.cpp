@@ -7,12 +7,12 @@ bool	bsp(Point const a, Point const b, Point const c, Point const point)
 
 	orientation = (b.getX() - a.getX()) * (c.getY() - a.getY()) - (b.getY() - a.getY()) * (c.getX() - a.getX());
 
-	return orientation * ((b.getX() - a.getX()) * (point.getY() - a.getY()) - (b.getY() - a.getY()) * (point.getX() - a.getX())) > 0 &&
-		   orientation * ((c.getX() - b.getX()) * (point.getY() - b.getY()) - (c.getY() - b.getY()) * (point.getX() - b.getX())) > 0 &&
-		   orientation * ((a.getX() - c.getX()) * (point.getY() - c.getY()) - (a.getY() - c.getY()) * (point.getX() - c.getX())) > 0;
+	return orientation * ((b.getX() - a.getX()) * (point.getY() - a.getY()) - (b.getY() - a.getY()) * (point.getX() - a.getX())) > Fixed(0) &&
+		   orientation * ((c.getX() - b.getX()) * (point.getY() - b.getY()) - (c.getY() - b.getY()) * (point.getX() - b.getX())) > Fixed(0) &&
+		   orientation * ((a.getX() - c.getX()) * (point.getY() - c.getY()) - (a.getY() - c.getY()) * (point.getX() - c.getX())) > Fixed(0);
 }
 
-bool	is_triangle(Point const a, Point const b, Point const c)
+bool	is_triangle(const Point & a, const Point & b, const Point & c)
 {
 	if (a == b || a == c || b == c)
 		return false;
@@ -44,14 +44,27 @@ int main( int argc, char **argv ) {
 
 	if (!is_triangle(a, b, c))
 	{
-		std::cout << "Points A, B, and C do not form a triangle ABC" << std::endl;
+		std::cout << "Points A, B, and C do not form a triangle ABC (" \
+            << a.getX() << "," << a.getY() << "   " \
+            << b.getX() << "," << b.getY() << "   " \
+            << c.getX() << "," << c.getY() << ")" << std::endl;
 		return 1;
 	}
 
 	if (bsp(a, b, c, p))
-		std::cout << "Point(" << p.getX() << ", " << p.getY() <<  ") is inside triangle ABC" << std::endl;
+    {
+		std::cout << "Point(" << p.getX() << "," << p.getY() <<  ") is inside triangle ABC (" \
+            << a.getX() << "," << a.getY() << "   " \
+            << b.getX() << "," << b.getY() << "   " \
+            << c.getX() << "," << c.getY() << ")" << std::endl;
+    }
 	else
-		std::cout << "Point(" << p.getX() << ", " << p.getY() <<  ") is outside triangle ABC" << std::endl;
+    {
+		std::cout << "Point(" << p.getX() << "," << p.getY() <<  ") is outside triangle ABC (" \
+            << a.getX() << "," << a.getY() << "   " \
+            << b.getX() << "," << b.getY() << "   " \
+            << c.getX() << "," << c.getY() << ")" << std::endl;
+    }
 
 	return 1;
 }

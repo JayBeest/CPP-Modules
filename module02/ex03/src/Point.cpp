@@ -1,4 +1,3 @@
-#include <iostream>
 #include "Point.hpp"
 
 ///			Public:
@@ -17,7 +16,7 @@ const Fixed &	Point::getY( void ) const {
 
 ///			Constructor / Destructor
 
-Point::Point( const float x, const float y ) : x(Fixed(x)), y(Fixed(y)) {
+Point::Point( const float & x, const float & y ) : x(Fixed(x)), y(Fixed(y)) {
 
 	if (Point::_loud)
 		std::cout << "[Point] Standard constructor called" << std::endl;
@@ -29,7 +28,7 @@ Point::Point( ) : x(Fixed()), y(Fixed()) {
 		std::cout << "[Point] Default constructor called" << std::endl;
 }
 
-Point::Point( const Point& other)
+Point::Point( const Point & other )
 : x(Fixed(other.getX())), y(Fixed(other.getY())) {
 
 	if (Point::_loud)
@@ -40,13 +39,14 @@ Point::~Point( ) {
 
 	if (Point::_loud)
 		std::cout << "[Point] Destructor called" << std::endl;
-
 }
 
 Point &	Point::operator=( const Point & rhs ) {
 
 	if (this != &rhs)
-		std::cout << "[Point] Copy assignment operator cannot assign (copy) -> 'const Fixed x, y'" << std::endl;
+    {
+	    std::cout << "[Point] Copy assignment operator cannot assign (copy) -> 'const Fixed x, y'" << std::endl;
+    }
 	return *this;
 }
 

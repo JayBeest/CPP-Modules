@@ -10,9 +10,9 @@ public:
 	const Fixed &	getX( void ) const;
 	const Fixed &	getY( void ) const;
 
-					Point( const float x, const float y );
+					Point( const float & x, const float & y );
 					Point( );
-					Point( const Point & src );
+					Point( const Point & other );
 					~Point( );
 					Point & operator=( const Point & rhs);
 
