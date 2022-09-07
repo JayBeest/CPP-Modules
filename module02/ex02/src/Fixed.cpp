@@ -75,7 +75,7 @@ Fixed::~Fixed( ) {
     }
 }
 
-Fixed &	Fixed::operator=( const Fixed& rhs ) {
+Fixed &	Fixed::operator=( const Fixed & rhs ) {
 
 	if (_loud)
     {
@@ -251,7 +251,7 @@ Fixed &	Fixed::min( Fixed & a, Fixed & b ) {
 	return b;
 }
 
-Fixed const &	Fixed::min( Fixed const & a, Fixed const & b ) {
+Fixed const &	Fixed::min( const Fixed & a, const Fixed & b ) {
 
 	if (a < b)
 		return a;
@@ -265,7 +265,7 @@ Fixed &	Fixed::max( Fixed & a, Fixed & b ) {
 	return b;
 }
 
-Fixed const &	Fixed::max( Fixed const & a, Fixed const & b ) {
+Fixed const &	Fixed::max( const Fixed & a, const Fixed & b ) {
 
 	if (a > b)
 		return a;

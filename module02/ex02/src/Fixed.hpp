@@ -39,9 +39,9 @@ public:
 	int				        toInt( void ) const;
 
 	static Fixed &			min( Fixed & a, Fixed & b );
-	static Fixed const &	min( Fixed const & a, Fixed const & b );
+	static Fixed const &	min( const Fixed & a, const Fixed & b );
 	static Fixed &			max( Fixed & a, Fixed & b );
-	static Fixed const &	max( Fixed const & a, Fixed const & b );
+	static Fixed const &	max( const Fixed & a, const Fixed & b );
 
 
 private:
