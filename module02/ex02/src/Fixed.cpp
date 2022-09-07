@@ -6,7 +6,7 @@
 int		Fixed::getRawBits( ) const {
 
 	if (_loud)
-		std::cout << "getRawBits member function called" << std::endl;
+		std::cout << "[Fixed] 'getRawBits' member function called" << std::endl;
 	return this->_fixed_point;
 }
 
@@ -21,18 +21,18 @@ void	Fixed::makeSilent( void ) {
 }
 
 
-///			Constructor/Destructor
+///			Constructor / Destructor
 
 Fixed::Fixed( ) : _fixed_point(0) {
 
 	if (_loud)
-		std::cout << "Default constructor called" << std::endl;
+		std::cout << "[Fixed] Default constructor called" << std::endl;
 }
 
 Fixed::Fixed( const int & int_value ) {
 
 	if (_loud)
-		std::cout << "Int constructor called" << std::endl;
+		std::cout << "[Fixed] Int constructor called" << std::endl;
 	this->setRawBits(int_value << _fractional_bits);
 }
 
@@ -51,7 +51,7 @@ Fixed::Fixed( const float & float_value ) : _fixed_point(0) {
     }
 	if (_loud)
     {
-        std::cout << "Float constructor called" << std::endl;
+        std::cout << "[Fixed] Float constructor called" << std::endl;
     }
 }
 
@@ -59,7 +59,7 @@ Fixed::Fixed( const Fixed & other ) {
 
 	if (_loud)
     {
-        std::cout << "Copy constructor called" << std::endl;
+        std::cout << "[Fixed] Copy constructor called" << std::endl;
     }
     if (this != &other)
     {
@@ -71,7 +71,7 @@ Fixed::~Fixed( ) {
 
 	if (_loud)
     {
-		std::cout << "Destructor called" << std::endl;
+		std::cout << "[Fixed] Destructor called" << std::endl;
     }
 }
 
@@ -79,7 +79,7 @@ Fixed &	Fixed::operator=( const Fixed & rhs ) {
 
 	if (_loud)
     {
-		std::cout << "Copy assignment operator called" << std::endl;
+		std::cout << "[Fixed] Copy assignment operator called" << std::endl;
     }
     if (this != &rhs)
     {
@@ -95,7 +95,7 @@ bool 	Fixed::operator>( const Fixed & rhs ) const {
 
 	if (_loud)
     {
-		std::cout << "Larger-than operator called" << std::endl;
+		std::cout << "[Fixed] Larger-than operator called" << std::endl;
     }
 	return getRawBits() > rhs.getRawBits();
 }
@@ -104,7 +104,7 @@ bool 	Fixed::operator>=( const Fixed & rhs ) const {
 
 	if (_loud)
     {
-		std::cout << "Larger-than-or-equal-to operator called" << std::endl;
+		std::cout << "[Fixed] Larger-than-or-equal-to operator called" << std::endl;
     }
 	return getRawBits() >= rhs.getRawBits();
 }
@@ -113,7 +113,7 @@ bool 	Fixed::operator<( const Fixed & rhs ) const {
 
 	if (_loud)
     {
-		std::cout << "Smaller-than operator called" << std::endl;
+		std::cout << "[Fixed] Smaller-than operator called" << std::endl;
     }
 	return getRawBits() < rhs.getRawBits();
 }
@@ -122,7 +122,7 @@ bool 	Fixed::operator<=( const Fixed & rhs ) const {
 
 	if (_loud)
     {
-		std::cout << "Smaller-than-or-equal-to operator called" << std::endl;
+		std::cout << "[Fixed] Smaller-than-or-equal-to operator called" << std::endl;
     }
 	return getRawBits() <= rhs.getRawBits();
 }
@@ -131,7 +131,7 @@ bool 	Fixed::operator==( const Fixed & rhs ) const {
 
 	if (_loud)
     {
-		std::cout << "is-equal operator called" << std::endl;
+		std::cout << "[Fixed] Is-equal operator called" << std::endl;
     }
 	return getRawBits() == rhs.getRawBits();
 }
@@ -140,7 +140,7 @@ bool 	Fixed::operator!=( const Fixed & rhs ) const {
 
 	if (_loud)
     {
-		std::cout << "is-not-equal operator called" << std::endl;
+		std::cout << "[Fixed] Is-not-equal operator called" << std::endl;
     }
 	return getRawBits() != rhs.getRawBits();
 }
@@ -154,7 +154,7 @@ Fixed 	Fixed::operator+( const Fixed & rhs ) const {
 
 	if (_loud)
     {
-		std::cout << "Arithmetic + operator called" << std::endl;
+		std::cout << "[Fixed] Arithmetic '+' operator called" << std::endl;
     }
 	answer.setRawBits(answer.getRawBits() + rhs.getRawBits());
 	return answer;
@@ -166,7 +166,7 @@ Fixed 	Fixed::operator-( const Fixed & rhs ) const {
 
 	if (_loud)
     {
-		std::cout << "Arithmetic - operator called" << std::endl;
+		std::cout << "[Fixed] Arithmetic '-' operator called" << std::endl;
     }
 	answer.setRawBits(answer.getRawBits() - rhs.getRawBits());
 	return answer;
@@ -183,13 +183,13 @@ Fixed 	Fixed::operator/( const Fixed & rhs ) const {
 }
 
 
-///			Pre-/Post-Increment-/Decrement-overloading
+///			Pre-/Post-Increment / Decrement overloading
 
 Fixed 	Fixed::operator++( void ) {
 
 	if (_loud)
     {
-		std::cout << "Arithmetic / operator called" << std::endl;
+		std::cout << "[Fixed] Arithmetic (pre)'++' operator called" << std::endl;
     }
 	this->setRawBits(this->getRawBits() + 1);
 	return Fixed(*this);;
@@ -201,7 +201,7 @@ Fixed 	Fixed::operator++( int ) {
 
 	if (_loud)
     {
-		std::cout << "Arithmetic / operator called" << std::endl;
+		std::cout << "[Fixed] Arithmetic '++'(post) operator called" << std::endl;
     }
 	this->setRawBits(this->getRawBits() + 1);
 	return old;
@@ -210,7 +210,7 @@ Fixed 	Fixed::operator--( void ) {
 
 	if (_loud)
     {
-		std::cout << "Arithmetic / operator called" << std::endl;
+		std::cout << "[Fixed] Arithmetic (pre)'--' operator called" << std::endl;
     }
 	this->setRawBits(this->getRawBits() - 1);
 	return Fixed(*this);;
@@ -222,14 +222,14 @@ Fixed 	Fixed::operator--( int ) {
 
 	if (_loud)
     {
-		std::cout << "Arithmetic / operator called" << std::endl;
+		std::cout << "[Fixed] Arithmetic '--'(post) operator called" << std::endl;
     }
 	this->setRawBits(this->getRawBits() - 1);
 	return old;
 }
 
 
-///			Functions/Methods
+///			Functions / Methods
 
 float	Fixed::toFloat( void ) const {
 
@@ -251,7 +251,7 @@ Fixed &	Fixed::min( Fixed & a, Fixed & b ) {
 	return b;
 }
 
-Fixed const &	Fixed::min( const Fixed & a, const Fixed & b ) {
+const Fixed &	Fixed::min( Fixed const & a, Fixed const & b ) {
 
 	if (a < b)
 		return a;
@@ -265,7 +265,7 @@ Fixed &	Fixed::max( Fixed & a, Fixed & b ) {
 	return b;
 }
 
-Fixed const &	Fixed::max( const Fixed & a, const Fixed & b ) {
+const Fixed &	Fixed::max( Fixed const & a, Fixed const & b ) {
 
 	if (a > b)
 		return a;
