@@ -12,8 +12,8 @@ public:
 	static void		makeSilent( void );
 
 					Fixed( );
-					Fixed( const int & int_value );
-					Fixed( const float & float_value );
+	explicit		Fixed( const int & int_value );
+	explicit		Fixed( const float & float_value );
 					Fixed( const Fixed & other );
 					~Fixed( );
 					Fixed & operator=( const Fixed & rhs );
