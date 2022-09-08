@@ -4,7 +4,7 @@
 
 ///			Getters/Setters
 
-std::string	ClapTrap::getName( void ) const {
+const std::string &	ClapTrap::getName( void ) const {
 
 	return this->_name;
 }
@@ -45,7 +45,7 @@ ClapTrap::ClapTrap(	)
 		std::cout << "[ClapTrap] Default constructor called" << std::endl;
 }
 
-ClapTrap::ClapTrap( const ClapTrap& other) {
+ClapTrap::ClapTrap( const ClapTrap & other ) {
 
 	if (this != &other)
 	{
@@ -61,7 +61,7 @@ ClapTrap::~ClapTrap( ) {
 		std::cout << "[ClapTrap] Destructor called" << std::endl;
 }
 
-ClapTrap &	ClapTrap::operator=( const ClapTrap& rhs ) {
+ClapTrap &	ClapTrap::operator=( const ClapTrap & rhs ) {
 
 	if (this != &rhs)
 	{
