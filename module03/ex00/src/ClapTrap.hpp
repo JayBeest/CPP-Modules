@@ -27,12 +27,12 @@ public:
 
 private:
 
-	std::string		_name;
-	unsigned int	_hit_points;
-	unsigned int	_energy_points;
-	unsigned int	_attack_damage;
+	std::string		    _name;
+	unsigned int	    _hit_points;
+	unsigned int	    _energy_points;
+	unsigned int	    _attack_damage;
 
-	static bool		_loud;
+	static bool		    _loud;
 
 };
 

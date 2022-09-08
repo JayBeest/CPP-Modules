@@ -1,4 +1,3 @@
-#include <iostream>
 #include "ClapTrap.hpp"
 
 int main (int argc, char **argv) {
