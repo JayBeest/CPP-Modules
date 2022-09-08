@@ -102,4 +102,3 @@ void	ScavTrap::guardGate( ) {
 }
 
 ///			Private:
-

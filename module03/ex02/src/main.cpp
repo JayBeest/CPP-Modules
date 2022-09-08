@@ -1,4 +1,3 @@
-#include <iostream>
 #include "FragTrap.hpp"
 
 int main (int argc, char **argv) {
