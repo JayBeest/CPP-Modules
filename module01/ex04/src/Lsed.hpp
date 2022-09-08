@@ -10,10 +10,10 @@ struct Lsed {
 	void			tryOpen( void );
 	void			tryReadWrite( void );
 	void			tryClose( void );
-	void			tryWrite( char c ) ;
+	void			tryWrite( std::string line ) ;
 
-	std::string		s1;
-	std::string		s2;
+	std::string		find;
+	std::string		replace;
 	std::string		file;
 	std::fstream	in_file;
 	std::fstream	out_file;
