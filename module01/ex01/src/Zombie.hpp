@@ -10,14 +10,17 @@ public:
 	std::string 	getName( ) const;
 
 	explicit		Zombie( const std::string & name );
+                    Zombie( );
 					~Zombie( );
+                    Zombie( const Zombie & other );
+    Zombie &        operator=( const Zombie & rhs );
 
 	void			announce( ) const;
 
 private:
 
 	int				_id;
-	std::string		_string;
+	std::string		_name;
 
 	static int		_id_counter;
 
