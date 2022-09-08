@@ -1,3 +1,4 @@
+#include <cstdlib>
 #include "Lsed.hpp"
 
 void	Lsed::initLoser( char **argv ) {
@@ -16,33 +17,33 @@ void	Lsed::tryOpen( void ) {
         if (this->in_file.is_open())
         {
             std::cerr << this->in_file << " is already open, quitting.." << std::endl;
-            exit(1);
+            std::exit(1);
         }
-		this->in_file.open( this->file, std::fstream::in );
+		this->in_file.open( this->file.c_str(), std::fstream::in );
 	}
 	catch(std::fstream::failure & e)
     {
 		std::cerr << "Exception opening " << this->in_file << std::endl;
-		exit(2);
+		std::exit(2);
 	}
 	if (!this->in_file)
 	{
 		std::cout << this->in_file << " does not exist or no permission to read from it, quitting.." << std::endl;
-		exit(3);
+		std::exit(3);
 	}
 	try
     {
         if (this->out_file.is_open())
         {
             std::cerr << this->out_file << " is already open, quitting.." << std::endl;
-            exit(4);
+            std::exit(4);
         }
-        this->out_file.open(this->file.append(".replace"), std::fstream::out | std::fstream::trunc);
+        this->out_file.open(this->file.append(".replace").c_str(), std::fstream::out | std::fstream::trunc);
     }
 	catch(std::fstream::failure & e)
     {
 		std::cerr << "Exception opening" << this->out_file << ", write protected?" << std::endl;
-		exit(5);
+		std::exit(5);
 	}
 }
 
@@ -60,7 +61,7 @@ void	Lsed::tryReadWrite( void ) {
 	catch(std::fstream::failure & e)
     {
 		std::cerr << "Exception reading from " << this->in_file << std::endl;
-        exit(6);
+        std::exit(6);
 	}
 	std::cout << "Written changes to '" << this->file << "'" << std::endl;
 }
@@ -88,7 +89,7 @@ void	Lsed::tryWrite( std::string line ) {
 	catch(std::fstream::failure & e)
     {
 		std::cerr << "Exception writing " << this->out_file << std::endl;
-        exit(7);
+        std::exit(7);
 	}
 }
 
@@ -101,7 +102,7 @@ void	Lsed::tryClose( void ) {
 	catch(std::fstream::failure & e)
     {
 		std::cerr << "Exception closing " << this->in_file << std::endl;
-		exit(8);
+		std::exit(8);
 	}
 	try
     {
@@ -110,6 +111,6 @@ void	Lsed::tryClose( void ) {
 	catch(std::fstream::failure & e)
     {
 		std::cerr << "Exception closing " << this->out_file << std::endl;
-		exit(9);
+		std::exit(9);
 	}
 }
