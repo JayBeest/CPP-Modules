@@ -9,11 +9,11 @@ public:
 
 	explicit		ScavTrap( const std::string & name );
 					ScavTrap( );
-					ScavTrap( const ScavTrap & src );
+					ScavTrap( const ScavTrap & other );
 					~ScavTrap( );
-					ScavTrap & operator=( const ScavTrap & rhs);
+	ScavTrap &      operator=( const ScavTrap & rhs );
 
-	void			attack( const std::string & target );
+	virtual void	attack( const std::string & target );
 	void			guardGate( );
 
 private:
