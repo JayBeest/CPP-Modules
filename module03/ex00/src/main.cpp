@@ -14,11 +14,11 @@ int main (int argc, char **argv) {
 
 	a.setAttackDamage(3);
 	a.attack("Eve");
-	b.takeDamage(3);
+	b.takeDamage(a.getAttackDamage());
 	a.attack("Eve");
-	b.takeDamage(3);
+	b.takeDamage(a.getAttackDamage());
 	a.attack("Eve");
-	b.takeDamage(3);
+	b.takeDamage(a.getAttackDamage());
 
 	b.beRepaired(2);
 	b.beRepaired(2);
@@ -34,11 +34,11 @@ int main (int argc, char **argv) {
 
 	a.setAttackDamage(12);
 	a.attack("Eve");
-	b.takeDamage(12);
+	b.takeDamage(a.getAttackDamage());
 	a.attack("Eve");
-	b.takeDamage(12);
+	b.takeDamage(a.getAttackDamage());
 	a.attack("Eve");
-	b.takeDamage(12);
+	b.takeDamage(a.getAttackDamage());
 
 	return 0;
 }
