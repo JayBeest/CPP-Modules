@@ -4,7 +4,7 @@
 
 ///			Getters/Setters
 
-std::string	ClapTrap::getName( void ) const {
+const std::string & ClapTrap::getName( void ) const {
 
 	return this->_name;
 }
@@ -45,14 +45,14 @@ ClapTrap::ClapTrap(	)
 		std::cout << "Default constructor called" << std::endl;
 }
 
-ClapTrap::ClapTrap( const ClapTrap& other) {
+ClapTrap::ClapTrap( const ClapTrap & other ) {
 
+	if (ClapTrap::_loud)
+		std::cout << "Copy constructor called" << std::endl;
 	if (this != &other)
 	{
 		*this = other;
 	}
-	if (ClapTrap::_loud)
-		std::cout << "Copy constructor called" << std::endl;
 }
 
 ClapTrap::~ClapTrap( ) {
@@ -61,8 +61,10 @@ ClapTrap::~ClapTrap( ) {
 		std::cout << "Destructor called" << std::endl;
 }
 
-ClapTrap &	ClapTrap::operator=( const ClapTrap& rhs ) {
+ClapTrap &	ClapTrap::operator=( const ClapTrap & rhs ) {
 
+	if (ClapTrap::_loud)
+		std::cout << "Copy assignment operator called" << std::endl;
 	if (this != &rhs)
 	{
 		this->_name = rhs.getName();
@@ -70,14 +72,12 @@ ClapTrap &	ClapTrap::operator=( const ClapTrap& rhs ) {
 		this->_energy_points = rhs.getEnergyPoints();
 		this->_attack_damage = rhs.getAttackDamage();
 	}
-	if (ClapTrap::_loud)
-		std::cout << "Copy assignment operator called" << std::endl;
 	return *this;
 }
 
 ///			Functions/Methods
 
-void	ClapTrap::attack( const std::string & target) {
+void	ClapTrap::attack( const std::string & target ) {
 
 	if (this->_hit_points == 0)
 		std::cout << "ClapTrap " << this->_name << " is dead and cannot attack.." << std::endl;
