@@ -7,5 +7,5 @@ int main ( )
     real_z->announce();
 	delete real_z;
 	newChump("Dork");
-	return 1;
+	return 0;
 }
