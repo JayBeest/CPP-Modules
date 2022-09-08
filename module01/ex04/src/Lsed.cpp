@@ -15,14 +15,14 @@ void	Lsed::tryOpen( void ) {
     {
         if (this->in_file.is_open())
         {
-            std::cerr << this->in_file << " is already open somewhere else, quitting.." << std::endl;
+            std::cerr << this->in_file << " is already open, quitting.." << std::endl;
             exit(1);
         }
 		this->in_file.open( this->file, std::fstream::in );
 	}
 	catch(std::fstream::failure & e)
     {
-		std::cerr << "Exception opening in_file" << std::endl;
+		std::cerr << "Exception opening " << this->in_file << std::endl;
 		exit(2);
 	}
 	if (!this->in_file)
@@ -34,7 +34,7 @@ void	Lsed::tryOpen( void ) {
     {
         if (this->out_file.is_open())
         {
-            std::cerr << this->out_file << " is already open somewhere else, quitting.." << std::endl;
+            std::cerr << this->out_file << " is already open, quitting.." << std::endl;
             exit(4);
         }
         this->out_file.open(this->file.append(".replace"), std::fstream::out | std::fstream::trunc);
