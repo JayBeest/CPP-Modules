@@ -4,12 +4,12 @@
 
 std::string Zombie::getName( ) const {
 
-	return this->_string;
+	return this->_name;
 }
 
 ///			Constructor/Destroyer
 
-Zombie::Zombie( const std::string & name ) : _string(name) {
+Zombie::Zombie( const std::string & name ) : _name(name) {
 
 }
 
