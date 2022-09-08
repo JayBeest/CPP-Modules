@@ -1,5 +1,3 @@
-#include <iostream>
-//#include "ClapTrap.hpp"
 #include "ScavTrap.hpp"
 
 int main (int argc, char **argv) {
@@ -15,13 +13,13 @@ int main (int argc, char **argv) {
 	ScavTrap c;
 
 	a.attack("Aaf");
-	b.takeDamage(20);
+	b.takeDamage(a.getAttackDamage());
 	a.attack("Aaf");
-	b.takeDamage(20);
+	b.takeDamage(a.getAttackDamage());
 	a.attack("Aaf");
-	b.takeDamage(20);
+	b.takeDamage(a.getAttackDamage());
 	a.attack("Aaf");
-	b.takeDamage(20);
+	b.takeDamage(a.getAttackDamage());
 
 	b.beRepaired(2);
 	b.beRepaired(2);
@@ -36,16 +34,16 @@ int main (int argc, char **argv) {
 	b.beRepaired(2);
 
 	a.attack("Aaf");
-	b.takeDamage(20);
+	b.takeDamage(a.getAttackDamage());
 	a.attack("Aaf");
-	b.takeDamage(20);
+	b.takeDamage(a.getAttackDamage());
 	b.guardGate();
 
 	a.attack("Aaf");
-	b.takeDamage(20);
+	b.takeDamage(a.getAttackDamage());
 	a.attack("Aaf");
-	b.takeDamage(20);
-	b.beRepaired(200);
+	b.takeDamage(a.getAttackDamage());
+	b.beRepaired(2);
 	b.attack("Ben");
 	b.guardGate();
 
