@@ -14,11 +14,11 @@ int main (int argc, char **argv) {
 	FragTrap c;
 
 	a.attack("Aaf");
-	b.takeDamage(30);
+	b.takeDamage(a.getAttackDamage());
 	a.attack("Aaf");
-	b.takeDamage(30);
+	b.takeDamage(a.getAttackDamage());
 	a.attack("Aaf");
-	b.takeDamage(30);
+	b.takeDamage(a.getAttackDamage());
 
 	b.beRepaired(2);
 	b.beRepaired(2);
@@ -33,13 +33,13 @@ int main (int argc, char **argv) {
 	b.beRepaired(2);
 
 	a.attack("Aaf");
-	b.takeDamage(30);
+	b.takeDamage(a.getAttackDamage());
 	b.highFivesGuys();
 
 	a.attack("Aaf");
-	b.takeDamage(30);
+	b.takeDamage(a.getAttackDamage());
 	a.attack("Aaf");
-	b.takeDamage(30);
+	b.takeDamage(a.getAttackDamage());
 	b.beRepaired(300);
 	b.attack("Ben");
 	b.highFivesGuys();
