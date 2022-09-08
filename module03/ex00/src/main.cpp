@@ -19,10 +19,6 @@ int main (int argc, char **argv) {
 	b.takeDamage(3);
 	a.attack("Eve");
 	b.takeDamage(3);
-	a.attack("Eve");
-	b.takeDamage(3);
-	a.attack("Eve");
-	b.takeDamage(3);
 
 	b.beRepaired(2);
 	b.beRepaired(2);
