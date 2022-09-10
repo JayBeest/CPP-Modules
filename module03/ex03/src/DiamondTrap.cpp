@@ -21,15 +21,18 @@ DiamondTrap::DiamondTrap( const std::string & name )
 	this->_hit_points = this->FragTrap::_hit_points;
 	this->_energy_points = this->ScavTrap::_energy_points;
 	this->_attack_damage = this->FragTrap::_attack_damage;
-	// attack() overloading!?
 }
 
-DiamondTrap::DiamondTrap( ) {
+DiamondTrap::DiamondTrap( )
+: ClapTrap("<no_clap_name>"), _name("<no_name>"){
 
 	if (ClapTrap::_loud)
 	{
 		std::cout << "[DiamondTrap] Default constructor called" << std::endl;
 	}
+	this->_hit_points = this->FragTrap::_hit_points;
+	this->_energy_points = this->ScavTrap::_energy_points;
+	this->_attack_damage = this->FragTrap::_attack_damage;
 }
 
 DiamondTrap::DiamondTrap( const DiamondTrap & other ) {
