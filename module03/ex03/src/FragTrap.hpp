@@ -10,8 +10,8 @@ public:
 	explicit		FragTrap( const std::string & name );
 					FragTrap( );
 					FragTrap( const FragTrap & other );
-					~FragTrap( );
-	FragTrap &      operator=( const FragTrap & rhs );
+	virtual			~FragTrap( );
+	FragTrap &		operator=( const FragTrap & rhs );
 
 	void			highFivesGuys( void );
 

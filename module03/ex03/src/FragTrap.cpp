@@ -9,9 +9,9 @@
 FragTrap::FragTrap( const std::string & name ) : ClapTrap(name) {
 
 	if (ClapTrap::_loud)
-    {
+	{
 		std::cout << "[FragTrap] Standard constructor called" << std::endl;
-    }
+	}
 	this->_hit_points = 100;
 	this->_energy_points = 100;
 	this->_attack_damage = 30;
@@ -20,17 +20,20 @@ FragTrap::FragTrap( const std::string & name ) : ClapTrap(name) {
 FragTrap::FragTrap(	) {
 
 	if (ClapTrap::_loud)
-    {
+	{
 		std::cout << "[FragTrap] Default constructor called" << std::endl;
-    }
+	}
+	this->_hit_points = 100;
+	this->_energy_points = 100;
+	this->_attack_damage = 30;
 }
 
-FragTrap::FragTrap( const FragTrap& other) {
+FragTrap::FragTrap( const FragTrap & other ) {
 
 	if (ClapTrap::_loud)
-    {
+	{
 		std::cout << "[FragTrap] Copy constructor called" << std::endl;
-    }
+	}
 	if (this != &other)
 	{
 		*this = other;
@@ -40,17 +43,17 @@ FragTrap::FragTrap( const FragTrap& other) {
 FragTrap::~FragTrap( ) {
 
 	if (ClapTrap::_loud)
-    {
+	{
 		std::cout << "[FragTrap] Destructor called" << std::endl;
-    }
+	}
 }
 
-FragTrap &	FragTrap::operator=( const FragTrap& rhs ) {
+FragTrap &	FragTrap::operator=( const FragTrap & rhs ) {
 
 	if (ClapTrap::_loud)
-    {
+	{
 		std::cout << "[FragTrap] Copy assignment operator called" << std::endl;
-    }
+	}
 	if (this != &rhs)
 	{
 		this->_name = rhs.getName();
@@ -66,13 +69,13 @@ FragTrap &	FragTrap::operator=( const FragTrap& rhs ) {
 void	FragTrap::highFivesGuys( void ) {
 
 	if (this->_hit_points == 0)
-    {
-		std::cout << "FragTrap " << this->_name << " is dead and cannot high-five.." << std::endl;
-    }
+	{
+		std::cout << "FragTrap " << this->getName() << " is dead and cannot high-five.." << std::endl;
+	}
 	else if (this->_energy_points == 0)
-    {
-		std::cout << "FragTrap " << this->_name << " has not enough energy to high-five.." << std::endl;
-    }
+	{
+		std::cout << "FragTrap " << this->getName() << " has not enough energy to high-five.." << std::endl;
+	}
 	else
 	{
 		std::cout << "FragTrap " << this->_name << " blurts out: 'High-five! C'mon robots! High-five!'" << std::endl;

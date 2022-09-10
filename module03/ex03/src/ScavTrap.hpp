@@ -10,8 +10,8 @@ public:
 	explicit		ScavTrap( const std::string & name );
 					ScavTrap( );
 					ScavTrap( const ScavTrap & other );
-					~ScavTrap( );
-	ScavTrap &      operator=( const ScavTrap & rhs );
+	virtual			~ScavTrap( );
+	ScavTrap &		operator=( const ScavTrap & rhs );
 
 	virtual void	attack( const std::string & target );
 	void			guardGate( );
