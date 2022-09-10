@@ -7,32 +7,32 @@ class ClapTrap {
 
 public:
 
-	virtual std::string	getName( void ) const;
-	unsigned int		getHitPoints( void ) const;
-	unsigned int		getEnergyPoints( void ) const;
-	unsigned int		getAttackDamage( void ) const;
-	void				setAttackDamage( unsigned int damage );
+	const std::string & getName( void ) const;
+	unsigned int	    getHitPoints( void ) const;
+	unsigned int	    getEnergyPoints( void ) const;
+	unsigned int	    getAttackDamage( void ) const;
+	void			    setAttackDamage( unsigned int damage );
 
-	explicit			ClapTrap( const std::string & name );
-						ClapTrap( );
-						ClapTrap( const ClapTrap & src );
-	virtual				~ClapTrap( );
-						ClapTrap & operator=( const ClapTrap & rhs);
+	explicit		    ClapTrap( const std::string & name );
+					    ClapTrap( );
+					    ClapTrap( const ClapTrap & other );
+					    ~ClapTrap( );
+	ClapTrap &          operator=( const ClapTrap & rhs );
 
-	virtual void		attack( const std::string & target );
-	void				takeDamage( unsigned int amount );
-	void				beRepaired( unsigned int amount );
+	virtual void	    attack( const std::string & target );
+	void			    takeDamage( unsigned int amount );
+	void			    beRepaired( unsigned int amount );
 
-	static void			makeSilent( void );
+	static void		    makeSilent( void );
 
 protected:
 
-	std::string			_name;
-	unsigned int		_hit_points;
-	unsigned int		_energy_points;
-	unsigned int		_attack_damage;
+	std::string		    _name;
+	unsigned int	    _hit_points;
+	unsigned int	    _energy_points;
+	unsigned int	    _attack_damage;
 
-	static bool			_loud;
+	static bool		_loud;
 
 };
 
