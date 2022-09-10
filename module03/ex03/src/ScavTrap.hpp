@@ -9,9 +9,9 @@ public:
 
 	explicit		ScavTrap( const std::string & name );
 					ScavTrap( );
-					ScavTrap( const ScavTrap & src );
+					ScavTrap( const ScavTrap & other );
 	virtual			~ScavTrap( );
-					ScavTrap & operator=( const ScavTrap & rhs);
+	ScavTrap &		operator=( const ScavTrap & rhs );
 
 	virtual void	attack( const std::string & target );
 	void			guardGate( );

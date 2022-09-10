@@ -9,9 +9,9 @@ public:
 
 	explicit		FragTrap( const std::string & name );
 					FragTrap( );
-					FragTrap( const FragTrap & src );
+					FragTrap( const FragTrap & other );
 	virtual			~FragTrap( );
-					FragTrap & operator=( const FragTrap & rhs);
+	FragTrap &		operator=( const FragTrap & rhs );
 
 	void			highFivesGuys( void );
 
