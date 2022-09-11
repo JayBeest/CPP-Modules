@@ -20,8 +20,8 @@ private:
 
 };
 
-Zombie*		newZombie(std::string name);
-void		newChump(std::string name);
+Zombie*				newZombie(std::string name);
+void				newChump(std::string name);
 
 #endif
 
