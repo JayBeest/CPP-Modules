@@ -1,4 +1,3 @@
-#include <iostream>
 #include "Cat.hpp"
 
 ///			Public:
@@ -12,47 +11,57 @@ Brain &	Cat::accessBrain( void ) const {
 
 ///			Constructor / Destructor
 
-Cat::Cat( std::string type ) : Animal(type) {
+Cat::Cat( const std::string & type ) : Animal(type) {
 
-	this->_brain = new Brain(type + "-thought");
 	if (Animal::_loud)
+	{
   		std::cout << "[Cat] Specific constructor called" << std::endl;
+	}
+	this->_brain = new Brain(type + "-thought");
 }
 
 Cat::Cat( ) : Animal("Cat") {
 
-	this->_brain = new Brain("Cat-thought");
 	if (Animal::_loud)
+	{
   		std::cout << "[Cat] Default constructor called" << std::endl;
+	}
+	this->_brain = new Brain("Cat-thought");
 }
 
-Cat::Cat( const Cat& other) {
+Cat::Cat( const Cat & other) {
 
+	if (Animal::_loud)
+	{
+  		std::cout << "[Cat] Copy constructor called" << std::endl;
+	}
 	if (this != &other)
 	{
 		*this = other;
 	}
-	if (Animal::_loud)
-  		std::cout << "[Cat] Copy constructor called" << std::endl;
 }
 
 Cat::~Cat( ) {
 
 	if (Animal::_loud)
+	{
   		std::cout << "[Cat] Destructor called" << std::endl;
+	}
 	delete _brain;
 }
 
-Cat &	Cat::operator=( const Cat& rhs ) {
+Cat &	Cat::operator=( const Cat & rhs ) {
 
+	if (Animal::_loud)
+	{
+  		std::cout << "[Cat] Copy assignment operator called" << std::endl;
+	}
 	if (this != &rhs)
 	{
 		delete this->_brain;
 		this->type = rhs.getType();
 		this->_brain = new Brain(rhs.accessBrain());
 	}
-	if (Animal::_loud)
-  		std::cout << "[Cat] Copy assignment operator called" << std::endl;
 	return *this;
 }
 

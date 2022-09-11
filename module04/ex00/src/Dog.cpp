@@ -1,4 +1,3 @@
-#include <iostream>
 #include "Dog.hpp"
 
 ///			Public:
@@ -7,42 +6,52 @@
 
 ///			Constructor / Destructor
 
-Dog::Dog( std::string type ) : Animal(type) {
+Dog::Dog( const std::string & type ) : Animal(type) {
 
 	if (Animal::_loud)
+	{
   		std::cout << "[Dog] Specific constructor called" << std::endl;
+	}
 }
 
 Dog::Dog( ) : Animal("Dog") {
 
 	if (Animal::_loud)
+	{
   		std::cout << "[Dog] Default constructor called" << std::endl;
+	}
 }
 
-Dog::Dog( const Dog& other) {
+Dog::Dog( const Dog & other ) {
 
+	if (Animal::_loud)
+	{
+  		std::cout << "[Dog] Copy constructor called" << std::endl;
+	}
 	if (this != &other)
 	{
 	  *this = other;
 	}
-	if (Animal::_loud)
-  		std::cout << "[Dog] Copy constructor called" << std::endl;
 }
 
 Dog::~Dog( ) {
 
 	if (Animal::_loud)
+	{
   		std::cout << "[Dog] Destructor called" << std::endl;
+	}
 }
 
-Dog &	Dog::operator=( const Dog& rhs ) {
+Dog &	Dog::operator=( const Dog & rhs ) {
 
+	if (Animal::_loud)
+	{
+  		std::cout << "[Dog] Copy assignment operator called" << std::endl;
+	}
 	if (this != &rhs)
 	{
 		this->type = rhs.getType();
 	}
-	if (Animal::_loud)
-  		std::cout << "[Dog] Copy assignment operator called" << std::endl;
 	return *this;
 }
 

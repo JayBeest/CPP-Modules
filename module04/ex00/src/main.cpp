@@ -38,10 +38,12 @@ void	wrong_test( void )
 	i->makeSound();
 	meta->makeSound();
 
-	const WrongCat *ptr = (WrongCat *)i;
+	const WrongCat *ptr;
+	
+	ptr = (const WrongCat *)i;
 	ptr->makeSound();
 
-	ptr = (WrongCat *)meta;
+	ptr = (const WrongCat *)meta;
 	ptr->makeSound();
 
 	delete meta;

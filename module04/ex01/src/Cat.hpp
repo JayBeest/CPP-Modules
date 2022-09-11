@@ -1,7 +1,6 @@
 #ifndef CAT_H
 # define CAT_H
 
-# include <iostream>
 # include "Animal.hpp"
 # include "Brain.hpp"
 
@@ -11,11 +10,11 @@ public:
 
 	Brain &			accessBrain( void ) const;
 
-	explicit		Cat( std::string type );
+	explicit		Cat( const std::string & type );
 					Cat( );
-					Cat( const Cat & src );
+					Cat( const Cat & other );
 	virtual			~Cat( );
-					Cat & operator=( const Cat & rhs);
+	Cat &			operator=( const Cat & rhs );
 
 	virtual void	makeSound( void ) const;
 	static void		makeSilent( void );

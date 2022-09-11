@@ -1,4 +1,3 @@
-#include <iostream>
 #include <sstream>
 #include "Cat.hpp"
 #include "Dog.hpp"
