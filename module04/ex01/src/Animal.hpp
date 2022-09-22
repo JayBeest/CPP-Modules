@@ -2,7 +2,6 @@
 # define ANIMAL_H
 
 # include <iostream>
-# include <fstream>
 
 class Animal {
 
@@ -12,9 +11,9 @@ public:
 
 	explicit		Animal( std::string type );
 					Animal( );
-					Animal( const Animal & src );
+					Animal( const Animal & other );
 	virtual			~Animal( );
-					Animal & operator=( const Animal & rhs);
+	Animal &        operator=( const Animal & rhs );
 
 	virtual void	makeSound( void ) const;
 	static void		makeSilent( void );

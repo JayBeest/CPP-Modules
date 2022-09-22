@@ -2,7 +2,6 @@
 # define WRONG_ANIMAL_H
 
 # include <iostream>
-# include <fstream>
 
 class WrongAnimal {
 
@@ -12,9 +11,9 @@ public:
 
 	explicit		WrongAnimal( std::string type );
 					WrongAnimal( );
-					WrongAnimal( const WrongAnimal & src );
+					WrongAnimal( const WrongAnimal & other );
 	virtual			~WrongAnimal( );
-					WrongAnimal & operator=( const WrongAnimal & rhs);
+	WrongAnimal &   operator=( const WrongAnimal & rhs );
 
 	void			makeSound( void ) const;
 	static void		makeSilent( void );

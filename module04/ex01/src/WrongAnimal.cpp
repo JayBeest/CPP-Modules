@@ -1,4 +1,3 @@
-#include <iostream>
 #include "WrongAnimal.hpp"
 
 ///			Public:
@@ -15,39 +14,49 @@ std::string		WrongAnimal::getType( ) const {
 WrongAnimal::WrongAnimal( std::string type ) : type(type) {
 
 	if (WrongAnimal::_loud)
+    {
   		std::cout << "[WrongAnimal] Specific constructor called" << std::endl;
+    }
 }
 
 WrongAnimal::WrongAnimal( ) : type("Shapeless"){
 
 	if (WrongAnimal::_loud)
+    {
   		std::cout << "[WrongAnimal] Default constructor called" << std::endl;
+    }
 }
 
-WrongAnimal::WrongAnimal( const WrongAnimal& other) {
+WrongAnimal::WrongAnimal( const WrongAnimal & other ) {
 
+	if (WrongAnimal::_loud)
+    {
+  		std::cout << "[WrongAnimal] Copy constructor called" << std::endl;
+    }
 	if (this != &other)
 	{
 	  *this = other;
 	}
-	if (WrongAnimal::_loud)
-  		std::cout << "[WrongAnimal] Copy constructor called" << std::endl;
 }
 
 WrongAnimal::~WrongAnimal( ) {
 
 	if (WrongAnimal::_loud)
+    {
   		std::cout << "[WrongAnimal] Destructor called" << std::endl;
+    }
 }
 
-WrongAnimal &	WrongAnimal::operator=( const WrongAnimal& rhs ) {
+WrongAnimal &	WrongAnimal::operator=( const WrongAnimal & rhs ) {
 
+	if (WrongAnimal::_loud)
+    {
+  		std::cout << "[WrongAnimal] Copy assignment operator called" << std::endl;
+    }
 	if (this != &rhs)
 	{
 		this->type = rhs.getType();
 	}
-	if (WrongAnimal::_loud)
-  		std::cout << "[WrongAnimal] Copy assignment operator called" << std::endl;
 	return *this;
 }
 

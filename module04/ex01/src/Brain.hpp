@@ -4,7 +4,6 @@
 # define MAX_IDEAS 100
 
 # include <iostream>
-# include <fstream>
 
 class Brain {
 
@@ -15,9 +14,9 @@ public:
 
 	explicit		Brain( const std::string & first_idea );
 					Brain( );
-					Brain( const Brain & src );
+					Brain( const Brain & other );
 	virtual			~Brain( );
-					Brain & operator=( const Brain & rhs);
+	Brain &         operator=( const Brain & rhs );
 
 	static void		makeSilent( void );
 

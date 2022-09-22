@@ -1,7 +1,6 @@
 #ifndef DOG_H
 # define DOG_H
 
-# include <iostream>
 # include "Animal.hpp"
 # include "Brain.hpp"
 
@@ -13,9 +12,9 @@ public:
 
 	explicit		Dog( std::string type );
 					Dog( );
-					Dog( const Dog & src );
+					Dog( const Dog & other );
 	virtual			~Dog( );
-					Dog & operator=( const Dog & rhs);
+	Dog &           operator=( const Dog & rhs );
 
 	virtual void	makeSound( void ) const;
 	static void		makeSilent( void );
