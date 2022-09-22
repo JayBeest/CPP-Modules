@@ -11,7 +11,7 @@ void	more_test( void )
 	Animal	*ptr;
 	Cat		*cat_ptr;
 
-	std::cout << animal << dog << cat << std::endl << std::endl;
+	std::cout << std::endl << animal << dog << cat << std::endl << std::endl;
 
 	ptr = &animal;
 	std::cout << *ptr << ": ";

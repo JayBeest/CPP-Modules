@@ -23,7 +23,7 @@ WrongAnimal::WrongAnimal( ) : type("Shapeless"){
   		std::cout << "[WrongAnimal] Default constructor called" << std::endl;
 }
 
-WrongAnimal::WrongAnimal( const WrongAnimal& other) {
+WrongAnimal::WrongAnimal( const WrongAnimal & other ) {
 
 	if (this != &other)
 	{
@@ -39,7 +39,7 @@ WrongAnimal::~WrongAnimal( ) {
   		std::cout << "[WrongAnimal] Destructor called" << std::endl;
 }
 
-WrongAnimal &	WrongAnimal::operator=( const WrongAnimal& rhs ) {
+WrongAnimal &	WrongAnimal::operator=( const WrongAnimal & rhs ) {
 
 	if (this != &rhs)
 	{

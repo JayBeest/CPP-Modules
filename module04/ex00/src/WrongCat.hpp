@@ -9,9 +9,9 @@ public:
 
 	explicit		WrongCat( std::string type );
 					WrongCat( );
-					WrongCat( const WrongCat & src );
+					WrongCat( const WrongCat & other );
 	virtual			~WrongCat( );
-					WrongCat & operator=( const WrongCat & rhs);
+					WrongCat & operator=( const WrongCat & rhs );
 
 	void			makeSound( void ) const;
 	static void		makeSilent( void );

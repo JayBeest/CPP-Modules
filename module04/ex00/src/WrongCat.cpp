@@ -18,7 +18,7 @@ WrongCat::WrongCat( ) : WrongAnimal("WrongCat") {
   		std::cout << "[WrongCat] Default constructor called" << std::endl;
 }
 
-WrongCat::WrongCat( const WrongCat& other) {
+WrongCat::WrongCat( const WrongCat & other ) {
 
 	if (this != &other)
 	{
@@ -35,7 +35,7 @@ WrongCat::~WrongCat( ) {
   		std::cout << "[WrongCat] Destructor called" << std::endl;
 }
 
-WrongCat &	WrongCat::operator=( const WrongCat& rhs ) {
+WrongCat &	WrongCat::operator=( const WrongCat & rhs ) {
 
 	if (this != &rhs)
 	{
