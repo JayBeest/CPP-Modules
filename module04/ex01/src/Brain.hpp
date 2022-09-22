@@ -23,6 +23,7 @@ public:
 private:
 
 	std::string			_ideas[MAX_IDEAS];
+	unsigned int		_idea_id;
 	static bool			_loud;
 
 };

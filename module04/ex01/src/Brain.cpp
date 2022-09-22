@@ -13,19 +13,16 @@ std::string	Brain::getIdea( unsigned int index ) const {
 
 void	Brain::addIdea( const std::string & idea ) {
 
-	for (int i = 0; i < MAX_IDEAS; i++)
+	if (this->_ideas[i % (MAX_IDEAS - 1)].empty() || i + 1 == MAX_IDEAS)
 	{
-		if (this->_ideas[i].empty() || i + 1 == MAX_IDEAS)
-		{
-			this->_ideas[i] = idea;
-			return;
-		}
+		this->_ideas[i] = idea;
+		return;
 	}
 }
 
 ///			Constructor / Destructor
 
-Brain::Brain( const std::string & first_idea ) : _ideas() {
+Brain::Brain( const std::string & first_idea ) : _ideas(), _idea_id(0) {
 
 	if (Brain::_loud)
 	{
@@ -34,7 +31,7 @@ Brain::Brain( const std::string & first_idea ) : _ideas() {
 	this->_ideas[0] = first_idea;
 }
 
-Brain::Brain( ) : _ideas() {
+Brain::Brain( ) : _ideas(), _idea_id(0) {
 
 	if (Brain::_loud)
 	{
