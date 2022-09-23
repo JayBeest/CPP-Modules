@@ -8,7 +8,7 @@ BIN_DIR		=	bin/
 BIN			=	$(BIN_DIR)$(NAME)
 
 SRC			=	Lsed.cpp \
-				loser_sed.cpp \
+				main.cpp \
 
 OBJ 		=	$(addprefix $(OBJ_DIR), $(SRC:%.cpp=%.o))
 

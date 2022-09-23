@@ -12,7 +12,7 @@ public:
 						Weapon( );
 						~Weapon( );
 						Weapon( const Weapon & other );
-						Weapon & operator=( const Weapon & rhs );
+	Weapon &			operator=( const Weapon & rhs );
 
 private:
 

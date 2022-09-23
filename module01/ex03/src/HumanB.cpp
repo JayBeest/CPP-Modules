@@ -20,7 +20,7 @@ void	HumanB::setWeapon( Weapon const & new_weapon ) {
 ///			Constructor/Destroyer
 
 HumanB::HumanB( std::string const & name )
-: _name(name), _weapon(nullptr) {
+: _name(name), _weapon(NULL) {
 
 	HumanB::_nb_humanAs_alive++;
 	if (verbose)

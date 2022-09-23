@@ -10,7 +10,7 @@ BIN			=	$(BIN_DIR)$(NAME)
 SRC			=	HumanA.cpp \
 				HumanB.cpp \
 				Weapon.cpp \
-				violence.cpp \
+				main.cpp \
 
 OBJ 		=	$(addprefix $(OBJ_DIR), $(SRC:%.cpp=%.o))
 

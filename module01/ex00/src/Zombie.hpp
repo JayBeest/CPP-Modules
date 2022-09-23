@@ -21,7 +21,7 @@ private:
 };
 
 Zombie*				newZombie(std::string name);
-void				newChump(std::string name);
+void				randomChump(std::string name);
 
 #endif
 
