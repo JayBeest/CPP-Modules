@@ -11,7 +11,7 @@ public:
 
 	explicit		WrongAnimal( const std::string & type );
 					WrongAnimal( );
-					WrongAnimal( const WrongAnimal & src );
+					WrongAnimal( const WrongAnimal & other );
 	virtual			~WrongAnimal( );
 	WrongAnimal &	operator=( const WrongAnimal & rhs );
 
@@ -27,7 +27,5 @@ protected:
 private:
 
 };
-
-std::ostream &	operator<<( std::ostream & o_stream, const WrongAnimal & animal);
 
 #endif

@@ -9,7 +9,7 @@ public:
 
 	explicit		WrongCat( const std::string & type );
 					WrongCat( );
-					WrongCat( const WrongCat & src );
+					WrongCat( const WrongCat & other );
 	virtual			~WrongCat( );
 	WrongCat &		operator=( const WrongCat & rhs );
 

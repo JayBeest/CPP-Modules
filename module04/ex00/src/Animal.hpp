@@ -27,6 +27,6 @@ private:
 
 };
 
-std::ostream &	operator<<( std::ostream & o_stream, const Animal & animal);
+std::ostream &	operator<<( std::ostream & o_stream, const Animal & animal );
 
 #endif

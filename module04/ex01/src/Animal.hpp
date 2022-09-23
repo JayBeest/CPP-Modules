@@ -11,7 +11,7 @@ public:
 
 	explicit		Animal( const std::string & type );
 					Animal( );
-					Animal( const Animal & src );
+					Animal( const Animal & other );
 	virtual			~Animal( );
 	Animal &		operator=( const Animal & rhs );
 
