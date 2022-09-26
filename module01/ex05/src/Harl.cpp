@@ -8,7 +8,7 @@ void	Harl::complain( std::string level ) {
     {
 		if (level == this->_karen_state[i])
         {
-			(*this.*this->_funptr[i])();
+			(this->*_funptr[i])();
         }
 	}
 }
