@@ -14,7 +14,7 @@ public:
 					Point( );
 					Point( const Point & other );
 					~Point( );
-					Point & operator=( const Point & rhs);
+	Point &			operator=( const Point & rhs);
 
 	bool			operator==( const Point & rhs ) const;
 

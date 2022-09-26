@@ -5,8 +5,6 @@
 
 int		Fixed::getRawBits( ) const {
 
-	if (_loud)
-		std::cout << "[Fixed] 'getRawBits' member function called" << std::endl;
 	return this->_fixed_point;
 }
 
@@ -26,21 +24,28 @@ void	Fixed::makeSilent( void ) {
 Fixed::Fixed( ) : _fixed_point(0) {
 
 	if (_loud)
+	{
 		std::cout << "[Fixed] Default constructor called" << std::endl;
+	}
 }
 
 Fixed::Fixed( const int & int_value ) {
 
 	if (_loud)
+	{
 		std::cout << "[Fixed] Int constructor called" << std::endl;
+	}
 	this->setRawBits(int_value << _fractional_bits);
 }
 
 Fixed::Fixed( const float & float_value ) : _fixed_point(0) {
 
+	if (_loud)
+    {
+        std::cout << "[Fixed] Float constructor called" << std::endl;
+    }
 	int		integer = (int)float_value;;
 	float	fractional = float_value - (float)integer;
-
 	if (float_value != 0)
     {
 		this->setRawBits((integer << _fractional_bits) + (int)round((fractional * (1 << _fractional_bits))));
@@ -48,10 +53,6 @@ Fixed::Fixed( const float & float_value ) : _fixed_point(0) {
 	else
     {
         this->setRawBits(0);
-    }
-	if (_loud)
-    {
-        std::cout << "[Fixed] Float constructor called" << std::endl;
     }
 }
 
@@ -247,34 +248,42 @@ int		Fixed::toInt( void ) const {
 Fixed &	Fixed::min( Fixed & a, Fixed & b ) {
 
 	if (a < b)
+	{
 		return a;
+	}
 	return b;
 }
 
 const Fixed &	Fixed::min( Fixed const & a, Fixed const & b ) {
 
 	if (a < b)
+	{
 		return a;
+	}
 	return b;
 }
 
 Fixed &	Fixed::max( Fixed & a, Fixed & b ) {
 
 	if (a > b)
+	{
 		return a;
+	}
 	return b;
 }
 
 const Fixed &	Fixed::max( Fixed const & a, Fixed const & b ) {
 
 	if (a > b)
+	{
 		return a;
+	}
 	return b;
 }
 
 ///			Private:
 
-std::ostream & operator<<( std::ostream & o_stream, const Fixed & fix ) {
+std::ostream &	operator<<( std::ostream & o_stream, const Fixed & fix ) {
 
 	return o_stream << fix.toFloat();
 }

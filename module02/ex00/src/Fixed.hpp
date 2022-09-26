@@ -13,7 +13,7 @@ public:
 					Fixed( );
 					Fixed( const Fixed & other );
 					~Fixed( );
-					Fixed & operator=( const Fixed & rhs );
+	Fixed &			operator=( const Fixed & rhs );
 
 private:
 

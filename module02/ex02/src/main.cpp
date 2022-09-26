@@ -44,7 +44,8 @@ int main( int argc, char **argv ) {
 
 	std::cout << b << std::endl;
 
-	std::cout << Fixed::max(a, b) << std::endl << std::endl;
+	std::cout << std::endl << "max(a, b): " << Fixed::max(a, b) << std::endl;
+	std::cout << "min(a, b): " << Fixed::min(a, b) << std::endl << std::endl;
 	std::cout << c << std::endl;
 	std::cout << d << std::endl;
 	a = e - f;
@@ -55,6 +56,8 @@ int main( int argc, char **argv ) {
 	std::cout << "e - f + c: " << a << std::endl;
 	a = d / c;
 	std::cout << "d / c: " << a << std::endl << std::endl;
+
+	Fixed::makeSilent();
 
 	for (int i = 0; i < 256; i++) {
 		g++;

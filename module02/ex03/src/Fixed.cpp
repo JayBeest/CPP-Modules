@@ -274,7 +274,7 @@ const Fixed &	Fixed::max( Fixed const & a, Fixed const & b ) {
 
 ///			Private:
 
-std::ostream & operator<<( std::ostream & o_stream, const Fixed & fix ) {
+std::ostream &	operator<<( std::ostream & o_stream, const Fixed & fix ) {
 
 	return o_stream << fix.toFloat();
 }

@@ -1,11 +1,10 @@
-#include "Fixed.hpp"
 #include <cmath>
+#include "Fixed.hpp"
 
 ///			Public:
 
 int		Fixed::getRawBits( ) const {
 
-	std::cout << "getRawBits member function called" << std::endl;
 	return this->_fixed_point;
 }
 
@@ -29,13 +28,10 @@ Fixed::Fixed( const int & int_value ) {
 
 Fixed::Fixed( const float & float_value ) : _fixed_point(0) {
 
-	int		whole;
-	float	fractional;
-
-	whole = (int)float_value;
-	fractional = float_value - (float)whole;
-	this->setRawBits((whole << _fractional_bits) + (int)roundf(fractional * (1 << _fractional_bits)));
 	std::cout << "Float constructor called" << std::endl;
+	int whole = (int)float_value;
+	float fractional = float_value - (float)whole;
+	this->setRawBits((whole << _fractional_bits) + (int)roundf(fractional * (1 << _fractional_bits)));
 }
 
 Fixed::Fixed( const Fixed & other ) {
@@ -66,12 +62,10 @@ Fixed &	Fixed::operator=( const Fixed & rhs ) {
 
 float	Fixed::toFloat( void ) const {
 
-	int 	shift;
-
-	shift = this->_fixed_point << (sizeof(int) * 8 - Fixed::_fractional_bits);
-	shift >>= (sizeof(int) * 8 - Fixed::_fractional_bits);
+	int fraction = this->_fixed_point << (sizeof(int) * 8 - Fixed::_fractional_bits);
+	fraction >>= (sizeof(int) * 8 - Fixed::_fractional_bits);
 	return ((float)(this->_fixed_point >> Fixed::_fractional_bits) \
-            + (float)(shift) / (1 << (Fixed::_fractional_bits)));
+            + (float)(fraction) / (1 << (Fixed::_fractional_bits)));
 }
 
 int		Fixed::toInt( void ) const {
@@ -81,7 +75,7 @@ int		Fixed::toInt( void ) const {
 
 ///			Private:
 
-std::ostream & operator<<( std::ostream & o_stream, Fixed const & fix ) {
+std::ostream &	operator<<( std::ostream & o_stream, Fixed const & fix ) {
 
 	return o_stream << fix.toFloat();
 }
