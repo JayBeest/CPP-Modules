@@ -45,7 +45,7 @@ void	HumanB::attack( void ) const {
 
 ///			Private:
 
-std::ostream & operator<<( std::ostream & o_stream, const HumanB & human ) {
+std::ostream &	operator<<( std::ostream & o_stream, const HumanB & human ) {
 
 	human.attack();
 	return o_stream;

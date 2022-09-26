@@ -18,7 +18,7 @@ private:
 	void			warning( void );
 	void			error( void );
 	std::string		_karen_state[4];
-	void			(Harl::*_funptr[4])(void);
+	void			( Harl::*_funptr[4] )( void );
 
 };
 

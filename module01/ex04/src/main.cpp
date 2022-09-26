@@ -4,7 +4,8 @@ int main (int argc, char **argv) {
 
 	Lsed	loser_sed;
 
-	if (argc != 4) {
+	if (argc != 4)
+	{
 		std::cout << "error - loser_sed needs three arguments" << std::endl;
 		return 1;
 	}

@@ -6,7 +6,7 @@
 
 struct Lsed {
 
-	void			initLoser( char **argv );
+	void			initLoser( char ** argv );
 	void			tryOpen( void );
 	void			tryReadWrite( void );
 	void			tryClose( void );

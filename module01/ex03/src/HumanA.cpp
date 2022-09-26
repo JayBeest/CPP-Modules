@@ -4,7 +4,7 @@
 
 ///			Getters/Setters
 
-const std::string & HumanA::getName( void ) const {
+const std::string &	HumanA::getName( void ) const {
 
     return this->_name;
 }

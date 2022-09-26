@@ -7,7 +7,7 @@ class HumanA {
 
 public:
 
-    const std::string & getName( void ) const;
+    const std::string &	getName( void ) const;
 
 	explicit			HumanA( const std::string & name, Weapon & weapon );
 						~HumanA( );
@@ -21,6 +21,6 @@ private:
 
 };
 
-std::ostream &	operator<<( std::ostream & o_stream, const HumanA & human );
+std::ostream &			operator<<( std::ostream & o_stream, const HumanA & human );
 
 #endif

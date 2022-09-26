@@ -28,7 +28,7 @@ private:
 	void			error( void );
 	void			obnox( void );
 	std::string		_karen_state[4];
-	void			(Harl::*_funptr[5])(void);
+	void			( Harl::*_funptr[5] )( void );
 
 };
 

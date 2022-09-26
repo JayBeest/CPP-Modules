@@ -22,6 +22,6 @@ private:
 
 };
 
-std::ostream & operator<<(std::ostream & o_stream, const HumanB & human );
+std::ostream &			operator<<(std::ostream & o_stream, const HumanB & human );
 
 #endif
