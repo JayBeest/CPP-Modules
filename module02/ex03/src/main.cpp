@@ -24,7 +24,7 @@ int main( int argc, char **argv ) {
 	{
 		if (std::string(argv[1]) == "-s")
 		{
-			std::cout << std::endl << "Making [Fixed] silent..." << std::endl << std::endl;
+			std::cout << std::endl << "Making [Fixed] silent...(use -s2 to also silence [Point])" << std::endl << std::endl;
 			Fixed::makeSilent();
 		}
 		else if (std::string(argv[1]) == "-s2")
