@@ -1,4 +1,3 @@
-#include <cstdlib>
 #include "Lsed.hpp"
 
 void	Lsed::initLoser( char **argv ) {
