@@ -21,16 +21,16 @@ void	Harl::complain( std::string level ) {
 	switch (hurt)
     {
 		case OBNOXIOUS:
-			(this->*this->_funptr[OBNOXIOUS])();
+			(this->*_funptr[OBNOXIOUS])();
 			break;
 		case DEBUG:
-			(*this.*this->_funptr[DEBUG])();
+			(this->*_funptr[DEBUG])();
 		case INFO:
-			(*this.*this->_funptr[INFO])();
+			(this->*_funptr[INFO])();
 		case WARNING:
-			(*this.*this->_funptr[WARNING])();
+			(this->*_funptr[WARNING])();
 		case ERROR:
-			(this->*this->_funptr[ERROR])();
+			(this->*_funptr[ERROR])();
 	}
 }
 
