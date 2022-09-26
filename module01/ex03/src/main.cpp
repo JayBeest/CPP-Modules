@@ -1,29 +1,27 @@
-#include <iostream>
-#include "Weapon.hpp"
 #include "HumanA.hpp"
 #include "HumanB.hpp"
 
-int main (int argc, char **argv)
+int main (void)
 {
-	if (argc > 1 && std::string(argv[1]) == "-v")
-	{
-		HumanA::verbose = true;
-		HumanB::verbose = true;
-	}
-
 
 	Weapon	club = Weapon("crude spiked club");
 	Weapon	sword = Weapon("rusty old sword");
 	Weapon	gun = Weapon("jammed colt 42");
+    Weapon  default_wep = Weapon();
 
 	HumanA	Atest_human1 = HumanA("bob", club);
 	HumanA	*Atest_human2 = new HumanA("ben", gun);
 	HumanA	Atest_human3 = HumanA("eve", sword);
+	HumanA	Atest_human4 = HumanA("san", default_wep);
 
 	Atest_human1.attack();
 	Atest_human2->attack();
 	Atest_human3.attack();
-	std::cout << Atest_human1 << *Atest_human2 << Atest_human3 << std::endl;
+	Atest_human4.attack();
+
+    default_wep.setType("Uzi");
+
+	std::cout << std::endl << Atest_human1 << *Atest_human2 << Atest_human3 << Atest_human4 << std::endl;
 	delete Atest_human2;
 	std::cout << std::endl;
 

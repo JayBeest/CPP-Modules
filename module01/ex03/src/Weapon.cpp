@@ -1,4 +1,3 @@
-#include <string>
 #include "Weapon.hpp"
 
 ///			Public:
@@ -37,7 +36,7 @@ Weapon::Weapon( const Weapon & other ) {
 	}
 }
 
-Weapon &	Weapon::operator=( Weapon const & rhs ) {
+Weapon &	Weapon::operator=( const Weapon & rhs ) {
 
 	if (this != &rhs)
 	{
