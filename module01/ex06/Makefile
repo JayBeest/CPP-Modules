@@ -1,6 +1,6 @@
 ###               auto-generated Makefile               ###
 
-NAME		=	harl_filter
+NAME		=	harlFilter
 
 SRC_DIR		=	src/
 OBJ_DIR		=	obj/
