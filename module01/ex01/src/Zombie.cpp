@@ -1,4 +1,3 @@
-#include <sstream>
 #include "Zombie.hpp"
 
 ///			Public:
@@ -24,10 +23,7 @@ Zombie::Zombie( )
 
 Zombie::~Zombie( ) {
 
-	std::stringstream	o_stream;
-
-	o_stream << this->_id;
-	std::cout << this->getName() << "_" << o_stream.str() << ": died (again) a horrible death.. \"" << "Gnar'har-chuck'" << "gluck!\"" << std::endl;
+	std::cout << this->getName() << "_" << this->_id << ": died (again) a horrible death.. \"" << "Gnar'har-chuck'" << "gluck!\"" << std::endl;
 }
 
 Zombie::Zombie( const Zombie & other ) {
@@ -51,10 +47,7 @@ Zombie &    Zombie::operator=( const Zombie & rhs ) {
 
 void	Zombie::announce( ) const {
 
-	std::stringstream	o_stream;
-
-	o_stream << this->_id;
-	std::cout << this->getName() << "_" << o_stream.str() << ": BraiiiiiiinnnzzzZ..." << std::endl;
+	std::cout << this->getName() << "_" << this->_id << ": BraiiiiiiinnnzzzZ..." << std::endl;
 }
 
 ///			Private:
