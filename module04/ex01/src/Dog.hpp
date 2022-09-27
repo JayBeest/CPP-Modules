@@ -17,7 +17,6 @@ public:
 	Dog &			operator=( const Dog & rhs );
 
 	virtual void	makeSound( void ) const;
-	static void		makeSilent( void );
 
 private:
 

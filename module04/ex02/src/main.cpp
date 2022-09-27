@@ -41,7 +41,17 @@ void	test_brain()
 int main(int argc, char **argv)
 {
 	if (argc == 2 && std::string(argv[1]) == "-s")
+	{
+		std::cout << "Silencing [Animal].. to silence [Brain] as well use -s2" << std::endl;
 		Animal::makeSilent();
+	}
+	else if (argc == 2 && std::string(argv[1]) == "-s2")
+	{
+		std::cout << "Silencing [Animal].." << std::endl;
+		Animal::makeSilent();
+		std::cout << "Silencing [Brain].." << std::endl;
+		Brain::makeSilent();
+	}
 
 	const Animal*	i = new Cat();
 	const Animal * ptr;

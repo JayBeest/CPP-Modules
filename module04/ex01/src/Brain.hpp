@@ -1,7 +1,7 @@
 #ifndef BRAIN_H
 # define BRAIN_H
 
-# define MAX_IDEAS 3
+# define MAX_IDEAS 100
 
 # include <iostream>
 

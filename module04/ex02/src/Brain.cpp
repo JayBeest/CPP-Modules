@@ -1,71 +1,91 @@
-#include <iostream>
 #include "Brain.hpp"
 
 ///			Public:
 
 ///			Getters / Setters
 
-std::string		Brain::getIdea( unsigned int index ) const {
+std::string	Brain::getIdea( unsigned int index ) const {
 
 	if (index >= MAX_IDEAS)
+	{
 		return "index out of range!";
-	return this->ideas[index];
+	}
+	return this->_ideas[index];
 }
 
-void	Brain::addIdea( const std::string &idea ) {
+long	Brain::getIdeaLoc( unsigned int index ) const {
 
-	for (int i = 0; i < MAX_IDEAS; i++)
+	if (index >= MAX_IDEAS)
 	{
-		if (this->ideas[i].empty() || i + 1 == MAX_IDEAS)
-		{
-			this->ideas[i] = idea;
-			return;
-		}
+		return -1;
+	}
+	return (long)&this->_ideas[index];
+}
+
+void	Brain::addIdea( const std::string & idea ) {
+
+	this->_ideas[_idea_id] = idea;
+	this->_idea_id++;
+	if (this->_idea_id >= MAX_IDEAS)
+	{
+		this->_idea_id = 0;
 	}
 }
 
 ///			Constructor / Destructor
 
-Brain::Brain( const std::string & first_idea ) : ideas() {
+Brain::Brain( const std::string & first_idea )
+: _ideas(), _idea_id(0) {
 
-	this->ideas[0] = first_idea;
 	if (Brain::_loud)
+	{
   		std::cout << "[Brain] Specific constructor called" << std::endl;
+	}
+	this->_ideas[0] = first_idea;
+	this->_idea_id++;
 }
 
-Brain::Brain( ) : ideas() {
+Brain::Brain( ) : _ideas(), _idea_id(0) {
 
 	if (Brain::_loud)
+	{
   		std::cout << "[Brain] Default constructor called" << std::endl;
+	}
 }
 
-Brain::Brain( const Brain& other) {
+Brain::Brain( const Brain & other ) {
 
+	if (Brain::_loud)
+	{
+  		std::cout << "[Brain] Copy constructor called" << std::endl;
+	}
 	if (this != &other)
 	{
 	  *this = other;
-	  // TODO
 	}
-	if (Brain::_loud)
-  		std::cout << "[Brain] Copy constructor called" << std::endl;
 }
 
 Brain::~Brain( ) {
 
-	// TODO
 	if (Brain::_loud)
+	{
   		std::cout << "[Brain] Destructor called" << std::endl;
+	}
 }
 
 Brain &	Brain::operator=( const Brain & rhs ) {
 
+	if (Brain::_loud)
+	{
+  		std::cout << "[Brain] Copy assignment operator called" << std::endl;
+	}
 	if (this != &rhs)
 	{
 		for (int i = 0; i < MAX_IDEAS; i++)
-			this->ideas[i] = rhs.getIdea(i);	// TODO + tests!!
+		{
+			this->_ideas[i] = rhs.getIdea(i);
+		}
 	}
-	if (Brain::_loud)
-  		std::cout << "[Brain] Copy assignment operator called" << std::endl;
 	return *this;
 }
 
@@ -78,15 +98,17 @@ void	Brain::makeSilent( void ) {
 
 ///			Private:
 
-bool	Brain::_loud = true;
-
-std::ostream & operator<<(std::ostream & o_stream, const Brain & brain) {
+std::ostream &  operator<<( std::ostream & o_stream, const Brain & brain ) {
 
 	for (int i = 0; i < MAX_IDEAS; i++)
 	{
 		if (brain.getIdea(i).empty())
+		{
 			break;
+		}
 		o_stream << "idea(" << i << "): " << brain.getIdea(i) << std::endl;
 	}
 	return o_stream;
 }
+
+bool	Brain::_loud = true;

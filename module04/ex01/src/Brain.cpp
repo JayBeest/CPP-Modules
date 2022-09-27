@@ -61,8 +61,7 @@ Brain::Brain( const Brain & other ) {
 	}
 	if (this != &other)
 	{
-	  *this = other;
-	  // TODO
+		*this = other;
 	}
 }
 
@@ -72,7 +71,6 @@ Brain::~Brain( ) {
 	{
   		std::cout << "[Brain] Destructor called" << std::endl;
 	}
-	// TODO
 }
 
 Brain &	Brain::operator=( const Brain & rhs ) {
@@ -84,7 +82,9 @@ Brain &	Brain::operator=( const Brain & rhs ) {
 	if (this != &rhs)
 	{
 		for (int i = 0; i < MAX_IDEAS; i++)
-			this->_ideas[i] = rhs.getIdea(i);	// TODO + tests!!
+		{
+			this->_ideas[i] = rhs.getIdea(i);
+		}
 	}
 	return *this;
 }

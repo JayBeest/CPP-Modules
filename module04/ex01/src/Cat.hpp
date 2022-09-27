@@ -17,7 +17,6 @@ public:
 	Cat &			operator=( const Cat & rhs );
 
 	virtual void	makeSound( void ) const;
-	static void		makeSilent( void );
 
 private:
 
