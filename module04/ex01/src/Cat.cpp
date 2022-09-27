@@ -72,9 +72,4 @@ void	Cat::makeSound( void ) const {
 	std::cout << "Miauw!" << std::endl;
 }
 
-void	Cat::makeSilent( void ) {
-
-	Animal::_loud = false;
-}
-
 ///			Private:

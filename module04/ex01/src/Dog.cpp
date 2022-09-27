@@ -72,9 +72,4 @@ void	Dog::makeSound( void ) const {
 	std::cout << "Miauw!" << std::endl;
 }
 
-void	Dog::makeSilent( void ) {
-
-	Animal::_loud = false;
-}
-
 ///			Private:
