@@ -7,28 +7,42 @@
 std::string	Brain::getIdea( unsigned int index ) const {
 
 	if (index >= MAX_IDEAS)
+	{
 		return "index out of range!";
+	}
 	return this->_ideas[index];
+}
+
+long	Brain::getIdeaLoc( unsigned int index ) const {
+
+	if (index >= MAX_IDEAS)
+	{
+		return -1;
+	}
+	return (long)&this->_ideas[index];
 }
 
 void	Brain::addIdea( const std::string & idea ) {
 
-	if (this->_ideas[i % (MAX_IDEAS - 1)].empty() || i + 1 == MAX_IDEAS)
+	this->_ideas[_idea_id] = idea;
+	this->_idea_id++;
+	if (this->_idea_id >= MAX_IDEAS)
 	{
-		this->_ideas[i] = idea;
-		return;
+		this->_idea_id = 0;
 	}
 }
 
 ///			Constructor / Destructor
 
-Brain::Brain( const std::string & first_idea ) : _ideas(), _idea_id(0) {
+Brain::Brain( const std::string & first_idea )
+: _ideas(), _idea_id(0) {
 
 	if (Brain::_loud)
 	{
   		std::cout << "[Brain] Specific constructor called" << std::endl;
 	}
 	this->_ideas[0] = first_idea;
+	this->_idea_id++;
 }
 
 Brain::Brain( ) : _ideas(), _idea_id(0) {
@@ -83,8 +97,6 @@ void	Brain::makeSilent( void ) {
 }
 
 ///			Private:
-
-bool	Brain::_loud = true;
 
 std::ostream &  operator<<( std::ostream & o_stream, const Brain & brain ) {
 
