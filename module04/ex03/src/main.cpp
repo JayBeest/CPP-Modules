@@ -1,14 +1,12 @@
-#include <iostream>
-//#include "AMateria.hpp"
 #include "Character.hpp"
+#include "MateriaSource.hpp"
 #include "Ice.hpp"
 #include "Cure.hpp"
 #include "Fire.hpp"
-#include "MateriaSource.hpp"
 
 void	test_materia_source()
 {
-	AMateria *				temp = nullptr;
+	AMateria *				temp = NULL;
 	IMateriaSource * const	mat_source = new MateriaSource();
 	ICharacter * const		bas = new Character("Bas");
 	ICharacter * const		eve = new Character("Eve");
@@ -58,8 +56,8 @@ int main2 (int argc, char **argv ){
 	sandra->use(2, *alfred);
 	sandra->use(3, *alfred);
 	sandra->use(4, *alfred);
-	sandra->unequip(3);
-	sandra->unequip(1);
+	sandra->unEquip(3);
+	sandra->unEquip(1);
 	sandra->use(3, *alfred);
 	sandra->use(1, *alfred);
 	std::cout << std::endl << "Test starts:" << std::endl << std::endl;
@@ -90,16 +88,16 @@ int main (int argc, char **argv ){
 		AMateria::makeSilent();
 	}
 
-	IMateriaSource* src = new MateriaSource();
+	IMateriaSource * src = new MateriaSource();
 	src->learnMateria(new Ice());
 	src->learnMateria(new Cure());
-	ICharacter* me = new Character("me");
-	AMateria* tmp;
+	ICharacter * me = new Character("me");
+	AMateria * tmp;
 	tmp = src->createMateria("ice");
 	me->equip(tmp);
 	tmp = src->createMateria("cure");
 	me->equip(tmp);
-	ICharacter* bob = new Character("bob");
+	ICharacter * bob = new Character("bob");
 	me->use(0, *bob);
 	me->use(1, *bob);
 	delete bob;

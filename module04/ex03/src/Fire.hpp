@@ -2,18 +2,17 @@
 # define FIRE_H
 
 # include "AMateria.hpp"
-# include "nullptr_compat.h"
 
 class Fire : public AMateria {
 
 public:
 
-					Fire & operator=( const Fire & rhs);
 					Fire( void );
-					Fire( const Fire & src );
+					Fire( const Fire & other );
 	virtual			~Fire( void );
+	Fire &			operator=( const Fire & rhs );
 
-	virtual void	use( ICharacter & target) const;
+	virtual void	use( ICharacter & target ) const;
 	virtual Fire *	clone( void ) const;
 
 private:

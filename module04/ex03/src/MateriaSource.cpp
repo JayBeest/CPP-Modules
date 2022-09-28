@@ -1,4 +1,3 @@
-#include <iostream>
 #include "MateriaSource.hpp"
 
 ///			Public:
@@ -13,7 +12,7 @@ MateriaSource::MateriaSource( ) : _source_inventory() {
   		std::cout << "[MateriaSource] Default constructor called" << std::endl;
 }
 
-MateriaSource::MateriaSource( const MateriaSource& other) {
+MateriaSource::MateriaSource( const MateriaSource & other ) {
 
 	if (this != &other)
 	{
@@ -32,7 +31,7 @@ MateriaSource::~MateriaSource( ) {
   		std::cout << "[MateriaSource] Destructor called" << std::endl;
 }
 
-MateriaSource &	MateriaSource::operator=( const MateriaSource& rhs ) {
+MateriaSource &	MateriaSource::operator=( const MateriaSource & rhs ) {
 
 	if (this != &rhs)
 	{
@@ -73,7 +72,7 @@ AMateria *	MateriaSource::createMateria( const std::string & type ) {
 			return _source_inventory[i]->clone();
 	}
 	std::cout << "Materia-type " << type << " not found.." << std::endl;
-	return nullptr;
+	return NULL;
 }
 
 void	MateriaSource::makeSilent( void ) {

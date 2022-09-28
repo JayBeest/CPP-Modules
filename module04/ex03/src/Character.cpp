@@ -1,4 +1,3 @@
-#include <iostream>
 #include "Character.hpp"
 
 ///			Public:
@@ -26,7 +25,7 @@ Character::Character( ) {
   		std::cout << "[Character] Default constructor called" << std::endl;
 }
 
-Character::Character( const Character& other) {
+Character::Character( const Character & other ) {
 
 	if (this != &other)
 	{
@@ -47,7 +46,7 @@ Character::~Character( void ) {
   		std::cout << "[Character] Destructor called" << std::endl;
 }
 
-Character &	Character::operator=( const Character& rhs ) {
+Character &	Character::operator=( const Character & rhs ) {
 
 	if (this != &rhs)
 	{
@@ -60,11 +59,11 @@ Character &	Character::operator=( const Character& rhs ) {
 
 ///			Functions / Methods
 
-void	Character::equip( AMateria *m ) {
+void	Character::equip( AMateria * m ) {
 
 	for (int i = 0; i < MAX_INVENTORY; i++)
 	{
-		if (this->_inventory[i] == nullptr)
+		if (this->_inventory[i] == NULL)
 		{
 			this->_inventory[i] = m;
 			std::cout << "equipping " << *m << " in slot[" << i << "]" << std::endl;
@@ -75,17 +74,17 @@ void	Character::equip( AMateria *m ) {
 	delete m;
 }
 
-void	Character::unequip( int idx ) {
+void	Character::unEquip(int idx ) {
 
 
-	if (this->_inventory[idx] != nullptr)
+	if (this->_inventory[idx] != NULL)
 	{
 		std::cout << "unequipping!!" << std::endl;
 		dropToGround(this->_inventory[idx]);
-		this->_inventory[idx] = nullptr;
+		this->_inventory[idx] = NULL;
 		return;
 	}
-	std::cout << "nothing in _inventory[" << idx << "] to unequip..<--- remove this!!" << std::endl;
+	std::cout << "nothing in _inventory[" << idx << "] to unEquip..<--- remove this!!" << std::endl;
 }
 
 void	Character::use( int idx, ICharacter &target ) {
@@ -95,7 +94,7 @@ void	Character::use( int idx, ICharacter &target ) {
 		std::cout << "idx(" << idx << ") out of range.. <<<< remove this" << std::endl;
 		return;
 	}
-	else if (this->_inventory[idx] == nullptr)
+	else if (this->_inventory[idx] == NULL)
 	{
 		std::cout << "nothing in _inventory[" << idx << "] to use..<--- remove this!!" << std::endl;
 		return;
@@ -108,8 +107,8 @@ AMateria *	Character::getInventory( unsigned int index ) const {
 
 	if (index < MAX_INVENTORY)
 		return _inventory[index];
-	std::cerr << "[getInventory] index(" << index << ") out of bounds, returning nullptr.." << std::endl;
-	return nullptr;
+	std::cerr << "[getInventory] index(" << index << ") out of bounds, returning NULL.." << std::endl;
+	return NULL;
 }
 
 void	Character::makeSilent( void ) {

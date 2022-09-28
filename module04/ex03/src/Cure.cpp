@@ -1,4 +1,3 @@
-#include <iostream>
 #include "Cure.hpp"
 #include "Character.hpp"
 
@@ -14,7 +13,7 @@ Cure::Cure( ) : AMateria("cure"){
   		std::cout << "[Cure] Default constructor called" << std::endl;
 }
 
-Cure::Cure( const Cure& other) {
+Cure::Cure( const Cure & other ) {
 
 	if (this != &other)
 	{
@@ -31,7 +30,7 @@ Cure::~Cure( ) {
   		std::cout << "[Cure] Destructor called" << std::endl;
 }
 
-Cure &	Cure::operator=( const Cure& rhs ) {
+Cure &	Cure::operator=( const Cure & rhs ) {
 
 	if (this != &rhs)
 	{

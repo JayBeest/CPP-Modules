@@ -1,4 +1,3 @@
-#include <iostream>
 #include "AMateria.hpp"
 #include "Character.hpp"
 
@@ -14,7 +13,7 @@ std::string const &	AMateria::getType( ) const {
 
 ///			Constructor / Destructor
 
-AMateria::AMateria( std::string const & type ) : _type(type) {
+AMateria::AMateria( const std::string & type ) : _type(type) {
 
 	if (AMateria::_loud)
   		std::cout << "[AMateria] Specific constructor called" << std::endl;
@@ -22,12 +21,11 @@ AMateria::AMateria( std::string const & type ) : _type(type) {
 
 AMateria::AMateria( ) {
 
-										// TODO not counting default constructor
 	if (AMateria::_loud)
   		std::cout << "[AMateria] Default constructor called" << std::endl;
 }
 
-AMateria::AMateria( const AMateria & other) {
+AMateria::AMateria( const AMateria & other ) {
 
 	if (this != &other)
 	{
@@ -56,7 +54,7 @@ AMateria &	AMateria::operator=( const AMateria & rhs ) {
 
 ///			Functions / Methods
 
-void	AMateria::use(ICharacter & target) const {
+void	AMateria::use(ICharacter & target ) const {
 
 		std::cout << "AMateria:use -- This should never show up..(" << target.getName() << ")" << std::endl;
 }
@@ -70,7 +68,7 @@ void	AMateria::makeSilent( void ) {
 
 bool	AMateria::_loud = true;
 
-std::ostream & operator<<( std:: ostream & o_stream, const AMateria  & materia) {
+std::ostream &	operator<<( std:: ostream & o_stream, const AMateria & materia ) {
 
 	return o_stream << materia.getType();
 }

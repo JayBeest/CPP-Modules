@@ -1,4 +1,3 @@
-#include <iostream>
 #include "ICharacter.hpp"
 
 ICharacter::~ICharacter( ) {
