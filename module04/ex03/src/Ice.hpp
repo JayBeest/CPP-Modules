@@ -2,16 +2,15 @@
 # define ICE_H
 
 # include "AMateria.hpp"
-# include "nullptr_compat.h"
 
 class Ice : public AMateria {
 
 public:
 
-					Ice & operator=( const Ice & rhs);
 					Ice( void );
-					Ice( const Ice & src );
+					Ice( const Ice & other );
 	virtual			~Ice( void );
+	Ice &			operator=( const Ice & rhs );
 
 	virtual void	use( ICharacter & target ) const;
 	virtual Ice *	clone( void ) const;

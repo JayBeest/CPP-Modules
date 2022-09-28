@@ -1,4 +1,3 @@
-#include <iostream>
 #include "Ice.hpp"
 #include "Character.hpp"
 
@@ -14,7 +13,7 @@ Ice::Ice( ) : AMateria("ice"){
   		std::cout << "[Ice] Default constructor called" << std::endl;
 }
 
-Ice::Ice( const Ice& other) {
+Ice::Ice( const Ice & other ) {
 
 	if (this != &other)
 	{
@@ -31,7 +30,7 @@ Ice::~Ice( ) {
   		std::cout << "[Ice] Destructor called" << std::endl;
 }
 
-Ice &	Ice::operator=( const Ice& rhs ) {
+Ice &	Ice::operator=( const Ice & rhs ) {
 
 	if (this != &rhs)
 	{
@@ -43,7 +42,7 @@ Ice &	Ice::operator=( const Ice& rhs ) {
 
 ///			Functions / Methods
 
-void		Ice::use(ICharacter & target) const {
+void		Ice::use( ICharacter & target ) const {
 
 	std::cout << "* shoots an ice bolt at " << target.getName() << " *" << std::endl;
 }

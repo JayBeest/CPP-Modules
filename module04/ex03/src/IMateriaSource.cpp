@@ -1,4 +1,3 @@
-#include <iostream>
 #include "IMateriaSource.hpp"
 
 ///			Public:

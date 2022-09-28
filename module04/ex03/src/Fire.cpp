@@ -1,4 +1,3 @@
-#include <iostream>
 #include "Fire.hpp"
 #include "Character.hpp"
 
@@ -14,7 +13,7 @@ Fire::Fire( ) : AMateria("fire"){
   		std::cout << "[Fire] Default constructor called" << std::endl;
 }
 
-Fire::Fire( const Fire& other) {
+Fire::Fire( const Fire & other ) {
 
 	if (this != &other)
 	{
@@ -31,7 +30,7 @@ Fire::~Fire( ) {
   		std::cout << "[Fire] Destructor called" << std::endl;
 }
 
-Fire &	Fire::operator=( const Fire& rhs ) {
+Fire &	Fire::operator=( const Fire & rhs ) {
 
 	if (this != &rhs)
 	{

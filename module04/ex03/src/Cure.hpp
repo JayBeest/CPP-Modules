@@ -2,18 +2,17 @@
 # define CURE_H
 
 # include "AMateria.hpp"
-# include "nullptr_compat.h"
 
 class Cure : public AMateria {
 
 public:
 
-					Cure & operator=( const Cure & rhs);
 					Cure( void );
-					Cure( const Cure & src );
+					Cure( const Cure & other );
 	virtual			~Cure( void );
+	Cure &			operator=( const Cure & rhs );
 
-	virtual void	use( ICharacter & target) const;
+	virtual void	use( ICharacter & target ) const;
 	virtual Cure *	clone( void ) const;
 
 private:

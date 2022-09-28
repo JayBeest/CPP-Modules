@@ -3,8 +3,6 @@
 
 # define MAX_SOURCE_INV 4
 
-# include <iostream>
-# include "nullptr_compat.h"
 # include "AMateria.hpp"
 # include "IMateriaSource.hpp"
 
@@ -17,11 +15,11 @@ public:
 
 protected:
 
-						MateriaSource( const MateriaSource & src );
-						MateriaSource & operator=( const MateriaSource & rhs);
+						MateriaSource( const MateriaSource & other );
+	MateriaSource &		operator=( const MateriaSource & rhs );
 
 	virtual void		learnMateria( AMateria * materia );
-	virtual AMateria *	createMateria( std::string const & type );
+	virtual AMateria *	createMateria( const std::string & type );
 
 	static void			makeSilent( void );
 
