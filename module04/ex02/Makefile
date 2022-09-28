@@ -7,13 +7,20 @@ OBJ_DIR		=	obj/
 BIN_DIR		=	bin/
 BIN			=	$(BIN_DIR)$(NAME)
 
-SRC			=	Animal.cpp \
+SRC			=	AAnimal.cpp \
 				Brain.cpp \
 				Cat.cpp \
 				Dog.cpp \
 				WrongAnimal.cpp \
 				WrongCat.cpp \
 				main.cpp \
+
+HEADERS		=	AAnimal.hpp \
+				Brain.hpp \
+				Cat.hpp \
+				Dog.hpp \
+				WrongAnimal.hpp \
+				WrongCat.hpp \
 
 OBJ 		=	$(addprefix $(OBJ_DIR), $(SRC:%.cpp=%.o))
 
@@ -28,18 +35,16 @@ Q := @
 VECHO = @echo
 endif
 
-vpath %.cpp $(SRC_DIR)
-
 all: $(BIN)
 
 $(BIN): $(OBJ)
 	$(Q)mkdir -p $(@D)
 	$(VECHO)
-	$(VECHO) "\033[36mLinking binary file:     \033[0m$@ 🚨"
+	$(VECHO) "\033[36mLinking binary file:     \033[0m$@ 🐾"
 	$(VECHO)
 	$(Q)$(CC) $^ $(CFLAGS) -o $@
 
-$(OBJ_DIR)%.o:%.cpp
+$(OBJ_DIR)%.o: $(SRC_DIR)%.cpp $(addprefix $(SRC_DIR), $(HEADERS))
 	$(Q)mkdir -p $(@D)
 	$(VECHO) "\033[34mCompiling object file:   \033[0m$@"
 	$(Q)$(CC) -c $< $(CFLAGS) -o $@
@@ -56,10 +61,4 @@ fclean: clean
 
 re: clean all
 
-reall: fclean all
-
-rerun: re
-	./miniRT
-
-.PHONY:	all libft norme clean fclean re reall
-
+.PHONY:	all clean fclean re

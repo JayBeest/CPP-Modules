@@ -53,11 +53,6 @@ Animal &	Animal::operator=( const Animal& rhs ) {
 
 ///			Functions / Methods
 
-void	Animal::makeSound( void ) const {
-
-	std::cout << "Wharrgarbl!" << std::endl;
-}
-
 void	Animal::makeSilent( void ) {
 
 	Animal::_loud = false;

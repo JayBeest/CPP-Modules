@@ -12,7 +12,7 @@ public:
 
 	virtual			~Animal( );
 
-	virtual void	makeSound( void ) const;
+	virtual void	makeSound( void ) const = 0;
 	static void		makeSilent( void );
 
 protected:
