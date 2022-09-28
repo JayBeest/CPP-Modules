@@ -1,26 +1,26 @@
-#ifndef ANIMAL_H
-# define ANIMAL_H
+#ifndef AANIMAL_H
+# define AANIMAL_H
 
 # include <iostream>
 # include <fstream>
 
-class Animal {
+class AAnimal {
 
 public:
 
 	std::string		getType( ) const;
 
-	virtual			~Animal( );
+	virtual			~AAnimal( );
 
 	virtual void	makeSound( void ) const = 0;
 	static void		makeSilent( void );
 
 protected:
 
-	explicit		Animal( std::string type );
-					Animal( );
-					Animal( const Animal & src );
-					Animal & operator=( const Animal & rhs);
+	explicit		AAnimal( std::string type );
+					AAnimal( );
+					AAnimal( const AAnimal & other );
+	AAnimal &		operator=( const AAnimal & rhs );
 
 	std::string		type;
 	static bool		_loud;
@@ -29,6 +29,6 @@ private:
 
 };
 
-std::ostream & operator<<( std::ostream & o_stream, const Animal & animal);
+std::ostream & operator<<( std::ostream & o_stream, const AAnimal & animal);
 
 #endif

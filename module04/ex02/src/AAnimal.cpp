@@ -1,68 +1,77 @@
-#include <iostream>
-#include "Animal.hpp"
+#include "AAnimal.hpp"
 
 ///			Public:
 
 ///			Getters / Setters
 
-std::string		Animal::getType( ) const {
+std::string		AAnimal::getType( ) const {
 
 	return this->type;
 }
 
 ///			Constructor / Destructor
 
-Animal::Animal( std::string type ) : type(type) {
+AAnimal::AAnimal( std::string type ) : type(type) {
 
-	if (Animal::_loud)
-  		std::cout << "[Animal] Specific constructor called" << std::endl;
+	if (AAnimal::_loud)
+	{
+  		std::cout << "[AAnimal] Specific constructor called" << std::endl;
+	}
 }
 
-Animal::Animal( ) : type("Shapeless"){
+AAnimal::AAnimal( ) : type("Shapeless"){
 
-	if (Animal::_loud)
-  		std::cout << "[Animal] Default constructor called" << std::endl;
+	if (AAnimal::_loud)
+	{
+  		std::cout << "[AAnimal] Default constructor called" << std::endl;
+	}
 }
 
-Animal::Animal( const Animal& other) {
+AAnimal::AAnimal( const AAnimal & other) {
 
+	if (AAnimal::_loud)
+	{
+  		std::cout << "[AAnimal] Copy constructor called" << std::endl;
+	}
 	if (this != &other)
 	{
 	  *this = other;
 	}
-	if (Animal::_loud)
-  		std::cout << "[Animal] Copy constructor called" << std::endl;
 }
 
-Animal::~Animal( ) {
+AAnimal::~AAnimal( ) {
 
-	if (Animal::_loud)
-  		std::cout << "[Animal] Destructor called" << std::endl;
+	if (AAnimal::_loud)
+	{
+  		std::cout << "[AAnimal] Destructor called" << std::endl;
+	}
 }
 
-Animal &	Animal::operator=( const Animal& rhs ) {
+AAnimal &	AAnimal::operator=( const AAnimal & rhs ) {
 
+	if (AAnimal::_loud)
+	{
+  		std::cout << "[AAnimal] Copy assignment operator called" << std::endl;
+	}
 	if (this != &rhs)
 	{
 		this->type = rhs.getType();
 	}
-	if (Animal::_loud)
-  		std::cout << "[Animal] Copy assignment operator called" << std::endl;
 	return *this;
 }
 
 ///			Functions / Methods
 
-void	Animal::makeSilent( void ) {
+void	AAnimal::makeSilent( void ) {
 
-	Animal::_loud = false;
+	AAnimal::_loud = false;
 }
 
 ///			Private:
 
-bool	Animal::_loud = true;
+bool	AAnimal::_loud = true;
 
-std::ostream & operator<<( std::ostream & o_stream, const Animal & animal ) {
+std::ostream & operator<<( std::ostream & o_stream, const AAnimal & animal ) {
 
 	return o_stream << animal.getType();
 }
