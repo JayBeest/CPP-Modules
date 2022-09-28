@@ -71,7 +71,7 @@ void	AAnimal::makeSilent( void ) {
 
 bool	AAnimal::_loud = true;
 
-std::ostream & operator<<( std::ostream & o_stream, const AAnimal & animal ) {
+std::ostream &	operator<<( std::ostream & o_stream, const AAnimal & animal ) {
 
 	return o_stream << animal.getType();
 }
