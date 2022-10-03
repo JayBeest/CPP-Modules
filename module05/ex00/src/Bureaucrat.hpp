@@ -2,6 +2,7 @@
 # define BUREAUCRAT_H
 
 # include <stdexcept>
+# include <iostream>
 
 class Bureaucrat {
 
@@ -12,26 +13,27 @@ public:
 
 	explicit			Bureaucrat( const std::string & name, unsigned int grade );
 						Bureaucrat( );
-						Bureaucrat( const Bureaucrat & src );
+						Bureaucrat( const Bureaucrat & other );
 						~Bureaucrat( );
-						Bureaucrat & operator=( const Bureaucrat & rhs );
+	Bureaucrat &		operator=( const Bureaucrat & rhs );
 
 	void				incrGrade( void );
 	void				decrGrade( void );
 
-    class GradeTooHighException : public std::runtime_error {
+	static void			makeSilent( void );
+
+	class GradeTooHighException : public std::runtime_error {
     public:
         explicit GradeTooHighException(std::string msg="Grade is too high (< 1)")
         : std::runtime_error(msg) {};
     };
 
-    class GradeTooLowException : public std::exception {
-    public: virtual const char * what() const throw() {
+	class GradeTooLowException : public std::exception {
+    public:
+		virtual const char * what() const throw() {
             return ("Grade is too low (> 150)");
         }
     };
-
-	static void			makeSilent( void );
 
 private:
 
@@ -42,6 +44,6 @@ private:
 
 };
 
-std::ostream & operator<<(std::ostream & o_stream, const Bureaucrat & bureaucrat);
+std::ostream & operator<<( std::ostream & o_stream, const Bureaucrat & bureaucrat );
 
 #endif

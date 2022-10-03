@@ -1,4 +1,3 @@
-#include <iostream>
 #include "Bureaucrat.hpp"
 
 void try_incr_bureaucrat(Bureaucrat & bureau)
