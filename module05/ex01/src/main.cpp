@@ -77,12 +77,16 @@ int main ( int argc, char **argv ) {
 		Form form2("testform 2", 1);
 		sloth.signForm(form2);
 		std::cout << form2;
+		Form form3("testform 3", -1);
+		std::cout << form3;
+		Form form4("testform 4", 0);
+		std::cout << form4;
 	}
 	catch(std::exception & e)
 	{
 		std::cout << "exception: " << e.what() << " caught during construction" << std::endl;
 	}
-
+	std::cout << "---->  Just before end of main" << std::endl;
 
 	return 0;
 }
