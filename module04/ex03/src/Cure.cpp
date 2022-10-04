@@ -10,33 +10,41 @@
 Cure::Cure( ) : AMateria("cure"){
 
 	if (AMateria::_loud)
+	{
   		std::cout << "[Cure] Default constructor called" << std::endl;
+	}
 }
 
 Cure::Cure( const Cure & other ) {
 
+	if (AMateria::_loud)
+	{
+  		std::cout << "[Cure] Copy constructor called" << std::endl;
+	}
 	if (this != &other)
 	{
 	  *this = other;
 	}
-	if (AMateria::_loud)
-  		std::cout << "[Cure] Copy constructor called" << std::endl;
 }
 
 Cure::~Cure( ) {
 
-	// TODO
 	if (AMateria::_loud)
+	{
   		std::cout << "[Cure] Destructor called" << std::endl;
+	}
 }
 
 Cure &	Cure::operator=( const Cure & rhs ) {
 
+	if (AMateria::_loud)
+	{
+  		std::cout << "[Cure] Copy assignment operator called" << std::endl;
+	}
 	if (this != &rhs)
 	{
+		//TODO ?
 	}
-	if (AMateria::_loud)
-  		std::cout << "[Cure] Copy assignment operator called" << std::endl;
 	return *this;
 }
 

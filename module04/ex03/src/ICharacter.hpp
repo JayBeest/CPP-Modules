@@ -17,7 +17,6 @@ public:
 	virtual void 				use( int idx, ICharacter & target ) = 0;
 	virtual AMateria *			getInventory( unsigned int index ) const = 0;
 
-
 };
 
 #endif

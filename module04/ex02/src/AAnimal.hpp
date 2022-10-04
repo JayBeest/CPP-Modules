@@ -2,7 +2,6 @@
 # define AANIMAL_H
 
 # include <iostream>
-# include <fstream>
 
 class AAnimal {
 
@@ -29,6 +28,6 @@ private:
 
 };
 
-std::ostream & operator<<( std::ostream & o_stream, const AAnimal & animal);
+std::ostream & operator<<( std::ostream & o_stream, const AAnimal & animal );
 
 #endif

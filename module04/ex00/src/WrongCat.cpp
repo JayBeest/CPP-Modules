@@ -40,7 +40,6 @@ WrongCat::~WrongCat( ) {
 	{
   		std::cout << "[WrongCat] Destructor called" << std::endl;
 	}
-	// TODO
 }
 
 WrongCat &	WrongCat::operator=( const WrongCat & rhs ) {

@@ -28,6 +28,6 @@ private:
 
 };
 
-std::ostream &	operator<<( std::ostream & o_stream, const WrongAnimal & animal);
+std::ostream &	operator<<( std::ostream & o_stream, const WrongAnimal & animal );
 
 #endif
