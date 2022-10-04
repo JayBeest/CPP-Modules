@@ -1,4 +1,3 @@
-#include <iostream>
 #include "WrongCat.hpp"
 
 ///			Public:

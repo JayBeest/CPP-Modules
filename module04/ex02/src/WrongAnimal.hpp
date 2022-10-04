@@ -2,7 +2,6 @@
 # define WRONG_ANIMAL_H
 
 # include <iostream>
-# include <fstream>
 
 class WrongAnimal {
 

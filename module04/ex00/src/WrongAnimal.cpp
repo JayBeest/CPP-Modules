@@ -14,7 +14,9 @@ std::string		WrongAnimal::getType( ) const {
 WrongAnimal::WrongAnimal( const std::string & type ) : type(type) {
 
 	if (WrongAnimal::_loud)
+	{
   		std::cout << "[WrongAnimal] Specific constructor called" << std::endl;
+	}
 }
 
 WrongAnimal::WrongAnimal( ) : type("Shapeless"){

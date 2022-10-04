@@ -2,7 +2,6 @@
 # define AANIMAL_H
 
 # include <iostream>
-# include <fstream>
 
 class AAnimal {
 

@@ -15,45 +15,57 @@ Character::Character( const std::string & name )
 : _name(name), _inventory(), _ground() {
 
 	if (Character::_loud)
+	{
   		std::cout << "[Character] Specific constructor called" << std::endl;
+	}
 }
 
 Character::Character( ) {
 
-										// TODO not counting default constructor
 	if (Character::_loud)
+	{
   		std::cout << "[Character] Default constructor called" << std::endl;
+	}
 }
 
 Character::Character( const Character & other ) {
 
+	if (Character::_loud)
+	{
+  		std::cout << "[Character] Copy constructor called" << std::endl;
+	}
 	if (this != &other)
 	{
 	  *this = other;
-	  // TODO
 	}
-	if (Character::_loud)
-  		std::cout << "[Character] Copy constructor called" << std::endl;
 }
 
 Character::~Character( void ) {
 
-	for (int i = 0; i < MAX_INVENTORY; i++)
-		delete this->_inventory[i];
-	for (int i = 0; i < MAX_GROUND; i++)
-		delete this->_ground[i];
 	if (Character::_loud)
+	{
   		std::cout << "[Character] Destructor called" << std::endl;
+	}
+	for (int i = 0; i < MAX_INVENTORY; i++)
+	{
+		delete this->_inventory[i];
+	}
+	for (int i = 0; i < MAX_GROUND; i++)
+	{
+		delete this->_ground[i];
+	}
 }
 
 Character &	Character::operator=( const Character & rhs ) {
 
+	if (Character::_loud)
+	{
+  		std::cout << "[Character] Copy assignment operator called" << std::endl;
+	}
 	if (this != &rhs)
 	{
 		this->_name = rhs.getName();	// TODO
 	}
-	if (Character::_loud)
-  		std::cout << "[Character] Copy assignment operator called" << std::endl;
 	return *this;
 }
 
@@ -100,13 +112,17 @@ void	Character::use( int idx, ICharacter &target ) {
 		return;
 	}
 	else
+	{
 		this->getInventory(idx)->use(target);
+	}
 }
 
 AMateria *	Character::getInventory( unsigned int index ) const {
 
 	if (index < MAX_INVENTORY)
+	{
 		return _inventory[index];
+	}
 	std::cerr << "[getInventory] index(" << index << ") out of bounds, returning NULL.." << std::endl;
 	return NULL;
 }

@@ -10,33 +10,41 @@
 Fire::Fire( ) : AMateria("fire"){
 
 	if (AMateria::_loud)
+	{
   		std::cout << "[Fire] Default constructor called" << std::endl;
+	}
 }
 
 Fire::Fire( const Fire & other ) {
 
+	if (AMateria::_loud)
+	{
+  		std::cout << "[Fire] Copy constructor called" << std::endl;
+	}
 	if (this != &other)
 	{
 	  *this = other;
 	}
-	if (AMateria::_loud)
-  		std::cout << "[Fire] Copy constructor called" << std::endl;
 }
 
 Fire::~Fire( ) {
 
-	// TODO
 	if (AMateria::_loud)
+	{
   		std::cout << "[Fire] Destructor called" << std::endl;
+	}
 }
 
 Fire &	Fire::operator=( const Fire & rhs ) {
 
+	if (AMateria::_loud)
+	{
+  		std::cout << "[Fire] Copy assignment operator called" << std::endl;
+	}
 	if (this != &rhs)
 	{
+		// TODO ?
 	}
-	if (AMateria::_loud)
-  		std::cout << "[Fire] Copy assignment operator called" << std::endl;
 	return *this;
 }
 
@@ -50,7 +58,6 @@ void	Fire::use( ICharacter & target ) const {
 Fire *	Fire::clone( void ) const {
 
 	std::cout << "cloning " << this->getType() << " .. " << std::endl;
-
 	return new Fire(*this);
 }
 
