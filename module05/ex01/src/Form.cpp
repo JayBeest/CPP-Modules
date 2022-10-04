@@ -31,13 +31,11 @@ Form::Form( const std::string & name, const unsigned int & required_grade )
 	}
 	if (required_grade > 150)
 	{
-		throw GradeTooLowException();
-		// destroy form?
+		throw Form::GradeTooLowException();
 	}
 	else if (required_grade < 1)
 	{
-		throw GradeTooHighException();
-		// destroy form?
+		throw Form::GradeTooHighException();
 	}
 }
 
@@ -68,7 +66,6 @@ Form::~Form( ) {
 	{
 		std::cout << "[Form] Destructor called" << std::endl;
 	}
-	// TODO
 }
 
 Form &	Form::operator=( const Form & rhs ) {

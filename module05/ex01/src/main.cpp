@@ -34,7 +34,20 @@ void    try_catch_bureaucrat(const std::string & name, unsigned int grade)
     }
 }
 
-int main ( void ) {
+int main ( int argc, char **argv ) {
+
+	if (argc == 2 && std::string(argv[1]) == "-s")
+	{
+		std::cout << "Silencing [Bureaucrat].. to silence [Form] as well use -s2" << std::endl << std::endl;
+		Bureaucrat::makeSilent();
+	}
+	else if (argc == 2 && std::string(argv[1]) == "-s2")
+	{
+		std::cout << "Silencing [Bureaucrat].." << std::endl;
+		Bureaucrat::makeSilent();
+		std::cout << "Silencing [Form].." << std::endl << std::endl;
+		Form::makeSilent();
+	}
 
     try_catch_bureaucrat("Bob", 2);
 	std::cout << std::endl;

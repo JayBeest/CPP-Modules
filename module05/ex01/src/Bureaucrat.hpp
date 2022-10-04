@@ -50,6 +50,6 @@ private:
 
 };
 
-std::ostream & operator<<( std::ostream & o_stream, const Bureaucrat & bureaucrat );
+std::ostream &	operator<<( std::ostream & o_stream, const Bureaucrat & bureaucrat );
 
 #endif
