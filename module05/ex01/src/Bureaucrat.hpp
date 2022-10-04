@@ -28,7 +28,7 @@ public:
 	class GradeTooHighException : public std::runtime_error {
 
     public:
-        explicit GradeTooHighException(std::string msg="Grade is too high (< 1)")
+        explicit GradeTooHighException( std::string msg = "grade is too high" )
         : std::runtime_error(msg) {};
     };
 
@@ -36,7 +36,7 @@ public:
 
     public:
 		virtual const char * what() const throw() {
-            return ("Grade is too low (> 150)");
+            return ("grade is too low");
         }
     };
 

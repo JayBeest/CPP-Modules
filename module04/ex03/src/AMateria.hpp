@@ -27,12 +27,12 @@ protected:
 
 private:
 
-						AMateria & operator=( const AMateria & rhs );
+	AMateria &			operator=( const AMateria & rhs );
 
 	std::string			_type;
 
 };
 
-std::ostream & operator<<( std::ostream & o_stream, const AMateria & materia );
+std::ostream &	operator<<( std::ostream & o_stream, const AMateria & materia );
 
 #endif
