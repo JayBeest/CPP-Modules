@@ -3,6 +3,9 @@
 
 # include <stdexcept>
 # include <iostream>
+# include "Form.hpp"
+
+class Form;
 
 class Bureaucrat {
 
@@ -19,6 +22,7 @@ public:
 
 	void				incrGrade( void );
 	void				decrGrade( void );
+	void				signForm( Form & form );
 
 	static void			makeSilent( void );
 

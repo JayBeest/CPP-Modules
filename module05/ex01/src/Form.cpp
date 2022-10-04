@@ -86,10 +86,16 @@ Form &	Form::operator=( const Form & rhs ) {
 
 ///			Functions / Methods
 
-void	Form::doStuff( ) const {
+void	Form::beSigned( const Bureaucrat & bureaucrat ) {
 
-	// TODO
-
+	if (this->getRequiredGrade() >= bureaucrat.getGrade())
+	{
+		this->_signed = true;
+	}
+	else
+	{
+		throw Form::GradeTooLowException();
+	}
 }
 
 void	Form::makeSilent( void ) {

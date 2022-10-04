@@ -57,9 +57,12 @@ int main ( void ) {
 
 	try
 	{
-		Form form1("testform", 150);
+		Form form1("testform 1", 150);
 		std::cout << form1;
-		Form form2("testform", 0);
+		sloth.signForm(form1);
+		std::cout << form1;
+		Form form2("testform 2", 1);
+		sloth.signForm(form2);
 		std::cout << form2;
 	}
 	catch(std::exception & e)
