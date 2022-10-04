@@ -1,5 +1,6 @@
 #include <iomanip>
 #include "Form.hpp"
+#include "Bureaucrat.hpp"
 
 ///			Public:
 

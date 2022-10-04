@@ -1,5 +1,5 @@
 #include "AMateria.hpp"
-#include "Character.hpp"
+#include "ICharacter.hpp"
 
 ///			Public:
 
@@ -54,7 +54,7 @@ AMateria &	AMateria::operator=( const AMateria & rhs ) {
 
 ///			Functions / Methods
 
-void	AMateria::use(ICharacter & target ) const {
+void	AMateria::use( ICharacter & target ) const {
 
 		std::cout << "AMateria:use -- This should never show up..(" << target.getName() << ")" << std::endl;
 }

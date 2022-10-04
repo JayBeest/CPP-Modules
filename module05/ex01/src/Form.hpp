@@ -1,8 +1,6 @@
 #ifndef FORM_H
 # define FORM_H
 
-# include "Bureaucrat.hpp"
-
 class Bureaucrat;
 
 class Form {
@@ -33,7 +31,7 @@ public:
 	class GradeTooLowException : public std::exception {
 
 	public:
-		virtual const char * what() const throw() {
+		virtual const char * what() const _NOEXCEPT {
 			return ("grade is too low");
 		}
 	};
