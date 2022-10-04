@@ -32,8 +32,7 @@ all: $(BIN)
 $(BIN): $(OBJ)
 	$(Q)mkdir -p $(@D)
 	$(VECHO)
-	$(VECHO) "\033[36mLinking binary file:     \033[0m$@ 🚨"
-	$(VECHO)
+	$(VECHO) "\033[36mLinking binary file:     \033[0m$@ 🐛"
 	$(Q)$(CC) $^ $(CFLAGS) -o $@
 
 $(OBJ_DIR)%.o: $(SRC_DIR)%.cpp $(addprefix $(SRC_DIR), $(HEADERS))
