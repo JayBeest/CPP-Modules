@@ -3,7 +3,7 @@
 
 ///			Public:
 
-int		Fixed::getRawBits( ) const {
+int		Fixed::getRawBits( void ) const {
 
 	if (_loud)
 		std::cout << "[Fixed] 'getRawBits' member function called" << std::endl;
