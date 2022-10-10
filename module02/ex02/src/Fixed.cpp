@@ -48,7 +48,7 @@ Fixed::Fixed( const float & float_value ) : _fixed_point(0) {
 	float	fractional = float_value - (float)integer;
 	if (float_value != 0)
     {
-		this->setRawBits((integer << _fractional_bits) + (int)round((fractional * (1 << _fractional_bits))));
+		this->setRawBits((integer << _fractional_bits) + (int)roundl((fractional * (1 << _fractional_bits))));
     }
 	else
     {
