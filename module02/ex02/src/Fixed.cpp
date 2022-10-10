@@ -3,7 +3,7 @@
 
 ///			Public:
 
-int		Fixed::getRawBits( ) const {
+int		Fixed::getRawBits( void ) const {
 
 	return this->_fixed_point;
 }

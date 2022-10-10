@@ -7,7 +7,7 @@ class Fixed {
 
 public:
 
-	int						getRawBits( ) const;
+	int						getRawBits( void ) const;
 	void					setRawBits( const int & raw );
 	static void				makeSilent( void );
 

@@ -9,6 +9,7 @@ BIN			=	$(BIN_DIR)$(NAME)
 
 SRC			=	Fixed.cpp \
 				Point.cpp \
+				bsp.cpp \
 				main.cpp \
 
 HEADERS		=	Fixed.hpp \
