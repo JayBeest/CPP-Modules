@@ -6,7 +6,9 @@
 int		Fixed::getRawBits( ) const {
 
 	if (_loud)
+	{
 		std::cout << "[Fixed] 'getRawBits' member function called" << std::endl;
+	}
 	return this->_fixed_point;
 }
 
@@ -26,24 +28,25 @@ void	Fixed::makeSilent( void ) {
 Fixed::Fixed( ) : _fixed_point(0) {
 
 	if (_loud)
+	{
 		std::cout << "[Fixed] Default constructor called" << std::endl;
+	}
 }
 
 Fixed::Fixed( const int & int_value ) {
 
 	if (_loud)
+	{
 		std::cout << "[Fixed] Int constructor called" << std::endl;
+	}
 	this->setRawBits(int_value << _fractional_bits);
 }
 
 Fixed::Fixed( const float & float_value ) : _fixed_point(0) {
 
-	int		integer = (int)float_value;;
-	float	fractional = float_value - (float)integer;
-
 	if (float_value != 0)
     {
-		this->setRawBits((integer << _fractional_bits) + (int)round((fractional * (1 << _fractional_bits))));
+		this->setRawBits((int)roundf(float_value * (1 << _fractional_bits)));
     }
 	else
     {
@@ -233,10 +236,7 @@ Fixed 	Fixed::operator--( int ) {
 
 float	Fixed::toFloat( void ) const {
 
-	int		integer_part = getRawBits() >> _fractional_bits;
-	int		float_part = getRawBits() - (integer_part << _fractional_bits);
-
-	return ((float)integer_part + (float)(float_part) / (1 << (_fractional_bits)));
+	return ((float)this->getRawBits() / (1 << (_fractional_bits)));
 }
 
 int		Fixed::toInt( void ) const {
