@@ -84,8 +84,6 @@ int main ( int argc, char **argv ) {
 		PresidentialPardonForm form4("Bannon");
 		std::cout << form4;
 		useful.signForm(form4);
-//		form3.execute(useful);
-//		form3.execute(sloth);
 		std::cout << std::endl;
 		sloth.executeForm(form1);
 		sloth.executeForm(form2);
