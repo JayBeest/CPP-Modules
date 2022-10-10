@@ -9,11 +9,15 @@ BIN			=	$(BIN_DIR)$(NAME)
 
 SRC			=	Bureaucrat.cpp \
 				Form.cpp \
+				PresidentialPardonForm.cpp \
+				RobotomyRequestForm.cpp \
 				ShrubberyCreationForm.cpp \
 				main.cpp \
 
 HEADERS		=	Bureaucrat.hpp \
 				Form.hpp \
+				PresidentialPardonForm.hpp \
+				RobotomyRequestForm.hpp \
 				ShrubberyCreationForm.hpp \
 
 OBJ 		=	$(addprefix $(OBJ_DIR), $(SRC:%.cpp=%.o))

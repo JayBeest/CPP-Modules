@@ -4,22 +4,20 @@
 # include <iostream>
 # include "Form.hpp"
 
-class ShrubberyCreationForm : public Form {
+class ShrubberyCreationForm : public AForm {
 
 public:
 
-	int							getId( ) const;
-
 	explicit					ShrubberyCreationForm( const std::string & target );
-								ShrubberyCreationForm( );
 								ShrubberyCreationForm( const ShrubberyCreationForm & other );
 								~ShrubberyCreationForm( );
 	ShrubberyCreationForm &		operator=( const ShrubberyCreationForm & rhs );
 
-	void						doStuff() const;
+	virtual void				executeConcrete( const Bureaucrat & executor ) const;
 
 private:
 
+								ShrubberyCreationForm( );
 
 };
 

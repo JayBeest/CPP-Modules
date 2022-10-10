@@ -3,7 +3,7 @@
 
 class Bureaucrat;
 
-class Form {
+class AForm {
 
 public:
 
@@ -13,12 +13,15 @@ public:
 	unsigned int		getExecGrade( ) const;
 	std::string			getTarget( ) const;
 
-	explicit			Form( const std::string & name, const std::string & target, const unsigned int & req_grade, const unsigned int & exec_grade );
-						Form( );
-						Form( const Form & other );
-						~Form( );
-	Form &				operator=( const Form & rhs );
+	explicit			AForm( const std::string & name, const std::string & target, \
+					const unsigned int & req_grade, const unsigned int & exec_grade );
+						AForm( const AForm & other );
+						AForm( );
+						~AForm( );
+	AForm &				operator=( const AForm & rhs );
 
+	void				execute( const Bureaucrat & executor ) const;
+	virtual void		executeConcrete( const Bureaucrat & executor) const = 0;
 	void				beSigned( const Bureaucrat & bureaucrat );
 
 	static void			makeSilent( void );
@@ -38,6 +41,14 @@ public:
 		}
 	};
 
+	class NotSignedException : public std::exception {
+
+	public:
+		virtual const char * what() const _NOEXCEPT {
+			return ("is not signed");
+		}
+	};
+
 private:
 
 	const std::string	_name;
@@ -53,6 +64,6 @@ protected:
 
 };
 
-std::ostream &	operator<<( std::ostream & o_stream, const Form & form );
+std::ostream &	operator<<( std::ostream & o_stream, const AForm & form );
 
 #endif

@@ -4,16 +4,12 @@
 
 ///			Getters / Setters
 
-int		ShrubberyCreationForm::getId( ) const {
-
-	return this->_id;
-}
-
 ///			Constructor / Destructor
 
-ShrubberyCreationForm::ShrubberyCreationForm( const std::string & target ) : Form("ShrubberyForm", 145) {
+ShrubberyCreationForm::ShrubberyCreationForm( const std::string & target )
+: AForm("ShrubberyCreationForm", target, 145, 137) {
 
-	if (Form::_loud)
+	if (AForm::_loud)
 	{
   		std::cout << "[ShrubberyCreationForm] Specific constructor called" << std::endl;
 	}
@@ -21,16 +17,17 @@ ShrubberyCreationForm::ShrubberyCreationForm( const std::string & target ) : For
 
 ShrubberyCreationForm::ShrubberyCreationForm( ) {
 
-	if (Form::_loud)
+	if (AForm::_loud)
 	{
   		std::cout << "[ShrubberyCreationForm] Default constructor called" << std::endl;
 	}
-					// TODO not counting default constructor
+					// TODO hide this one in private?
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm( const ShrubberyCreationForm & other ) {
+ShrubberyCreationForm::ShrubberyCreationForm( const ShrubberyCreationForm & other )
+: AForm("ShrubberyCreationForm", other.getTarget(), 145, 137) {
 
-	if (Form::_loud)
+	if (AForm::_loud)
 	{
   		std::cout << "[ShrubberyCreationForm] Copy constructor called" << std::endl;
 	}
@@ -43,7 +40,7 @@ ShrubberyCreationForm::ShrubberyCreationForm( const ShrubberyCreationForm & othe
 
 ShrubberyCreationForm::~ShrubberyCreationForm( ) {
 
-	if (Form::_loud)
+	if (AForm::_loud)
 	{
   		std::cout << "[ShrubberyCreationForm] Destructor called" << std::endl;
 	}
@@ -52,13 +49,12 @@ ShrubberyCreationForm::~ShrubberyCreationForm( ) {
 
 ShrubberyCreationForm &	ShrubberyCreationForm::operator=( const ShrubberyCreationForm & rhs ) {
 
-	if (Form::_loud)
+	if (AForm::_loud)
 	{
   		std::cout << "[ShrubberyCreationForm] Copy assignment operator called" << std::endl;
 	}
 	if (this != &rhs)
 	{
-		this->_vars = rhs.getVars();
 			// TODO
 	}
 	return *this;
@@ -66,17 +62,9 @@ ShrubberyCreationForm &	ShrubberyCreationForm::operator=( const ShrubberyCreatio
 
 ///			Functions / Methods
 
-void	ShrubberyCreationForm::doStuff( ) const {
+void	ShrubberyCreationForm::executeConcrete( const Bureaucrat & executor ) const {
 
-	// TODO
-
+	// TODO implement write ASCII tree in <tartget>_shrubbery file..
 }
 
 ///			Private:
-
-
-
-int	ShrubberyCreationForm::_nb_ShrubberyCreationForm_created = 0;
-
-bool	Form::_loud = true;
-
