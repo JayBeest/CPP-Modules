@@ -1,5 +1,7 @@
 #include "Bureaucrat.hpp"
-#include "Form.hpp"
+#include "ShrubberyCreationForm.hpp"
+#include "RobotomyRequestForm.hpp"
+#include "PresidentialPardonForm.hpp"
 
 void try_incr_bureaucrat(Bureaucrat & bureau)
 {
@@ -46,7 +48,7 @@ int main ( int argc, char **argv ) {
 		std::cout << "Silencing [Bureaucrat].." << std::endl;
 		Bureaucrat::makeSilent();
 		std::cout << "Silencing [Form].." << std::endl << std::endl;
-		Form::makeSilent();
+		AForm::makeSilent();
 	}
 
     try_catch_bureaucrat("Bob", 2);
@@ -57,7 +59,7 @@ int main ( int argc, char **argv ) {
 	std::cout << std::endl;
 
 	Bureaucrat useful("Adam", 1);
-	Bureaucrat sloth("Harl", 150);
+	Bureaucrat sloth("Harl", 140);
 
 	try_incr_bureaucrat(useful);
 	try_decr_bureaucrat(useful);
@@ -70,17 +72,30 @@ int main ( int argc, char **argv ) {
 
 	try
 	{
-		Form form1("testform 1", 150);
+		ShrubberyCreationForm form1("bullseye");
 		std::cout << form1;
-		sloth.signForm(form1);
+		useful.signForm(form1);
 		std::cout << form1;
-		Form form2("testform 2", 1);
-		sloth.signForm(form2);
+		ShrubberyCreationForm form2("Osama");
 		std::cout << form2;
-		Form form3("testform 3", -1);
+		RobotomyRequestForm form3("blok beton");
 		std::cout << form3;
-		Form form4("testform 4", 0);
+		useful.signForm(form3);
+		PresidentialPardonForm form4("Bannon");
 		std::cout << form4;
+		useful.signForm(form4);
+//		form3.execute(useful);
+//		form3.execute(sloth);
+		std::cout << std::endl;
+		sloth.executeForm(form1);
+		sloth.executeForm(form2);
+		sloth.executeForm(form3);
+		sloth.executeForm(form4);
+		std::cout << std::endl;
+		useful.executeForm(form1);
+		useful.executeForm(form2);
+		useful.executeForm(form3);
+		useful.executeForm(form4);
 	}
 	catch(std::exception & e)
 	{

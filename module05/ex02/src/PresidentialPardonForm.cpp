@@ -21,7 +21,6 @@ PresidentialPardonForm::PresidentialPardonForm( ) {
 	{
   		std::cout << "[PresidentialPardonForm] Default constructor called" << std::endl;
 	}
-					// TODO hide this one in private?
 }
 
 PresidentialPardonForm::PresidentialPardonForm( const PresidentialPardonForm & other )
@@ -34,7 +33,6 @@ PresidentialPardonForm::PresidentialPardonForm( const PresidentialPardonForm & o
 	if (this != &other)
 	{
 	  *this = other;
-	  // TODO
 	}
 }
 
@@ -44,7 +42,6 @@ PresidentialPardonForm::~PresidentialPardonForm( ) {
 	{
   		std::cout << "[PresidentialPardonForm] Destructor called" << std::endl;
 	}
-	// TODO
 }
 
 PresidentialPardonForm &	PresidentialPardonForm::operator=( const PresidentialPardonForm & rhs ) {
@@ -55,16 +52,16 @@ PresidentialPardonForm &	PresidentialPardonForm::operator=( const PresidentialPa
 	}
 	if (this != &rhs)
 	{
-			// TODO
 	}
 	return *this;
 }
 
 ///			Functions / Methods
 
-void	PresidentialPardonForm::executeConcrete( const Bureaucrat & executor ) const {
+void	PresidentialPardonForm::executeConcrete( ) const {
 
-	// TODO implement write ASCII tree in <tartget>_shrubbery file..
+
+	std::cout << this->getTarget() << " has been pardoned by Zaphod Beeblebrox" << std::endl;
 }
 
 ///			Private:

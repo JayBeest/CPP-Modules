@@ -21,7 +21,6 @@ public:
 	AForm &				operator=( const AForm & rhs );
 
 	void				execute( const Bureaucrat & executor ) const;
-	virtual void		executeConcrete( const Bureaucrat & executor) const = 0;
 	void				beSigned( const Bureaucrat & bureaucrat );
 
 	static void			makeSilent( void );
@@ -60,6 +59,7 @@ private:
 
 protected:
 
+	virtual void		executeConcrete( ) const = 0;
 	static bool			_loud;
 
 };

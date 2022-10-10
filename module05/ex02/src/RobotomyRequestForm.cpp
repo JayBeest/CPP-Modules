@@ -1,3 +1,5 @@
+//#include <ctime>
+//#include <cstdlib>
 #include "RobotomyRequestForm.hpp"
 
 ///			Public:
@@ -21,7 +23,6 @@ RobotomyRequestForm::RobotomyRequestForm( ) {
 	{
   		std::cout << "[RobotomyRequestForm] Default constructor called" << std::endl;
 	}
-					// TODO hide this one in private?
 }
 
 RobotomyRequestForm::RobotomyRequestForm( const RobotomyRequestForm & other )
@@ -34,7 +35,6 @@ RobotomyRequestForm::RobotomyRequestForm( const RobotomyRequestForm & other )
 	if (this != &other)
 	{
 	  *this = other;
-	  // TODO
 	}
 }
 
@@ -44,7 +44,6 @@ RobotomyRequestForm::~RobotomyRequestForm( ) {
 	{
   		std::cout << "[RobotomyRequestForm] Destructor called" << std::endl;
 	}
-	// TODO
 }
 
 RobotomyRequestForm &	RobotomyRequestForm::operator=( const RobotomyRequestForm & rhs ) {
@@ -55,16 +54,24 @@ RobotomyRequestForm &	RobotomyRequestForm::operator=( const RobotomyRequestForm 
 	}
 	if (this != &rhs)
 	{
-			// TODO
 	}
 	return *this;
 }
 
 ///			Functions / Methods
 
-void	RobotomyRequestForm::executeConcrete( const Bureaucrat & executor ) const {
+void	RobotomyRequestForm::executeConcrete( ) const {
 
-	// TODO implement write ASCII tree in <tartget>_shrubbery file..
+	std::cout << "*** drilling noises ***" << std::endl;
+	std::srand(std::time(NULL));
+	if (std::rand() % 2)
+	{
+		std::cout << this->getTarget() << " has been robotomized successfully" << std::endl;
+	}
+	else
+	{
+		std::cout << "the robotomy failed.." << std::endl;
+	}
 }
 
 ///			Private:

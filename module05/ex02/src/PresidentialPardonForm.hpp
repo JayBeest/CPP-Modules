@@ -13,10 +13,10 @@ public:
 								~PresidentialPardonForm( );
 	PresidentialPardonForm &	operator=( const PresidentialPardonForm & rhs );
 
-	virtual void				executeConcrete( const Bureaucrat & executor ) const;
 
 private:
 
+	virtual void				executeConcrete( ) const;
 								PresidentialPardonForm( );
 
 };

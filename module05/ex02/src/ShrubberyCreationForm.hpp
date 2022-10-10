@@ -13,10 +13,10 @@ public:
 								~ShrubberyCreationForm( );
 	ShrubberyCreationForm &		operator=( const ShrubberyCreationForm & rhs );
 
-	virtual void				executeConcrete( const Bureaucrat & executor ) const;
 
 private:
 
+	virtual void				executeConcrete( ) const;
 								ShrubberyCreationForm( );
 
 };

@@ -21,7 +21,6 @@ ShrubberyCreationForm::ShrubberyCreationForm( ) {
 	{
   		std::cout << "[ShrubberyCreationForm] Default constructor called" << std::endl;
 	}
-					// TODO hide this one in private?
 }
 
 ShrubberyCreationForm::ShrubberyCreationForm( const ShrubberyCreationForm & other )
@@ -34,7 +33,6 @@ ShrubberyCreationForm::ShrubberyCreationForm( const ShrubberyCreationForm & othe
 	if (this != &other)
 	{
 	  *this = other;
-	  // TODO
 	}
 }
 
@@ -44,7 +42,6 @@ ShrubberyCreationForm::~ShrubberyCreationForm( ) {
 	{
   		std::cout << "[ShrubberyCreationForm] Destructor called" << std::endl;
 	}
-	// TODO
 }
 
 ShrubberyCreationForm &	ShrubberyCreationForm::operator=( const ShrubberyCreationForm & rhs ) {
@@ -55,16 +52,15 @@ ShrubberyCreationForm &	ShrubberyCreationForm::operator=( const ShrubberyCreatio
 	}
 	if (this != &rhs)
 	{
-			// TODO
 	}
 	return *this;
 }
 
 ///			Functions / Methods
 
-void	ShrubberyCreationForm::executeConcrete( const Bureaucrat & executor ) const {
+void	ShrubberyCreationForm::executeConcrete( ) const {
 
-	// TODO implement write ASCII tree in <tartget>_shrubbery file..
+	std::cout << "Implement: Create a file <target>_shrubbery in the working directory, and writes ASCII trees inside it..." << std::endl;
 }
 
 ///			Private:

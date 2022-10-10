@@ -4,7 +4,7 @@
 # include <stdexcept>
 # include <iostream>
 
-class Form;
+class AForm;
 
 class Bureaucrat {
 
@@ -21,7 +21,8 @@ public:
 
 	void				incrGrade( void );
 	void				decrGrade( void );
-	void				signForm( Form & form );
+	void				signForm( AForm & form );
+	void				executeForm( const AForm & form ) const;
 
 	static void			makeSilent( void );
 

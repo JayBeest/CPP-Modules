@@ -13,10 +13,10 @@ public:
 								~RobotomyRequestForm( );
 	RobotomyRequestForm &		operator=( const RobotomyRequestForm & rhs );
 
-	virtual void				executeConcrete( const Bureaucrat & executor ) const;
 
 private:
 
+	virtual void				executeConcrete( ) const;
 								RobotomyRequestForm( );
 
 };

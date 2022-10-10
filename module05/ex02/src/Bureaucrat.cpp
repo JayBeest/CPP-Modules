@@ -102,7 +102,7 @@ void    Bureaucrat::decrGrade( void ) {
 	}
 }
 
-void	Bureaucrat::signForm( Form & form ) {
+void	Bureaucrat::signForm( AForm & form ) {
 
 	try
 	{
@@ -113,6 +113,20 @@ void	Bureaucrat::signForm( Form & form ) {
 	{
 		std::cout << this->getName() << " couldn't sign " << form.getName()
 		<< " because " << e.what() << std::endl;
+	}
+}
+
+void	Bureaucrat::executeForm( const AForm & form ) const {
+
+	try
+	{
+		form.execute(*this);
+		std::cout << this->getName() << " executed " << form.getName() << std::endl;
+	}
+	catch (std::exception & e)
+	{
+		std::cerr << "Exception: " << this->getName() << " failed executing " << form.getName()
+		<< "because: " << e.what() << std::endl;
 	}
 }
 
