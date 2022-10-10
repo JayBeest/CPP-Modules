@@ -27,15 +27,15 @@ bool	is_triangle(const Point & a, const Point & b, const Point & c)
 	return true;
 }
 
-bool	bsp(Point const a, Point const b, Point const c, Point const p)
+bool	bsp(Point const a, Point const b, Point const c, Point const point)
 {
 	Fixed	orientation;
 
 	orientation = (b.getX() - a.getX()) * (c.getY() - a.getY()) - (b.getY() - a.getY()) * (c.getX() - a.getX());
 
-	return orientation * ((b.getX() - a.getX()) * (p.getY() - a.getY()) - (b.getY() - a.getY()) * (p.getX() - a.getX())) > Fixed(0) &&
-		   orientation * ((c.getX() - b.getX()) * (p.getY() - b.getY()) - (c.getY() - b.getY()) * (p.getX() - b.getX())) > Fixed(0) &&
-		   orientation * ((a.getX() - c.getX()) * (p.getY() - c.getY()) - (a.getY() - c.getY()) * (p.getX() - c.getX())) > Fixed(0);
+	return orientation * ((b.getX() - a.getX()) * (point.getY() - a.getY()) - (b.getY() - a.getY()) * (point.getX() - a.getX())) > Fixed(0) &&
+		   orientation * ((c.getX() - b.getX()) * (point.getY() - b.getY()) - (c.getY() - b.getY()) * (point.getX() - b.getX())) > Fixed(0) &&
+		   orientation * ((a.getX() - c.getX()) * (point.getY() - c.getY()) - (a.getY() - c.getY()) * (point.getX() - c.getX())) > Fixed(0);
 }
 
 void	check_bsp(const Point & p, const Point & a, const Point & b, const Point & c)
