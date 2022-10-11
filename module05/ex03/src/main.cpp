@@ -2,9 +2,10 @@
 #include "ShrubberyCreationForm.hpp"
 #include "RobotomyRequestForm.hpp"
 #include "PresidentialPardonForm.hpp"
+#include "Intern.hpp"
 
-void try_incr_bureaucrat(Bureaucrat & bureau)
-{
+void try_incr_bureaucrat(Bureaucrat & bureau) {
+
 	try {
 		std::cout << "Trying to increase grade of " << bureau << std::endl;
 		bureau.incrGrade();
@@ -14,8 +15,8 @@ void try_incr_bureaucrat(Bureaucrat & bureau)
 	}
 }
 
-void try_decr_bureaucrat(Bureaucrat & bureau)
-{
+void try_decr_bureaucrat(Bureaucrat & bureau) {
+
 	try {
 		std::cout << "Trying to decrease grade of " << bureau << std::endl;
 		bureau.decrGrade();
@@ -25,8 +26,8 @@ void try_decr_bureaucrat(Bureaucrat & bureau)
 	}
 }
 
-void    try_catch_bureaucrat(const std::string & name, unsigned int grade)
-{
+void    try_catch_bureaucrat(const std::string & name, unsigned int grade) {
+
     try {
         Bureaucrat test(name, grade);
         std::cout << test << ": End of try-block" << std::endl;
@@ -36,19 +37,73 @@ void    try_catch_bureaucrat(const std::string & name, unsigned int grade)
     }
 }
 
+void	test_intern() {
+
+	Bureaucrat	meester("Meester", 4);
+	Intern		randomIntern;
+	AForm *		aFormPtr;
+
+	aFormPtr = randomIntern.makeForm("test", "target1");
+	if (aFormPtr)
+	{
+		std::cout << *aFormPtr << std::endl;
+		delete aFormPtr;
+	}
+	aFormPtr = randomIntern.makeForm("", "target1");
+	if (aFormPtr)
+	{
+		std::cout << *aFormPtr << std::endl;
+		delete aFormPtr;
+	}
+	aFormPtr = randomIntern.makeForm("shrubbery creation", "Vondelpark");
+	if (aFormPtr)
+	{
+		meester.signForm(*aFormPtr);
+		meester.executeForm(*aFormPtr);
+		std::cout << *aFormPtr << std::endl;
+		delete aFormPtr;
+	}
+	aFormPtr = randomIntern.makeForm("presidential", "Snowden");
+	if (aFormPtr)
+	{
+		std::cout << *aFormPtr << std::endl;
+		delete aFormPtr;
+	}
+	aFormPtr = randomIntern.makeForm("robotomy", "Spekkie Big");
+	if (aFormPtr)
+	{
+		meester.signForm(*aFormPtr);
+		meester.executeForm(*aFormPtr);
+		meester.executeForm(*aFormPtr);
+		meester.executeForm(*aFormPtr);
+		meester.executeForm(*aFormPtr);
+		std::cout << *aFormPtr << std::endl;
+		delete aFormPtr;
+	}
+	aFormPtr = randomIntern.makeForm("robotomy", "Cow (and Chicken)");
+	if (aFormPtr)
+	{
+		meester.signForm(*aFormPtr);
+		meester.executeForm(*aFormPtr);
+		meester.executeForm(*aFormPtr);
+		meester.executeForm(*aFormPtr);
+		meester.executeForm(*aFormPtr);
+		std::cout << *aFormPtr << std::endl;
+		delete aFormPtr;
+	}
+}
+
 int main ( int argc, char **argv ) {
 
+	std::srand(std::time(0));
 	if (argc == 2 && std::string(argv[1]) == "-s")
-	{
-		std::cout << "Silencing [Bureaucrat].. to silence [Form] as well use -s2" << std::endl << std::endl;
-		Bureaucrat::makeSilent();
-	}
-	else if (argc == 2 && std::string(argv[1]) == "-s2")
 	{
 		std::cout << "Silencing [Bureaucrat].." << std::endl;
 		Bureaucrat::makeSilent();
 		std::cout << "Silencing [Form].." << std::endl << std::endl;
 		AForm::makeSilent();
+		std::cout << "Silencing [Intern].." << std::endl << std::endl;
+		Intern::makeSilent();
 	}
 
     try_catch_bureaucrat("Bob", 2);
@@ -99,6 +154,10 @@ int main ( int argc, char **argv ) {
 	{
 		std::cout << "exception: " << e.what() << " caught during construction" << std::endl;
 	}
+	std::cout << std::endl << "---->  Testing Intern" << std::endl << std::endl;
+
+	test_intern();
+
 	std::cout << "---->  Just before end of main" << std::endl;
 
 	return 0;

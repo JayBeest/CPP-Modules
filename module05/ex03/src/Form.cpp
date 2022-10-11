@@ -133,7 +133,9 @@ void	AForm::makeSilent( void ) {
 std::ostream &	operator<<( std::ostream & o_stream, const AForm & form ) {
 
 	o_stream << std::setw(16) << "form name: " << form.getName() << std::endl
+	<< std::setw(16) << "target: " << form.getTarget() << std::endl
 	<< std::setw(16) << "required grade: " << form.getRequiredGrade() << std::endl
+	<< std::setw(16) << "exec grade: " << form.getExecGrade() << std::endl
 	<< std::setw(16) << "is signed: " << form.getSigned() << std::endl;
 	return o_stream;
 }

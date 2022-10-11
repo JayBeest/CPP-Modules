@@ -53,36 +53,35 @@ Intern &	Intern::operator=( const Intern & rhs ) {
 
 AForm *	Intern::makeForm( const std::string & name, const std::string & target) const {
 
-	enum e_form {
-		SHRUBBERY,
-		ROBOTOMY,
-		PRESIDENTIAL,
-		DEFAULT
-	};
-
-	static std::string form_list[DEFAULT] = {
+	const static std::string form_list[DEFAULT * 2] = {
 			"shrubbery creation",
+			"shrubbery",
 			"robotomy request",
-			"presidential pardon"};
+			"robotomy",
+			"presidential pardon",
+			"presidential" };
 
 	int form_type = DEFAULT;
-	for (int i = 0; i < (int) DEFAULT; i++) {
-		if (form_list[i] == name) {
-			form_type = i;
-			std::cout << "Intern creates " << name << std::endl;
+	for (int i = 0; i < (int)(DEFAULT * 2); i++) {
+		if (form_list[i] == name)
+		{
+			form_type = i / 2;
 			break;
 		}
 	}
 	switch (form_type)
 	{
 		case SHRUBBERY:
+			std::cout << "Intern creates ShrubberyCreationForm" << std::endl;
 			return new ShrubberyCreationForm(target);
 		case ROBOTOMY:
+			std::cout << "Intern creates RobotomyRequestForm" << std::endl;
 			return new RobotomyRequestForm(target);
 		case PRESIDENTIAL:
+			std::cout << "Intern creates PresidentialPardonForm" << std::endl;
 			return new PresidentialPardonForm(target);
-		case DEFAULT:
-			std::cout << name << " not found, not returning a form..";
+		default:
+			std::cerr << name << " not found, not returning a form.." << std::endl;
 			return NULL;
 	}
 }

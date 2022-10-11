@@ -1,5 +1,3 @@
-//#include <ctime>
-//#include <cstdlib>
 #include "RobotomyRequestForm.hpp"
 
 ///			Public:
@@ -63,14 +61,14 @@ RobotomyRequestForm &	RobotomyRequestForm::operator=( const RobotomyRequestForm 
 void	RobotomyRequestForm::executeConcrete( ) const {
 
 	std::cout << "*** drilling noises ***" << std::endl;
-	std::srand(std::time(NULL));
+
 	if (std::rand() % 2)
 	{
 		std::cout << this->getTarget() << " has been robotomized successfully" << std::endl;
 	}
 	else
 	{
-		std::cout << "the robotomy failed.." << std::endl;
+		std::cout << this->getTarget() << "'s the robotomy failed.." << std::endl;
 	}
 }
 

@@ -1,6 +1,13 @@
 #ifndef FORM_H
 # define FORM_H
 
+enum e_form {
+	SHRUBBERY,
+	ROBOTOMY,
+	PRESIDENTIAL,
+	DEFAULT
+};
+
 class Bureaucrat;
 
 class AForm {
@@ -17,7 +24,7 @@ public:
 					const unsigned int & req_grade, const unsigned int & exec_grade );
 						AForm( const AForm & other );
 						AForm( );
-						~AForm( );
+	virtual				~AForm( );
 	AForm &				operator=( const AForm & rhs );
 
 	void				execute( const Bureaucrat & executor ) const;

@@ -9,6 +9,7 @@ class ShrubberyCreationForm : public AForm {
 public:
 
 	explicit					ShrubberyCreationForm( const std::string & target );
+								ShrubberyCreationForm( );
 								ShrubberyCreationForm( const ShrubberyCreationForm & other );
 								~ShrubberyCreationForm( );
 	ShrubberyCreationForm &		operator=( const ShrubberyCreationForm & rhs );
@@ -17,7 +18,6 @@ public:
 private:
 
 	virtual void				executeConcrete( ) const;
-								ShrubberyCreationForm( );
 
 };
 
