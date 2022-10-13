@@ -38,12 +38,12 @@ private:
 
 	static bool			_loud;
 
-	std::string			castToInt( );
-	std::string			castToChar( );
-	std::string			castToDouble( );
-	std::string			castToFloat( );
+	void				castInt( );
+	void				castChar( );
+	void				castDouble( );
+	void				castFloat( );
 	void				detectType( );
-	std::string			castType( );
+	void				castType( );
 	void				printType( );
 
 						ScalarConverter( );

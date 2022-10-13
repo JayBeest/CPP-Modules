@@ -82,20 +82,29 @@ void	ScalarConverter::makeSilent( void ) {
 
 ///			Private:
 
-std::string	ScalarConverter::castToInt( ) {
+void	ScalarConverter::castInt( ) {
 
+	if (isprint(_int))
+	{
+		_char = static_cast<char>(_int);
+	}
+	else
+	{
+		std::cout << "int does not represent a printable char" << std::endl;
+	}
+	_float = static_cast<float>(_int);
+	_double = static_cast<double>(_int);
+}
+
+void	ScalarConverter::castChar( ) {
 
 }
 
-std::string	ScalarConverter::castToChar( ) {
+void	ScalarConverter::castDouble( ) {
 
 }
 
-std::string	ScalarConverter::castToDouble( ) {
-
-}
-
-std::string	ScalarConverter::castToFloat( ) {
+void	ScalarConverter::castFloat( ) {
 
 }
 
@@ -125,19 +134,19 @@ std::string	ScalarConverter::castType( ) {
 	switch (_type)
 	{
 		case INT:
-			std::cout << "casting int: " << _int << std::endl;
-			break;
+			castInt();
+			break ;
 		case CHAR:
-			std::cout << "casting char: " << _char << std::endl;
-			break;
+			castChar();
+			break ;
 		case DOUBLE:
-			std::cout << "casting double: " << _double << std::endl;
-			break;
+			castDouble();
+			break ;
 		case FLOAT:
-			std::cout << "casting float: " << _float << "f" << std::endl;
-			break;
+			castFloat();
+			break ;
 		default:
-			std::cout << "<error printing>" << std::endl;
+			return "error: default_type";
 	}
 }
 
