@@ -4,35 +4,35 @@
 
 ///			Getters/Setters
 
-const std::string &	ClapTrap::getName( void ) const {
+const std::string &	ClapTrap::getName( ) const {
 
 	return this->_name;
 }
 
-unsigned int	ClapTrap::getHitPoints( void ) const {
+unsigned int	ClapTrap::getHitPoints( ) const {
 
-	return this->_hit_points;
+	return this->_hitPoints;
 }
 
-unsigned int	ClapTrap::getEnergyPoints( void ) const {
+unsigned int	ClapTrap::getEnergyPoints( ) const {
 
-	return this->_energy_points;
+	return this->_energyPoints;
 }
 
-unsigned int	ClapTrap::getAttackDamage( void ) const {
+unsigned int	ClapTrap::getAttackDamage( ) const {
 
-	return this->_attack_damage;
+	return this->_attackDamage;
 }
 
 void			ClapTrap::setAttackDamage( unsigned int damage ) {
 
-	this->_attack_damage = damage;
+	this->_attackDamage = damage;
 }
 
 ///			Constructor/Destroyer
 
 ClapTrap::ClapTrap( const std::string & name )
-: _name(name), _hit_points(10), _energy_points(10), _attack_damage(0) {
+: _name(name), _hitPoints(10), _energyPoints(10), _attackDamage(0) {
 
 	if (ClapTrap::_loud)
     {
@@ -41,7 +41,7 @@ ClapTrap::ClapTrap( const std::string & name )
 }
 
 ClapTrap::ClapTrap(	)
-: _name("<no_name>"), _hit_points(10), _energy_points(10), _attack_damage(0) {
+: _name("<no_name>"), _hitPoints(10), _energyPoints(10), _attackDamage(0) {
 
 	if (ClapTrap::_loud)
     {
@@ -78,9 +78,9 @@ ClapTrap &	ClapTrap::operator=( const ClapTrap & rhs ) {
 	if (this != &rhs)
 	{
 		this->_name = rhs.getName();
-		this->_hit_points = rhs.getHitPoints();
-		this->_energy_points = rhs.getEnergyPoints();
-		this->_attack_damage = rhs.getAttackDamage();
+		this->_hitPoints = rhs.getHitPoints();
+		this->_energyPoints = rhs.getEnergyPoints();
+		this->_attackDamage = rhs.getAttackDamage();
 	}
 	return *this;
 }
@@ -89,18 +89,18 @@ ClapTrap &	ClapTrap::operator=( const ClapTrap & rhs ) {
 
 void	ClapTrap::attack( const std::string & target) {
 
-	if (this->_hit_points == 0)
+	if (this->_hitPoints == 0)
     {
 		std::cout << "ClapTrap " << this->_name << " is dead and cannot attack.." << std::endl;
     }
-	else if (this->_energy_points == 0)
+	else if (this->_energyPoints == 0)
     {
 		std::cout << "ClapTrap " << this->_name << " has not enough energy to attack.." << std::endl;
     }
 	else
 	{
-		std::cout << "ClapTrap " << this->_name << " attacks " << target << " causing " << this->_attack_damage << " points of damage" << std::endl;
-		this->_energy_points--;
+		std::cout << "ClapTrap " << this->_name << " attacks " << target << " causing " << this->_attackDamage << " points of damage" << std::endl;
+		this->_energyPoints--;
 	}
 }
 
@@ -108,43 +108,43 @@ void	ClapTrap::takeDamage( unsigned int amount ) {
 
 	unsigned int	damage = 0;
 
-	if (amount > this->_hit_points)
-		damage = this->_hit_points;
+	if (amount > this->_hitPoints)
+		damage = this->_hitPoints;
 	else
 		damage = amount;
-	if (this->_hit_points == 0)
+	if (this->_hitPoints == 0)
     {
 		std::cout << "ClapTrap " << this->_name << " is already dead.." << std::endl;
     }
 	else
 	{
 		std::cout << "ClapTrap " << this->_name << " takes " << damage << " point(s) of damage." << std::endl;
-		if (this->_hit_points > amount)
-			this->_hit_points -= amount;
+		if (this->_hitPoints > amount)
+			this->_hitPoints -= amount;
 		else
-			this->_hit_points = 0;
+			this->_hitPoints = 0;
 	}
 }
 
 void	ClapTrap::beRepaired( unsigned int amount ) {
 
-	if (this->_hit_points == 0)
+	if (this->_hitPoints == 0)
     {
 		std::cout << "ClapTrap " << this->_name << " is dead and cannot repair itself.." << std::endl;
     }
-	else if (this->_energy_points == 0)
+	else if (this->_energyPoints == 0)
     {
 		std::cout << "ClapTrap " << this->_name << " has not enough energy to repair itself.." << std::endl;
     }
 	else
 	{
 		std::cout << "ClapTrap " << this->_name << " repairs itself for " << amount << std::endl;
-		this->_energy_points--;
-		this->_hit_points += amount;
+		this->_energyPoints--;
+		this->_hitPoints += amount;
 	}
 }
 
-void	ClapTrap::makeSilent( void ) {
+void	ClapTrap::makeSilent( ) {
 
 	ClapTrap::_loud = false;
 }

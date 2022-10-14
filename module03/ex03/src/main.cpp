@@ -1,7 +1,7 @@
 #include <iostream>
 #include "DiamondTrap.hpp"
 
-void	clap_test(void)
+void	clapTest(void)
 {
 	std::cout << "*** ClapTrap tests ***" << std::endl << std::endl;
 
@@ -37,7 +37,7 @@ void	clap_test(void)
 	b.takeDamage(a.getAttackDamage());
 }
 
-void	scav_test(void)
+void	scavTest(void)
 {
 	std::cout << "*** ScavTrap tests ***" << std::endl << std::endl;
 
@@ -81,7 +81,7 @@ void	scav_test(void)
 	b.guardGate();
 }
 
-void	frag_test(void)
+void	fragTest(void)
 {
 
 	std::cout << "*** FragTrap tests ***" << std::endl << std::endl;
@@ -130,15 +130,9 @@ void	stats(const ClapTrap & c_trap)
 	std::cout << "Attack damage: " << c_trap.getAttackDamage() << std::endl << std::endl;
 }
 
-int main (int argc, char **argv) {
+void	diamondTest() {
 
-	if (argc == 2 && std::string(argv[1]) == "-s")
-	{
-		std::cout << std::endl << "Making silent..." << std::endl << std::endl;
-		ClapTrap::makeSilent();
-	}
-
-	std::cout << "*** Diamond Trap tests ***" << std::endl << std::endl;
+	std::cout << "*** Diamond Trap tests ***" << std::endl;
 
 	std::cout << std::endl;
 	DiamondTrap d("Weirdo");
@@ -148,12 +142,23 @@ int main (int argc, char **argv) {
 	d.highFivesGuys();
 	d.whoAmI();
 	stats(d);
+}
 
-	frag_test();
+int main (int argc, char **argv) {
+
+	if (argc == 2 && std::string(argv[1]) == "-s")
+	{
+		std::cout << std::endl << "Making silent..." << std::endl << std::endl;
+		ClapTrap::makeSilent();
+	}
+
+	diamondTest();
+
+	fragTest();
 	std::cout << std::endl;
-	scav_test();
+	scavTest();
 	std::cout << std::endl;
-	clap_test();
+	clapTest();
 
 	return 0;
 }

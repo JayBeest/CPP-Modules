@@ -12,9 +12,9 @@ FragTrap::FragTrap( const std::string & name ) : ClapTrap(name) {
 	{
 		std::cout << "[FragTrap] Standard constructor called" << std::endl;
 	}
-	this->_hit_points = 100;
-	this->_energy_points = 100;
-	this->_attack_damage = 30;
+	this->_hitPoints = 100;
+	this->_energyPoints = 100;
+	this->_attackDamage = 30;
 }
 
 FragTrap::FragTrap(	) {
@@ -23,9 +23,9 @@ FragTrap::FragTrap(	) {
 	{
 		std::cout << "[FragTrap] Default constructor called" << std::endl;
 	}
-	this->_hit_points = 100;
-	this->_energy_points = 100;
-	this->_attack_damage = 30;
+	this->_hitPoints = 100;
+	this->_energyPoints = 100;
+	this->_attackDamage = 30;
 }
 
 FragTrap::FragTrap( const FragTrap & other ) {
@@ -57,29 +57,29 @@ FragTrap &	FragTrap::operator=( const FragTrap & rhs ) {
 	if (this != &rhs)
 	{
 		this->_name = rhs.getName();
-		this->_hit_points = rhs.getHitPoints();
-		this->_energy_points = rhs.getEnergyPoints();
-		this->_attack_damage = rhs.getAttackDamage();
+		this->_hitPoints = rhs.getHitPoints();
+		this->_energyPoints = rhs.getEnergyPoints();
+		this->_attackDamage = rhs.getAttackDamage();
 	}
 	return *this;
 }
 
 ///			Functions/Methods
 
-void	FragTrap::highFivesGuys( void ) {
+void	FragTrap::highFivesGuys( ) {
 
-	if (this->_hit_points == 0)
+	if (this->_hitPoints == 0)
 	{
 		std::cout << "FragTrap " << this->getName() << " is dead and cannot high-five.." << std::endl;
 	}
-	else if (this->_energy_points == 0)
+	else if (this->_energyPoints == 0)
 	{
 		std::cout << "FragTrap " << this->getName() << " has not enough energy to high-five.." << std::endl;
 	}
 	else
 	{
 		std::cout << "FragTrap " << this->getName() << " blurts out: 'High-five! C'mon robots! High-five!'" << std::endl;
-		this->_energy_points--;
+		this->_energyPoints--;
 	}
 }
 

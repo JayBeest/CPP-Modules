@@ -8,7 +8,7 @@ class DiamondTrap : public ScavTrap,  public FragTrap {
 
 public:
 
-	virtual const std::string &	getName( void ) const;
+	virtual const std::string &	getName( ) const;
 
 	explicit					DiamondTrap( const std::string & name );
 								DiamondTrap( );
@@ -16,11 +16,11 @@ public:
 	virtual						~DiamondTrap( );
 	DiamondTrap &				operator=( const DiamondTrap & rhs);
 
-	void						whoAmI( void ) const;
+	void						whoAmI( ) const;
 
 private:
 
-	std::string				_name;
+	std::string					_name;
 
 };
 

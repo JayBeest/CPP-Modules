@@ -12,9 +12,9 @@ ScavTrap::ScavTrap( const std::string & name ) : ClapTrap(name) {
     {
 		std::cout << "[ScavTrap] Standard constructor called" << std::endl;
     }
-	this->_hit_points = 100;
-	this->_energy_points = 50;
-	this->_attack_damage = 20;
+	this->_hitPoints = 100;
+	this->_energyPoints = 50;
+	this->_attackDamage = 20;
 }
 
 ScavTrap::ScavTrap(	) : ClapTrap() {
@@ -23,9 +23,9 @@ ScavTrap::ScavTrap(	) : ClapTrap() {
     {
 		std::cout << "[ScavTrap] Default constructor called" << std::endl;
     }
-    this->_hit_points = 100;
-    this->_energy_points = 50;
-    this->_attack_damage = 20;
+    this->_hitPoints = 100;
+    this->_energyPoints = 50;
+    this->_attackDamage = 20;
 }
 
 ScavTrap::ScavTrap( const ScavTrap & other) {
@@ -57,9 +57,9 @@ ScavTrap &	ScavTrap::operator=( const ScavTrap & rhs ) {
 	if (this != &rhs)
 	{
 		this->_name = rhs.getName();
-		this->_hit_points = rhs.getHitPoints();
-		this->_energy_points = rhs.getEnergyPoints();
-		this->_attack_damage = rhs.getAttackDamage();
+		this->_hitPoints = rhs.getHitPoints();
+		this->_energyPoints = rhs.getEnergyPoints();
+		this->_attackDamage = rhs.getAttackDamage();
 	}
 	return *this;
 }
@@ -68,35 +68,35 @@ ScavTrap &	ScavTrap::operator=( const ScavTrap & rhs ) {
 
 void	ScavTrap::attack( const std::string & target ) {
 
-	if (this->_hit_points == 0)
+	if (this->_hitPoints == 0)
     {
 		std::cout << "ScavTrap " << this->_name << " is dead and cannot attack.." << std::endl;
     }
-	else if (this->_energy_points == 0)
+	else if (this->_energyPoints == 0)
     {
 		std::cout << "ScavTrap " << this->_name << " has not enough energy to attack.." << std::endl;
     }
 	else
 	{
-		std::cout << "ScavTrap " << this->_name << " attacks " << target << " causing " << this->_attack_damage << " points of damage" << std::endl;
-		this->_energy_points--;
+		std::cout << "ScavTrap " << this->_name << " attacks " << target << " causing " << this->_attackDamage << " points of damage" << std::endl;
+		this->_energyPoints--;
 	}
 }
 
 void	ScavTrap::guardGate( ) {
 
-	if (this->_hit_points == 0)
+	if (this->_hitPoints == 0)
     {
 		std::cout << "ScavTrap " << this->_name << " is dead and cannot guard.." << std::endl;
     }
-	else if (this->_energy_points == 0)
+	else if (this->_energyPoints == 0)
     {
 		std::cout << "ScavTrap " << this->_name << " has not enough energy to guard.." << std::endl;
     }
 	else
 	{
 		std::cout << "ScavTrap " << this->_name << " is in Gate keeper mode" << std::endl;
-		this->_energy_points--;
+		this->_energyPoints--;
 	}
 
 }

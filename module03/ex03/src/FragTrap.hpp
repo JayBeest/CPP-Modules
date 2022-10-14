@@ -13,7 +13,7 @@ public:
 	virtual			~FragTrap( );
 	FragTrap &		operator=( const FragTrap & rhs );
 
-	void			highFivesGuys( void );
+	void			highFivesGuys( );
 
 private:
 

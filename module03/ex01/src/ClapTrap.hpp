@@ -7,10 +7,10 @@ class ClapTrap {
 
 public:
 
-	const std::string & getName( void ) const;
-	unsigned int	    getHitPoints( void ) const;
-	unsigned int	    getEnergyPoints( void ) const;
-	unsigned int	    getAttackDamage( void ) const;
+	const std::string & getName( ) const;
+	unsigned int	    getHitPoints( ) const;
+	unsigned int	    getEnergyPoints( ) const;
+	unsigned int	    getAttackDamage( ) const;
 	void			    setAttackDamage( unsigned int damage );
 
 	explicit		    ClapTrap( const std::string & name );
@@ -23,14 +23,14 @@ public:
 	void			    takeDamage( unsigned int amount );
 	void			    beRepaired( unsigned int amount );
 
-	static void		    makeSilent( void );
+	static void		    makeSilent( );
 
 protected:
 
 	std::string		    _name;
-	unsigned int	    _hit_points;
-	unsigned int	    _energy_points;
-	unsigned int	    _attack_damage;
+	unsigned int	    _hitPoints;
+	unsigned int	    _energyPoints;
+	unsigned int	    _attackDamage;
 
 	static bool		_loud;
 

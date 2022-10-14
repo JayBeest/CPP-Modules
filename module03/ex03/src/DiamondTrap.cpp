@@ -4,7 +4,7 @@
 
 ///			Getters/Setters
 
-const std::string &	DiamondTrap::getName( void ) const {
+const std::string &	DiamondTrap::getName( ) const {
 
 	return this->_name;
 }
@@ -18,9 +18,9 @@ DiamondTrap::DiamondTrap( const std::string & name )
 	{
 		std::cout << "[DiamondTrap] Standard constructor called" << std::endl;
 	}
-	this->_hit_points = this->FragTrap::_hit_points;
-	this->_energy_points = this->ScavTrap::_energy_points;
-	this->_attack_damage = this->FragTrap::_attack_damage;
+	this->_hitPoints = this->FragTrap::_hitPoints;
+	this->_energyPoints = this->ScavTrap::_energyPoints;
+	this->_attackDamage = this->FragTrap::_attackDamage;
 }
 
 DiamondTrap::DiamondTrap( )
@@ -30,9 +30,9 @@ DiamondTrap::DiamondTrap( )
 	{
 		std::cout << "[DiamondTrap] Default constructor called" << std::endl;
 	}
-	this->_hit_points = this->FragTrap::_hit_points;
-	this->_energy_points = this->ScavTrap::_energy_points;
-	this->_attack_damage = this->FragTrap::_attack_damage;
+	this->_hitPoints = this->FragTrap::_hitPoints;
+	this->_energyPoints = this->ScavTrap::_energyPoints;
+	this->_attackDamage = this->FragTrap::_attackDamage;
 }
 
 DiamondTrap::DiamondTrap( const DiamondTrap & other ) {
@@ -65,16 +65,16 @@ DiamondTrap &	DiamondTrap::operator=( const DiamondTrap & rhs ) {
 	{
 		this->ClapTrap::_name = rhs.ClapTrap::getName(); //test name stuff!!
 		this->_name = rhs.getName();
-		this->_hit_points = rhs.getHitPoints();
-		this->_energy_points = rhs.getEnergyPoints();
-		this->_attack_damage = rhs.getAttackDamage();
+		this->_hitPoints = rhs.getHitPoints();
+		this->_energyPoints = rhs.getEnergyPoints();
+		this->_attackDamage = rhs.getAttackDamage();
 	}
 	return *this;
 }
 
 ///			Functions/Methods
 
-void	DiamondTrap::whoAmI( void ) const {
+void	DiamondTrap::whoAmI( ) const {
 
 	std::cout << "DiamondTrap " << this->_name << "'s ClapTrap name is: " << this->ClapTrap::_name << std::endl;
 }
