@@ -32,7 +32,7 @@ private:
 	e_type				_type;
 	const std::string	_input;
 	int					_int;
-	char				_char;
+	unsigned char		_char;
 	float				_float;
 	double				_double;
 
@@ -42,9 +42,14 @@ private:
 	void				castChar( );
 	void				castDouble( );
 	void				castFloat( );
+	void				printInt( ) const;
+	void				printChar( ) const;
+	void				printDouble( ) const;
+	void				printFloat( ) const;
+	bool				isSpecial( );
 	void				detectType( );
 	void				castType( );
-	void				printType( );
+	void				printAll( );
 
 						ScalarConverter( );
 

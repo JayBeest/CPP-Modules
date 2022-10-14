@@ -1,5 +1,6 @@
 #include "ScalarConverter.hpp"
 #include <string>
+#include <iomanip>
 
 ///			Public:
 
@@ -34,7 +35,8 @@ ScalarConverter::ScalarConverter( const std::string & input ) : _input(input) {
   		std::cout << "[ScalarConverter] Specific constructor called" << std::endl;
 	}
 	detectType();
-	printType();
+	castType();
+	printAll();
 }
 
 ScalarConverter::ScalarConverter( const ScalarConverter & other ) {
@@ -84,76 +86,108 @@ void	ScalarConverter::makeSilent( void ) {
 
 void	ScalarConverter::castInt( ) {
 
-	if (isprint(_int))
-	{
-		_char = static_cast<char>(_int);
-	}
-	else
-	{
-		std::cout << "int does not represent a printable char" << std::endl;
-	}
+	_char = static_cast<unsigned char>(_int);
 	_float = static_cast<float>(_int);
 	_double = static_cast<double>(_int);
 }
 
 void	ScalarConverter::castChar( ) {
 
+	_int = static_cast<int>(_char);
+	_float = static_cast<float>(_char);
+	_double = static_cast<double>(_char);
 }
 
 void	ScalarConverter::castDouble( ) {
 
+	_int = static_cast<int>(_double);
+	_char = static_cast<unsigned char>(_double);
+	_float = static_cast<float>(_double);
 }
 
 void	ScalarConverter::castFloat( ) {
 
+	_int = static_cast<int>(_float);
+	_char = static_cast<unsigned char>(_float);
+	_double = static_cast<double>(_float);
 }
 
-void	ScalarConverter::printType( ) {
+void	ScalarConverter::printInt( ) const {
 
-	switch (_type)
+	std::cout << "int: " << _int << std::endl;
+}
+
+void	ScalarConverter::printChar( ) const {
+
+	if (isprint(_char))
 	{
-		case INT:
-			std::cout << "printing int: " << _int << std::endl;
-			break;
-		case CHAR:
-			std::cout << "printing char: " << _char << std::endl;
-			break;
-		case DOUBLE:
-			std::cout << "printing double: " << _double << std::endl;
-			break;
-		case FLOAT:
-			std::cout << "printing float: " << _float << "f" << std::endl;
-			break;
-		default:
-			std::cout << "<error printing>" << std::endl;
+		std::cout << "char: '" << _char << "'" << std::endl;
+	}
+	else
+	{
+		std::cout << "char: non displayable" << std::endl;
 	}
 }
 
-std::string	ScalarConverter::castType( ) {
+void	ScalarConverter::printDouble( ) const {
+
+	std::cout << std::fixed << std::setprecision(1);
+	std::cout << "double: " << _double << std::endl;
+	std::cout << std::defaultfloat;
+}
+
+void	ScalarConverter::printFloat( ) const {
+
+	std::cout << std::fixed << std::setprecision(1);
+	std::cout << "float: " << _float << "f" << std::endl;
+	std::cout << std::defaultfloat;
+}
+
+void	ScalarConverter::printAll( ) {
+
+	printInt();
+	printChar();
+	printFloat();
+	printDouble();
+}
+
+void	ScalarConverter::castType( ) {
 
 	switch (_type)
 	{
 		case INT:
+			std::cout << "casting int: " << _int << std::endl;
 			castInt();
 			break ;
 		case CHAR:
+			std::cout << "casting char: " << _char << std::endl;
 			castChar();
 			break ;
 		case DOUBLE:
+			std::cout << "casting double: " << _double << std::endl;
 			castDouble();
 			break ;
 		case FLOAT:
+			std::cout << "casting float: " << _float << "f" << std::endl;
 			castFloat();
 			break ;
 		default:
-			return "error: default_type";
+			std::cout << "error: <default_type>" << std::endl;
 	}
 }
 
-bool	ScalarConverter::_loud = true;
+bool	ScalarConverter::isSpecial( ) {
+
+	if (_input == "+inf")
+	{
+
+	}
+}
 
 void ScalarConverter::detectType() {
 
+	if (isSpecial())
+		return ;
 	if (_input.empty()) {
 		std::cout << "empty input.." << std::endl;
 		_type = DEFAULT;
@@ -229,3 +263,6 @@ ScalarConverter::ScalarConverter( ) {
   		std::cout << "[ScalarConverter] Default constructor called" << std::endl;
 	}
 }
+
+bool	ScalarConverter::_loud = true;
+
