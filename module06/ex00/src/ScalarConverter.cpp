@@ -1,154 +1,95 @@
 #include "ScalarConverter.hpp"
 #include <string>
 #include <iomanip>
+#include <limits>
+#include <cmath>
 
 ///			Public:
 
 ///			Getters / Setters
 
-int		ScalarConverter::getInt( ) const {
-
-	return this->_int;
-}
-
-char	ScalarConverter::getChar( ) const {
-
-	return this->_char;
-}
-
-float	ScalarConverter::getFloat( ) const {
-
-	return this->_float;
-}
-
-double	ScalarConverter::getDouble( ) const {
-
-	return this->_double;
-}
-
 ///			Constructor / Destructor
 
-ScalarConverter::ScalarConverter( const std::string & input ) : _input(input) {
+ScalarConverter::ScalarConverter( const std::string & input )
+: _type(DEFAULT), _input(input), _int(0), _char(0), _float(0), _double(0) {
 
-	if (ScalarConverter::_loud)
-	{
-  		std::cout << "[ScalarConverter] Specific constructor called" << std::endl;
-	}
-	detectType();
-	castType();
-	printAll();
-}
-
-ScalarConverter::ScalarConverter( const ScalarConverter & other ) {
-
-	if (ScalarConverter::_loud)
-	{
-  		std::cout << "[ScalarConverter] Copy constructor called" << std::endl;
-	}
-	if (this != &other)
-	{
-	  *this = other;
-	  // TODO
-	}
 }
 
 ScalarConverter::~ScalarConverter( ) {
 
-	if (ScalarConverter::_loud)
-	{
-  		std::cout << "[ScalarConverter] Destructor called" << std::endl;
-	}
-	// TODO
-}
-
-ScalarConverter &	ScalarConverter::operator=( const ScalarConverter & rhs ) {
-
-	if (ScalarConverter::_loud)
-	{
-  		std::cout << "[ScalarConverter] Copy assignment operator called" << std::endl;
-	}
-	if (this != &rhs)
-	{
-			// TODO
-	}
-	return *this;
 }
 
 ///			Functions / Methods
 
+void ScalarConverter::detectType( ) {
 
-void	ScalarConverter::makeSilent( void ) {
-
-	ScalarConverter::_loud = false;
-}
-
-///			Private:
-
-void	ScalarConverter::castInt( ) {
-
-	_char = static_cast<unsigned char>(_int);
-	_float = static_cast<float>(_int);
-	_double = static_cast<double>(_int);
-}
-
-void	ScalarConverter::castChar( ) {
-
-	_int = static_cast<int>(_char);
-	_float = static_cast<float>(_char);
-	_double = static_cast<double>(_char);
-}
-
-void	ScalarConverter::castDouble( ) {
-
-	_int = static_cast<int>(_double);
-	_char = static_cast<unsigned char>(_double);
-	_float = static_cast<float>(_double);
-}
-
-void	ScalarConverter::castFloat( ) {
-
-	_int = static_cast<int>(_float);
-	_char = static_cast<unsigned char>(_float);
-	_double = static_cast<double>(_float);
-}
-
-void	ScalarConverter::printInt( ) const {
-
-	std::cout << "int: " << _int << std::endl;
-}
-
-void	ScalarConverter::printChar( ) const {
-
-	if (isprint(_char))
-	{
-		std::cout << "char: '" << _char << "'" << std::endl;
+	if (_input.empty()) {
+		std::cout << "empty input.." << std::endl;
+		_type = DEFAULT;
+		return ;
 	}
-	else
+	if (isSuperSmall())
 	{
-		std::cout << "char: non displayable" << std::endl;
+		return ;
 	}
-}
-
-void	ScalarConverter::printDouble( ) const {
-
-	std::cout << std::fixed << std::setprecision(1);
-	std::cout << "double: " << _double << std::endl;
-	std::cout << std::defaultfloat;
-}
-
-void	ScalarConverter::printFloat( ) const {
-
-	std::cout << std::fixed << std::setprecision(1);
-	std::cout << "float: " << _float << "f" << std::endl;
-	std::cout << std::defaultfloat;
-}
-
-void	ScalarConverter::printAll( ) {
-
-	printInt();
-	printChar();
-	printFloat();
-	printDouble();
+	if (isSpecial())
+	{
+		return ;
+	}
+	std::string::size_type	found = 0;
+	while(isspace(_input[found]))
+	{
+		found++;
+	}
+	if (_input[0] == '-' || _input[0] == '+')
+	{
+		found++;
+	}
+	found = _input.find_first_not_of("0123456789", found);
+	if (found == std::string::npos)
+	{
+		_type = INT;
+		int64_t temp = std::stoll(_input);
+		if (temp > std::numeric_limits<int>::max())
+		{
+			std::cout << "int overflowing, using INT_MAX" << std::endl;
+			_int = std::numeric_limits<int>::max();
+		}
+		else if (temp < std::numeric_limits<int>::min())
+		{
+			std::cout << "int underflowing, using INT_MIN.." << std::endl;
+			_int = std::numeric_limits<int>::min();
+		}
+		else
+		{
+			_int = std::stoi(_input);
+//			std::cout << "int found: '" << _input << "'" << std::endl;
+		}
+		return ;
+	}
+	if (_input[found] == '.' && found > 0)
+	{
+		++found;
+		if (_input.find_first_not_of("0123456789", found) == std::string::npos && _input[found] != '\0')
+		{
+			_type = DOUBLE;
+			_double = std::stod(_input);
+//			std::cout << "double found: '" << _input << "'" << std::endl;
+			return ;
+		}
+		if (_input[_input.find_first_of('f') + 1] == '\0')
+		{
+			if (_input.find_first_not_of("0123456789f", found) == std::string::npos)
+			{
+				_type = FLOAT;
+				_float = std::stof(_input);
+//				std::cout << "float found: '" << _input << "'" << std::endl;
+				return ;
+			}
+		}
+	}
+	_type = DEFAULT;
+	std::cerr << "->input unsupported: '" << _input << "'" << std::endl;
 }
 
 void	ScalarConverter::castType( ) {
@@ -176,93 +117,221 @@ void	ScalarConverter::castType( ) {
 	}
 }
 
-bool	ScalarConverter::isSpecial( ) {
+void	ScalarConverter::printAll( ) {
 
-	if (_input == "+inf")
-	{
-
-	}
+	printInt();
+	printChar();
+	printFloat();
+	printDouble();
 }
 
-void ScalarConverter::detectType() {
+///			Private:
 
-	if (isSpecial())
-		return ;
-	if (_input.empty()) {
-		std::cout << "empty input.." << std::endl;
-		_type = DEFAULT;
-		return ;
-	}
+bool	ScalarConverter::isSuperSmall( ) {
+
 	if (_input.size() == 1)
 	{
 		if (std::isdigit(_input[0]))
 		{
 			_type = INT;
 			_int = std::stoi(_input);
-			std::cout << "int found: '" << _input << "'" << std::endl;
 		}
 		else if (std::isprint(_input[0]))
 		{
 			_type = CHAR;
 			_char = _input[0];
-			std::cout << "char found: '" << _input << "'" << std::endl;
 		}
 		else
 		{
-			_type = DEFAULT;
-			std::cerr << "unprintable char found: '" << _input << "'" << std::endl;
+			std::cerr << "->unsupported, unprintable char found : '" << _input << "'" << std::endl;
+			std::exit(1);
 		}
-		return ;
+		return true;
 	}
-	std::string::size_type	found = 0;
-	while(isspace(_input[found]))
+	return false;
+}
+
+bool	ScalarConverter::isSpecial( ) {
+
+	if (_input == "nan")
 	{
-		found++;
+		_type = DOUBLE;
+		_double = NAN;
 	}
-	if (_input[0] == '-' || _input[0] == '+')
+	else if (_input == "nanf")
 	{
-		found++;
+		_type = FLOAT;
+		_float = NAN;
 	}
-	found = _input.find_first_not_of("0123456789", found);
-	if (found == std::string::npos)
+	else if (_input == "-inf")
 	{
-		_type = INT;
-		_int = std::stoi(_input);
-		std::cout << "int found: '" << _input << "'" << std::endl;
-		return ;
+		_type = DOUBLE;
+		_double = -1.0 * INFINITY;
 	}
-	if (_input[found] == '.' && found > 0)
+	else if (_input == "-inff")
 	{
-		++found;
-		if (_input[found] != '\0' && _input.find_first_not_of("0123456789", found) == std::string::npos)
-		{
-			_type = DOUBLE;
-			_double = std::stod(_input);
-			std::cout << "double found: '" << _input << "'" << std::endl;
-			return ;
-		}
-		if (_input[_input.find_first_of('f') + 1] == '\0')
-		{
-			if (_input.find_first_not_of("0123456789f", found) == std::string::npos)
-			{
-				_type = FLOAT;
-				_float = std::stof(_input);
-				std::cout << "float found: '" << _input << "'" << std::endl;
-				return ;
-			}
-		}
+		_type = FLOAT;
+		_float = -1.0f * INFINITY;
 	}
-	_type = DEFAULT;
-	std::cerr << "->input unsupported: '" << _input << "'" << std::endl;
+	else if (_input == "+inf" || _input == "inf")
+	{
+		_type = DOUBLE;
+		_double = INFINITY;
+	}
+	else if (_input == "+inff" || _input == "inff")
+	{
+		_type = FLOAT;
+		_float = INFINITY;
+	}
+	else
+	{
+		return false;
+	}
+	return true;
+}
+
+void	ScalarConverter::castInt( ) {
+
+	if (_int > 255)
+	{
+		std::cout << "char overflow.." << std::endl;
+	}
+	else if (_int < 0)
+	{
+		std::cout << "char underflow.." << std::endl;
+	}
+	_char = static_cast<unsigned char>(_int);
+	_float = static_cast<float>(_int);
+	_double = static_cast<double>(_int);
+}
+
+void	ScalarConverter::castChar( ) {
+
+	_int = static_cast<int>(_char);
+	_float = static_cast<float>(_char);
+	_double = static_cast<double>(_char);
+}
+
+void	ScalarConverter::castDouble( ) {
+
+	if (_double > std::numeric_limits<int>::max())
+	{
+		std::cout << "int overflow, cast not really possible.." << std::endl;
+	}
+	else if (_double < std::numeric_limits<int>::min())
+	{
+		std::cout << "int underflow, casting not really possible.." << std::endl;
+	}
+	_int = static_cast<int>(_double);
+	if (_double > 255)
+	{
+		std::cout << "char overflow.." << std::endl;
+	}
+	else if (_double < 0)
+	{
+		std::cout << "char underflow.." << std::endl;
+	}
+	_char = static_cast<unsigned char>(_double);
+	if (_double > std::numeric_limits<float>::max())
+	{
+		std::cout << "float overflow, cast not really possible.." << std::endl;
+	}
+	else if (_double < std::numeric_limits<float>::lowest())
+	{
+		std::cout << "float underflow, cast not really possible.." << std::endl;
+	}
+	_float = static_cast<float>(_double);
+}
+
+void	ScalarConverter::castFloat( ) {
+
+	if (_float > static_cast<float>(std::numeric_limits<int>::max()))
+	{
+		std::cout << "int overflow, cast not really possible.." << std::endl;
+	}
+	else if (_float < static_cast<float>(std::numeric_limits<int>::min()))
+	{
+		std::cout << "int underflow, casting not really possible.." << std::endl;
+	}
+	_int = static_cast<int>(_float);
+	if (_float > 255)
+	{
+		std::cout << "char overflow.." << std::endl;
+	}
+	else if (_float < 0)
+	{
+		std::cout << "char underflow.." << std::endl;
+	}
+	_char = static_cast<unsigned char>(_float);
+	_double = static_cast<double>(_float);
+}
+
+void	ScalarConverter::printInt( ) const {
+
+	if (_float != _float)
+	{
+		std::cout  << "int: impossible (not a number)" << std::endl;
+	}
+	else
+	{
+		std::cout << "int: " << _int << std::endl;
+	}
+}
+
+void	ScalarConverter::printChar( ) const {
+
+	if (_float != _float)
+	{
+		std::cout  << "char: impossible" << std::endl;
+	}
+	else if (isprint(_char))
+	{
+		std::cout  << "char: '" << _char << "'" << std::endl;
+	}
+	else
+	{
+		std::cout << "char: Non displayable" << std::endl;
+	}
+}
+
+void	ScalarConverter::printDouble( ) const {
+
+	std::cout << std::fixed;
+	if (_double - static_cast<int>(_double) == 0)
+	{
+		std::cout << std::setprecision(1);
+	}
+	std::cout << "double: " << _double << std::endl;
+	std::cout << std::defaultfloat;
+}
+
+void	ScalarConverter::printFloat( ) const {
+
+	std::cout << std::fixed;
+	if (_float - static_cast<int>(_float) == 0)
+	{
+		std::cout << std::setprecision(1);
+	}
+	std::cout << "float: " << _float << "f" << std::endl;
+	std::cout << std::defaultfloat;
 }
 
 ScalarConverter::ScalarConverter( ) {
 
-	if (ScalarConverter::_loud)
+}
+
+ScalarConverter::ScalarConverter( const ScalarConverter & other ) {
+
+	if (this != &other)
 	{
-  		std::cout << "[ScalarConverter] Default constructor called" << std::endl;
+	  *this = other;
 	}
 }
 
-bool	ScalarConverter::_loud = true;
+ScalarConverter &	ScalarConverter::operator=( const ScalarConverter & rhs ) {
 
+	if (this != &rhs)
+	{
+	}
+	return *this;
+}

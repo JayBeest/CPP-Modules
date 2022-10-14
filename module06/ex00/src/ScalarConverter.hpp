@@ -1,5 +1,5 @@
-#ifndef SCALARCONVERTER_H
-# define SCALARCONVERTER_H
+#ifndef SCALAR_CONVERTER_H
+# define SCALAR_CONVERTER_H
 
 # include <iostream>
 
@@ -15,17 +15,12 @@ class ScalarConverter {
 
 public:
 
-	int					getInt( ) const;
-	char				getChar( ) const;
-	float				getFloat( ) const;
-	double				getDouble( ) const;
-
 	explicit			ScalarConverter( const std::string & input );
-						ScalarConverter( const ScalarConverter & other );
 						~ScalarConverter( );
-	ScalarConverter &	operator=( const ScalarConverter & rhs );
 
-	static void			makeSilent( void );
+	void				detectType( );
+	void				castType( );
+	void				printAll( );
 
 private:
 
@@ -36,8 +31,8 @@ private:
 	float				_float;
 	double				_double;
 
-	static bool			_loud;
-
+	bool				isSuperSmall( );
+	bool				isSpecial( );
 	void				castInt( );
 	void				castChar( );
 	void				castDouble( );
@@ -46,12 +41,10 @@ private:
 	void				printChar( ) const;
 	void				printDouble( ) const;
 	void				printFloat( ) const;
-	bool				isSpecial( );
-	void				detectType( );
-	void				castType( );
-	void				printAll( );
 
 						ScalarConverter( );
+						ScalarConverter( const ScalarConverter & other );
+	ScalarConverter &	operator=( const ScalarConverter & rhs );
 
 };
 

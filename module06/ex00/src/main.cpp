@@ -2,8 +2,6 @@
 
 int main (int argc, char **argv) {
 
-	ScalarConverter::makeSilent();
-
 //	ScalarConverter test("5");
 //	ScalarConverter test2("fsdaf");
 //	ScalarConverter test3("g");
@@ -30,6 +28,9 @@ int main (int argc, char **argv) {
 	if (argc == 2)
 	{
 		ScalarConverter test(argv[1]);
+		test.detectType();
+		test.castType();
+		test.printAll();
 	}
 	return 0;
 }
