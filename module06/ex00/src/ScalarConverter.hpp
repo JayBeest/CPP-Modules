@@ -18,8 +18,8 @@ public:
 	explicit			ScalarConverter( const std::string & input );
 						~ScalarConverter( );
 
-	void				detectType( );
-	void				castType( );
+	void				detectAndSetScalarType( );
+	void				castToOtherTypes( );
 	void				printAll( );
 
 private:
@@ -41,6 +41,8 @@ private:
 	void				printChar( ) const;
 	void				printDouble( ) const;
 	void				printFloat( ) const;
+
+	void				(ScalarConverter::*_functionPtr[4])();
 
 						ScalarConverter( );
 						ScalarConverter( const ScalarConverter & other );

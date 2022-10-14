@@ -28,9 +28,9 @@ int main (int argc, char **argv) {
 	if (argc == 2)
 	{
 		ScalarConverter test(argv[1]);
-		test.detectType();
-		test.castType();
-		test.printAll();
+		test.detectAndSetScalarType();
+		test.castToOtherTypes();
+//		test.printAll();
 	}
 	return 0;
 }

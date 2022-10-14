@@ -13,6 +13,10 @@
 ScalarConverter::ScalarConverter( const std::string & input )
 : _type(DEFAULT), _input(input), _int(0), _char(0), _float(0), _double(0) {
 
+	_functionPtr[INT] = &ScalarConverter::castInt;
+	_functionPtr[CHAR] = &ScalarConverter::castChar;
+	_functionPtr[DOUBLE] = &ScalarConverter::castDouble;
+	_functionPtr[FLOAT] = &ScalarConverter::castFloat;
 }
 
 ScalarConverter::~ScalarConverter( ) {
@@ -21,9 +25,10 @@ ScalarConverter::~ScalarConverter( ) {
 
 ///			Functions / Methods
 
-void ScalarConverter::detectType( ) {
+void ScalarConverter::detectAndSetScalarType( ) {
 
-	if (_input.empty()) {
+	if (_input.empty())
+	{
 		std::cout << "empty input.." << std::endl;
 		_type = DEFAULT;
 		return ;
@@ -49,21 +54,12 @@ void ScalarConverter::detectType( ) {
 	if (found == std::string::npos)
 	{
 		_type = INT;
-		int64_t temp = std::stoll(_input);
-		if (temp > std::numeric_limits<int>::max())
-		{
-			std::cout << "int overflowing, using INT_MAX" << std::endl;
-			_int = std::numeric_limits<int>::max();
-		}
-		else if (temp < std::numeric_limits<int>::min())
-		{
-			std::cout << "int underflowing, using INT_MIN.." << std::endl;
-			_int = std::numeric_limits<int>::min();
-		}
-		else
-		{
+		try {
 			_int = std::stoi(_input);
-//			std::cout << "int found: '" << _input << "'" << std::endl;
+		}
+		catch (std::out_of_range & e) {
+			std::cout << "error reading int: out of range" << std::endl;
+			std::exit(1);
 		}
 		return ;
 	}
@@ -73,48 +69,41 @@ void ScalarConverter::detectType( ) {
 		if (_input.find_first_not_of("0123456789", found) == std::string::npos && _input[found] != '\0')
 		{
 			_type = DOUBLE;
-			_double = std::stod(_input);
-//			std::cout << "double found: '" << _input << "'" << std::endl;
+			try {
+				_double = std::stod(_input);
+			}
+			catch (std::out_of_range & e) {
+				std::cerr << "error reading double: out of range" << std::endl;
+				std::exit(1);
+			}
 			return ;
 		}
-		if (_input[_input.find_first_of('f') + 1] == '\0')
+		if (_input[_input.find_first_of('f') + 1] == '\0' && \
+			_input.find_first_not_of("0123456789f", found) == std::string::npos)
 		{
-			if (_input.find_first_not_of("0123456789f", found) == std::string::npos)
-			{
-				_type = FLOAT;
+			_type = FLOAT;
+			try {
 				_float = std::stof(_input);
-//				std::cout << "float found: '" << _input << "'" << std::endl;
-				return ;
 			}
+			catch (std::out_of_range & e) {
+				std::cerr << "error reading float: out of range" << std::endl;
+				std::exit(1);
+			}
+			return ;
 		}
 	}
 	_type = DEFAULT;
 	std::cerr << "->input unsupported: '" << _input << "'" << std::endl;
 }
 
-void	ScalarConverter::castType( ) {
+void	ScalarConverter::castToOtherTypes( ) {
 
-	switch (_type)
+	if (_type == DEFAULT)
 	{
-		case INT:
-			std::cout << "casting int: " << _int << std::endl;
-			castInt();
-			break ;
-		case CHAR:
-			std::cout << "casting char: " << _char << std::endl;
-			castChar();
-			break ;
-		case DOUBLE:
-			std::cout << "casting double: " << _double << std::endl;
-			castDouble();
-			break ;
-		case FLOAT:
-			std::cout << "casting float: " << _float << "f" << std::endl;
-			castFloat();
-			break ;
-		default:
-			std::cout << "error: <default_type>" << std::endl;
+		std::cout << "error: <default_type>" << std::endl;
+		std::exit(1);
 	}
+	(this->*_functionPtr[_type])();
 }
 
 void	ScalarConverter::printAll( ) {
@@ -192,6 +181,7 @@ bool	ScalarConverter::isSpecial( ) {
 
 void	ScalarConverter::castInt( ) {
 
+	printInt();
 	if (_int > 255)
 	{
 		std::cout << "char overflow.." << std::endl;
@@ -201,76 +191,91 @@ void	ScalarConverter::castInt( ) {
 		std::cout << "char underflow.." << std::endl;
 	}
 	_char = static_cast<unsigned char>(_int);
+	printChar();
 	_float = static_cast<float>(_int);
+	printFloat();
 	_double = static_cast<double>(_int);
+	printDouble();
 }
 
 void	ScalarConverter::castChar( ) {
 
 	_int = static_cast<int>(_char);
+	printInt();
+	printChar();
 	_float = static_cast<float>(_char);
+	printFloat();
 	_double = static_cast<double>(_char);
+	printDouble();
 }
 
 void	ScalarConverter::castDouble( ) {
 
 	if (_double > std::numeric_limits<int>::max())
 	{
-		std::cout << "int overflow, cast not really possible.." << std::endl;
+		std::cout << "int overflow, type conversion impossible, casting anyway.." << std::endl;
 	}
 	else if (_double < std::numeric_limits<int>::min())
 	{
-		std::cout << "int underflow, casting not really possible.." << std::endl;
+		std::cout << "int underflow, type conversion impossible, casting anyway.." << std::endl;
 	}
 	_int = static_cast<int>(_double);
+	printInt();
 	if (_double > 255)
 	{
-		std::cout << "char overflow.." << std::endl;
+		std::cout << "char overflow, type conversion impossible, casting anyway.." << std::endl;
 	}
 	else if (_double < 0)
 	{
-		std::cout << "char underflow.." << std::endl;
+		std::cout << "char underflow, type conversion impossible, casting anyway.." << std::endl;
 	}
 	_char = static_cast<unsigned char>(_double);
+	printChar();
 	if (_double > std::numeric_limits<float>::max())
 	{
-		std::cout << "float overflow, cast not really possible.." << std::endl;
+		std::cout << "float overflow, type conversion impossible, casting anyway.." << std::endl;
 	}
 	else if (_double < std::numeric_limits<float>::lowest())
 	{
-		std::cout << "float underflow, cast not really possible.." << std::endl;
+		std::cout << "float underflow, type conversion impossible, casting anyway.." << std::endl;
 	}
 	_float = static_cast<float>(_double);
+	printFloat();
+	printDouble();
 }
 
 void	ScalarConverter::castFloat( ) {
 
 	if (_float > static_cast<float>(std::numeric_limits<int>::max()))
 	{
-		std::cout << "int overflow, cast not really possible.." << std::endl;
+		std::cout << "int overflow, type conversion impossible, casting anyway.." << std::endl;
 	}
 	else if (_float < static_cast<float>(std::numeric_limits<int>::min()))
 	{
-		std::cout << "int underflow, casting not really possible.." << std::endl;
+		std::cout << "int underflow, type conversion impossible, casting anyway.." << std::endl;
 	}
 	_int = static_cast<int>(_float);
+	printInt();
 	if (_float > 255)
 	{
-		std::cout << "char overflow.." << std::endl;
+		std::cout << "char overflow, type conversion impossible, casting anyway.." << std::endl;
 	}
 	else if (_float < 0)
 	{
-		std::cout << "char underflow.." << std::endl;
+		std::cout << "char underflow, type conversion impossible, casting anyway.." << std::endl;
 	}
 	_char = static_cast<unsigned char>(_float);
+	printChar();
+	printFloat();
 	_double = static_cast<double>(_float);
+	printDouble();
 }
 
 void	ScalarConverter::printInt( ) const {
 
-	if (_float != _float)
+	if (_float != _float || _double != _double)
 	{
-		std::cout  << "int: impossible (not a number)" << std::endl;
+		std::cout  << "int: impossible" << std::endl;
 	}
 	else
 	{
@@ -280,7 +285,7 @@ void	ScalarConverter::printInt( ) const {
 
 void	ScalarConverter::printChar( ) const {
 
-	if (_float != _float)
+	if (_float != _float || _double != _double)
 	{
 		std::cout  << "char: impossible" << std::endl;
 	}
@@ -315,6 +320,7 @@ void	ScalarConverter::printFloat( ) const {
 	std::cout << "float: " << _float << "f" << std::endl;
 	std::cout << std::defaultfloat;
 }
+
 
 ScalarConverter::ScalarConverter( ) {
 
