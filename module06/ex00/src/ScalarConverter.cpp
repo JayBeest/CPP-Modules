@@ -8,6 +8,11 @@
 
 ///			Getters / Setters
 
+e_type	ScalarConverter::getType( ) const {
+
+	return _type;
+}
+
 ///			Constructor / Destructor
 
 ScalarConverter::ScalarConverter( const std::string & input )
@@ -53,13 +58,12 @@ void ScalarConverter::detectAndSetScalarType( ) {
 	found = _input.find_first_not_of("0123456789", found);
 	if (found == std::string::npos)
 	{
-		_type = INT;
 		try {
 			_int = std::stoi(_input);
+			_type = INT;
 		}
 		catch (std::out_of_range & e) {
 			std::cout << "error reading int: out of range" << std::endl;
-			std::exit(1);
 		}
 		return ;
 	}
@@ -68,31 +72,28 @@ void ScalarConverter::detectAndSetScalarType( ) {
 		++found;
 		if (_input.find_first_not_of("0123456789", found) == std::string::npos && _input[found] != '\0')
 		{
-			_type = DOUBLE;
 			try {
 				_double = std::stod(_input);
+				_type = DOUBLE;
 			}
 			catch (std::out_of_range & e) {
 				std::cerr << "error reading double: out of range" << std::endl;
-				std::exit(1);
 			}
 			return ;
 		}
 		if (_input[_input.find_first_of('f') + 1] == '\0' && \
 			_input.find_first_not_of("0123456789f", found) == std::string::npos)
 		{
-			_type = FLOAT;
 			try {
 				_float = std::stof(_input);
+				_type = FLOAT;
 			}
 			catch (std::out_of_range & e) {
 				std::cerr << "error reading float: out of range" << std::endl;
-				std::exit(1);
 			}
 			return ;
 		}
 	}
-	_type = DEFAULT;
 	std::cerr << "->input unsupported: '" << _input << "'" << std::endl;
 }
 
@@ -132,8 +133,7 @@ bool	ScalarConverter::isSuperSmall( ) {
 		}
 		else
 		{
-			std::cerr << "->unsupported, unprintable char found : '" << _input << "'" << std::endl;
-			std::exit(1);
+			std::cerr << "->input unsupported: unprintable char found" << std::endl;
 		}
 		return true;
 	}
@@ -301,24 +301,22 @@ void	ScalarConverter::printChar( ) const {
 
 void	ScalarConverter::printDouble( ) const {
 
-	std::cout << std::fixed;
-	if (_double - static_cast<int>(_double) == 0)
+	if (_double - static_cast<int>(_double) == 0.0)
 	{
+		std::cout << std::fixed;
 		std::cout << std::setprecision(1);
 	}
 	std::cout << "double: " << _double << std::endl;
-	std::cout << std::defaultfloat;
 }
 
 void	ScalarConverter::printFloat( ) const {
 
-	std::cout << std::fixed;
-	if (_float - static_cast<int>(_float) == 0)
+	if (_float - static_cast<int>(_float) == 0.0f)
 	{
+		std::cout << std::fixed;
 		std::cout << std::setprecision(1);
 	}
 	std::cout << "float: " << _float << "f" << std::endl;
-	std::cout << std::defaultfloat;
 }
 
 

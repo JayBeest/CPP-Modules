@@ -15,6 +15,8 @@ class ScalarConverter {
 
 public:
 
+	e_type				getType( ) const;
+
 	explicit			ScalarConverter( const std::string & input );
 						~ScalarConverter( );
 

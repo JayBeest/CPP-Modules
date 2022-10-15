@@ -1,36 +1,56 @@
 #include "ScalarConverter.hpp"
 
+void	testInput(const std::string & input) {
+
+	ScalarConverter	test(input);
+	test.detectAndSetScalarType();
+	if (test.getType() != DEFAULT)
+	{
+		test.castToOtherTypes();
+	}
+}
+
 int main (int argc, char **argv) {
 
-//	ScalarConverter test("5");
-//	ScalarConverter test2("fsdaf");
-//	ScalarConverter test3("g");
-//	ScalarConverter test4("0");
-//	ScalarConverter test5("0.0");
-//	ScalarConverter test6("0.0f");
-//	ScalarConverter test6a("0.0fn");
-//	ScalarConverter test7("-0.0f");
-//	ScalarConverter test8("-2");
-//	ScalarConverter test9("-0.2");
-//	ScalarConverter test10("");
-//	ScalarConverter test11("4.");
-//	ScalarConverter test12(".3");
-//	ScalarConverter test13("0.0ff");
-//	ScalarConverter test14("10..0f");
-//	ScalarConverter test15("d");
-//	ScalarConverter test16("$");
-//	ScalarConverter test17("f");
-//	ScalarConverter test18("c");
-//	ScalarConverter test19(" ");
-//	ScalarConverter test20("12.32332");
-//	ScalarConverter test21("12.32332f");
+	testInput("g");
+	testInput("0");
+	testInput("2147483647");
+	testInput("2147483648");
+	testInput("-2147483648");
+	testInput("-2147483649");
+
+	testInput("0.0");
+	testInput("0.0f");
+	testInput("0.0fn");
+	testInput("0.0ff");
+	testInput("-0.0f");
+	testInput("10..0f");
+	testInput("-2");
+	testInput("-0.2");
+	testInput("4.");
+	testInput(".3");
+	testInput("d");
+	testInput("fsdaf");
+	testInput("$");
+	testInput("f");
+	testInput("c");
+	testInput(" ");
+	testInput("12.32332");
+	testInput("12.32332f");
+	testInput("12432453243255534.32332f");
+	testInput("6777777777777777777777777777777777777777775");
+	testInput("6777777777777777777777777777777777777777775.0f");
+	testInput("6777777777777777777777777777777777777777775.0");
+	testInput("-6777777777777777777777777777777777777777775.0");
+	testInput("5555555555555555555555555555555555555555555555555555555555588888888888888888888777777777777777777777777777777777777777775.0");
+	testInput("1111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111112222222222222222222222222222222222222222222111111111111111111111111111111111111111111111111188888888888888888888777777777777777777777777777777777777777775.0");
+	testInput("99999999999999999999999999999999999999999999999999999999999999999999999999999999999999991111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111112222222222222222222222222222222222222222222111111111111111111111111111111111111111111111111188888888888888888888777777777777777777777777777777777777777775.0");
+	testInput("\n");
+	testInput("\t");
 
 	if (argc == 2)
 	{
-		ScalarConverter test(argv[1]);
-		test.detectAndSetScalarType();
-		test.castToOtherTypes();
-//		test.printAll();
+		testInput(argv[1]);
 	}
 	return 0;
 }
