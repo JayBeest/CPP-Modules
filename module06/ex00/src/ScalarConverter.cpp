@@ -129,7 +129,7 @@ bool	ScalarConverter::isSuperSmall( ) {
 		else if (std::isprint(_input[0]))
 		{
 			_type = CHAR;
-			_char = _input[0];
+			_char = static_cast<unsigned char>(_input[0]);
 		}
 		else
 		{
