@@ -22,14 +22,13 @@ public:
 
 	void				detectAndSetScalarType( );
 	void				castToOtherTypes( );
-	void				printAll( );
 
 private:
 
 	e_type				_type;
 	const std::string	_input;
 	int					_int;
-	unsigned char		_char;
+	char				_char;
 	float				_float;
 	double				_double;
 

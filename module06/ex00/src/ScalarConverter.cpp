@@ -107,14 +107,6 @@ void	ScalarConverter::castToOtherTypes( ) {
 	(this->*_functionPtr[_type])();
 }
 
-void	ScalarConverter::printAll( ) {
-
-	printInt();
-	printChar();
-	printFloat();
-	printDouble();
-}
-
 ///			Private:
 
 bool	ScalarConverter::isSuperSmall( ) {
@@ -129,7 +121,7 @@ bool	ScalarConverter::isSuperSmall( ) {
 		else if (std::isprint(_input[0]))
 		{
 			_type = CHAR;
-			_char = static_cast<unsigned char>(_input[0]);
+			_char = static_cast<char>(_input[0]);
 		}
 		else
 		{
@@ -190,7 +182,7 @@ void	ScalarConverter::castInt( ) {
 	{
 		std::cout << "char underflow.." << std::endl;
 	}
-	_char = static_cast<unsigned char>(_int);
+	_char = static_cast<char>(_int);
 	printChar();
 	_float = static_cast<float>(_int);
 	printFloat();
@@ -229,7 +221,7 @@ void	ScalarConverter::castDouble( ) {
 	{
 		std::cout << "char underflow, type conversion impossible, casting anyway.." << std::endl;
 	}
-	_char = static_cast<unsigned char>(_double);
+	_char = static_cast<char>(_double);
 	printChar();
 	if (_double > std::numeric_limits<float>::max())
 	{
@@ -264,7 +256,7 @@ void	ScalarConverter::castFloat( ) {
 	{
 		std::cout << "char underflow, type conversion impossible, casting anyway.." << std::endl;
 	}
-	_char = static_cast<unsigned char>(_float);
+	_char = static_cast<char>(_float);
 	printChar();
 	printFloat();
 	_double = static_cast<double>(_float);
@@ -301,22 +293,28 @@ void	ScalarConverter::printChar( ) const {
 
 void	ScalarConverter::printDouble( ) const {
 
+	std::ios_base::fmtflags savedFlags( std::cout.flags() );
+	std::cout << std::fixed;
+	std::cout << std::setprecision(std::numeric_limits<double>::digits10);
 	if (_double - static_cast<int>(_double) == 0.0)
 	{
-		std::cout << std::fixed;
 		std::cout << std::setprecision(1);
 	}
 	std::cout << "double: " << _double << std::endl;
+	std::cout.flags(savedFlags);
 }
 
 void	ScalarConverter::printFloat( ) const {
 
+	std::ios_base::fmtflags savedFlags( std::cout.flags() );
+	std::cout << std::fixed;
+	std::cout << std::setprecision(std::numeric_limits<float>::digits10);
 	if (_float - static_cast<int>(_float) == 0.0f)
 	{
-		std::cout << std::fixed;
 		std::cout << std::setprecision(1);
 	}
 	std::cout << "float: " << _float << "f" << std::endl;
+	std::cout.flags(savedFlags);
 }
 
 
