@@ -2,7 +2,7 @@
 # define WHATEVER_HPP
 
 template<typename T>
-void	swap(T & lhs, T & rhs) {
+void	swap( T & lhs, T & rhs ) {
 
 	T	temp = lhs;
 	lhs = rhs;
@@ -10,13 +10,13 @@ void	swap(T & lhs, T & rhs) {
 }
 
 template<typename T>
-const T &	min(const T & lhs, const T & rhs) {
+const T &	min( T const & lhs, T const & rhs ) {
 
 	return (lhs < rhs ? lhs : rhs);
 }
 
 template<typename T>
-const T &	max(const T & lhs, const T & rhs) {
+const T &	max( T const & lhs, T const & rhs ) {
 
 	return (lhs > rhs ? lhs : rhs);
 }
