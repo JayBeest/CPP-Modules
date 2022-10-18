@@ -20,7 +20,7 @@ HEADERS		=	A.hpp \
 
 OBJ 		=	$(addprefix $(OBJ_DIR), $(SRC:%.cpp=%.o))
 
-CFLAGS		=	-Wall -Werror -Wextra -std=c++98 -pedantic # -g -fsanitize=address
+CFLAGS		=	-Wall -Werror -Wextra -Wconversion -std=c++98 -pedantic # -g -fsanitize=address
 CC			=	c++
 
 ifeq ("$(VERBOSE)","1")

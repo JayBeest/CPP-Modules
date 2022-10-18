@@ -72,14 +72,9 @@ void	identify(Base & p) {
 	catch (std::exception & e) {}
 }
 
-//void	identify(Base & p) {
-//
-//
-//}
+int main ( ) {
 
-int main ( ){
-
-	std::srand(std::time(NULL));
+	std::srand(static_cast<unsigned int>(std::time(NULL)));
 
 	for (int i = 0; i < 42; i++)
 	{
