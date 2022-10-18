@@ -181,7 +181,6 @@ Fixed 	Fixed::operator/( const Fixed & rhs ) const {
 	return Fixed(this->toFloat() / rhs.toFloat());
 }
 
-
 ///			Pre-/Post-Increment / Decrement overloading
 
 Fixed 	Fixed::operator++( void ) {

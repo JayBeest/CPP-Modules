@@ -25,5 +25,7 @@ int	main(void) {
 
 	// TODO MOAR TESTING!!!!!!!!!!!!
 
+	// TODO ask on slack to get permission to add Fixed.cpp/hpp from mod02 ex02 for testing purposes
+
 	return 0;
 }
