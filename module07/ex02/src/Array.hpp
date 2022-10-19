@@ -13,10 +13,10 @@ public:
 					Array<T>( Array<T> const & other );
 					~Array( );
 	Array<T> &		operator=( Array<T> const & rhs );
-	T &				operator[]( int index ) const;
+	T &				operator[]( size_t index ) const;
 
 	int				size( ) const;
-	int				_size;
+	size_t			_size;
 	T *				_array;
 
 private:

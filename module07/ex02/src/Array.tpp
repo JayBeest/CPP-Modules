@@ -41,7 +41,7 @@ Array<T> &	Array<T>::operator=( Array<T> const & rhs ) {
 		if (this->_size > 0)
 		{
 			_array = new T [this->_size];
-			for (int i = 0; i < this->_size; i++)
+			for (size_t i = 0; i < this->_size; i++)
 			{
 				_array[i] = rhs[i];
 			}
@@ -51,7 +51,7 @@ Array<T> &	Array<T>::operator=( Array<T> const & rhs ) {
 }
 
 template<typename T>
-T &		Array<T>::operator[]( int index ) const {
+T &		Array<T>::operator[]( size_t index ) const {
 
 	if (index > _size)
 	{
