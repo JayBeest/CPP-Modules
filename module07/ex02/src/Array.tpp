@@ -24,7 +24,10 @@ Array<T>::Array( Array<T> const & other ) {
 template<typename T>
 Array<T>::~Array( ) {
 
-
+	if (_size > 0)
+	{
+		delete _array;
+	}
 }
 
 template<typename T>
@@ -32,14 +35,28 @@ Array<T> &	Array<T>::operator=( Array<T> const & rhs ) {
 
 	if (this != &rhs)
 	{
-		//copy array;
+		delete this->_array;
+		this->_array = 0;
+		this->_size = rhs.size();
+		if (this->_size > 0)
+		{
+			_array = new T [this->_size];
+			for (int i = 0; i < this->_size; i++)
+			{
+				_array[i] = rhs[i];
+			}
+		}
 	}
 	return *this;
 }
 
 template<typename T>
-T &		Array<T>::operator[]( int index ) {
+T &		Array<T>::operator[]( int index ) const {
 
+	if (index > _size)
+	{
+		throw std::exception();
+	}
 	return _array[index];
 }
 
