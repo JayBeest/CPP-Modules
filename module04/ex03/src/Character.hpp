@@ -28,7 +28,6 @@ protected:
 	virtual void		use( int idx, ICharacter & target );
 	virtual AMateria *	getInventory( unsigned int index ) const;
 
-
 private:
 
 	void				dropToGround( AMateria * materia );
