@@ -46,6 +46,14 @@ void	test_brain()
 	std::cout << cat_b->accessBrain() << std::endl;
 }
 
+void	subjectMain( ) {
+
+	const Animal* j = new Dog();
+	const Animal* i = new Cat();
+	delete j;//should not create a leak
+	delete i;
+
+}
 int main(int argc, char **argv)
 {
 	if (argc == 2 && std::string(argv[1]) == "-s")
@@ -76,13 +84,7 @@ int main(int argc, char **argv)
 
 	test_brain();
 
+	subjectMain();
+
 	return 0;
 }
-
-//int main(void)
-//{
-//	const Animal* j = new Dog();
-//	const Animal* i = new Cat();
-//	delete j;//should not create a leak
-//	delete i;
-//}
