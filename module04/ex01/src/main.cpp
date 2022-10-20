@@ -44,6 +44,7 @@ void	test_brain()
 	std::cout << std::endl << "*** Printing cat_b brain after del cat_a ***" << std::endl << std::endl;
 	delete cat_a;
 	std::cout << cat_b->accessBrain() << std::endl;
+	delete cat_b;
 }
 
 void	subjectMain( ) {
