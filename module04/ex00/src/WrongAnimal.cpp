@@ -19,7 +19,7 @@ WrongAnimal::WrongAnimal( const std::string & type ) : type(type) {
 	}
 }
 
-WrongAnimal::WrongAnimal( ) : type("Shapeless"){
+WrongAnimal::WrongAnimal( ) : type("WrongShapeless"){
 
 	if (WrongAnimal::_loud)
 	{

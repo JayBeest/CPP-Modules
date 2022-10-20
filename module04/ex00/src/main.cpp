@@ -2,8 +2,8 @@
 #include "Dog.hpp"
 #include "WrongCat.hpp"
 
-void	more_test( void )
-{
+void	more_test( void ) {
+
 	Dog		dog("Ken");
 	Cat		cat("Stein");
 	Animal	animal("Fran");
@@ -29,8 +29,8 @@ void	more_test( void )
 
 }
 
-void	wrong_test( void )
-{
+void	wrong_test( void ) {
+
 	const WrongAnimal* meta = new WrongAnimal();
 	const WrongAnimal* i = new WrongCat();
 	std::cout << i->getType() << " " << std::endl;
@@ -50,8 +50,8 @@ void	wrong_test( void )
 	delete i;
 }
 
-int main (int argc, char **argv)
-{
+int main ( int argc, char **argv ) {
+
 	if (argc == 2 && std::string(argv[1]) == "-s")
 	{
 		Animal::makeSilent();
