@@ -55,6 +55,30 @@ void	subjectMain( ) {
 	delete i;
 
 }
+
+void	testArray( ) {
+
+	std::cout << std::endl << "*** START_OF_TEST_ARRAY ***" << std::endl << std::endl;
+	Animal *	animalArray[20];
+
+	for (int i = 0; i < 20; i++)
+	{
+		if (i % 2)
+		{
+			animalArray[i] = new Dog();
+		}
+		else
+		{
+			animalArray[i] = new Cat();
+		}
+	}
+	for (int i = 0; i < 20; i++)
+	{
+		delete animalArray[i];
+	}
+	std::cout << std::endl << "*** END_OF_TEST_ARRAY ***" << std::endl << std::endl;
+}
+
 int main(int argc, char **argv)
 {
 	if (argc == 2 && std::string(argv[1]) == "-s")
@@ -86,6 +110,8 @@ int main(int argc, char **argv)
 	test_brain();
 
 	subjectMain();
+
+	testArray();
 
 	return 0;
 }
