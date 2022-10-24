@@ -29,7 +29,7 @@ Dog::Dog( ) : Animal("Dog") {
 	this->_brain = new Brain("Dog-thought");
 }
 
-Dog::Dog( const Dog & other ) {
+Dog::Dog( const Dog & other ) : Animal(other) {
 
 	if (Animal::_loud)
 	{
