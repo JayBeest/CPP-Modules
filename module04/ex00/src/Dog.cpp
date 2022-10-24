@@ -22,7 +22,7 @@ Dog::Dog( ) : Animal("Dog") {
 	}
 }
 
-Dog::Dog( const Dog & other ) {
+Dog::Dog( const Dog & other ) : Animal(other) {
 
 	if (Animal::_loud)
 	{

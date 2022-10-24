@@ -22,7 +22,7 @@ WrongCat::WrongCat( ) : WrongAnimal("WrongCat") {
 	}
 }
 
-WrongCat::WrongCat( const WrongCat & other ) {
+WrongCat::WrongCat( const WrongCat & other ) : WrongAnimal(other) {
 
 	if (WrongAnimal::_loud)
 	{

@@ -15,7 +15,7 @@ Fire::Fire( ) : AMateria("fire"){
 	}
 }
 
-Fire::Fire( const Fire & other ) {
+Fire::Fire( const Fire & other ) : AMateria(other) {
 
 	if (AMateria::_loud)
 	{

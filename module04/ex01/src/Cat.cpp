@@ -29,7 +29,7 @@ Cat::Cat( ) : Animal("Cat") {
 	this->_brain = new Brain("Cat-thought");
 }
 
-Cat::Cat( const Cat & other) {
+Cat::Cat( const Cat & other) : Animal(other) {
 
 	if (Animal::_loud)
 	{
